@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nominalstil – C1 Grammatik</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+.container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
+.header h1 { font-size: 2.2em; font-family: Georgia, 'Times New Roman', serif; color: white; margin-bottom: 8px; border: none; padding: 0; }
+.header p { font-size: 1.1em; font-family: Georgia, 'Times New Roman', serif; opacity: 0.95; color: rgba(255,255,255,0.9); margin: 0; }
+.header .big-emoji { font-size: 2.6em; display: block; margin-top: 8px; }
+.nav { display: flex; flex-wrap: nowrap; background: #f8f9fa; border-top: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+.nav-btn { flex: 1; padding: 14px 10px; text-align: center; cursor: pointer; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; transition: all 0.3s; font-size: 0.92em; font-weight: 500; color: #666; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.nav-btn:last-child { border-right: none; }
+.nav-btn:hover { background: #e8ecff; color: #667eea; }
+.nav-btn.active { background: white; color: #667eea; font-weight: 700; border-bottom: 3px solid #667eea; }
+.nav-emoji { font-size: 1.3em; line-height: 1.2; }
+.nav-label { font-size: 0.78em; margin-top: 2px; line-height: 1.2; }
+.section { display: none; }
+.section.active { display: block; }
+@media (max-width: 600px) {
+  body { padding: 8px; }
+  .nav { flex-wrap: wrap; }
+  .nav-btn { flex: 1 1 33%; min-width: 0; font-size: 0.8em; padding: 10px 6px; border-right: 1px solid #ddd; }
+  .nav-btn:last-child { border-right: 1px solid #ddd; }
+}
+/* Entdeckungs-Tab */
+.entdeck-intro { background: #f3e5f5; border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; border-left: 5px solid #9c27b0; font-size: 0.97rem; line-height: 1.75; }
+.entdeck-intro h3 { color: #6a1b9a; margin-bottom: 10px; font-size: 1.05rem; }
+.hl { background: #e1bee7; border-radius: 4px; padding: 0 4px; color: #4a148c; font-weight: 700; }
+.satzpaar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.sz-verbal { background: #f5f5f5; border-radius: 8px; padding: 10px 14px; font-size: 0.91rem; color: #555; border-left: 3px solid #bbb; }
+.sz-nominal { background: #e8f5e9; border-radius: 8px; padding: 10px 14px; font-size: 0.91rem; color: #333; border-left: 3px solid #43a047; }
+.satz-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #999; letter-spacing: 0.05em; margin-bottom: 4px; }
+@media (max-width: 600px) { .satzpaar { grid-template-columns: 1fr; } }
+.mc-step { display: none; background: #fafbff; border-radius: 12px; padding: 18px 22px; margin-bottom: 16px; border: 1px solid #c5cae9; }
+.mc-step.active { display: block; }
+.mc-step h4 { color: #3949ab; margin-bottom: 12px; font-size: 0.97rem; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-btn { padding: 9px 16px; border: 2px solid #c5cae9; border-radius: 8px; background: #fff; cursor: pointer; text-align: left; font-size: 0.92rem; transition: all .2s; }
+.mc-btn:hover { border-color: #667eea; background: #f3f4ff; }
+.mc-btn.correct { border-color: #43a047; background: #e8f5e9; color: #2e7d32; font-weight: 700; }
+.mc-btn.wrong { border-color: #e53935; background: #ffebee; color: #c62828; }
+.mc-feedback { margin-top: 10px; font-size: 0.88rem; min-height: 1.3em; }
+.mc-feedback.ok { color: #2e7d32; font-weight: 700; }
+.mc-feedback.err { color: #c62828; }
+.progress-dots { display: flex; gap: 8px; margin-bottom: 20px; }
+.pdot { width: 14px; height: 14px; border-radius: 50%; background: #c5cae9; transition: background .3s; }
+.pdot.done { background: #667eea; }
+.regel-karte { display: none; background: linear-gradient(135deg, #e8eaf6, #ede7f6); border-radius: 14px; padding: 22px 26px; border-left: 5px solid #3949ab; margin-top: 10px; }
+.regel-karte h3 { color: #1a237e; margin-bottom: 12px; font-size: 1.05rem; }
+.regel-karte ul { margin-left: 18px; }
+.regel-karte li { color: #333; line-height: 1.9; font-size: 0.95rem; }
+.rk-example { background: #fff; border-radius: 8px; padding: 10px 14px; margin-top: 12px; border-left: 3px solid #7c4dff; font-size: 0.9rem; color: #333; line-height: 1.7; }
+.rk-example b { color: #3949ab; }
+/* Chips */
+.chip { padding: 6px 14px; border-radius: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; cursor: grab; font-size: 0.85rem; font-weight: 600; user-select: none; transition: transform .15s, opacity .15s; white-space: nowrap; display: inline-block; }
+.chip:active { cursor: grabbing; transform: scale(1.04); }
+.chip.correct { background: linear-gradient(135deg, #27ae60, #2ecc71) !important; }
+.chip.wrong { background: linear-gradient(135deg, #e74c3c, #c0392b) !important; }
+.chip.selected { outline: 3px solid #f39c12; }
+.chip.comma-chip { padding: 6px 8px; min-width: 22px; }
+/* Drag zones */
+.chip-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #f8f9fa; border-radius: 10px; margin-bottom: 14px; min-height: 54px; }
+.chip-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; min-height: 44px; background: #f8f9fa; padding: 8px; border-radius: 8px; }
+.drop-zone { min-height: 110px; border-radius: 10px; border: 2px dashed #c5cae9; padding: 10px; background: #fafbff; transition: background .2s; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+.drop-zone.dragover { background: #e8eaff; border-color: #667eea; }
+.drop-row { display: flex; flex-wrap: wrap; gap: 6px; min-height: 44px; padding: 8px 10px; border-radius: 8px; border: 2px dashed #c5cae9; background: #fafbff; }
+.drop-row.dragover { background: #e8eaff; border-color: #667eea; }
+/* Zuordnung */
+.zuo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.zuo-zone-label { font-weight: 700; color: #3949ab; font-size: 0.9rem; margin-bottom: 8px; }
+@media (max-width: 600px) { .zuo-layout { grid-template-columns: 1fr; } }
+/* Lückentext */
+input.blank { border: 2px solid #c5cae9; border-radius: 6px; padding: 3px 8px; font-size: 0.9rem; font-family: inherit; outline: none; transition: border-color .2s, background .2s; background: white; margin: 0 2px; }
+input.blank:focus { border-color: #667eea; }
+input.blank.correct { border-color: #27ae60; background: #e8f5e9; }
+input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
+.correction-hint { font-size: 0.78rem; color: #27ae60; font-weight: 700; margin-left: 4px; white-space: nowrap; }
+.luecken-satz { background: #f8f9fa; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; line-height: 2.2; font-size: 0.93rem; color: #333; }
+/* Satzbau */
+.sb-item { margin-bottom: 20px; }
+/* Timer / Controls */
+.timer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 6px; }
+.btn-row { display: flex; gap: 6px; }
+.btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: 4px 12px; font-size: 0.82em; color: #888; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+.btn:hover { background: #f0f0f0; color: #555; }
+.timer-display { display: flex; gap: 14px; font-size: 0.82em; color: #bbb; font-variant-numeric: tabular-nums; }
+/* Hilfe-Box */
+.hilfe-box { background: #f0f4ff; border-left: 4px solid #667eea; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 22px; font-size: 0.9em; color: #444; line-height: 1.6; }
+/* Wortkasten */
+.wortkasten { background: #ede7f6; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; font-size: 0.88rem; color: #4a148c; line-height: 1.8; }
+.wortkasten b { color: #6a1b9a; }
+/* Wortschatz */
+.vocab-item { background: #f8f9ff; padding: 14px 18px; margin-bottom: 10px; border-radius: 10px; border-left: 4px solid #667eea; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.vocab-en { font-weight: 600; color: #764ba2; min-width: 200px; font-size: 0.93em; }
+.vocab-arrow { color: #ccc; font-size: 1.2em; }
+.vocab-inputs input { border: none; border-bottom: 2px solid #667eea; background: #fff; padding: 4px 8px; font-family: inherit; font-size: 0.93em; outline: none; transition: all 0.2s; min-width: 220px; }
+.vocab-inputs input:focus { border-bottom-color: #764ba2; background: #f0f7ff; }
+.vocab-inputs input.correct { border-bottom-color: #27ae60; background: #e8f8f0; }
+.vocab-inputs input.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
+.vocab-hint { color: #27ae60; font-weight: 600; font-size: 0.8em; margin-left: 6px; display: none; }
+/* Counter */
+.counter-box { font-size: 0.85rem; color: #888; margin-top: 10px; }
+.counter-box span { font-weight: 700; color: #667eea; }
+/* Tab banner */
+.tab-banner { width: 100%; height: 180px; object-fit: cover; display: block; }
+/* Footer */
+.author-footer { text-align: center; margin-top: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; padding: 16px; font-size: 0.8rem; color: #aaa; }
+.author-footer a { color: #aaa; }
+.author-name { font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+  <h1>Nominalstil</h1>
+  <p style="font-family: Georgia, serif;">C1 – Lektion 1011G &nbsp;|&nbsp; Grammatik &amp; Üben</p>
+  <div class="big-emoji">📰</div>
+</div>
+
+<div class="nav">
+  <div class="nav-btn active" onclick="showSection(0)"><span class="nav-emoji">📖</span><span class="nav-label">Entdeckung</span></div>
+  <div class="nav-btn" onclick="showSection(1)"><span class="nav-emoji">🔀</span><span class="nav-label">Zuordnung</span></div>
+  <div class="nav-btn" onclick="showSection(2)"><span class="nav-emoji">✏️</span><span class="nav-label">Lückentext</span></div>
+  <div class="nav-btn" onclick="showSection(3)"><span class="nav-emoji">🧩</span><span class="nav-label">Satzbau</span></div>
+  <div class="nav-btn" onclick="showSection(4)"><span class="nav-emoji">📚</span><span class="nav-label">Wortschatz</span></div>
+</div>
+
+<!-- ═══════════════════ TAB 0: ENTDECKUNG ═══════════════════ -->
+<div class="section active" id="sec-0">
+  <img src="https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Zeitungen">
+  <div style="padding: 28px 30px;">
+
+    <div class="entdeck-intro">
+      <h3>📰 Verbalstil und Nominalstil im Vergleich</h3>
+      <p>Lies die Satzpaare. Was unterscheidet die linke Spalte von der rechten?</p>
+    </div>
+
+    <div class="satzpaar">
+      <div><div class="satz-label">Verbalstil</div><div class="sz-verbal">Das Gremium hat <em>entschieden</em>, die Fördermittel einzufrieren.</div></div>
+      <div><div class="satz-label">Nominalstil</div><div class="sz-nominal">Das Gremium hat die <span class="hl">Entscheidung</span> getroffen, die Fördermittel einzufrieren.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Verbalstil</div><div class="sz-verbal">Der Abteilungsleiter <em>informierte</em> das Team über die Änderungen.</div></div>
+      <div><div class="satz-label">Nominalstil</div><div class="sz-nominal">Der Abteilungsleiter setzte das Team über die Änderungen in <span class="hl">Kenntnis</span>.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Verbalstil</div><div class="sz-verbal">Sie <em>kritisierte</em> die Methodik der Studie scharf.</div></div>
+      <div><div class="satz-label">Nominalstil</div><div class="sz-nominal">Sie übte scharfe <span class="hl">Kritik</span> an der Methodik der Studie.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Verbalstil</div><div class="sz-verbal"><em>Obwohl</em> erhebliche Einwände vorlagen, stimmte das Gremium zu.</div></div>
+      <div><div class="satz-label">Nominalstil</div><div class="sz-nominal"><span class="hl">Trotz</span> erheblicher Einwände stimmte das Gremium zu.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Verbalstil</div><div class="sz-verbal"><em>Weil</em> die Nachfrage gesunken ist, werden die Preise gesenkt.</div></div>
+      <div><div class="satz-label">Nominalstil</div><div class="sz-nominal"><span class="hl">Aufgrund</span> des gesunkenen Bedarfs werden die Preise gesenkt.</div></div>
+    </div>
+
+    <div class="progress-dots" style="margin-top:24px;">
+      <div class="pdot" id="pdot0"></div>
+      <div class="pdot" id="pdot1"></div>
+      <div class="pdot" id="pdot2"></div>
+      <div class="pdot" id="pdot3"></div>
+    </div>
+
+    <div class="mc-step active" id="mc-step0">
+      <h4>Was fällt an den Sätzen in der rechten Spalte auf?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind kürzer und einfacher strukturiert.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,true)">Sie enthalten mehr Nomen und abstrakte Konstruktionen.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie haben keine Verben mehr.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie klingen umgangssprachlicher.</button>
+      </div>
+      <div class="mc-feedback" id="mcfb0"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step1">
+      <h4>Was passiert in Satz 3? Das Verb „kritisieren" wird ersetzt durch …</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Ein Adjektiv: „kritisch sein"</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,true)">Ein Funktionsverbgefüge: Verb + Nomen (Kritik üben)</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Eine direkte Nominalisierung: „das Kritisieren"</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Ein Adverb: „kritisch"</button>
+      </div>
+      <div class="mc-feedback" id="mcfb1"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step2">
+      <h4>In welchen Textsorten findet man Nominalstil besonders häufig?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">In Chats, Kurznachrichten und persönlichen Briefen</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,true)">In Behörden- und Verwaltungssprache, Wissenschaft und Nachrichten</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">In Romanen und Kurzgeschichten</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">In Werbetexten und Slogans</button>
+      </div>
+      <div class="mc-feedback" id="mcfb2"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step3">
+      <h4>Welches dieser Ausdrücke ist ein Funktionsverbgefüge?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">schnell laufen</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">sehr gerne essen</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,true)">eine Entscheidung treffen</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">tief und fest schlafen</button>
+      </div>
+      <div class="mc-feedback" id="mcfb3"></div>
+    </div>
+
+    <div class="regel-karte" id="regelkarte">
+      <h3>📐 Die Regel: Nominalstil</h3>
+      <ul>
+        <li>Im <strong>Nominalstil</strong> werden Verben durch Nomen und nominale Konstruktionen ersetzt — typisch für formelle, schriftliche Sprache.</li>
+        <li><strong>Funktionsverbgefüge (FVG):</strong> Ein inhaltsschwaches Verb + ein Nomen bilden gemeinsam die Bedeutung.<br>
+        <em>entscheiden</em> → <em>eine Entscheidung treffen</em> &nbsp;|&nbsp; <em>kritisieren</em> → <em>Kritik üben</em></li>
+        <li><strong>Nominalisierung:</strong> Verben und Adjektive werden zu Nomen.<br>
+        <em>verhandeln</em> → <em>die Verhandlung</em> &nbsp;|&nbsp; <em>wesentlich</em> → <em>das Wesentliche</em></li>
+        <li><strong>Präpositionale Konstruktion</strong> ersetzt den Nebensatz:<br>
+        <em>obwohl er müde war</em> → <em>trotz seiner Müdigkeit</em></li>
+      </ul>
+      <div class="rk-example">
+        <b>Aktivisch (Subjekt handelt):</b> Kritik üben &nbsp;·&nbsp; eine Entscheidung treffen &nbsp;·&nbsp; in Kenntnis setzen<br>
+        <b>Passivisch / Stativ (Subjekt empfängt / befindet sich):</b> auf Kritik stoßen &nbsp;·&nbsp; zur Verfügung stehen &nbsp;·&nbsp; in Verdacht geraten
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 1: ZUORDNUNG ═══════════════════ -->
+<div class="section" id="sec-1">
+  <img src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Büro">
+  <div style="padding: 28px 30px;">
+    <h2>🔀 Aktivisch oder passivisch?</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showZuoLoesung()">Lösungen</button>
+        <button class="btn" onclick="resetZuo(); timerResetOne(1);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-1">0:00</span></span>
+        <span>🏆 <span id="best-1">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Ordne die Funktionsverbgefüge den richtigen Kategorien zu. Ziehe oder klicke die Chips.<br>
+      <strong>Aktivisch:</strong> Das Subjekt handelt aktiv. &nbsp;|&nbsp;
+      <strong>Passivisch / Stativ:</strong> Das Subjekt empfängt eine Handlung oder befindet sich in einem Zustand.
+    </div>
+    <div class="chip-bank" id="zuo-bank" ondragover="allowDrop(event)" ondrop="dropBank(event)" onclick="clickBank(event)"></div>
+    <div class="zuo-layout">
+      <div>
+        <div class="zuo-zone-label">✅ Aktivisch</div>
+        <div class="drop-zone" id="zone-aktiv" data-cat="aktiv"
+          ondragover="allowDrop(event)" ondrop="dropZuo(event,this)" onclick="clickZone(event,this)"></div>
+      </div>
+      <div>
+        <div class="zuo-zone-label">⬅️ Passivisch / Stativ</div>
+        <div class="drop-zone" id="zone-passiv" data-cat="passiv"
+          ondragover="allowDrop(event)" ondrop="dropZuo(event,this)" onclick="clickZone(event,this)"></div>
+      </div>
+    </div>
+    <div class="counter-box">Richtig: <span id="zuo-ok">0</span> / 12</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 2: LÜCKENTEXT ═══════════════════ -->
+<div class="section" id="sec-2">
+  <img src="https://images.pexels.com/photos/1059111/pexels-photo-1059111.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Schreiben">
+  <div style="padding: 28px 30px;">
+    <h2>✏️ Lückentext</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showLueckenLoesung()">Lösungen</button>
+        <button class="btn" onclick="resetLuecken(); timerResetOne(2);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-2">0:00</span></span>
+        <span>🏆 <span id="best-2">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Ergänze das passende Nomen aus dem Wortkasten, um den Nominalstil zu vervollständigen.
+    </div>
+    <div class="wortkasten">
+      <b>Wortkasten:</b> Entscheidung &nbsp;·&nbsp; Kenntnis &nbsp;·&nbsp; Abschied &nbsp;·&nbsp; Vorschlag &nbsp;·&nbsp; Kritik &nbsp;·&nbsp; Verdacht &nbsp;·&nbsp; Verfügung &nbsp;·&nbsp; Folge &nbsp;·&nbsp; Antrag &nbsp;·&nbsp; Beobachtung
+    </div>
+    <div id="luecken-container"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 3: SATZBAU ═══════════════════ -->
+<div class="section" id="sec-3">
+  <img src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Sprache">
+  <div style="padding: 28px 30px;">
+    <h2>🧩 Satzbau</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showSbLoesung()">Lösungen</button>
+        <button class="btn" onclick="resetSb(); timerResetOne(3);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-3">0:00</span></span>
+        <span>🏆 <span id="best-3">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Bringe die Wörter in die richtige Reihenfolge. Ziehe oder klicke die Chips in die Drop-Zone. Die Chips färben sich sofort grün oder rot.
+    </div>
+    <div id="sb-container"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 4: WORTSCHATZ ═══════════════════ -->
+<div class="section" id="sec-4">
+  <img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Bücher Wortschatz">
+  <div style="padding: 28px 30px;">
+    <h2>📚 Wortschatz</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showVocabLoesung()">Lösungen</button>
+        <button class="btn" onclick="resetVocab(); timerResetOne(4);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-4">0:00</span></span>
+        <span>🏆 <span id="best-4">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Übersetze die Funktionsverbgefüge ins Deutsche. Tippe das vollständige Gefüge.
+    </div>
+    <div id="vocabContainer"></div>
+  </div>
+</div>
+
+<div class="author-footer">
+  <span class="author-name">&copy; Frank Burkert</span> &middot; DaF-Materialien &middot;
+  <a href="mailto:FrankBurkert@fabdaf.onmicrosoft.com">FrankBurkert@fabdaf.onmicrosoft.com</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ── Navigation ──────────────────────────────────────────────
+function showSection(idx) {
+  document.querySelectorAll('.section').forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+  document.querySelectorAll('.nav-btn').forEach(function(b,i){ b.classList.toggle('active', i===idx); });
+}
+
+// ── Timer ────────────────────────────────────────────────────
+var TIMER_PREFIX = 'C1_1011G_';
+var timerStarted  = [false,false,false,false,false];
+var timerRunning  = [false,false,false,false,false];
+var timerSeconds  = [0,0,0,0,0];
+var timerIntervals = [null,null,null,null,null];
+
+function timerAutoStart(n) {
+  if (timerStarted[n]) return;
+  timerStarted[n] = true; timerRunning[n] = true;
+  timerIntervals[n] = setInterval(function() {
+    timerSeconds[n]++;
+    var el = document.getElementById('timer-' + n);
+    if (el) el.textContent = fmtTime(timerSeconds[n]);
+  }, 1000);
+}
+function timerStop(n) {
+  if (!timerRunning[n]) return;
+  clearInterval(timerIntervals[n]); timerRunning[n] = false;
+  var best = parseInt(localStorage.getItem(TIMER_PREFIX + n) || '999999');
+  if (timerSeconds[n] > 0 && timerSeconds[n] < best) {
+    localStorage.setItem(TIMER_PREFIX + n, timerSeconds[n]);
+    var el = document.getElementById('best-' + n);
+    if (el) el.textContent = fmtTime(timerSeconds[n]);
+  }
+}
+function timerResetOne(n) {
+  clearInterval(timerIntervals[n]); timerRunning[n] = false; timerStarted[n] = false; timerSeconds[n] = 0;
+  var el = document.getElementById('timer-' + n);
+  if (el) el.textContent = '0:00';
+}
+function fmtTime(s) { var m=Math.floor(s/60); var sec=s%60; return m+':'+(sec<10?'0':'')+sec; }
+
+window.addEventListener('load', function() {
+  [1,2,3,4].forEach(function(n) {
+    var b = localStorage.getItem(TIMER_PREFIX + n);
+    if (b) { var el = document.getElementById('best-'+n); if (el) el.textContent = fmtTime(parseInt(b)); }
+  });
+  initZuo(); initLuecken(); initSb(); initVocab();
+});
+
+// ── Entdeckungs-MC ───────────────────────────────────────────
+var mcDone = [false,false,false,false];
+function mcCheck(step, btn, correct) {
+  var btns = btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  var fb = document.getElementById('mcfb' + step);
+  if (correct) {
+    btn.classList.add('correct');
+    fb.textContent = '\u2713 Richtig!'; fb.className = 'mc-feedback ok';
+    mcDone[step] = true;
+    document.getElementById('pdot' + step).classList.add('done');
+    setTimeout(function() {
+      var next = document.getElementById('mc-step' + (step + 1));
+      if (next) next.classList.add('active');
+      else document.getElementById('regelkarte').style.display = 'block';
+    }, 700);
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent = '\u2717 Nicht ganz \u2014 schau nochmal genau hin.'; fb.className = 'mc-feedback err';
+    setTimeout(function() {
+      btns.forEach(function(b) { b.disabled = false; b.classList.remove('wrong','correct'); });
+      fb.textContent = ''; fb.className = 'mc-feedback';
+    }, 1400);
+  }
+}
+
+// ── Zuordnung (Tab 1) ────────────────────────────────────────
+var draggedChip = null;
+var selectedChip = null;
+
+var ZUO_DATA = [
+  { id:'z1',  text:'Kritik üben',              cat:'aktiv'  },
+  { id:'z2',  text:'zur Verfügung stellen',    cat:'aktiv'  },
+  { id:'z3',  text:'einen Antrag stellen',     cat:'aktiv'  },
+  { id:'z4',  text:'eine Entscheidung treffen',cat:'aktiv'  },
+  { id:'z5',  text:'Abschied nehmen',          cat:'aktiv'  },
+  { id:'z6',  text:'in Kenntnis setzen',       cat:'aktiv'  },
+  { id:'z7',  text:'auf Kritik stoßen',        cat:'passiv' },
+  { id:'z8',  text:'zur Verfügung stehen',     cat:'passiv' },
+  { id:'z9',  text:'in Verdacht geraten',      cat:'passiv' },
+  { id:'z10', text:'zur Anwendung kommen',     cat:'passiv' },
+  { id:'z11', text:'in Betracht kommen',       cat:'passiv' },
+  { id:'z12', text:'in Frage stehen',          cat:'passiv' },
+];
+
+function initZuo() {
+  var bank = document.getElementById('zuo-bank');
+  bank.innerHTML = '';
+  document.getElementById('zone-aktiv').innerHTML = '';
+  document.getElementById('zone-passiv').innerHTML = '';
+  document.getElementById('zuo-ok').textContent = '0';
+  selectedChip = null;
+  shuffleArr(ZUO_DATA.slice()).forEach(function(item) {
+    bank.appendChild(makeZuoChip(item));
+  });
+}
+
+function makeZuoChip(item) {
+  var chip = document.createElement('div');
+  chip.className = 'chip'; chip.textContent = item.text;
+  chip.dataset.id = item.id; chip.dataset.cat = item.cat;
+  chip.draggable = true;
+  chip.addEventListener('dragstart', function(e) { draggedChip = chip; e.dataTransfer.setData('text/plain',''); });
+  chip.addEventListener('dragend', function() { colorAllZuoChips(); });
+  chip.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (selectedChip === chip) { selectedChip = null; chip.classList.remove('selected'); }
+    else { if (selectedChip) selectedChip.classList.remove('selected'); selectedChip = chip; chip.classList.add('selected'); }
+  });
+  return chip;
+}
+
+function allowDrop(e) { e.preventDefault(); }
+
+function dropZuo(e, zone) {
+  e.preventDefault(); if (!draggedChip) return;
+  zone.appendChild(draggedChip); draggedChip = null;
+  colorAllZuoChips(); timerAutoStart(1);
+}
+function dropBank(e) {
+  e.preventDefault(); if (!draggedChip) return;
+  document.getElementById('zuo-bank').appendChild(draggedChip); draggedChip = null; colorAllZuoChips();
+}
+function clickZone(e, zone) {
+  if (!selectedChip) return;
+  zone.appendChild(selectedChip); selectedChip.classList.remove('selected'); selectedChip = null;
+  colorAllZuoChips(); timerAutoStart(1);
+}
+function clickBank(e) {
+  if (!selectedChip) return;
+  document.getElementById('zuo-bank').appendChild(selectedChip); selectedChip.classList.remove('selected'); selectedChip = null;
+  colorAllZuoChips();
+}
+
+function colorZuoChip(chip) {
+  var zone = chip.closest('.drop-zone');
+  if (zone) { chip.classList.remove('correct','wrong'); chip.classList.add(chip.dataset.cat === zone.dataset.cat ? 'correct' : 'wrong'); }
+  else { chip.classList.remove('correct','wrong'); }
+}
+function colorAllZuoChips() {
+  var ok = 0;
+  document.querySelectorAll('#sec-1 .chip').forEach(function(chip) { colorZuoChip(chip); if (chip.classList.contains('correct')) ok++; });
+  document.getElementById('zuo-ok').textContent = ok;
+  if (ok === ZUO_DATA.length) timerStop(1);
+}
+function showZuoLoesung() {
+  ZUO_DATA.forEach(function(item) {
+    var chip = document.querySelector('[data-id="' + item.id + '"]');
+    if (!chip) return;
+    document.getElementById(item.cat === 'aktiv' ? 'zone-aktiv' : 'zone-passiv').appendChild(chip);
+  });
+  colorAllZuoChips();
+}
+function resetZuo() { initZuo(); }
+
+// ── Lückentext (Tab 2) ───────────────────────────────────────
+var LUECKEN = [
+  { id:1,  before:'Das Gremium traf die schwerwiegende ',             answer:'Entscheidung', after:', die Kooperation zu beenden.' },
+  { id:2,  before:'Der Abteilungsleiter setzte die Belegschaft über die Änderungen in ', answer:'Kenntnis', after:'.' },
+  { id:3,  before:'Nach langer Amtszeit nahm die Direktorin von ihrer Aufgabe ', answer:'Abschied', after:'.' },
+  { id:4,  before:'Die Arbeitsgruppe unterbreitete den ',             answer:'Vorschlag', after:', das Verfahren zu vereinfachen.' },
+  { id:5,  before:'Der Prüfbericht übte scharfe ',                   answer:'Kritik', after:' an der Methodik der Studie.' },
+  { id:6,  before:'Nach der Buchprüfung geriet der Buchhalter in ',   answer:'Verdacht', after:'.' },
+  { id:7,  before:'Die Infrastruktur stand allen Nutzern kostenlos zur ', answer:'Verfügung', after:'.' },
+  { id:8,  before:'Der steigende Rohstoffbedarf hatte eine Verteuerung der Produkte zur ', answer:'Folge', after:'.' },
+  { id:9,  before:'Sie stellte beim Amt einen ',                      answer:'Antrag', after:' auf Förderung ihres Projekts.' },
+  { id:10, before:'Der Forscher machte die wichtige ',                answer:'Beobachtung', after:', dass sich das Verhalten der Tiere verändert hatte.' },
+];
+
+function initLuecken() {
+  var c = document.getElementById('luecken-container'); c.innerHTML = '';
+  LUECKEN.forEach(function(item) {
+    var div = document.createElement('div'); div.className = 'luecken-satz';
+    var w = Math.max(90, item.answer.length * 12);
+    div.innerHTML = escH(item.before) +
+      '<input type="text" class="blank" id="lk-'+item.id+'" data-answer="'+escH(item.answer)+'" style="width:'+w+'px" oninput="lueckenLive(this); timerAutoStart(2);">' +
+      '<span class="correction-hint" id="lkhint-'+item.id+'" style="display:none">'+escH(item.answer)+'</span>' +
+      escH(item.after);
+    c.appendChild(div);
+  });
+}
+
+function lueckenLive(inp) {
+  var val = inp.value.trim(), ans = inp.dataset.answer;
+  inp.classList.remove('correct','wrong');
+  if (!val.length) return;
+  if (val.toLowerCase() === ans.toLowerCase()) inp.classList.add('correct');
+  else if (ans.toLowerCase().startsWith(val.toLowerCase())) { /* gültiger Prefix */ }
+  else inp.classList.add('wrong');
+  checkLueckenDone();
+}
+function checkLueckenDone() {
+  var all = true;
+  LUECKEN.forEach(function(item) { var inp=document.getElementById('lk-'+item.id); if (!inp||!inp.classList.contains('correct')) all=false; });
+  if (all) timerStop(2);
+}
+function showLueckenLoesung() {
+  LUECKEN.forEach(function(item) {
+    var inp = document.getElementById('lk-'+item.id); if (!inp) return;
+    inp.value = item.answer; inp.classList.remove('wrong'); inp.classList.add('correct');
+  });
+}
+function resetLuecken() { initLuecken(); }
+
+// ── Satzbau (Tab 3) ──────────────────────────────────────────
+var SB_DATA = [
+  { id:0, words:['die','Entscheidung',',','die','Fördergelder','zu','kürzen',',','stieß','auf','heftigen','Widerstand','.'],
+    answer:['die','entscheidung',',','die','fördergelder','zu','kürzen',',','stieß','auf','heftigen','widerstand','.'] },
+  { id:1, words:['nach','eingehender','Prüfung','aller','Unterlagen','erteilte','die','Behörde','die','Genehmigung','.'],
+    answer:['nach','eingehender','prüfung','aller','unterlagen','erteilte','die','behörde','die','genehmigung','.'] },
+  { id:2, words:['trotz','erheblicher','Einwände','traf','die','Kommission','eine','einstimmige','Entscheidung','.'],
+    answer:['trotz','erheblicher','einwände','traf','die','kommission','eine','einstimmige','entscheidung','.'] },
+  { id:3, words:['der','steigende','Energieverbrauch','hat','die','Überarbeitung','der','Klimastrategie','zur','Folge','.'],
+    answer:['der','steigende','energieverbrauch','hat','die','überarbeitung','der','klimastrategie','zur','folge','.'] },
+  { id:4, words:['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag','.'],
+    answer:['unter','berücksichtigung','aller','risiken','unterbreitete','das','team','einen','vorschlag','.'] },
+  { id:5, words:['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts','.'],
+    answer:['die','forscherin','übte','scharfe','kritik','an','der','mangelhaften','dokumentation','des','projekts','.'] },
+  { id:6, words:['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis','.'],
+    answer:['der','direktor','setzte','die','belegschaft','umgehend','über','die','restrukturierung','in','kenntnis','.'] },
+];
+
+function initSb() {
+  var c = document.getElementById('sb-container'); c.innerHTML = '';
+  SB_DATA.forEach(function(item) {
+    var shuffled = shuffleArr(item.words.slice());
+    var wrap = document.createElement('div'); wrap.className = 'sb-item';
+    var pool = document.createElement('div'); pool.className = 'chip-pool'; pool.id = 'pool-'+item.id;
+    var row  = document.createElement('div'); row.className  = 'drop-row'; row.id  = 'row-'+item.id;
+    row.ondragover = function(e) { e.preventDefault(); };
+    row.ondrop = function(e) { dropSbRow(e, item.id); };
+    pool.ondragover = function(e) { e.preventDefault(); };
+    pool.ondrop = function(e) { e.preventDefault(); if (!draggedChip) return; pool.appendChild(draggedChip); draggedChip=null; updateCaps(item.id); colorSbRow(item.id); };
+    shuffled.forEach(function(w) {
+      var chip = document.createElement('div');
+      chip.className = 'chip' + (w===',' ? ' comma-chip' : '');
+      chip.dataset.orig = w;
+      chip.textContent = (w===','||w==='.') ? w : w.charAt(0).toUpperCase()+w.slice(1);
+      chip.draggable = true;
+      chip.addEventListener('dragstart', function(ev) { draggedChip = chip; ev.dataTransfer.setData('text/plain',''); });
+      chip.addEventListener('click', function() {
+        if (chip.closest('.drop-row')) {
+          document.getElementById('pool-'+item.id).appendChild(chip);
+        } else {
+          document.getElementById('row-'+item.id).appendChild(chip);
+          timerAutoStart(3);
+        }
+        updateCaps(item.id); colorSbRow(item.id);
+      });
+      pool.appendChild(chip);
+    });
+    wrap.appendChild(pool); wrap.appendChild(row); c.appendChild(wrap);
+  });
+}
+
+function dropSbRow(e, idx) {
+  e.preventDefault(); if (!draggedChip) return;
+  document.getElementById('row-'+idx).appendChild(draggedChip); draggedChip = null;
+  updateCaps(idx); colorSbRow(idx); timerAutoStart(3);
+}
+function updateCaps(idx) {
+  Array.from(document.getElementById('row-'+idx).querySelectorAll('.chip')).forEach(function(c,i) {
+    var o = c.dataset.orig;
+    if (o===','||o==='.') { c.textContent=o; return; }
+    c.textContent = (i===0) ? o.charAt(0).toUpperCase()+o.slice(1) : o;
+  });
+}
+function colorSbRow(idx) {
+  var row = document.getElementById('row-'+idx), data = SB_DATA[idx];
+  Array.from(row.querySelectorAll('.chip')).forEach(function(chip,i) {
+    chip.classList.remove('correct','wrong');
+    if (i < data.answer.length) chip.classList.add(chip.dataset.orig.toLowerCase()===data.answer[i] ? 'correct':'wrong');
+    else chip.classList.add('wrong');
+  });
+  checkSbAllOk();
+}
+function checkSbAllOk() {
+  var ok = SB_DATA.every(function(item) {
+    var chips = Array.from(document.getElementById('row-'+item.id).querySelectorAll('.chip'));
+    if (chips.length!==item.answer.length) return false;
+    return chips.every(function(c,i){ return c.dataset.orig.toLowerCase()===item.answer[i]; });
+  });
+  if (ok) timerStop(3);
+}
+function showSbLoesung() {
+  SB_DATA.forEach(function(item) {
+    var pool = document.getElementById('pool-'+item.id);
+    var row  = document.getElementById('row-'+item.id);
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c){ pool.appendChild(c); });
+    item.answer.forEach(function(w) {
+      var chip = Array.from(pool.querySelectorAll('.chip')).find(function(c){ return c.dataset.orig.toLowerCase()===w; });
+      if (chip) row.appendChild(chip);
+    });
+    updateCaps(item.id); colorSbRow(item.id);
+  });
+}
+function resetSb() { initSb(); }
+
+// ── Wortschatz (Tab 4) ───────────────────────────────────────
+var WORTSCHATZ = [
+  { id:1,  en:'to make / take a decision',           de:'eine Entscheidung treffen' },
+  { id:2,  en:'to submit a suggestion',              de:'einen Vorschlag unterbreiten' },
+  { id:3,  en:'to take leave of someone',            de:'Abschied nehmen' },
+  { id:4,  en:'to file / submit an application',     de:'einen Antrag stellen' },
+  { id:5,  en:'to exercise criticism (to criticize)',de:'Kritik üben' },
+  { id:6,  en:'to come under suspicion',             de:'in Verdacht geraten' },
+  { id:7,  en:'to make available',                   de:'zur Verfügung stellen' },
+  { id:8,  en:'to be available',                     de:'zur Verfügung stehen' },
+  { id:9,  en:'to inform / put s.o. in the know',    de:'in Kenntnis setzen' },
+  { id:10, en:'to come to a conclusion',             de:'zu einem Schluss kommen' },
+  { id:11, en:'to have as a consequence',            de:'zur Folge haben' },
+  { id:12, en:'to express',                          de:'zum Ausdruck bringen' },
+  { id:13, en:'to take into consideration',          de:'in Betracht ziehen' },
+  { id:14, en:'to come into effect / be applied',    de:'zur Anwendung kommen' },
+];
+
+function initVocab() {
+  var c = document.getElementById('vocabContainer'); c.innerHTML = '';
+  shuffleArr(WORTSCHATZ.slice()).forEach(function(item) {
+    var div = document.createElement('div'); div.className = 'vocab-item';
+    var w = Math.max(220, item.de.length * 9);
+    div.innerHTML =
+      '<span class="vocab-en">'+escH(item.en)+'</span>' +
+      '<span class="vocab-arrow">→</span>' +
+      '<div class="vocab-inputs">' +
+        '<input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+'" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this); timerAutoStart(4);">' +
+        '<span class="vocab-hint" id="vh-'+item.id+'">'+escH(item.de)+'</span>' +
+      '</div>';
+    c.appendChild(div);
+  });
+}
+function vocabLive(inp) {
+  var val=inp.value.trim().toLowerCase(), ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong');
+  if (!val.length) return;
+  if (val===ans) { inp.classList.add('correct'); checkVocabDone(); }
+  else if (ans.startsWith(val)) { /* Prefix OK */ }
+  else inp.classList.add('wrong');
+}
+function checkVocabDone() {
+  var all=Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); });
+  if (all) timerStop(4);
+}
+function showVocabLoesung() {
+  document.querySelectorAll('#vocabContainer input').forEach(function(inp) {
+    inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct');
+  });
+}
+function resetVocab() { initVocab(); }
+
+// ── Utils ────────────────────────────────────────────────────
+function shuffleArr(a) { for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
