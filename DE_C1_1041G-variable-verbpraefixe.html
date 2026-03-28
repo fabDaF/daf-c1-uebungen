@@ -293,9 +293,9 @@ input.correct + .vocab-hint { display: inline; }
     <div class="timer-controls">
       <div class="btn-row">
         <button class="btn" onclick="resetLuecken()">↺ Neu</button>
-        <button class="btn" onclick="zeigeLoesung()">💡 Lösung</button>
+        <button class="btn" onclick="timerResetOne(2); zeigeLoesung()">💡 Lösung</button>
       </div>
-      <div class="timer-display"><span id="timer2-display">00:00</span></div>
+      <div class="timer-display"><span>⏱ <span id="timer-2">0:00</span></span><span>🏆 <span id="best-2">--:--</span></span></div>
     </div>
     <div id="lueckenContainer"></div>
   </div>
@@ -309,10 +309,10 @@ input.correct + .vocab-hint { display: inline; }
     <div class="hilfe-box">Bringe die Wörter in die richtige Reihenfolge. Beachte: Trennbare Verben teilen sich im Satz — das Präfix steht am Ende.</div>
     <div class="timer-controls">
       <div class="btn-row">
-        <button class="btn" onclick="sbShowAllSolutions()">💡 Alle Lösungen</button>
+        <button class="btn" onclick="timerResetOne(3); sbShowAllSolutions()">💡 Alle Lösungen</button>
         <button class="btn" onclick="resetSatzbau()">↺ Neu</button>
       </div>
-      <div class="timer-display"><span id="timer3-display">00:00</span></div>
+      <div class="timer-display"><span>⏱ <span id="timer-3">0:00</span></span><span>🏆 <span id="best-3">--:--</span></span></div>
     </div>
     <div id="satzbauContainer"></div>
   </div>
@@ -326,10 +326,10 @@ input.correct + .vocab-hint { display: inline; }
     <div class="hilfe-box">Tippe die deutsche Entsprechung. Klein­schreibung, Artikel und Leerzeichen werden geprüft.</div>
     <div class="timer-controls">
       <div class="btn-row">
-        <button class="btn" onclick="showVocabLoesung()">💡 Lösung</button>
+        <button class="btn" onclick="timerResetOne(4); showVocabLoesung()">💡 Lösung</button>
         <button class="btn" onclick="resetVocab()">↺ Neu</button>
       </div>
-      <div class="timer-display"><span id="timer4-display">00:00</span></div>
+      <div class="timer-display"><span>⏱ <span id="timer-4">0:00</span></span><span>🏆 <span id="best-4">--:--</span></span></div>
     </div>
     <div id="vocabContainer"></div>
   </div>
@@ -354,33 +354,45 @@ function showSection(n) {
 }
 
 // ── Timer ────────────────────────────────────────────────────────────────────
-var TIMER_PREFIX = 'C1_1041G_';
-var timers = {};
-function timerKey(n){ return TIMER_PREFIX+'tab'+n; }
+var TIMER_PREFIX='C1_1041G_';
+var timerStarted=[false,false,false,false,false];
+var timerRunning=[false,false,false,false,false];
+var timerSeconds=[0,0,0,0,0];
+var timerIntervals=[null,null,null,null,null];
 function timerAutoStart(n){
-  var k=timerKey(n);
-  if(timers[k]&&timers[k].running) return;
-  var stored=localStorage.getItem(k);
-  var start=stored?parseInt(stored):Date.now();
-  if(!stored) localStorage.setItem(k,start);
-  if(!timers[k]) timers[k]={};
-  timers[k].running=true;
-  timers[k].interval=setInterval(function(){
-    var el=document.getElementById('timer'+n+'-display');
-    if(el){ var s=Math.floor((Date.now()-start)/1000); el.textContent=pad(Math.floor(s/60))+':'+pad(s%60); }
-  },500);
+  if(timerStarted[n]) return;
+  timerStarted[n]=true; timerRunning[n]=true;
+  timerIntervals[n]=setInterval(function(){
+    timerSeconds[n]++;
+    var el=document.getElementById('timer-'+n);
+    if(el) el.textContent=fmtTime(timerSeconds[n]);
+  },1000);
 }
 function timerStop(n){
-  var k=timerKey(n);
-  if(timers[k]&&timers[k].interval){ clearInterval(timers[k].interval); timers[k].running=false; }
+  if(!timerRunning[n]) return;
+  clearInterval(timerIntervals[n]); timerRunning[n]=false;
+  var best=parseInt(localStorage.getItem(TIMER_PREFIX+n)||'999999');
+  if(timerSeconds[n]>0&&timerSeconds[n]<best){
+    localStorage.setItem(TIMER_PREFIX+n,timerSeconds[n]);
+    var el=document.getElementById('best-'+n);
+    if(el) el.textContent=fmtTime(timerSeconds[n]);
+  }
+  timerSeconds[n]=0; timerStarted[n]=false;
+  var td=document.getElementById('timer-'+n);
+  if(td) td.textContent='0:00';
 }
 function timerResetOne(n){
-  timerStop(n); localStorage.removeItem(timerKey(n));
-  var el=document.getElementById('timer'+n+'-display');
-  if(el) el.textContent='00:00';
-  timers[timerKey(n)]=null;
+  clearInterval(timerIntervals[n]); timerRunning[n]=false; timerStarted[n]=false; timerSeconds[n]=0;
+  var el=document.getElementById('timer-'+n);
+  if(el) el.textContent='0:00';
 }
-function pad(x){ return x<10?'0'+x:String(x); }
+function fmtTime(s){ var m=Math.floor(s/60); var sec=s%60; return m+':'+(sec<10?'0':'')+sec; }
+document.addEventListener('DOMContentLoaded',function(){
+  [1,2,3,4].forEach(function(n){
+    var b=localStorage.getItem(TIMER_PREFIX+n);
+    if(b){ var el=document.getElementById('best-'+n); if(el) el.textContent=fmtTime(parseInt(b)); }
+  });
+});
 
 // ── MC Entdecken ─────────────────────────────────────────────────────────────
 var mcDone=[false,false,false,false];

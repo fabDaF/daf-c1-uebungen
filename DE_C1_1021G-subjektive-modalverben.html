@@ -260,7 +260,7 @@ input.correct + .vocab-hint { display: inline; }
     <h2>🔀 Objektiv oder subjektiv?</h2>
     <div class="timer-controls">
       <div class="btn-row">
-        <button class="btn" onclick="showZuoLoesung()">Lösungen</button>
+        <button class="btn" onclick="timerResetOne(1); showZuoLoesung()">Lösungen</button>
         <button class="btn" onclick="resetZuo(); timerResetOne(1);">Neu starten</button>
       </div>
       <div class="timer-display">
@@ -297,7 +297,7 @@ input.correct + .vocab-hint { display: inline; }
     <h2>✏️ Lückentext</h2>
     <div class="timer-controls">
       <div class="btn-row">
-        <button class="btn" onclick="showLueckenLoesung()">Lösungen</button>
+        <button class="btn" onclick="timerResetOne(2); showLueckenLoesung()">Lösungen</button>
         <button class="btn" onclick="resetLuecken(); timerResetOne(2);">Neu starten</button>
       </div>
       <div class="timer-display">
@@ -322,7 +322,7 @@ input.correct + .vocab-hint { display: inline; }
     <h2>🧩 Satzbau</h2>
     <div class="timer-controls">
       <div class="btn-row">
-        <button class="btn" onclick="sbShowAllSolutions()">Lösungen</button>
+        <button class="btn" onclick="timerResetOne(3); sbShowAllSolutions()">Lösungen</button>
         <button class="btn" onclick="resetSatzbau(); timerResetOne(3);">Neu starten</button>
       </div>
       <div class="timer-display">
@@ -344,7 +344,7 @@ input.correct + .vocab-hint { display: inline; }
     <h2>📚 Wortschatz</h2>
     <div class="timer-controls">
       <div class="btn-row">
-        <button class="btn" onclick="showVocabLoesung()">Lösungen</button>
+        <button class="btn" onclick="timerResetOne(4); showVocabLoesung()">Lösungen</button>
         <button class="btn" onclick="resetVocab(); timerResetOne(4);">Neu starten</button>
       </div>
       <div class="timer-display">
@@ -397,6 +397,10 @@ function timerStop(n) {
     var el = document.getElementById('best-' + n);
     if (el) el.textContent = fmtTime(timerSeconds[n]);
   }
+  // Timer-Anzeige zurücksetzen — Best und Timer zeigen verschiedene Werte
+  timerSeconds[n] = 0; timerStarted[n] = false;
+  var td = document.getElementById('timer-' + n);
+  if (td) td.textContent = '0:00';
 }
 function timerResetOne(n) {
   clearInterval(timerIntervals[n]); timerRunning[n] = false; timerStarted[n] = false; timerSeconds[n] = 0;
