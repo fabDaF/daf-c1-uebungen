@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modalpartikeln – C1 Grammatik</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',sans-serif;background:#f0f2f5;padding:20px;}
+.container{max-width:860px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(102,126,234,.13);overflow:hidden;}
+.header{background:linear-gradient(135deg,#667eea,#764ba2);padding:28px 32px 20px;color:#fff;}
+.header h1{font-size:1.45rem;font-weight:700;margin-bottom:4px;}
+.header p{font-size:.9rem;opacity:.85;}
+.nav-tabs{display:flex;gap:0;border-bottom:2px solid #e8eaf6;background:#fafbff;padding:0 12px;flex-wrap:wrap;}
+.nav-btn{padding:11px 18px;border:none;background:none;cursor:pointer;font-size:.88rem;color:#888;font-weight:600;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;}
+.nav-btn:hover{color:#667eea;}
+.nav-btn.active{color:#667eea;border-bottom-color:#667eea;}
+.tab-banner{width:100%;height:180px;object-fit:cover;display:block;}
+.section{display:none;}
+.section.active{display:block;}
+.hilfe-box{background:#e8f4fd;border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:.88rem;color:#1a237e;line-height:1.6;}
+.timer-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:6px;}
+.btn-row{display:flex;gap:6px;}
+.btn{background:none;border:1px solid #ddd;border-radius:6px;padding:4px 12px;font-size:.82em;color:#888;cursor:pointer;transition:all .15s;font-weight:500;}
+.btn:hover{background:#f0f0f0;color:#555;}
+.timer-display{display:flex;gap:14px;font-size:.82em;color:#bbb;font-variant-numeric:tabular-nums;}
+.entdeck-intro{background:#f3e5f5;border-radius:12px;padding:18px 22px;margin-bottom:20px;border-left:5px solid #9c27b0;font-size:.97rem;line-height:1.85;}
+.entdeck-intro h3{color:#6a1b9a;margin-bottom:12px;font-size:1.05rem;}
+.entdeck-intro p{margin-bottom:8px;}
+.hl{background:#e1bee7;border-radius:4px;padding:0 4px;color:#4a148c;font-weight:700;}
+.mc-step{display:none;background:#fafbff;border-radius:12px;padding:18px 22px;margin-bottom:16px;border:1px solid #c5cae9;}
+.mc-step.active{display:block;}
+.mc-step h4{color:#3949ab;margin-bottom:12px;font-size:.97rem;}
+.mc-options{display:flex;flex-direction:column;gap:8px;}
+.mc-btn{padding:9px 16px;border:2px solid #c5cae9;border-radius:8px;background:#fff;cursor:pointer;text-align:left;font-size:.92rem;transition:all .2s;}
+.mc-btn:hover{border-color:#667eea;background:#f3f4ff;}
+.mc-btn.correct{border-color:#43a047;background:#e8f5e9;color:#2e7d32;font-weight:700;}
+.mc-btn.wrong{border-color:#e53935;background:#ffebee;color:#c62828;}
+.mc-feedback{margin-top:10px;font-size:.88rem;min-height:1.3em;}
+.mc-feedback.ok{color:#2e7d32;font-weight:700;}
+.mc-feedback.err{color:#c62828;}
+.progress-dots{display:flex;gap:8px;margin-bottom:20px;}
+.pdot{width:14px;height:14px;border-radius:50%;background:#c5cae9;transition:background .3s;}
+.pdot.done{background:#667eea;}
+.regel-karte{display:none;background:linear-gradient(135deg,#e8eaf6,#ede7f6);border-radius:14px;padding:22px 26px;border-left:5px solid #3949ab;margin-top:10px;}
+.regel-karte h3{color:#1a237e;margin-bottom:12px;font-size:1.05rem;}
+.regel-karte ul{margin-left:18px;}
+.regel-karte li{color:#333;line-height:1.9;font-size:.95rem;}
+.regel-karte .rk-example{background:#fff;border-radius:8px;padding:10px 14px;margin-top:12px;border-left:3px solid #7c4dff;font-size:.9rem;color:#333;}
+.regel-karte .rk-example b{color:#3949ab;}
+.chip{padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;cursor:grab;font-size:.85rem;font-weight:600;user-select:none;transition:transform .15s,opacity .15s;white-space:nowrap;}
+.chip:active{cursor:grabbing;transform:scale(1.04);}
+.chip.selected{outline:3px solid #f39c12;}
+.chip.correct{background:linear-gradient(135deg,#27ae60,#2ecc71)!important;}
+.chip.wrong{background:linear-gradient(135deg,#e74c3c,#c0392b)!important;}
+.chip.incorrect{background:linear-gradient(135deg,#e74c3c,#c0392b)!important;}
+.chip-bank{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:#f8f9fa;border-radius:10px;margin-bottom:14px;min-height:54px;}
+.zuo-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.drop-zone{min-height:120px;border-radius:10px;border:2px dashed #c5cae9;padding:10px;background:#fafbff;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;}
+.drop-zone.dragover{background:#e8eaff;border-color:#667eea;}
+.zuo-zone-label{font-size:.83rem;font-weight:700;color:#667eea;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}
+.counter-box{font-size:.82rem;color:#888;text-align:right;}
+.counter-box span{font-weight:700;color:#667eea;}
+.wortkasten{background:#fff9e6;border:1px solid #ffe082;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:.88rem;line-height:1.8;}
+.luecken-satz{margin-bottom:14px;line-height:2.2;font-size:.95rem;}
+input.blank{border:2px solid #c5cae9;border-radius:6px;padding:3px 8px;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s,background .2s;background:#fff;margin:0 2px;}
+input.blank:focus{border-color:#667eea;}
+input.blank.correct{border-color:#27ae60;background:#e8f5e9;}
+input.blank.wrong{border-color:#e74c3c;background:#ffebee;}
+.satzbau-item{margin-bottom:22px;}
+.chips-container{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:#f8f9fa;border-radius:10px;margin-bottom:8px;min-height:54px;}
+.sentence-builder{display:flex;flex-wrap:wrap;gap:6px;min-height:44px;padding:8px 10px;border-radius:8px;border:2px dashed #c5cae9;background:#fafbff;}
+.sentence-builder.correct{border-color:#27ae60;background:#f1fdf4;}
+.sentence-builder.incorrect{border-color:#e74c3c;background:#fff5f5;}
+.satzbau-feedback{font-size:.84rem;min-height:1.4em;margin-top:4px;}
+.satzbau-feedback.correct{color:#27ae60;font-weight:700;}
+.satzbau-feedback.incorrect{color:#e74c3c;}
+#vocabContainer{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.vocab-item{background:#f8f9ff;padding:12px 14px;border-radius:10px;border-left:4px solid #667eea;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0;}
+.vocab-en{font-size:.88rem;color:#555;flex:0 0 100%;}
+.vocab-arrow{color:#667eea;font-size:1.1rem;}
+.vocab-inputs{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.vocab-hint{font-size:.78rem;color:#27ae60;font-weight:700;display:none;}
+input.blank.correct+.vocab-hint{display:inline;}
+.author-footer{text-align:center;margin-top:40px;padding:16px;font-size:.8rem;color:#aaa;}
+.author-footer a{color:#aaa;}
+.author-name{font-weight:700;}
+@media(max-width:600px){.zuo-layout{grid-template-columns:1fr;}#vocabContainer{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Modalpartikeln</h1>
+    <p>C1 Grammatik · Nuance, Haltung &amp; natürliche Kommunikation</p>
+  </div>
+  <nav class="nav-tabs">
+    <button class="nav-btn active" onclick="showSection(0)">📖 Entdecken</button>
+    <button class="nav-btn" onclick="showSection(1)">🔀 Zuordnung</button>
+    <button class="nav-btn" onclick="showSection(2)">✏️ Lückentext</button>
+    <button class="nav-btn" onclick="showSection(3)">🧩 Satzbau</button>
+    <button class="nav-btn" onclick="showSection(4)">📚 Wortschatz</button>
+  </nav>
+
+<!-- ████████ TAB 0: ENTDECKEN ████████ -->
+<div class="section active" id="sec-0">
+  <img src="https://images.pexels.com/photos/935949/pexels-photo-935949.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Gespräch">
+  <div style="padding:28px 30px;">
+    <h2>📖 Entdecken</h2>
+    <div class="entdeck-intro">
+      <h3>Vergleiche die Varianten — was verändert die Modalpartikel?</h3>
+      <p>„Das ist klar."
+         &nbsp;vs.&nbsp;
+         „Das ist <span class="hl">doch</span> klar." (Erinnerung an geteiltes Wissen)</p>
+      <p>„Komm her."
+         &nbsp;vs.&nbsp;
+         „Komm <span class="hl">mal</span> her." (mildere, freundlichere Aufforderung)</p>
+      <p>„Was ist los?"
+         &nbsp;vs.&nbsp;
+         „Was ist <span class="hl">denn</span> los?" (echtes Interesse / leichte Überraschung)</p>
+      <p>„Das ist schwierig."
+         &nbsp;vs.&nbsp;
+         „Das ist <span class="hl">eben</span> schwierig." (resignierte Feststellung — so ist es nun mal)</p>
+    </div>
+
+    <div class="progress-dots">
+      <div class="pdot" id="pdot0"></div>
+      <div class="pdot" id="pdot1"></div>
+      <div class="pdot" id="pdot2"></div>
+      <div class="pdot" id="pdot3"></div>
+    </div>
+
+    <div class="mc-step active" id="mc-step0">
+      <h4>Was ist die grammatische Besonderheit von Modalpartikeln?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind betont und tragen die Hauptaussage.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,true)">Sie sind unbetont, nicht erfragbar, nicht negierbar und nicht im Vorfeld möglich — sie modifizieren die Sprechhaltung.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie ersetzen das finite Verb und stehen an Position II.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind Konjunktionen, die Nebensätze einleiten.</button>
+      </div>
+      <div class="mc-feedback" id="mcfb0"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step1">
+      <h4>„Das wirst du <em>schon</em> schaffen." — Was drückt <em>schon</em> hier aus?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Ungeduld und Druck</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Überraschung über den Erfolg</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,true)">Zuversicht und Ermutigung — der Sprecher glaubt daran</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Eine Einschränkung oder ein Vorbehalt</button>
+      </div>
+      <div class="mc-feedback" id="mcfb1"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step2">
+      <h4>„Mach das <em>bloß</em> nicht!" — Was drückt <em>bloß</em> in einem Imperativsatz aus?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Eine sanfte Empfehlung</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,true)">Eine dringende Warnung mit emotionalem Nachdruck</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Eine höfliche Bitte</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Resignation</button>
+      </div>
+      <div class="mc-feedback" id="mcfb2"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step3">
+      <h4>„Er ist <em>wohl</em> krank." — Was unterscheidet diesen Satz von „Er ist krank."?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher weiß es sicher.</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher fragt nach.</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,true)">Der Sprecher äußert eine Vermutung — er ist nicht sicher, hält es aber für wahrscheinlich.</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher bezweifelt die Aussage.</button>
+      </div>
+      <div class="mc-feedback" id="mcfb3"></div>
+    </div>
+
+    <div class="regel-karte" id="regelkarte">
+      <h3>📘 Die Regel: Modalpartikeln</h3>
+      <ul>
+        <li>Modalpartikeln stehen im <strong>Mittelfeld</strong> des Satzes, sind <strong>unbetont</strong> und nicht im Vorfeld möglich.</li>
+        <li><strong>doch</strong> → Erinnerung, Widerspruch, Überraschung: <em>Das weißt du doch.</em></li>
+        <li><strong>ja</strong> → Geteiltes Wissen, Ausruf: <em>Das ist ja interessant!</em></li>
+        <li><strong>denn</strong> → echtes Interesse, Irritation in Fragen: <em>Was willst du denn hier?</em></li>
+        <li><strong>mal</strong> → mildert Aufforderungen: <em>Hör mal zu. Komm mal vorbei.</em></li>
+        <li><strong>eben / halt</strong> → Resignation, unvermeidliche Feststellung: <em>Das ist eben so.</em></li>
+        <li><strong>schon</strong> → Zuversicht, Konzession: <em>Das klappt schon.</em></li>
+        <li><strong>wohl</strong> → Vermutung / Wahrscheinlichkeit: <em>Er ist wohl erkrankt.</em></li>
+        <li><strong>bloß / nur</strong> → Warnung (Imperativ) oder Ratlosigkeit (Frage): <em>Mach das bloß nicht!</em></li>
+        <li><strong>eigentlich</strong> → Kontrasterwartung oder echte Neugier: <em>Was wollten Sie eigentlich fragen?</em></li>
+        <li><strong>ruhig</strong> → Erlaubnis / Ermutigung: <em>Du kannst ruhig widersprechen.</em></li>
+      </ul>
+      <div class="rk-example">
+        <b>Wichtig:</b> Dieselbe Partikel kann je nach Satzmodus (Aussage, Frage, Imperativ) eine andere Funktion haben.<br>
+        <em>Das ist <b>doch</b> klar.</em> (Erinnerung) vs. <em>Komm <b>doch</b> rein!</em> (freundliche Aufforderung)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ████████ TAB 1: ZUORDNUNG ████████ -->
+<div class="section" id="sec-1">
+  <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Zuordnung">
+  <div style="padding:28px 30px;">
+    <h2>🔀 Zuordnung</h2>
+    <div class="hilfe-box">Ordne die Sätze zu: <strong>Vermutung / Einschätzung</strong> (wohl, schon, eigentlich) oder <strong>Emotion / Beziehung</strong> (doch, ja, mal, eben, bloß, denn).</div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="resetZuordnung()">↺ Neu</button>
+        <button class="btn" onclick="checkZuordnung()">✓ Prüfen</button>
+      </div>
+      <div class="timer-display"><span id="timer1-display">00:00</span></div>
+    </div>
+    <div class="chip-bank" id="zuo-bank"></div>
+    <div class="zuo-layout">
+      <div>
+        <div class="zuo-zone-label">🔮 Vermutung / Einschätzung</div>
+        <div class="drop-zone" id="zone-verm" onclick="zoneClick('verm')"></div>
+      </div>
+      <div>
+        <div class="zuo-zone-label">💬 Emotion / Beziehung</div>
+        <div class="drop-zone" id="zone-emot" onclick="zoneClick('emot')"></div>
+      </div>
+    </div>
+    <div class="counter-box">Richtig: <span id="zuo-score">0</span> / 12</div>
+  </div>
+</div>
+
+<!-- ████████ TAB 2: LÜCKENTEXT ████████ -->
+<div class="section" id="sec-2">
+  <img src="https://images.pexels.com/photos/1925536/pexels-photo-1925536.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Lückentext">
+  <div style="padding:28px 30px;">
+    <h2>✏️ Lückentext</h2>
+    <div class="hilfe-box">Welche Modalpartikel passt? Wähle aus dem Wortkasten die passendste.</div>
+    <div class="wortkasten" id="wortkasten"></div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="resetLuecken()">↺ Neu</button>
+        <button class="btn" onclick="zeigeLoesung()">💡 Lösung</button>
+      </div>
+      <div class="timer-display"><span id="timer2-display">00:00</span></div>
+    </div>
+    <div id="lueckenContainer"></div>
+  </div>
+</div>
+
+<!-- ████████ TAB 3: SATZBAU ████████ -->
+<div class="section" id="sec-3">
+  <img src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Satzbau">
+  <div style="padding:28px 30px;">
+    <h2>🧩 Satzbau</h2>
+    <div class="hilfe-box">Bringe die Wörter in die richtige Reihenfolge. Die Modalpartikel steht im Mittelfeld.</div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="sbShowAllSolutions()">💡 Alle Lösungen</button>
+        <button class="btn" onclick="resetSatzbau()">↺ Neu</button>
+      </div>
+      <div class="timer-display"><span id="timer3-display">00:00</span></div>
+    </div>
+    <div id="satzbauContainer"></div>
+  </div>
+</div>
+
+<!-- ████████ TAB 4: WORTSCHATZ ████████ -->
+<div class="section" id="sec-4">
+  <img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Wortschatz">
+  <div style="padding:28px 30px;">
+    <h2>📚 Wortschatz</h2>
+    <div class="hilfe-box">Tippe die deutsche Entsprechung. Klein­schreibung und Leerzeichen werden geprüft.</div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showVocabLoesung()">💡 Lösung</button>
+        <button class="btn" onclick="resetVocab()">↺ Neu</button>
+      </div>
+      <div class="timer-display"><span id="timer4-display">00:00</span></div>
+    </div>
+    <div id="vocabContainer"></div>
+  </div>
+</div>
+
+</div>
+<div class="author-footer">
+  <span class="author-name">Frank Burkert</span> · DaF C1 · Modalpartikeln ·
+  <a href="https://fabdaf.github.io/daf-c1-uebungen/" target="_blank">fabDaF</a>
+</div>
+
+<script>
+function showSection(n){
+  document.querySelectorAll('.section').forEach(function(s,i){ s.classList.toggle('active',i===n); });
+  document.querySelectorAll('.nav-btn').forEach(function(b,i){ b.classList.toggle('active',i===n); });
+  if(n===1&&!document.getElementById('zuo-bank').children.length) initZuordnung();
+  if(n===2&&!document.getElementById('lueckenContainer').children.length) initLuecken();
+  if(n===3&&!document.getElementById('satzbauContainer').children.length) initSatzbau();
+  if(n===4&&!document.getElementById('vocabContainer').children.length) initVocab();
+}
+
+var TIMER_PREFIX='C1_1061G_';
+var timers={};
+function timerKey(n){ return TIMER_PREFIX+'tab'+n; }
+function timerAutoStart(n){
+  var k=timerKey(n); if(timers[k]&&timers[k].running) return;
+  var stored=localStorage.getItem(k); var start=stored?parseInt(stored):Date.now();
+  if(!stored) localStorage.setItem(k,start);
+  if(!timers[k]) timers[k]={};
+  timers[k].running=true;
+  timers[k].interval=setInterval(function(){ var el=document.getElementById('timer'+n+'-display'); if(el){ var s=Math.floor((Date.now()-start)/1000); el.textContent=pad(Math.floor(s/60))+':'+pad(s%60); } },500);
+}
+function timerStop(n){ var k=timerKey(n); if(timers[k]&&timers[k].interval){ clearInterval(timers[k].interval); timers[k].running=false; } }
+function timerResetOne(n){ timerStop(n); localStorage.removeItem(timerKey(n)); var el=document.getElementById('timer'+n+'-display'); if(el) el.textContent='00:00'; timers[timerKey(n)]=null; }
+function pad(x){ return x<10?'0'+x:String(x); }
+
+var mcDone=[false,false,false,false]; var mcCurrent=0;
+function mcCheck(step,btn,correct){
+  if(mcDone[step]) return; mcDone[step]=true;
+  var fb=document.getElementById('mcfb'+step);
+  if(correct){
+    btn.classList.add('correct'); fb.textContent='✓ Richtig!'; fb.className='mc-feedback ok';
+    document.getElementById('pdot'+step).classList.add('done');
+    setTimeout(function(){ document.getElementById('mc-step'+step).classList.remove('active'); mcCurrent=step+1; if(mcCurrent<4) document.getElementById('mc-step'+mcCurrent).classList.add('active'); else document.getElementById('regelkarte').style.display='block'; },900);
+  } else {
+    btn.classList.add('wrong'); fb.textContent='✗ Nicht ganz — versuche es nochmal.'; fb.className='mc-feedback err';
+    setTimeout(function(){ btn.classList.remove('wrong'); mcDone[step]=false; fb.textContent=''; },1200);
+  }
+}
+
+var ZUO_DATA=[
+  { id:'z1',  text:'Er ist wohl noch im Büro.',                               cat:'verm' },
+  { id:'z2',  text:'Das wird schon klappen.',                                  cat:'verm' },
+  { id:'z3',  text:'Was wollten Sie eigentlich fragen?',                       cat:'verm' },
+  { id:'z4',  text:'Das dürfte wohl der schwierigste Teil sein.',              cat:'verm' },
+  { id:'z5',  text:'Eigentlich hätte man früher eingreifen müssen.',           cat:'verm' },
+  { id:'z6',  text:'Er hat schon recht, aber es reicht nicht.',                cat:'verm' },
+  { id:'z7',  text:'Das weißt du doch.',                                       cat:'emot' },
+  { id:'z8',  text:'Was ist denn hier passiert?',                              cat:'emot' },
+  { id:'z9',  text:'Komm mal kurz her.',                                       cat:'emot' },
+  { id:'z10', text:'Das ist eben so — daran lässt sich nichts ändern.',       cat:'emot' },
+  { id:'z11', text:'Mach das bloß nicht nochmal.',                             cat:'emot' },
+  { id:'z12', text:'Das ist ja unglaublich!',                                  cat:'emot' },
+];
+var zuoSelected=null;
+function initZuordnung(){
+  var bank=document.getElementById('zuo-bank');
+  bank.innerHTML=''; document.getElementById('zone-verm').innerHTML=''; document.getElementById('zone-emot').innerHTML='';
+  document.getElementById('zuo-score').textContent='0';
+  shuffleArr(ZUO_DATA.slice()).forEach(function(item){
+    var chip=document.createElement('div');
+    chip.className='chip'; chip.dataset.id=item.id; chip.dataset.cat=item.cat;
+    chip.textContent=item.text; chip.style.cssText='max-width:100%;white-space:normal;line-height:1.4;padding:8px 14px;';
+    chip.addEventListener('click',function(){ zuoChipClick(chip); });
+    bank.appendChild(chip);
+  });
+}
+function zuoChipClick(chip){
+  if(chip.classList.contains('correct')) return;
+  if(zuoSelected===chip){ chip.classList.remove('selected'); zuoSelected=null; return; }
+  if(zuoSelected) zuoSelected.classList.remove('selected');
+  zuoSelected=chip; chip.classList.add('selected');
+}
+function zoneClick(cat){
+  if(!zuoSelected) return;
+  document.getElementById('zone-'+cat).appendChild(zuoSelected);
+  zuoSelected.classList.remove('selected'); zuoSelected=null; timerAutoStart(1);
+}
+function checkZuordnung(){
+  var score=0;
+  ZUO_DATA.forEach(function(item){
+    var chip=document.querySelector('[data-id="'+item.id+'"]'); if(!chip) return;
+    var inZone=chip.closest('.drop-zone');
+    if(inZone&&inZone.id==='zone-'+item.cat){ chip.classList.add('correct'); score++; }
+    else { chip.classList.add('incorrect'); setTimeout(function(){ chip.classList.remove('incorrect'); document.getElementById('zuo-bank').appendChild(chip); },900); }
+  });
+  document.getElementById('zuo-score').textContent=score;
+  if(score===12) timerStop(1);
+}
+function resetZuordnung(){ timerResetOne(1); initZuordnung(); }
+
+var LUECKEN=[
+  { id:1,  before:'Das hast du ',         answer:'doch',       after:' selbst gesagt — erinnerst du dich nicht?' },
+  { id:2,  before:'Was ist ',             answer:'denn',       after:' plötzlich mit ihm los?' },
+  { id:3,  before:'Schau ',               answer:'mal',        after:' hier — das ist interessant.' },
+  { id:4,  before:'Das wird ',            answer:'schon',      after:' funktionieren — kein Grund zur Sorge.' },
+  { id:5,  before:'Er ist ',              answer:'wohl',       after:' verreist — sein Büro ist jedenfalls leer.' },
+  { id:6,  before:'Das ist ',             answer:'eben',       after:' der Preis des Erfolgs — daran führt kein Weg vorbei.' },
+  { id:7,  before:'Berühre das ',         answer:'bloß',       after:' nicht — das ist hochgiftig.' },
+  { id:8,  before:'Das ist ',             answer:'ja',         after:' eine überraschende Wendung!' },
+  { id:9,  before:'Was wolltest du ',     answer:'eigentlich', after:' mit dieser Frage bezwecken?' },
+  { id:10, before:'Du kannst ',           answer:'ruhig',      after:' Einwände erheben — das gehört zur Diskussion.' },
+];
+function initLuecken(){
+  var wk=document.getElementById('wortkasten');
+  wk.innerHTML='<strong>Wortkasten:</strong> '+LUECKEN.map(function(l){ return l.answer; }).sort().join(' &nbsp;·&nbsp; ');
+  var c=document.getElementById('lueckenContainer'); c.innerHTML='';
+  LUECKEN.forEach(function(l){
+    var w=Math.max(80,l.answer.length*14);
+    var div=document.createElement('div'); div.className='luecken-satz';
+    div.innerHTML=escH(l.before)+'<input class="blank" data-answer="'+escH(l.answer.toLowerCase())+'" style="width:'+w+'px" placeholder="…" oninput="liveCheck(this);timerAutoStart(2);">'+escH(l.after);
+    c.appendChild(div);
+  });
+}
+function liveCheck(inp){
+  var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong'); if(!val.length) return;
+  if(val===ans){ inp.classList.add('correct'); checkLueckenDone(); }
+  else if(ans.startsWith(val)){}
+  else inp.classList.add('wrong');
+}
+function checkLueckenDone(){
+  if(Array.from(document.querySelectorAll('#lueckenContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(2);
+}
+function zeigeLoesung(){ document.querySelectorAll('#lueckenContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
+function resetLuecken(){ timerResetOne(2); initLuecken(); }
+
+var satzbauData=[
+  { parts:['Das','weißt','du','doch','schon','lange'],
+    valid:[['Das','weißt','du','doch','schon','lange']], punct:'.' },
+  { parts:['Was','ist','denn','plötzlich','mit','ihm','passiert'],
+    valid:[['Was','ist','denn','plötzlich','mit','ihm','passiert']], punct:'?' },
+  { parts:['Er','ist','wohl','noch','im','Büro'],
+    valid:[['Er','ist','wohl','noch','im','Büro']], punct:'.' },
+  { parts:['Das','wird','schon','klappen','—','keine','Sorge'],
+    valid:[['Das','wird','schon','klappen','—','keine','Sorge']], punct:'.' },
+  { parts:['Komm','doch','mal','kurz','ins','Büro'],
+    valid:[['Komm','doch','mal','kurz','ins','Büro']], punct:'.' },
+  { parts:['Das','ist','eben','so','—','daran','führt','kein','Weg','vorbei'],
+    valid:[['Das','ist','eben','so','—','daran','führt','kein','Weg','vorbei']], punct:'.' },
+  { parts:['Du','kannst','ruhig','widersprechen','—','das','ist','erwünscht'],
+    valid:[['Du','kannst','ruhig','widersprechen','—','das','ist','erwünscht']], punct:'.' },
+];
+
+var sbDragged=null;
+function sbMakeChip(word){
+  var chip=document.createElement('div'); chip.className='chip'; chip.dataset.orig=word; chip.textContent=word; chip.draggable=true;
+  chip.addEventListener('dragstart',function(){ sbDragged=chip; chip.style.opacity='.5'; });
+  chip.addEventListener('dragend',function(){ chip.style.opacity='1'; sbDragged=null; });
+  chip.addEventListener('click',function(){ sbChipClick(chip); });
+  return chip;
+}
+function sbRegisterZone(zone,idx){
+  zone.addEventListener('dragover',function(e){ e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave',function(){ zone.classList.remove('dragover'); });
+  zone.addEventListener('drop',function(e){ e.preventDefault(); zone.classList.remove('dragover'); if(sbDragged){ zone.appendChild(sbDragged); sbCheckAuto(idx); } });
+}
+var sbClickSelected=null;
+function sbChipClick(chip){
+  if(chip===sbClickSelected){ chip.classList.remove('selected'); sbClickSelected=null; return; }
+  if(sbClickSelected) sbClickSelected.classList.remove('selected');
+  sbClickSelected=chip; chip.classList.add('selected');
+}
+function sbCheckAuto(idx){
+  var row=document.getElementById('sb-row-'+idx); if(!row) return;
+  var words=Array.from(row.querySelectorAll('.chip')).map(function(c){ return c.dataset.orig; });
+  var data=satzbauData[idx];
+  var ok=data.valid.some(function(v){ return v.length===words.length&&v.every(function(w,i){ return w===words[i]; }); });
+  row.classList.toggle('correct',ok); row.classList.toggle('incorrect',!ok&&words.length>0);
+  var fb=document.getElementById('sb-fb-'+idx);
+  if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
+  else { fb.textContent=''; fb.className='satzbau-feedback'; }
+}
+function checkSbAllDone(){ if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3); }
+function sbShowSolution(idx){
+  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
+  var solution=satzbauData[idx].valid[0];
+  var allChips=Array.from(bank.querySelectorAll('.chip')).concat(Array.from(row.querySelectorAll('.chip')));
+  var used=[];
+  var placed=solution.map(function(word){ var chip=allChips.find(function(c,i){ return c.dataset.orig===word&&used.indexOf(i)===-1; }); if(chip) used.push(allChips.indexOf(chip)); return chip; }).filter(Boolean);
+  while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
+  placed.forEach(function(chip){ chip.textContent=chip.dataset.orig; chip.classList.remove('correct','incorrect','selected'); row.appendChild(chip); });
+  fb.textContent=''; setTimeout(function(){ sbCheckAuto(idx); },100);
+}
+function sbShowAllSolutions(){ satzbauData.forEach(function(_,idx){ sbShowSolution(idx); }); }
+function sbResetOne(idx){
+  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
+  while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
+  row.classList.remove('correct','incorrect'); fb.textContent=''; fb.className='satzbau-feedback';
+  var parts=satzbauData[idx].parts.slice();
+  for(var i=parts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp; }
+  parts.forEach(function(word){ bank.appendChild(sbMakeChip(word)); });
+}
+function initSatzbau(){
+  var container=document.getElementById('satzbauContainer'); container.innerHTML='';
+  satzbauData.forEach(function(ex,idx){
+    var item=document.createElement('div'); item.className='satzbau-item';
+    var bank=document.createElement('div'); bank.className='chips-container'; bank.id='sb-bank-'+idx;
+    var row=document.createElement('div'); row.className='sentence-builder'; row.id='sb-row-'+idx;
+    var fb=document.createElement('div'); fb.className='satzbau-feedback'; fb.id='sb-fb-'+idx;
+    var parts=ex.parts.slice();
+    for(var i=parts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp; }
+    parts.forEach(function(word){ bank.appendChild(sbMakeChip(word)); });
+    sbRegisterZone(bank,idx); sbRegisterZone(row,idx);
+    var btnRow=document.createElement('div'); btnRow.style.cssText='display:flex;gap:8px;margin-top:6px;';
+    var solveBtn=document.createElement('button'); solveBtn.className='btn'; solveBtn.textContent='Lösen'; solveBtn.setAttribute('data-idx',idx);
+    solveBtn.addEventListener('click',function(){ sbShowSolution(parseInt(this.getAttribute('data-idx'))); });
+    var resetBtn=document.createElement('button'); resetBtn.className='btn'; resetBtn.textContent='↺ Neustart'; resetBtn.setAttribute('data-idx',idx);
+    resetBtn.addEventListener('click',function(){ sbResetOne(parseInt(this.getAttribute('data-idx'))); });
+    btnRow.appendChild(solveBtn); btnRow.appendChild(resetBtn);
+    item.appendChild(bank); item.appendChild(row); item.appendChild(fb); item.appendChild(btnRow);
+    container.appendChild(item);
+  });
+}
+function resetSatzbau(){ initSatzbau(); }
+
+var WORTSCHATZ=[
+  { id:1,  en:'modal particle (a small, unstressed nuance word)', de:'die Modalpartikel' },
+  { id:2,  en:'"doch" — reminder of shared knowledge',            de:'doch (Erinnerung)' },
+  { id:3,  en:'"ja" — shared assumption / exclamation',           de:'ja (geteiltes Wissen)' },
+  { id:4,  en:'"denn" — interest or mild irritation in questions',de:'denn (echtes Interesse)' },
+  { id:5,  en:'"mal" — softens requests / imperatives',           de:'mal (Milderung)' },
+  { id:6,  en:'"eben/halt" — resignation, that\'s just how it is',de:'eben / halt (Resignation)' },
+  { id:7,  en:'"schon" — reassurance / concession',               de:'schon (Zuversicht)' },
+  { id:8,  en:'"wohl" — probability / assumption',                de:'wohl (Vermutung)' },
+  { id:9,  en:'"bloß/nur" — warning in imperatives',              de:'bloß / nur (Warnung)' },
+  { id:10, en:'"eigentlich" — contrast or genuine curiosity',     de:'eigentlich (Kontrasterwartung)' },
+  { id:11, en:'"ruhig" — permission or encouragement',           de:'ruhig (Erlaubnis)' },
+  { id:12, en:'speaker attitude / pragmatic force',              de:'die Sprechhaltung' },
+];
+function initVocab(){
+  var c=document.getElementById('vocabContainer'); c.innerHTML='';
+  shuffleArr(WORTSCHATZ.slice()).forEach(function(item){
+    var div=document.createElement('div'); div.className='vocab-item';
+    var w=Math.max(200,item.de.length*9);
+    div.innerHTML='<span class="vocab-en">'+escH(item.en)+'</span><span class="vocab-arrow">➒</span>'+
+      '<div class="vocab-inputs"><input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+'" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this);timerAutoStart(4);">'+
+      '<span class="vocab-hint" id="vh-'+item.id+'">'+escH(item.de)+'</span></div>';
+    c.appendChild(div);
+  });
+}
+function vocabLive(inp){
+  var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong'); if(!val.length) return;
+  if(val===ans){ inp.classList.add('correct'); checkVocabDone(); }
+  else if(ans.startsWith(val)){}
+  else inp.classList.add('wrong');
+}
+function checkVocabDone(){ if(Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(4); }
+function showVocabLoesung(){ document.querySelectorAll('#vocabContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
+function resetVocab(){ initVocab(); }
+
+function shuffleArr(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
