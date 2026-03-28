@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kommasetzung &amp; Rechtschreibung – C1 Grammatik</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',sans-serif;background:#f0f2f5;padding:20px;}
+.container{max-width:860px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(102,126,234,.13);overflow:hidden;}
+.header{background:linear-gradient(135deg,#667eea,#764ba2);padding:28px 32px 20px;color:#fff;}
+.header h1{font-size:1.45rem;font-weight:700;margin-bottom:4px;}
+.header p{font-size:.9rem;opacity:.85;}
+.nav-tabs{display:flex;gap:0;border-bottom:2px solid #e8eaf6;background:#fafbff;padding:0 12px;flex-wrap:wrap;}
+.nav-btn{padding:11px 18px;border:none;background:none;cursor:pointer;font-size:.88rem;color:#888;font-weight:600;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;}
+.nav-btn:hover{color:#667eea;}
+.nav-btn.active{color:#667eea;border-bottom-color:#667eea;}
+.tab-banner{width:100%;height:180px;object-fit:cover;display:block;}
+.section{display:none;}
+.section.active{display:block;}
+.hilfe-box{background:#e8f4fd;border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:.88rem;color:#1a237e;line-height:1.6;}
+.timer-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:6px;}
+.btn-row{display:flex;gap:6px;}
+.btn{background:none;border:1px solid #ddd;border-radius:6px;padding:4px 12px;font-size:.82em;color:#888;cursor:pointer;transition:all .15s;font-weight:500;}
+.btn:hover{background:#f0f0f0;color:#555;}
+.timer-display{display:flex;gap:14px;font-size:.82em;color:#bbb;font-variant-numeric:tabular-nums;}
+.entdeck-intro{background:#f3e5f5;border-radius:12px;padding:18px 22px;margin-bottom:20px;border-left:5px solid #9c27b0;font-size:.97rem;line-height:1.85;}
+.entdeck-intro h3{color:#6a1b9a;margin-bottom:12px;font-size:1.05rem;}
+.entdeck-intro p{margin-bottom:8px;}
+.hl{background:#e1bee7;border-radius:4px;padding:0 4px;color:#4a148c;font-weight:700;}
+.mc-step{display:none;background:#fafbff;border-radius:12px;padding:18px 22px;margin-bottom:16px;border:1px solid #c5cae9;}
+.mc-step.active{display:block;}
+.mc-step h4{color:#3949ab;margin-bottom:12px;font-size:.97rem;}
+.mc-options{display:flex;flex-direction:column;gap:8px;}
+.mc-btn{padding:9px 16px;border:2px solid #c5cae9;border-radius:8px;background:#fff;cursor:pointer;text-align:left;font-size:.92rem;transition:all .2s;}
+.mc-btn:hover{border-color:#667eea;background:#f3f4ff;}
+.mc-btn.correct{border-color:#43a047;background:#e8f5e9;color:#2e7d32;font-weight:700;}
+.mc-btn.wrong{border-color:#e53935;background:#ffebee;color:#c62828;}
+.mc-feedback{margin-top:10px;font-size:.88rem;min-height:1.3em;}
+.mc-feedback.ok{color:#2e7d32;font-weight:700;}
+.mc-feedback.err{color:#c62828;}
+.progress-dots{display:flex;gap:8px;margin-bottom:20px;}
+.pdot{width:14px;height:14px;border-radius:50%;background:#c5cae9;transition:background .3s;}
+.pdot.done{background:#667eea;}
+.regel-karte{display:none;background:linear-gradient(135deg,#e8eaf6,#ede7f6);border-radius:14px;padding:22px 26px;border-left:5px solid #3949ab;margin-top:10px;}
+.regel-karte h3{color:#1a237e;margin-bottom:12px;font-size:1.05rem;}
+.regel-karte ul{margin-left:18px;}
+.regel-karte li{color:#333;line-height:1.9;font-size:.95rem;}
+.regel-karte .rk-example{background:#fff;border-radius:8px;padding:10px 14px;margin-top:12px;border-left:3px solid #7c4dff;font-size:.9rem;color:#333;}
+.regel-karte .rk-example b{color:#3949ab;}
+.chip{padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;cursor:grab;font-size:.85rem;font-weight:600;user-select:none;transition:transform .15s,opacity .15s;white-space:nowrap;}
+.chip:active{cursor:grabbing;transform:scale(1.04);}
+.chip.selected{outline:3px solid #f39c12;}
+.chip.correct{background:linear-gradient(135deg,#27ae60,#2ecc71)!important;}
+.chip.wrong{background:linear-gradient(135deg,#e74c3c,#c0392b)!important;}
+.chip.incorrect{background:linear-gradient(135deg,#e74c3c,#c0392b)!important;}
+.chip-bank{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:#f8f9fa;border-radius:10px;margin-bottom:14px;min-height:54px;}
+.zuo-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.drop-zone{min-height:120px;border-radius:10px;border:2px dashed #c5cae9;padding:10px;background:#fafbff;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;}
+.drop-zone.dragover{background:#e8eaff;border-color:#667eea;}
+.zuo-zone-label{font-size:.83rem;font-weight:700;color:#667eea;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}
+.counter-box{font-size:.82rem;color:#888;text-align:right;}
+.counter-box span{font-weight:700;color:#667eea;}
+.wortkasten{background:#fff9e6;border:1px solid #ffe082;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:.88rem;line-height:1.8;}
+.luecken-satz{margin-bottom:14px;line-height:2.2;font-size:.95rem;}
+input.blank{border:2px solid #c5cae9;border-radius:6px;padding:3px 8px;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s,background .2s;background:#fff;margin:0 2px;}
+input.blank:focus{border-color:#667eea;}
+input.blank.correct{border-color:#27ae60;background:#e8f5e9;}
+input.blank.wrong{border-color:#e74c3c;background:#ffebee;}
+.satzbau-item{margin-bottom:22px;}
+.chips-container{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:#f8f9fa;border-radius:10px;margin-bottom:8px;min-height:54px;}
+.sentence-builder{display:flex;flex-wrap:wrap;gap:6px;min-height:44px;padding:8px 10px;border-radius:8px;border:2px dashed #c5cae9;background:#fafbff;}
+.sentence-builder.correct{border-color:#27ae60;background:#f1fdf4;}
+.sentence-builder.incorrect{border-color:#e74c3c;background:#fff5f5;}
+.satzbau-feedback{font-size:.84rem;min-height:1.4em;margin-top:4px;}
+.satzbau-feedback.correct{color:#27ae60;font-weight:700;}
+.satzbau-feedback.incorrect{color:#e74c3c;}
+#vocabContainer{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.vocab-item{background:#f8f9ff;padding:12px 14px;border-radius:10px;border-left:4px solid #667eea;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0;}
+.vocab-en{font-size:.88rem;color:#555;flex:0 0 100%;}
+.vocab-arrow{color:#667eea;font-size:1.1rem;}
+.vocab-inputs{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.vocab-hint{font-size:.78rem;color:#27ae60;font-weight:700;display:none;}
+input.blank.correct+.vocab-hint{display:inline;}
+.author-footer{text-align:center;margin-top:40px;padding:16px;font-size:.8rem;color:#aaa;}
+.author-footer a{color:#aaa;}
+.author-name{font-weight:700;}
+@media(max-width:600px){.zuo-layout{grid-template-columns:1fr;}#vocabContainer{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Kommasetzung &amp; Rechtschreibung</h1>
+    <p>C1 Grammatik · Schriftliche Korrektheit systematisch beherrschen</p>
+  </div>
+  <nav class="nav-tabs">
+    <button class="nav-btn active" onclick="showSection(0)">📖 Entdecken</button>
+    <button class="nav-btn" onclick="showSection(1)">🔀 Zuordnung</button>
+    <button class="nav-btn" onclick="showSection(2)">✏️ Lückentext</button>
+    <button class="nav-btn" onclick="showSection(3)">🧩 Satzbau</button>
+    <button class="nav-btn" onclick="showSection(4)">📚 Wortschatz</button>
+  </nav>
+
+<!-- ████████ TAB 0: ENTDECKEN ████████ -->
+<div class="section active" id="sec-0">
+  <img src="https://images.pexels.com/photos/1925536/pexels-photo-1925536.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Schreiben">
+  <div style="padding:28px 30px;">
+    <h2>📖 Entdecken</h2>
+    <div class="entdeck-intro">
+      <h3>Betrachte diese Satzpaare — wo gehört das Komma, und was ist der Unterschied?</h3>
+      <p>❌ „Sie erklärte <span class="hl">dass</span> sie ablehnt."
+         &nbsp;&nbsp;✅ „Sie erklärte<span class="hl">,</span> dass sie ablehnt."</p>
+      <p>✅ „Er versuchte, die Aufgabe zu lösen."
+         &nbsp;&nbsp;❓ „Er versuchte die Aufgabe zu lösen." (fehlendes Komma vor erweiterter Infinitivgruppe)</p>
+      <p>❌ „<span class="hl">Das</span> er kommt, überrascht mich."
+         &nbsp;&nbsp;✅ „<span class="hl">Dass</span> er kommt, überrascht mich."</p>
+      <p>❌ „wider <span class="hl">Wiederholen</span>"
+         &nbsp;&nbsp;✅ „wider <span class="hl">Erwarten</span>" | „wieder <span class="hl">kommen</span>"</p>
+    </div>
+
+    <div class="progress-dots">
+      <div class="pdot" id="pdot0"></div>
+      <div class="pdot" id="pdot1"></div>
+      <div class="pdot" id="pdot2"></div>
+      <div class="pdot" id="pdot3"></div>
+    </div>
+
+    <div class="mc-step active" id="mc-step0">
+      <h4>Wann steht vor einem Nebensatz zwingend ein Komma?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur wenn der Nebensatz länger als fünf Wörter ist.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,true)">Immer — jeder Nebensatz wird durch Komma vom Hauptsatz abgegrenzt, unabhängig von seiner Länge.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur bei kausalen Nebensätzen mit „weil" oder „da".</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur wenn der Nebensatz vor dem Hauptsatz steht.</button>
+      </div>
+      <div class="mc-feedback" id="mcfb0"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step1">
+      <h4>„Er bat sie, ihm zu helfen." — Warum steht hier ein Komma?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil „ihm" ein indirektes Objekt ist.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,true)">Weil „ihm zu helfen" eine erweiterte Infinitivgruppe ist, die durch „zu" eingeleitet wird und ein eigenes Objekt enthält.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil das Komma nach Verben des Bittens immer obligatorisch ist.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil der Infinitiv am Satzende steht.</button>
+      </div>
+      <div class="mc-feedback" id="mcfb1"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step2">
+      <h4>„__ ist klar, dass er kommt." — Welches Wort fehlt am Satzanfang?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Dass — denn der Nebensatz leitet den Satz ein.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,true)">Es — als formales Subjekt, das auf den folgenden dass-Satz verweist.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Das — als Demonstrativpronomen.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Ob — denn es handelt sich um eine indirekte Frage.</button>
+      </div>
+      <div class="mc-feedback" id="mcfb2"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step3">
+      <h4>„Das Ergebnis ist besser als erwartet, __ es dennoch Kritik gibt." — Welche Konjunktion passt?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">weil</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">obwohl — daher steht dann kein Komma vor „obwohl"</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,true)">obwohl — das Komma steht korrekt vor der Konjunktion</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">und — dann entfällt das Komma</button>
+      </div>
+      <div class="mc-feedback" id="mcfb3"></div>
+    </div>
+
+    <div class="regel-karte" id="regelkarte">
+      <h3>📘 Die Regel: Kommasetzung &amp; Rechtschreibung</h3>
+      <ul>
+        <li><strong>Nebensatz:</strong> Immer Komma vor einleitender Konjunktion (dass, weil, obwohl, wenn, da, ob, als, während …): <em>Er wartete, bis der Zug abfuhr.</em></li>
+        <li><strong>Erweiterte Infinitivgruppe:</strong> Komma obligatorisch, wenn die Gruppe ein eigenes Objekt oder eine Ergänzung enthält: <em>Er bat sie, das Protokoll zu verfassen.</em></li>
+        <li><strong>Einfacher Infinitiv:</strong> Kein Komma bei: <em>Er versucht zu schlafen.</em> (ohne Erweiterung)</li>
+        <li><strong>Partizipialgruppe:</strong> Komma bei erweiterter Partizipialgruppe: <em>Von der Nachricht überrascht, reagierte er kaum.</em></li>
+        <li><strong>Einschübe / Appositionen:</strong> Werden beidseitig durch Komma abgetrennt: <em>Der Minister, ein erfahrener Jurist, lehnte ab.</em></li>
+        <li><strong>dass ≠ das:</strong> <em>dass</em> = Konjunktion (Nebensatz einleitend). <em>das</em> = Artikel oder Relativpronomen.</li>
+        <li><strong>seit ≠ seid:</strong> <em>seit</em> = Präposition / Konjunktion (zeitlich). <em>seid</em> = 2. Pers. Pl. von „sein".</li>
+        <li><strong>wider ≠ wieder:</strong> <em>wider</em> = gegen (<em>wider Erwarten</em>). <em>wieder</em> = erneut (<em>wieder kommen</em>).</li>
+      </ul>
+      <div class="rk-example">
+        <b>Faustregel dass/das:</b> Ersetze es durch „dieses" — geht das? → <em>das</em> (Artikel/Pronomen). Geht es nicht? → <em>dass</em> (Konjunktion).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ████████ TAB 1: ZUORDNUNG ████████ -->
+<div class="section" id="sec-1">
+  <img src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Zuordnung">
+  <div style="padding:28px 30px;">
+    <h2>🔀 Zuordnung</h2>
+    <div class="hilfe-box">Ordne die Sätze zu: <strong>Komma / Schreibung korrekt</strong> oder <strong>Fehler vorhanden</strong>. Klick = auswählen, Zone anklicken = ablegen.</div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="resetZuordnung()">↺ Neu</button>
+        <button class="btn" onclick="checkZuordnung()">✓ Prüfen</button>
+      </div>
+      <div class="timer-display"><span id="timer1-display">00:00</span></div>
+    </div>
+    <div class="chip-bank" id="zuo-bank"></div>
+    <div class="zuo-layout">
+      <div>
+        <div class="zuo-zone-label">✅ Korrekt</div>
+        <div class="drop-zone" id="zone-ok" onclick="zoneClick('ok')"></div>
+      </div>
+      <div>
+        <div class="zuo-zone-label">❌ Fehler</div>
+        <div class="drop-zone" id="zone-err" onclick="zoneClick('err')"></div>
+      </div>
+    </div>
+    <div class="counter-box">Richtig: <span id="zuo-score">0</span> / 12</div>
+  </div>
+</div>
+
+<!-- ████████ TAB 2: LÜCKENTEXT ████████ -->
+<div class="section" id="sec-2">
+  <img src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Lückentext">
+  <div style="padding:28px 30px;">
+    <h2>✏️ Lückentext</h2>
+    <div class="hilfe-box">Wähle die richtige Schreibweise: <em>dass</em> oder <em>das</em>? <em>seit</em> oder <em>seid</em>? <em>wider</em> oder <em>wieder</em>?</div>
+    <div class="wortkasten" id="wortkasten"></div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="resetLuecken()">↺ Neu</button>
+        <button class="btn" onclick="zeigeLoesung()">💡 Lösung</button>
+      </div>
+      <div class="timer-display"><span id="timer2-display">00:00</span></div>
+    </div>
+    <div id="lueckenContainer"></div>
+  </div>
+</div>
+
+<!-- ████████ TAB 3: SATZBAU ████████ -->
+<div class="section" id="sec-3">
+  <img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Satzbau">
+  <div style="padding:28px 30px;">
+    <h2>🧩 Satzbau</h2>
+    <div class="hilfe-box">Bringe die Elemente in die richtige Reihenfolge. Komma-Chips (,) gehören ebenfalls in die Lösung.</div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="sbShowAllSolutions()">💡 Alle Lösungen</button>
+        <button class="btn" onclick="resetSatzbau()">↺ Neu</button>
+      </div>
+      <div class="timer-display"><span id="timer3-display">00:00</span></div>
+    </div>
+    <div id="satzbauContainer"></div>
+  </div>
+</div>
+
+<!-- ████████ TAB 4: WORTSCHATZ ████████ -->
+<div class="section" id="sec-4">
+  <img src="https://images.pexels.com/photos/159581/dictionary-reference-book-learning-159581.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Wortschatz">
+  <div style="padding:28px 30px;">
+    <h2>📚 Wortschatz</h2>
+    <div class="hilfe-box">Tippe die deutsche Entsprechung. Klein­schreibung und Leerzeichen werden geprüft.</div>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showVocabLoesung()">💡 Lösung</button>
+        <button class="btn" onclick="resetVocab()">↺ Neu</button>
+      </div>
+      <div class="timer-display"><span id="timer4-display">00:00</span></div>
+    </div>
+    <div id="vocabContainer"></div>
+  </div>
+</div>
+
+</div>
+<div class="author-footer">
+  <span class="author-name">Frank Burkert</span> · DaF C1 · Kommasetzung &amp; Rechtschreibung ·
+  <a href="https://fabdaf.github.io/daf-c1-uebungen/" target="_blank">fabDaF</a>
+</div>
+
+<script>
+function showSection(n){
+  document.querySelectorAll('.section').forEach(function(s,i){ s.classList.toggle('active',i===n); });
+  document.querySelectorAll('.nav-btn').forEach(function(b,i){ b.classList.toggle('active',i===n); });
+  if(n===1&&!document.getElementById('zuo-bank').children.length) initZuordnung();
+  if(n===2&&!document.getElementById('lueckenContainer').children.length) initLuecken();
+  if(n===3&&!document.getElementById('satzbauContainer').children.length) initSatzbau();
+  if(n===4&&!document.getElementById('vocabContainer').children.length) initVocab();
+}
+
+var TIMER_PREFIX='C1_1071G_';
+var timers={};
+function timerKey(n){ return TIMER_PREFIX+'tab'+n; }
+function timerAutoStart(n){
+  var k=timerKey(n); if(timers[k]&&timers[k].running) return;
+  var stored=localStorage.getItem(k); var start=stored?parseInt(stored):Date.now();
+  if(!stored) localStorage.setItem(k,start);
+  if(!timers[k]) timers[k]={};
+  timers[k].running=true;
+  timers[k].interval=setInterval(function(){ var el=document.getElementById('timer'+n+'-display'); if(el){ var s=Math.floor((Date.now()-start)/1000); el.textContent=pad(Math.floor(s/60))+':'+pad(s%60); } },500);
+}
+function timerStop(n){ var k=timerKey(n); if(timers[k]&&timers[k].interval){ clearInterval(timers[k].interval); timers[k].running=false; } }
+function timerResetOne(n){ timerStop(n); localStorage.removeItem(timerKey(n)); var el=document.getElementById('timer'+n+'-display'); if(el) el.textContent='00:00'; timers[timerKey(n)]=null; }
+function pad(x){ return x<10?'0'+x:String(x); }
+
+var mcDone=[false,false,false,false]; var mcCurrent=0;
+function mcCheck(step,btn,correct){
+  if(mcDone[step]) return; mcDone[step]=true;
+  var fb=document.getElementById('mcfb'+step);
+  if(correct){
+    btn.classList.add('correct'); fb.textContent='✓ Richtig!'; fb.className='mc-feedback ok';
+    document.getElementById('pdot'+step).classList.add('done');
+    setTimeout(function(){ document.getElementById('mc-step'+step).classList.remove('active'); mcCurrent=step+1; if(mcCurrent<4) document.getElementById('mc-step'+mcCurrent).classList.add('active'); else document.getElementById('regelkarte').style.display='block'; },900);
+  } else {
+    btn.classList.add('wrong'); fb.textContent='✗ Nicht ganz — versuche es nochmal.'; fb.className='mc-feedback err';
+    setTimeout(function(){ btn.classList.remove('wrong'); mcDone[step]=false; fb.textContent=''; },1200);
+  }
+}
+
+var ZUO_DATA=[
+  { id:'z1',  text:'Er sagte, dass er morgen kommt.',                                   cat:'ok'  },
+  { id:'z2',  text:'Sie bat ihn, das Protokoll zu verfassen.',                          cat:'ok'  },
+  { id:'z3',  text:'Das Ergebnis, das alle überraschte, wurde veröffentlicht.',         cat:'ok'  },
+  { id:'z4',  text:'Wider Erwarten fiel das Ergebnis positiv aus.',                    cat:'ok'  },
+  { id:'z5',  text:'Seit Wochen gibt es keine Neuigkeiten.',                            cat:'ok'  },
+  { id:'z6',  text:'Er wusste, dass er einen Fehler gemacht hatte.',                   cat:'ok'  },
+  { id:'z7',  text:'Er sagte dass er morgen kommt.',                                   cat:'err' },
+  { id:'z8',  text:'Das ist klar das sie recht hat.',                                  cat:'err' },
+  { id:'z9',  text:'Seid Jahren warten wir auf eine Entscheidung.',                   cat:'err' },
+  { id:'z10', text:'Wieder Erwarten verlief die Prüfung problemlos.',                  cat:'err' },
+  { id:'z11', text:'Er bat sie das Protokoll zu verfassen.',                           cat:'err' },
+  { id:'z12', text:'Die Ministerin, eine erfahrene Juristin lehnte ab.',               cat:'err' },
+];
+var zuoSelected=null;
+function initZuordnung(){
+  var bank=document.getElementById('zuo-bank');
+  bank.innerHTML=''; document.getElementById('zone-ok').innerHTML=''; document.getElementById('zone-err').innerHTML='';
+  document.getElementById('zuo-score').textContent='0';
+  shuffleArr(ZUO_DATA.slice()).forEach(function(item){
+    var chip=document.createElement('div');
+    chip.className='chip'; chip.dataset.id=item.id; chip.dataset.cat=item.cat;
+    chip.textContent=item.text; chip.style.cssText='max-width:100%;white-space:normal;line-height:1.4;padding:8px 14px;';
+    chip.addEventListener('click',function(){ zuoChipClick(chip); });
+    bank.appendChild(chip);
+  });
+}
+function zuoChipClick(chip){
+  if(chip.classList.contains('correct')) return;
+  if(zuoSelected===chip){ chip.classList.remove('selected'); zuoSelected=null; return; }
+  if(zuoSelected) zuoSelected.classList.remove('selected');
+  zuoSelected=chip; chip.classList.add('selected');
+}
+function zoneClick(cat){
+  if(!zuoSelected) return;
+  document.getElementById('zone-'+cat).appendChild(zuoSelected);
+  zuoSelected.classList.remove('selected'); zuoSelected=null; timerAutoStart(1);
+}
+function checkZuordnung(){
+  var score=0;
+  ZUO_DATA.forEach(function(item){
+    var chip=document.querySelector('[data-id="'+item.id+'"]'); if(!chip) return;
+    var inZone=chip.closest('.drop-zone');
+    if(inZone&&inZone.id==='zone-'+item.cat){ chip.classList.add('correct'); score++; }
+    else { chip.classList.add('incorrect'); setTimeout(function(){ chip.classList.remove('incorrect'); document.getElementById('zuo-bank').appendChild(chip); },900); }
+  });
+  document.getElementById('zuo-score').textContent=score;
+  if(score===12) timerStop(1);
+}
+function resetZuordnung(){ timerResetOne(1); initZuordnung(); }
+
+var LUECKEN=[
+  { id:1,  before:'Er erklärte, ',              answer:'dass',   after:' er an dem Projekt nicht mehr beteiligt sei.' },
+  { id:2,  before:'',                            answer:'Das',    after:' Ergebnis der Analyse liegt noch nicht vor.' },
+  { id:3,  before:'Man weiß, ',                 answer:'dass',   after:' Transparenz entscheidend für das Vertrauen ist.' },
+  { id:4,  before:'',                            answer:'Das',    after:' Komitee, das gestern tagte, hat keine Entscheidung getroffen.' },
+  { id:5,  before:'',                            answer:'Seit',   after:' der Reform gilt eine neue Regelung.' },
+  { id:6,  before:'Ihr ',                        answer:'seid',   after:' herzlich eingeladen, an der Diskussion teilzunehmen.' },
+  { id:7,  before:'',                            answer:'Wider',  after:' Erwarten verlief die Verhandlung konstruktiv.' },
+  { id:8,  before:'Die Akten wurden ',           answer:'wieder', after:' gefunden und dem Archiv übergeben.' },
+  { id:9,  before:'Die Frage ist, ',             answer:'ob',     after:' das Verfahren rechtens war.' },
+  { id:10, before:'',                            answer:'Obwohl', after:' die Datenlage dünn ist, zog man vorschnelle Schlüsse.' },
+];
+function initLuecken(){
+  var wk=document.getElementById('wortkasten');
+  wk.innerHTML='<strong>Wortkasten:</strong> '+LUECKEN.map(function(l){ return l.answer; }).sort().join(' &nbsp;·&nbsp; ');
+  var c=document.getElementById('lueckenContainer'); c.innerHTML='';
+  LUECKEN.forEach(function(l){
+    var w=Math.max(80,l.answer.length*14);
+    var div=document.createElement('div'); div.className='luecken-satz';
+    div.innerHTML=escH(l.before)+'<input class="blank" data-answer="'+escH(l.answer.toLowerCase())+'" style="width:'+w+'px" placeholder="…" oninput="liveCheck(this);timerAutoStart(2);">'+escH(l.after);
+    c.appendChild(div);
+  });
+}
+function liveCheck(inp){
+  var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong'); if(!val.length) return;
+  if(val===ans){ inp.classList.add('correct'); checkLueckenDone(); }
+  else if(ans.startsWith(val)){}
+  else inp.classList.add('wrong');
+}
+function checkLueckenDone(){ if(Array.from(document.querySelectorAll('#lueckenContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(2); }
+function zeigeLoesung(){ document.querySelectorAll('#lueckenContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
+function resetLuecken(){ timerResetOne(2); initLuecken(); }
+
+var satzbauData=[
+  { parts:['Er','bat','sie,','das','Protokoll','zu','verfassen'],
+    valid:[['Er','bat','sie,','das','Protokoll','zu','verfassen']], punct:'.' },
+  { parts:['Seit','dem','Beschluss,','der','einstimmig','fiel,','gilt','die','neue','Regelung'],
+    valid:[['Seit','dem','Beschluss,','der','einstimmig','fiel,','gilt','die','neue','Regelung']], punct:'.' },
+  { parts:['Dass','sie','recht','hatte,','musste','selbst','der','Vorsitzende','einräumen'],
+    valid:[['Dass','sie','recht','hatte,','musste','selbst','der','Vorsitzende','einräumen']], punct:'.' },
+  { parts:['Die','Direktorin,','eine','erfahrene','Juristin,','lehnte','den','Antrag','ab'],
+    valid:[['Die','Direktorin,','eine','erfahrene','Juristin,','lehnte','den','Antrag','ab']], punct:'.' },
+  { parts:['Das','Ergebnis','ist','besser,','als','alle','erwartet','hatten'],
+    valid:[['Das','Ergebnis','ist','besser,','als','alle','erwartet','hatten']], punct:'.' },
+  { parts:['Wider','Erwarten','verlief','die','Prüfung','ohne','Zwischenfälle'],
+    valid:[['Wider','Erwarten','verlief','die','Prüfung','ohne','Zwischenfälle']], punct:'.' },
+  { parts:['Er','wusste,','dass','er','einen','schweren','Fehler','gemacht','hatte'],
+    valid:[['Er','wusste,','dass','er','einen','schweren','Fehler','gemacht','hatte']], punct:'.' },
+];
+
+var sbDragged=null;
+function sbMakeChip(word){
+  var chip=document.createElement('div'); chip.className='chip'; chip.dataset.orig=word; chip.textContent=word; chip.draggable=true;
+  chip.addEventListener('dragstart',function(){ sbDragged=chip; chip.style.opacity='.5'; });
+  chip.addEventListener('dragend',function(){ chip.style.opacity='1'; sbDragged=null; });
+  chip.addEventListener('click',function(){ sbChipClick(chip); });
+  return chip;
+}
+function sbRegisterZone(zone,idx){
+  zone.addEventListener('dragover',function(e){ e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave',function(){ zone.classList.remove('dragover'); });
+  zone.addEventListener('drop',function(e){ e.preventDefault(); zone.classList.remove('dragover'); if(sbDragged){ zone.appendChild(sbDragged); sbCheckAuto(idx); } });
+}
+var sbClickSelected=null;
+function sbChipClick(chip){
+  if(chip===sbClickSelected){ chip.classList.remove('selected'); sbClickSelected=null; return; }
+  if(sbClickSelected) sbClickSelected.classList.remove('selected');
+  sbClickSelected=chip; chip.classList.add('selected');
+}
+function sbCheckAuto(idx){
+  var row=document.getElementById('sb-row-'+idx); if(!row) return;
+  var words=Array.from(row.querySelectorAll('.chip')).map(function(c){ return c.dataset.orig; });
+  var data=satzbauData[idx];
+  var ok=data.valid.some(function(v){ return v.length===words.length&&v.every(function(w,i){ return w===words[i]; }); });
+  row.classList.toggle('correct',ok); row.classList.toggle('incorrect',!ok&&words.length>0);
+  var fb=document.getElementById('sb-fb-'+idx);
+  if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
+  else { fb.textContent=''; fb.className='satzbau-feedback'; }
+}
+function checkSbAllDone(){ if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3); }
+function sbShowSolution(idx){
+  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
+  var solution=satzbauData[idx].valid[0];
+  var allChips=Array.from(bank.querySelectorAll('.chip')).concat(Array.from(row.querySelectorAll('.chip')));
+  var used=[];
+  var placed=solution.map(function(word){ var chip=allChips.find(function(c,i){ return c.dataset.orig===word&&used.indexOf(i)===-1; }); if(chip) used.push(allChips.indexOf(chip)); return chip; }).filter(Boolean);
+  while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
+  placed.forEach(function(chip){ chip.textContent=chip.dataset.orig; chip.classList.remove('correct','incorrect','selected'); row.appendChild(chip); });
+  fb.textContent=''; setTimeout(function(){ sbCheckAuto(idx); },100);
+}
+function sbShowAllSolutions(){ satzbauData.forEach(function(_,idx){ sbShowSolution(idx); }); }
+function sbResetOne(idx){
+  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
+  while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
+  row.classList.remove('correct','incorrect'); fb.textContent=''; fb.className='satzbau-feedback';
+  var parts=satzbauData[idx].parts.slice();
+  for(var i=parts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp; }
+  parts.forEach(function(word){ bank.appendChild(sbMakeChip(word)); });
+}
+function initSatzbau(){
+  var container=document.getElementById('satzbauContainer'); container.innerHTML='';
+  satzbauData.forEach(function(ex,idx){
+    var item=document.createElement('div'); item.className='satzbau-item';
+    var bank=document.createElement('div'); bank.className='chips-container'; bank.id='sb-bank-'+idx;
+    var row=document.createElement('div'); row.className='sentence-builder'; row.id='sb-row-'+idx;
+    var fb=document.createElement('div'); fb.className='satzbau-feedback'; fb.id='sb-fb-'+idx;
+    var parts=ex.parts.slice();
+    for(var i=parts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp; }
+    parts.forEach(function(word){ bank.appendChild(sbMakeChip(word)); });
+    sbRegisterZone(bank,idx); sbRegisterZone(row,idx);
+    var btnRow=document.createElement('div'); btnRow.style.cssText='display:flex;gap:8px;margin-top:6px;';
+    var solveBtn=document.createElement('button'); solveBtn.className='btn'; solveBtn.textContent='Lösen'; solveBtn.setAttribute('data-idx',idx);
+    solveBtn.addEventListener('click',function(){ sbShowSolution(parseInt(this.getAttribute('data-idx'))); });
+    var resetBtn=document.createElement('button'); resetBtn.className='btn'; resetBtn.textContent='↺ Neustart'; resetBtn.setAttribute('data-idx',idx);
+    resetBtn.addEventListener('click',function(){ sbResetOne(parseInt(this.getAttribute('data-idx'))); });
+    btnRow.appendChild(solveBtn); btnRow.appendChild(resetBtn);
+    item.appendChild(bank); item.appendChild(row); item.appendChild(fb); item.appendChild(btnRow);
+    container.appendChild(item);
+  });
+}
+function resetSatzbau(){ initSatzbau(); }
+
+var WORTSCHATZ=[
+  { id:1,  en:'comma (punctuation mark)',                          de:'das Komma' },
+  { id:2,  en:'subordinate clause / dependent clause',            de:'der Nebensatz' },
+  { id:3,  en:'infinitive clause / to-infinitive construction',   de:'die Infinitivgruppe' },
+  { id:4,  en:'participial clause / participial construction',    de:'die Partizipialgruppe' },
+  { id:5,  en:'apposition (explanatory addition)',                de:'die Apposition' },
+  { id:6,  en:'"dass" — subordinating conjunction',               de:'dass (Konjunktion)' },
+  { id:7,  en:'"das" — article or relative pronoun',              de:'das (Artikel / Pronomen)' },
+  { id:8,  en:'"seit" — since / for (time preposition)',          de:'seit (Präposition)' },
+  { id:9,  en:'"seid" — you are (2nd pers. pl. of sein)',         de:'seid (Verbform)' },
+  { id:10, en:'"wider" — against, contrary to',                  de:'wider (gegen)' },
+  { id:11, en:'"wieder" — again, once more',                     de:'wieder (erneut)' },
+  { id:12, en:'orthographic reform / spelling rules',            de:'die Rechtschreibreform' },
+];
+function initVocab(){
+  var c=document.getElementById('vocabContainer'); c.innerHTML='';
+  shuffleArr(WORTSCHATZ.slice()).forEach(function(item){
+    var div=document.createElement('div'); div.className='vocab-item';
+    var w=Math.max(200,item.de.length*9);
+    div.innerHTML='<span class="vocab-en">'+escH(item.en)+'</span><span class="vocab-arrow">➒</span>'+
+      '<div class="vocab-inputs"><input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+'" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this);timerAutoStart(4);">'+
+      '<span class="vocab-hint" id="vh-'+item.id+'">'+escH(item.de)+'</span></div>';
+    c.appendChild(div);
+  });
+}
+function vocabLive(inp){
+  var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong'); if(!val.length) return;
+  if(val===ans){ inp.classList.add('correct'); checkVocabDone(); }
+  else if(ans.startsWith(val)){}
+  else inp.classList.add('wrong');
+}
+function checkVocabDone(){ if(Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(4); }
+function showVocabLoesung(){ document.querySelectorAll('#vocabContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
+function resetVocab(){ initVocab(); }
+
+function shuffleArr(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
