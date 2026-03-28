@@ -56,20 +56,28 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 .regel-karte li { color: #333; line-height: 1.9; font-size: 0.95rem; }
 .rk-example { background: #fff; border-radius: 8px; padding: 10px 14px; margin-top: 12px; border-left: 3px solid #7c4dff; font-size: 0.9rem; color: #333; line-height: 1.7; }
 .rk-example b { color: #3949ab; }
-/* Chips */
-.chip { padding: 6px 14px; border-radius: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; cursor: grab; font-size: 0.85rem; font-weight: 600; user-select: none; transition: transform .15s, opacity .15s; white-space: nowrap; display: inline-block; }
-.chip:active { cursor: grabbing; transform: scale(1.04); }
-.chip.correct { background: linear-gradient(135deg, #27ae60, #2ecc71) !important; }
-.chip.wrong { background: linear-gradient(135deg, #e74c3c, #c0392b) !important; }
-.chip.selected { outline: 3px solid #f39c12; }
-.chip.comma-chip { padding: 6px 8px; min-width: 22px; }
+/* Chips – Standard: weiß mit lila Rahmen (satzbau-drag-drop Skill) */
+.chip { background: white; border: 2px solid #667eea; color: #667eea; padding: 8px 14px; border-radius: 20px; cursor: move; font-weight: 500; font-size: 0.9em; transition: all 0.2s; user-select: none; white-space: nowrap; }
+.chip:active { cursor: grabbing; }
+.chip.correct   { background: #27ae60; border-color: #27ae60; color: white; }
+.chip.incorrect { background: #e74c3c; border-color: #e74c3c; color: white; }
+.chip.wrong     { background: #e74c3c; border-color: #e74c3c; color: white; }
+.chip.selected  { outline: 3px solid #f39c12; }
+.chip.punct-chip { background: #f8f8f8; border: 2px solid #667eea; padding: 8px 16px; color: #333; font-weight: 700; font-size: 1.3em; min-width: 18px; text-align: center; cursor: move; }
+.chip.punct-chip.correct   { background: #27ae60; border-color: #27ae60; color: white; }
+.chip.punct-chip.incorrect { background: #e74c3c; border-color: #e74c3c; color: white; }
 /* Drag zones */
 .chip-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #f8f9fa; border-radius: 10px; margin-bottom: 14px; min-height: 54px; }
-.chip-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; min-height: 44px; background: #f8f9fa; padding: 8px; border-radius: 8px; }
+.chips-container { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; background: #f8f8f8; border-radius: 10px; min-height: 56px; margin-bottom: 10px; }
+.sentence-builder { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px; background: white; border: 2px dashed #ccc; border-radius: 10px; min-height: 56px; align-items: center; margin-bottom: 6px; }
+.sentence-builder.correct   { border-color: #27ae60; background: #f0fff4; }
+.sentence-builder.incorrect { border-color: #e74c3c; background: #fff5f5; }
 .drop-zone { min-height: 110px; border-radius: 10px; border: 2px dashed #c5cae9; padding: 10px; background: #fafbff; transition: background .2s; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
 .drop-zone.dragover { background: #e8eaff; border-color: #667eea; }
-.drop-row { display: flex; flex-wrap: wrap; gap: 6px; min-height: 44px; padding: 8px 10px; border-radius: 8px; border: 2px dashed #c5cae9; background: #fafbff; }
-.drop-row.dragover { background: #e8eaff; border-color: #667eea; }
+.satzbau-feedback { font-size: 0.9em; font-weight: 600; margin-top: 6px; min-height: 1.2em; }
+.satzbau-feedback.correct   { color: #27ae60; }
+.satzbau-feedback.incorrect { color: #e74c3c; }
+.sb-punkt { font-size: 1.1em; font-weight: 700; color: #27ae60; margin-left: 2px; align-self: center; user-select: none; }
 /* Zuordnung */
 .zuo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
 .zuo-zone-label { font-weight: 700; color: #3949ab; font-size: 0.9rem; margin-bottom: 8px; }
@@ -303,8 +311,8 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
     <h2>🧩 Satzbau</h2>
     <div class="timer-controls">
       <div class="btn-row">
-        <button class="btn" onclick="showSbLoesung()">Lösungen</button>
-        <button class="btn" onclick="resetSb(); timerResetOne(3);">Neu starten</button>
+        <button class="btn" onclick="sbShowAllSolutions()">Lösungen</button>
+        <button class="btn" onclick="resetSatzbau(); timerResetOne(3);">Neu starten</button>
       </div>
       <div class="timer-display">
         <span>⏱ <span id="timer-3">0:00</span></span>
@@ -314,7 +322,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
     <div class="hilfe-box">
       <strong>Aufgabe:</strong> Bringe die Wörter in die richtige Reihenfolge. Ziehe oder klicke die Chips in die Drop-Zone. Die Chips färben sich sofort grün oder rot.
     </div>
-    <div id="sb-container"></div>
+    <div id="satzbauContainer"></div>
   </div>
 </div>
 
@@ -392,7 +400,7 @@ window.addEventListener('load', function() {
     var b = localStorage.getItem(TIMER_PREFIX + n);
     if (b) { var el = document.getElementById('best-'+n); if (el) el.textContent = fmtTime(parseInt(b)); }
   });
-  initZuo(); initLuecken(); initSb(); initVocab();
+  initZuo(); initLuecken(); initSatzbau(); initVocab();
 });
 
 // ── Entdeckungs-MC ───────────────────────────────────────────
@@ -559,99 +567,244 @@ function showLueckenLoesung() {
 }
 function resetLuecken() { initLuecken(); }
 
-// ── Satzbau (Tab 3) ──────────────────────────────────────────
-var SB_DATA = [
-  { id:0, words:['die','Entscheidung',',','die','Fördergelder','zu','kürzen',',','stieß','auf','heftigen','Widerstand','.'],
-    answer:['die','entscheidung',',','die','fördergelder','zu','kürzen',',','stieß','auf','heftigen','widerstand','.'] },
-  { id:1, words:['nach','eingehender','Prüfung','aller','Unterlagen','erteilte','die','Behörde','die','Genehmigung','.'],
-    answer:['nach','eingehender','prüfung','aller','unterlagen','erteilte','die','behörde','die','genehmigung','.'] },
-  { id:2, words:['trotz','erheblicher','Einwände','traf','die','Kommission','eine','einstimmige','Entscheidung','.'],
-    answer:['trotz','erheblicher','einwände','traf','die','kommission','eine','einstimmige','entscheidung','.'] },
-  { id:3, words:['der','steigende','Energieverbrauch','hat','die','Überarbeitung','der','Klimastrategie','zur','Folge','.'],
-    answer:['der','steigende','energieverbrauch','hat','die','überarbeitung','der','klimastrategie','zur','folge','.'] },
-  { id:4, words:['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag','.'],
-    answer:['unter','berücksichtigung','aller','risiken','unterbreitete','das','team','einen','vorschlag','.'] },
-  { id:5, words:['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts','.'],
-    answer:['die','forscherin','übte','scharfe','kritik','an','der','mangelhaften','dokumentation','des','projekts','.'] },
-  { id:6, words:['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis','.'],
-    answer:['der','direktor','setzte','die','belegschaft','umgehend','über','die','restrukturierung','in','kenntnis','.'] },
+// ── Satzbau (Tab 3) — Standard satzbau-drag-drop ─────────────
+var satzbauData = [
+  { parts:['die','Entscheidung',',','die','Fördergelder','zu','kürzen',',','stieß','auf','heftigen','Widerstand'],
+    valid:[['die','Entscheidung',',','die','Fördergelder','zu','kürzen',',','stieß','auf','heftigen','Widerstand']], punct:'.' },
+  { parts:['nach','eingehender','Prüfung','aller','Unterlagen','erteilte','die','Behörde','die','Genehmigung'],
+    valid:[['nach','eingehender','Prüfung','aller','Unterlagen','erteilte','die','Behörde','die','Genehmigung']], punct:'.' },
+  { parts:['trotz','erheblicher','Einwände','traf','die','Kommission','eine','einstimmige','Entscheidung'],
+    valid:[['trotz','erheblicher','Einwände','traf','die','Kommission','eine','einstimmige','Entscheidung']], punct:'.' },
+  { parts:['der','steigende','Energieverbrauch','hat','die','Überarbeitung','der','Klimastrategie','zur','Folge'],
+    valid:[['der','steigende','Energieverbrauch','hat','die','Überarbeitung','der','Klimastrategie','zur','Folge']], punct:'.' },
+  { parts:['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag'],
+    valid:[['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag']], punct:'.' },
+  { parts:['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts'],
+    valid:[['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts']], punct:'.' },
+  { parts:['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis'],
+    valid:[['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis']], punct:'.' },
 ];
 
-function initSb() {
-  var c = document.getElementById('sb-container'); c.innerHTML = '';
-  SB_DATA.forEach(function(item) {
-    var shuffled = shuffleArr(item.words.slice());
-    var wrap = document.createElement('div'); wrap.className = 'sb-item';
-    var pool = document.createElement('div'); pool.className = 'chip-pool'; pool.id = 'pool-'+item.id;
-    var row  = document.createElement('div'); row.className  = 'drop-row'; row.id  = 'row-'+item.id;
-    row.ondragover = function(e) { e.preventDefault(); };
-    row.ondrop = function(e) { dropSbRow(e, item.id); };
-    pool.ondragover = function(e) { e.preventDefault(); };
-    pool.ondrop = function(e) { e.preventDefault(); if (!draggedChip) return; pool.appendChild(draggedChip); draggedChip=null; updateCaps(item.id); colorSbRow(item.id); };
-    shuffled.forEach(function(w) {
-      var chip = document.createElement('div');
-      chip.className = 'chip' + (w===',' ? ' comma-chip' : '');
-      chip.dataset.orig = w;
-      chip.textContent = (w===','||w==='.') ? w : w.charAt(0).toUpperCase()+w.slice(1);
-      chip.draggable = true;
-      chip.addEventListener('dragstart', function(ev) { draggedChip = chip; ev.dataTransfer.setData('text/plain',''); });
-      chip.addEventListener('click', function() {
-        if (chip.closest('.drop-row')) {
-          document.getElementById('pool-'+item.id).appendChild(chip);
-        } else {
-          document.getElementById('row-'+item.id).appendChild(chip);
-          timerAutoStart(3);
-        }
-        updateCaps(item.id); colorSbRow(item.id);
-      });
-      pool.appendChild(chip);
-    });
-    wrap.appendChild(pool); wrap.appendChild(row); c.appendChild(wrap);
-  });
-}
+var sbDragged = null;
 
-function dropSbRow(e, idx) {
-  e.preventDefault(); if (!draggedChip) return;
-  document.getElementById('row-'+idx).appendChild(draggedChip); draggedChip = null;
-  updateCaps(idx); colorSbRow(idx); timerAutoStart(3);
+function getSbCursor() {
+  var c = document.getElementById('sb-insert-cursor');
+  if (!c) {
+    c = document.createElement('div');
+    c.id = 'sb-insert-cursor';
+    c.style.cssText = 'width:3px;min-height:32px;background:#e67e22;border-radius:2px;align-self:stretch;pointer-events:none;flex-shrink:0;';
+  }
+  return c;
 }
-function updateCaps(idx) {
-  Array.from(document.getElementById('row-'+idx).querySelectorAll('.chip')).forEach(function(c,i) {
-    var o = c.dataset.orig;
-    if (o===','||o==='.') { c.textContent=o; return; }
-    c.textContent = (i===0) ? o.charAt(0).toUpperCase()+o.slice(1) : o;
+function getSbInsertPos(zone, clientX) {
+  var chips = Array.from(zone.querySelectorAll('.chip'));
+  for (var i = 0; i < chips.length; i++) {
+    var r = chips[i].getBoundingClientRect();
+    if (clientX < r.left + r.width / 2) return chips[i];
+  }
+  return null;
+}
+function sbCapitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+function sbUpdateCapitalization(row) {
+  Array.from(row.querySelectorAll('.chip')).forEach(function(c, i) {
+    var orig = c.dataset.orig;
+    if (orig === ',' || orig === ';') return;
+    var isProper = orig.charAt(0) === orig.charAt(0).toUpperCase() && orig.charAt(0) !== orig.charAt(0).toLowerCase();
+    c.textContent = isProper ? orig : (i === 0 ? sbCapitalize(orig) : orig);
   });
 }
-function colorSbRow(idx) {
-  var row = document.getElementById('row-'+idx), data = SB_DATA[idx];
-  Array.from(row.querySelectorAll('.chip')).forEach(function(chip,i) {
-    chip.classList.remove('correct','wrong');
-    if (i < data.answer.length) chip.classList.add(chip.dataset.orig.toLowerCase()===data.answer[i] ? 'correct':'wrong');
-    else chip.classList.add('wrong');
+function sbMakeChip(word) {
+  var chip = document.createElement('div');
+  chip.className = 'chip';
+  if (word === ',' || word === ';') chip.classList.add('punct-chip');
+  chip.textContent = word;
+  chip.dataset.orig = word;
+  chip.draggable = true;
+  chip.addEventListener('dragstart', function(e) {
+    sbDragged = chip;
+    timerAutoStart(3);
+    e.dataTransfer.setData('text/plain', '');
+    setTimeout(function() { chip.style.opacity = '0.4'; }, 0);
   });
-  checkSbAllOk();
-}
-function checkSbAllOk() {
-  var ok = SB_DATA.every(function(item) {
-    var chips = Array.from(document.getElementById('row-'+item.id).querySelectorAll('.chip'));
-    if (chips.length!==item.answer.length) return false;
-    return chips.every(function(c,i){ return c.dataset.orig.toLowerCase()===item.answer[i]; });
+  chip.addEventListener('dragend', function() {
+    chip.style.opacity = '';
+    sbDragged = null;
+    var c = document.getElementById('sb-insert-cursor');
+    if (c && c.parentNode) c.parentNode.removeChild(c);
   });
-  if (ok) timerStop(3);
+  return chip;
 }
-function showSbLoesung() {
-  SB_DATA.forEach(function(item) {
-    var pool = document.getElementById('pool-'+item.id);
-    var row  = document.getElementById('row-'+item.id);
-    Array.from(row.querySelectorAll('.chip')).forEach(function(c){ pool.appendChild(c); });
-    item.answer.forEach(function(w) {
-      var chip = Array.from(pool.querySelectorAll('.chip')).find(function(c){ return c.dataset.orig.toLowerCase()===w; });
-      if (chip) row.appendChild(chip);
-    });
-    updateCaps(item.id); colorSbRow(item.id);
+function sbRegisterZone(zone, idx) {
+  zone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    if (!sbDragged) return;
+    var cursor = getSbCursor();
+    var before = getSbInsertPos(zone, e.clientX);
+    if (before) zone.insertBefore(cursor, before);
+    else zone.appendChild(cursor);
+  });
+  zone.addEventListener('dragleave', function(e) {
+    if (!zone.contains(e.relatedTarget)) {
+      var c = document.getElementById('sb-insert-cursor');
+      if (c && c.parentNode === zone) zone.removeChild(c);
+    }
+  });
+  zone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    if (!sbDragged) return;
+    var cursor = document.getElementById('sb-insert-cursor');
+    if (cursor && cursor.parentNode === zone) {
+      zone.insertBefore(sbDragged, cursor);
+      zone.removeChild(cursor);
+    } else {
+      zone.appendChild(sbDragged);
+    }
+    sbDragged = null;
+    var row = document.getElementById('sb-row-' + idx);
+    sbUpdateCapitalization(row);
+    sbCheckAuto(idx);
   });
 }
-function resetSb() { initSb(); }
+function sbColorRow(idx) {
+  var row = document.getElementById('sb-row-' + idx);
+  var chips = Array.from(row.querySelectorAll('.chip'));
+  var order = chips.map(function(c) { return c.dataset.orig; });
+  var ok = satzbauData[idx].valid.some(function(v) {
+    return JSON.stringify(v) === JSON.stringify(order);
+  });
+  chips.forEach(function(c) {
+    c.classList.remove('correct', 'incorrect');
+    c.classList.add(ok ? 'correct' : 'incorrect');
+  });
+  var existing = row.querySelector('.sb-punkt');
+  if (existing) existing.parentNode.removeChild(existing);
+  if (ok) {
+    var punkt = document.createElement('span');
+    punkt.className = 'sb-punkt';
+    punkt.textContent = satzbauData[idx].punct || '.';
+    row.appendChild(punkt);
+  }
+  return ok;
+}
+function sbCheckAuto(idx) {
+  var bank = document.getElementById('sb-bank-' + idx);
+  var row  = document.getElementById('sb-row-' + idx);
+  var fb   = document.getElementById('sb-fb-' + idx);
+  if (bank.querySelectorAll('.chip').length > 0) {
+    row.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('correct', 'incorrect'); });
+    row.classList.remove('correct', 'incorrect');
+    fb.textContent = '';
+    return;
+  }
+  setTimeout(function() {
+    timerAutoStart(3);
+    var ok = sbColorRow(idx);
+    if (ok) {
+      row.classList.add('correct'); row.classList.remove('incorrect');
+      fb.className = 'satzbau-feedback correct';
+      fb.textContent = '✓ Korrekt!';
+      sbCheckAllDone();
+    } else {
+      row.classList.add('incorrect'); row.classList.remove('correct');
+      fb.className = 'satzbau-feedback incorrect';
+      fb.textContent = '✗ Falsche Reihenfolge – verschiebe die Chips!';
+    }
+  }, 500);
+}
+function sbCheckAllDone() {
+  var allOk = satzbauData.every(function(_, i) {
+    var row = document.getElementById('sb-row-' + i);
+    return row && row.classList.contains('correct');
+  });
+  if (allOk) timerStop(3);
+}
+function sbShowSolution(idx) {
+  var bank = document.getElementById('sb-bank-' + idx);
+  var row  = document.getElementById('sb-row-' + idx);
+  var fb   = document.getElementById('sb-fb-' + idx);
+  var solution = satzbauData[idx].valid[0];
+  var allChips = {};
+  Array.from(bank.querySelectorAll('.chip')).forEach(function(c) { allChips[c.dataset.orig] = c; });
+  Array.from(row.querySelectorAll('.chip')).forEach(function(c)  { allChips[c.dataset.orig] = c; });
+  while (bank.firstChild) bank.removeChild(bank.firstChild);
+  while (row.firstChild)  row.removeChild(row.firstChild);
+  solution.forEach(function(word) {
+    var chip = allChips[word];
+    if (chip) {
+      chip.textContent = word;
+      chip.classList.remove('correct', 'incorrect');
+      row.appendChild(chip);
+    }
+  });
+  fb.textContent = '';
+  setTimeout(function() { sbCheckAuto(idx); }, 100);
+}
+function sbShowAllSolutions() {
+  satzbauData.forEach(function(_, idx) { sbShowSolution(idx); });
+}
+function sbResetOne(idx) {
+  var bank = document.getElementById('sb-bank-' + idx);
+  var row  = document.getElementById('sb-row-' + idx);
+  var fb   = document.getElementById('sb-fb-'   + idx);
+  while (bank.firstChild) bank.removeChild(bank.firstChild);
+  while (row.firstChild)  row.removeChild(row.firstChild);
+  row.classList.remove('correct', 'incorrect');
+  fb.textContent = ''; fb.className = 'satzbau-feedback';
+  var existing = row.querySelector('.sb-punkt');
+  if (existing) existing.parentNode.removeChild(existing);
+  var parts = satzbauData[idx].parts.slice();
+  for (var i = parts.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = parts[i]; parts[i] = parts[j]; parts[j] = tmp;
+  }
+  parts.forEach(function(word) { bank.appendChild(sbMakeChip(word)); });
+}
+function initSatzbau() {
+  var container = document.getElementById('satzbauContainer');
+  container.innerHTML = '';
+  satzbauData.forEach(function(ex, idx) {
+    var item = document.createElement('div');
+    item.className = 'satzbau-item';
+
+    var bank = document.createElement('div');
+    bank.className = 'chips-container';
+    bank.id = 'sb-bank-' + idx;
+
+    var row = document.createElement('div');
+    row.className = 'sentence-builder';
+    row.id = 'sb-row-' + idx;
+
+    var fb = document.createElement('div');
+    fb.className = 'satzbau-feedback';
+    fb.id = 'sb-fb-' + idx;
+
+    var parts = ex.parts.slice();
+    for (var i = parts.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = parts[i]; parts[i] = parts[j]; parts[j] = tmp;
+    }
+    parts.forEach(function(word) { bank.appendChild(sbMakeChip(word)); });
+
+    sbRegisterZone(bank, idx);
+    sbRegisterZone(row, idx);
+
+    var btnRow = document.createElement('div');
+    btnRow.style.cssText = 'display:flex; gap:8px; margin-top:6px;';
+    var solveBtn = document.createElement('button');
+    solveBtn.className = 'btn'; solveBtn.textContent = 'Lösen';
+    solveBtn.setAttribute('data-idx', idx);
+    solveBtn.addEventListener('click', function() { sbShowSolution(parseInt(this.getAttribute('data-idx'))); });
+    var resetBtn = document.createElement('button');
+    resetBtn.className = 'btn'; resetBtn.textContent = '↺ Neustart';
+    resetBtn.setAttribute('data-idx', idx);
+    resetBtn.addEventListener('click', function() { sbResetOne(parseInt(this.getAttribute('data-idx'))); });
+    btnRow.appendChild(solveBtn); btnRow.appendChild(resetBtn);
+
+    item.appendChild(bank); item.appendChild(row); item.appendChild(fb); item.appendChild(btnRow);
+    container.appendChild(item);
+  });
+}
+function resetSatzbau() { initSatzbau(); }
 
 // ── Wortschatz (Tab 4) ───────────────────────────────────────
 var WORTSCHATZ = [
