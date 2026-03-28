@@ -8,7 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Segoe UI',sans-serif;background:#f0f2f5;padding:20px;}
 .container{max-width:860px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(102,126,234,.13);overflow:hidden;}
-.header{background:linear-gradient(135deg,#667eea,#764ba2);padding:28px 32px 20px;color:#fff;}
+.header{background:linear-gradient(135deg,#667eea,#764ba2);padding:28px 32px 20px;color:#fff;text-align:center;}
 .header h1{font-size:1.45rem;font-weight:700;margin-bottom:4px;}
 .header p{font-size:.9rem;opacity:.85;}
 .nav-tabs{display:flex;gap:0;border-bottom:2px solid #e8eaf6;background:#fafbff;padding:0 12px;flex-wrap:wrap;}
@@ -428,6 +428,7 @@ function sbRegisterZone(zone,idx){
   zone.addEventListener('dragover',function(e){ e.preventDefault(); zone.classList.add('dragover'); });
   zone.addEventListener('dragleave',function(){ zone.classList.remove('dragover'); });
   zone.addEventListener('drop',function(e){ e.preventDefault(); zone.classList.remove('dragover'); if(sbDragged){ zone.appendChild(sbDragged); sbCheckAuto(idx); } });
+  zone.addEventListener('click',function(e){ if(sbClickSelected&&!e.target.classList.contains('chip')){ zone.appendChild(sbClickSelected); sbClickSelected.classList.remove('selected'); sbClickSelected=null; sbCheckAuto(idx); } });
 }
 var sbClickSelected=null;
 function sbChipClick(chip){
