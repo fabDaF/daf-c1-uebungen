@@ -58,6 +58,7 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 .rk-example b { color: #3949ab; }
 /* Chips – Standard: weiß mit lila Rahmen (satzbau-drag-drop Skill) */
 .chip { background: white; border: 2px solid #667eea; color: #667eea; padding: 8px 14px; border-radius: 20px; cursor: move; font-weight: 500; font-size: 0.9em; transition: all 0.2s; user-select: none; white-space: nowrap; }
+.chip.selected { background: #667eea; color: white; border-color: #4a5fd4; transform: scale(1.05); box-shadow: 0 2px 8px rgba(102,126,234,0.4); cursor: pointer; }
 .chip:active { cursor: grabbing; }
 .chip.correct   { background: #27ae60; border-color: #27ae60; color: white; }
 .chip.incorrect { background: #e74c3c; border-color: #e74c3c; color: white; }
@@ -103,7 +104,8 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
 .wortkasten { background: #ede7f6; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; font-size: 0.88rem; color: #4a148c; line-height: 1.8; }
 .wortkasten b { color: #6a1b9a; }
 /* Wortschatz */
-.vocab-item { background: #f8f9ff; padding: 14px 18px; margin-bottom: 10px; border-radius: 10px; border-left: 4px solid #667eea; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+#vocabContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.vocab-item { background: #f8f9ff; padding: 12px 14px; border-radius: 10px; border-left: 4px solid #667eea; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0; }
 .vocab-en { font-weight: 600; color: #764ba2; min-width: 200px; font-size: 0.93em; }
 .vocab-arrow { color: #ccc; font-size: 1.2em; }
 .vocab-inputs input { border: none; border-bottom: 2px solid #667eea; background: #fff; padding: 4px 8px; font-family: inherit; font-size: 0.93em; outline: none; transition: all 0.2s; min-width: 220px; }
@@ -128,26 +130,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
 
 <div class="header">
   <h1>Nominalstil</h1>
-  <p style="font-family: Georgia, serif;">C1 – Lektion 1011G &nbsp;|&nbsp; Grammatik &amp; Üben</p>
-  <div class="big-emoji">📰</div>
-</div>
-
-<div class="nav">
-  <div class="nav-btn active" onclick="showSection(0)"><span class="nav-emoji">📖</span><span class="nav-label">Entdeckung</span></div>
-  <div class="nav-btn" onclick="showSection(1)"><span class="nav-emoji">🔀</span><span class="nav-label">Zuordnung</span></div>
-  <div class="nav-btn" onclick="showSection(2)"><span class="nav-emoji">✏️</span><span class="nav-label">Lückentext</span></div>
-  <div class="nav-btn" onclick="showSection(3)"><span class="nav-emoji">🧩</span><span class="nav-label">Satzbau</span></div>
-  <div class="nav-btn" onclick="showSection(4)"><span class="nav-emoji">📚</span><span class="nav-label">Wortschatz</span></div>
-</div>
-
-<!-- ═══════════════════ TAB 0: ENTDECKUNG ═══════════════════ -->
-<div class="section active" id="sec-0">
-  <img src="https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Zeitungen">
-  <div style="padding: 28px 30px;">
-
-    <div class="entdeck-intro">
-      <h3>📰 Verbalstil und Nominalstil im Vergleich</h3>
-      <p>Lies die Satzpaare. Was unterscheidet die linke Spalte von der rechten?</p>
+det die linke Spalte von der rechten?</p>
     </div>
 
     <div class="satzpaar">
@@ -159,7 +142,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
       <div><div class="satz-label">Nominalstil</div><div class="sz-nominal">Der Abteilungsleiter setzte das Team über die Änderungen in <span class="hl">Kenntnis</span>.</div></div>
     </div>
     <div class="satzpaar">
-      <div><div class="satz-label">Verbalstil</div><div class="sz-verbal">Sie <em>kritisierte</em> die Methodik)4er Studie scharf.</div></div>
+      <div><div class="satz-label">Verbalstil</div><div class="sz-verbal">Sie <em>kritisierte</em> die Methodik der Studie scharf.</div></div>
       <div><div class="satz-label">Nominalstil</div><div class="sz-nominal">Sie übte scharfe <span class="hl">Kritik</span> an der Methodik der Studie.</div></div>
     </div>
     <div class="satzpaar">
@@ -227,7 +210,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
       <ul>
         <li>Im <strong>Nominalstil</strong> werden Verben durch Nomen und nominale Konstruktionen ersetzt — typisch für formelle, schriftliche Sprache.</li>
         <li><strong>Funktionsverbgefüge (FVG):</strong> Ein inhaltsschwaches Verb + ein Nomen bilden gemeinsam die Bedeutung.<br>
-        <em>entscheiden</em> → <em>eine Entscheidung treffen</em> &nbsp;|&nbsp; <em>kritisieren</em> → <em>Kritik øben</em></li>
+        <em>entscheiden</em> → <em>eine Entscheidung treffen</em> &nbsp;|&nbsp; <em>kritisieren</em> → <em>Kritik üben</em></li>
         <li><strong>Nominalisierung:</strong> Verben und Adjektive werden zu Nomen.<br>
         <em>verhandeln</em> → <em>die Verhandlung</em> &nbsp;|&nbsp; <em>wesentlich</em> → <em>das Wesentliche</em></li>
         <li><strong>Präpositionale Konstruktion</strong> ersetzt den Nebensatz:<br>
@@ -235,7 +218,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
       </ul>
       <div class="rk-example">
         <b>Aktivisch (Subjekt handelt):</b> Kritik üben &nbsp;·&nbsp; eine Entscheidung treffen &nbsp;·&nbsp; in Kenntnis setzen<br>
-        <b>Passivisch / Stativ (Subjekt empfängt / befindet sich):</b> auf Kritik stoßen &nbsp;·&nbsp; zur Verfügung stehen &nbsp;·&nbsp; in Verdacht geraten
+        <b>Passivisch / Stativ (Subjekt empfängt / befindet sich):</b> auf Kritik stoßen &nbsp;·&nbsp; zur Verføgung stehen &nbsp;·&nbsp; in Verdacht geraten
       </div>
     </div>
 
@@ -421,7 +404,7 @@ function mcCheck(step, btn, correct) {
     }, 700);
   } else {
     btn.classList.add('wrong');
-    fb.textContent = '\u2717 Nicht ganz \u2014 schau nochmal genau hin.'; fb.className = 'mc-feedback err';
+    fb.textContent = '\u2717 Nicht ganz → schau nochmal genau hin.'; fb.className = 'mc-feedback err';
     setTimeout(function() {
       btns.forEach(function(b) { b.disabled = false; b.classList.remove('wrong','correct'); });
       fb.textContent = ''; fb.className = 'mc-feedback';
@@ -434,14 +417,14 @@ var draggedChip = null;
 var selectedChip = null;
 
 var ZUO_DATA = [
-  { id:'z1',  text:'Kritik øben',              cat:'aktiv'  },
-  { id:'z2',  text:'zur Verfügung stellen',    cat:'aktiv'  },
+  { id:'z1',  text:'Kritik üben',              cat:'aktiv'  },
+  { id:'z2',  text:'zur Verføgung stellen',    cat:'aktiv'  },
   { id:'z3',  text:'einen Antrag stellen',     cat:'aktiv'  },
   { id:'z4',  text:'eine Entscheidung treffen',cat:'aktiv'  },
   { id:'z5',  text:'Abschied nehmen',          cat:'aktiv'  },
   { id:'z6',  text:'in Kenntnis setzen',       cat:'aktiv'  },
   { id:'z7',  text:'auf Kritik stoßen',        cat:'passiv' },
-  { id:'z8',  text:'zur Verfügung stehen',     cat:'passiv' },
+  { id:'z8',  text:'zur Verføgung stehen',     cat:'passiv' },
   { id:'z9',  text:'in Verdacht geraten',      cat:'passiv' },
   { id:'z10', text:'zur Anwendung kommen',     cat:'passiv' },
   { id:'z11', text:'in Betracht kommen',       cat:'passiv' },
@@ -521,12 +504,12 @@ function resetZuo() { initZuo(); }
 // ── Lückentext (Tab 2) ───────────────────────────────────────
 var LUECKEN = [
   { id:1,  before:'Das Gremium traf die schwerwiegende ',             answer:'Entscheidung', after:', die Kooperation zu beenden.' },
-  { id:2,  before:'Der Abteilungsleiter setzte die Belegschaft über die Änderungen in ', answer:'Kenntnis', after:'.' },
+  { id:2,  before:'Der Abteilungsleiter setzte die Belegschaft øber die Änderungen in ', answer:'Kenntnis', after:'.' },
   { id:3,  before:'Nach langer Amtszeit nahm die Direktorin von ihrer Aufgabe ', answer:'Abschied', after:'.' },
   { id:4,  before:'Die Arbeitsgruppe unterbreitete den ',             answer:'Vorschlag', after:', das Verfahren zu vereinfachen.' },
-  { id:5,  before:'Der Prüfbericht øbte scharfe ',                   answer:'Kritik', after:' an der Methodik)4er Studie.' },
-  { id:6,  before:'Nach der Buchprøfung geriet der Buchhalter in ',   answer:'Verdacht', after:'.' },
-  { id:7,  before:'Die Infrastruktur stand allen Nutzern kostenlos zur ', answer:'Verfügung', after:'.' },
+  { id:5,  before:'Der Prüfbericht übte scharfe ',                   answer:'Kritik', after:' an der Methodik der Studie.' },
+  { id:6,  before:'Nach der BuchPrüfung geriet der Buchhalter in ',   answer:'Verdacht', after:'.' },
+  { id:7,  before:'Die Infrastruktur stand allen Nutzern kostenlos zur ', answer:'Verføgung', after:'.' },
   { id:8,  before:'Der steigende Rohstoffbedarf hatte eine Verteuerung der Produkte zur ', answer:'Folge', after:'.' },
   { id:9,  before:'Sie stellte beim Amt einen ',                      answer:'Antrag', after:' auf Förderung ihres Projekts.' },
   { id:10, before:'Der Forscher machte die wichtige ',                answer:'Beobachtung', after:', dass sich das Verhalten der Tiere verändert hatte.' },
@@ -579,10 +562,10 @@ var satzbauData = [
     valid:[['der','steigende','Energieverbrauch','hat','die','Überarbeitung','der','Klimastrategie','zur','Folge']], punct:'.' },
   { parts:['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag'],
     valid:[['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag']], punct:'.' },
-  { parts:['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts'],
-    valid:[['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts']], punct:'.' },
-  { parts:['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis'],
-    valid:[['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis']], punct:'.' },
+  { parts:['die','Forscherin','øbte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts'],
+    valid:[['die','Forscherin','øbte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts']], punct:'.' },
+  { parts:['der','Direktor','setzte','die','Belegschaft','umgehend','øber','die','Restrukturierung','in','Kenntnis'],
+    valid:[['der','Direktor','setzte','die','Belegschaft','umgehend','øber','die','Restrukturierung','in','Kenntnis']], punct:'.' },
 ];
 
 var sbDragged = null;
@@ -632,9 +615,33 @@ function sbMakeChip(word) {
     var c = document.getElementById('sb-insert-cursor');
     if (c && c.parentNode) c.parentNode.removeChild(c);
   });
+  chip.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var sel = document.querySelector('.chip.selected');
+    if (sel === chip) { chip.classList.remove('selected'); return; }
+    if (sel) {
+      chip.parentElement.insertBefore(sel, chip);
+      sel.classList.remove('selected');
+      var zId = chip.parentElement.id || '';
+      var idx = parseInt(zId.replace('sb-bank-','').replace('sb-row-',''));
+      if (!isNaN(idx)) { sbUpdateCapitalization(document.getElementById('sb-row-'+idx)); sbCheckAuto(idx); }
+    } else {
+      chip.classList.add('selected');
+    }
+  });
   return chip;
 }
 function sbRegisterZone(zone, idx) {
+  zone.addEventListener('click', function(e) {
+    if (e.target !== zone) return;
+    var sel = document.querySelector('.chip.selected');
+    if (sel) {
+      zone.appendChild(sel);
+      sel.classList.remove('selected');
+      sbUpdateCapitalization(document.getElementById('sb-row-'+idx));
+      sbCheckAuto(idx);
+    }
+  });
   zone.addEventListener('dragover', function(e) {
     e.preventDefault();
     if (!sbDragged) return;
@@ -723,18 +730,19 @@ function sbShowSolution(idx) {
   var row  = document.getElementById('sb-row-' + idx);
   var fb   = document.getElementById('sb-fb-' + idx);
   var solution = satzbauData[idx].valid[0];
-  var allChips = {};
-  Array.from(bank.querySelectorAll('.chip')).forEach(function(c) { allChips[c.dataset.orig] = c; });
-  Array.from(row.querySelectorAll('.chip')).forEach(function(c)  { allChips[c.dataset.orig] = c; });
+  var allChips = Array.from(bank.querySelectorAll('.chip')).concat(Array.from(row.querySelectorAll('.chip')));
+  var used = [];
+  var placed = solution.map(function(word) {
+    var chip = allChips.find(function(c, i) { return c.dataset.orig === word && used.indexOf(i) === -1; });
+    if (chip) { used.push(allChips.indexOf(chip)); }
+    return chip;
+  }).filter(Boolean);
   while (bank.firstChild) bank.removeChild(bank.firstChild);
   while (row.firstChild)  row.removeChild(row.firstChild);
-  solution.forEach(function(word) {
-    var chip = allChips[word];
-    if (chip) {
-      chip.textContent = word;
-      chip.classList.remove('correct', 'incorrect');
-      row.appendChild(chip);
-    }
+  placed.forEach(function(chip) {
+    chip.textContent = chip.dataset.orig;
+    chip.classList.remove('correct', 'incorrect', 'selected');
+    row.appendChild(chip);
   });
   fb.textContent = '';
   setTimeout(function() { sbCheckAuto(idx); }, 100);
