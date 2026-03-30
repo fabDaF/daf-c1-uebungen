@@ -91,7 +91,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
 .correction-hint { font-size: 0.78rem; color: #27ae60; font-weight: 700; margin-left: 4px; white-space: nowrap; }
 .luecken-satz { background: #f8f9fa; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; line-height: 2.2; font-size: 0.93rem; color: #333; }
 /* Satzbau */
-.sb-item { margin-bottom: 20px; }
+.satzbau-item { margin-bottom: 20px; }
 /* Timer / Controls */
 .timer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 6px; }
 .btn-row { display: flex; gap: 6px; }
@@ -130,7 +130,27 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
 
 <div class="header">
   <h1>Nominalstil</h1>
-det die linke Spalte von der rechten?</p>
+  <p style="font-family: Georgia, serif;">C1 – Lektion 1011G &nbsp;|&nbsp; Grammatik &amp; Üben</p>
+  <div class="big-emoji">📰</div>
+</div>
+
+<div class="nav">
+  <div class="nav-btn active" onclick="showSection(0)"><span class="nav-emoji">📖</span><span class="nav-label">Entdeckung</span></div>
+  <div class="nav-btn" onclick="showSection(1)"><span class="nav-emoji">🔀</span><span class="nav-label">Zuordnung</span></div>
+  <div class="nav-btn" onclick="showSection(2)"><span class="nav-emoji">✏️</span><span class="nav-label">Lückentext</span></div>
+  <div class="nav-btn" onclick="showSection(3)"><span class="nav-emoji">🧩</span><span class="nav-label">Satzbau</span></div>
+  <div class="nav-btn" onclick="showSection(4)"><span class="nav-emoji">📚</span><span class="nav-label">Wortschatz</span></div>
+</div>
+
+<!-- ═══════════════════ TAB 0: ENTDECKUNG ═══════════════════ -->
+<div class="section active" id="sec-0">
+  <img src="https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Zeitungen">
+  <div style="padding: 28px 30px;">
+
+    <h2>📖 Entdecke die Regel selbst</h2>
+    <div class="entdeck-intro">
+      <h3>📰 Verbalstil und Nominalstil im Vergleich</h3>
+      <p>Lies die Satzpaare. Was unterscheidet die linke Spalte von der rechten?</p>
     </div>
 
     <div class="satzpaar">
@@ -162,7 +182,7 @@ det die linke Spalte von der rechten?</p>
     </div>
 
     <div class="mc-step active" id="mc-step0">
-      <h4>Was fällt an den Sätzen in der rechten Spalte auf?</h4>
+      <h4>❓ Was fällt an den Sätzen in der rechten Spalte auf?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind kürzer und einfacher strukturiert.</button>
         <button class="mc-btn" onclick="mcCheck(0,this,true)">Sie enthalten mehr Nomen und abstrakte Konstruktionen.</button>
@@ -173,7 +193,7 @@ det die linke Spalte von der rechten?</p>
     </div>
 
     <div class="mc-step" id="mc-step1">
-      <h4>Was passiert in Satz 3? Das Verb „kritisieren" wird ersetzt durch …</h4>
+      <h4>❓ Was passiert in Satz 3? Das Verb „kritisieren" wird ersetzt durch …</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Ein Adjektiv: „kritisch sein"</button>
         <button class="mc-btn" onclick="mcCheck(1,this,true)">Ein Funktionsverbgefüge: Verb + Nomen (Kritik üben)</button>
@@ -184,7 +204,7 @@ det die linke Spalte von der rechten?</p>
     </div>
 
     <div class="mc-step" id="mc-step2">
-      <h4>In welchen Textsorten findet man Nominalstil besonders häufig?</h4>
+      <h4>❓ In welchen Textsorten findet man Nominalstil besonders häufig?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(2,this,false)">In Chats, Kurznachrichten und persönlichen Briefen</button>
         <button class="mc-btn" onclick="mcCheck(2,this,true)">In Behörden- und Verwaltungssprache, Wissenschaft und Nachrichten</button>
@@ -195,7 +215,7 @@ det die linke Spalte von der rechten?</p>
     </div>
 
     <div class="mc-step" id="mc-step3">
-      <h4>Welches dieser Ausdrücke ist ein Funktionsverbgefüge?</h4>
+      <h4>❓ Welches dieser Ausdrücke ist ein Funktionsverbgefüge?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(3,this,false)">schnell laufen</button>
         <button class="mc-btn" onclick="mcCheck(3,this,false)">sehr gerne essen</button>
@@ -218,7 +238,7 @@ det die linke Spalte von der rechten?</p>
       </ul>
       <div class="rk-example">
         <b>Aktivisch (Subjekt handelt):</b> Kritik üben &nbsp;·&nbsp; eine Entscheidung treffen &nbsp;·&nbsp; in Kenntnis setzen<br>
-        <b>Passivisch / Stativ (Subjekt empfängt / befindet sich):</b> auf Kritik stoßen &nbsp;·&nbsp; zur Verføgung stehen &nbsp;·&nbsp; in Verdacht geraten
+        <b>Passivisch / Stativ (Subjekt empfängt / befindet sich):</b> auf Kritik stoßen &nbsp;·&nbsp; zur Verfügung stehen &nbsp;·&nbsp; in Verdacht geraten
       </div>
     </div>
 
@@ -404,7 +424,7 @@ function mcCheck(step, btn, correct) {
     }, 700);
   } else {
     btn.classList.add('wrong');
-    fb.textContent = '\u2717 Nicht ganz → schau nochmal genau hin.'; fb.className = 'mc-feedback err';
+    fb.textContent = '\u2717 Nicht ganz \u2014 schau nochmal genau hin.'; fb.className = 'mc-feedback err';
     setTimeout(function() {
       btns.forEach(function(b) { b.disabled = false; b.classList.remove('wrong','correct'); });
       fb.textContent = ''; fb.className = 'mc-feedback';
@@ -418,13 +438,13 @@ var selectedChip = null;
 
 var ZUO_DATA = [
   { id:'z1',  text:'Kritik üben',              cat:'aktiv'  },
-  { id:'z2',  text:'zur Verføgung stellen',    cat:'aktiv'  },
+  { id:'z2',  text:'zur Verfügung stellen',    cat:'aktiv'  },
   { id:'z3',  text:'einen Antrag stellen',     cat:'aktiv'  },
   { id:'z4',  text:'eine Entscheidung treffen',cat:'aktiv'  },
   { id:'z5',  text:'Abschied nehmen',          cat:'aktiv'  },
   { id:'z6',  text:'in Kenntnis setzen',       cat:'aktiv'  },
   { id:'z7',  text:'auf Kritik stoßen',        cat:'passiv' },
-  { id:'z8',  text:'zur Verføgung stehen',     cat:'passiv' },
+  { id:'z8',  text:'zur Verfügung stehen',     cat:'passiv' },
   { id:'z9',  text:'in Verdacht geraten',      cat:'passiv' },
   { id:'z10', text:'zur Anwendung kommen',     cat:'passiv' },
   { id:'z11', text:'in Betracht kommen',       cat:'passiv' },
@@ -504,12 +524,12 @@ function resetZuo() { initZuo(); }
 // ── Lückentext (Tab 2) ───────────────────────────────────────
 var LUECKEN = [
   { id:1,  before:'Das Gremium traf die schwerwiegende ',             answer:'Entscheidung', after:', die Kooperation zu beenden.' },
-  { id:2,  before:'Der Abteilungsleiter setzte die Belegschaft øber die Änderungen in ', answer:'Kenntnis', after:'.' },
+  { id:2,  before:'Der Abteilungsleiter setzte die Belegschaft über die Änderungen in ', answer:'Kenntnis', after:'.' },
   { id:3,  before:'Nach langer Amtszeit nahm die Direktorin von ihrer Aufgabe ', answer:'Abschied', after:'.' },
   { id:4,  before:'Die Arbeitsgruppe unterbreitete den ',             answer:'Vorschlag', after:', das Verfahren zu vereinfachen.' },
   { id:5,  before:'Der Prüfbericht übte scharfe ',                   answer:'Kritik', after:' an der Methodik der Studie.' },
-  { id:6,  before:'Nach der BuchPrüfung geriet der Buchhalter in ',   answer:'Verdacht', after:'.' },
-  { id:7,  before:'Die Infrastruktur stand allen Nutzern kostenlos zur ', answer:'Verføgung', after:'.' },
+  { id:6,  before:'Nach der Buchprüfung geriet der Buchhalter in ',   answer:'Verdacht', after:'.' },
+  { id:7,  before:'Die Infrastruktur stand allen Nutzern kostenlos zur ', answer:'Verfügung', after:'.' },
   { id:8,  before:'Der steigende Rohstoffbedarf hatte eine Verteuerung der Produkte zur ', answer:'Folge', after:'.' },
   { id:9,  before:'Sie stellte beim Amt einen ',                      answer:'Antrag', after:' auf Förderung ihres Projekts.' },
   { id:10, before:'Der Forscher machte die wichtige ',                answer:'Beobachtung', after:', dass sich das Verhalten der Tiere verändert hatte.' },
@@ -562,10 +582,10 @@ var satzbauData = [
     valid:[['der','steigende','Energieverbrauch','hat','die','Überarbeitung','der','Klimastrategie','zur','Folge']], punct:'.' },
   { parts:['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag'],
     valid:[['unter','Berücksichtigung','aller','Risiken','unterbreitete','das','Team','einen','Vorschlag']], punct:'.' },
-  { parts:['die','Forscherin','øbte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts'],
-    valid:[['die','Forscherin','øbte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts']], punct:'.' },
-  { parts:['der','Direktor','setzte','die','Belegschaft','umgehend','øber','die','Restrukturierung','in','Kenntnis'],
-    valid:[['der','Direktor','setzte','die','Belegschaft','umgehend','øber','die','Restrukturierung','in','Kenntnis']], punct:'.' },
+  { parts:['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts'],
+    valid:[['die','Forscherin','übte','scharfe','Kritik','an','der','mangelhaften','Dokumentation','des','Projekts']], punct:'.' },
+  { parts:['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis'],
+    valid:[['der','Direktor','setzte','die','Belegschaft','umgehend','über','die','Restrukturierung','in','Kenntnis']], punct:'.' },
 ];
 
 var sbDragged = null;
@@ -744,6 +764,7 @@ function sbShowSolution(idx) {
     chip.classList.remove('correct', 'incorrect', 'selected');
     row.appendChild(chip);
   });
+  sbUpdateCapitalization(row);
   fb.textContent = '';
   setTimeout(function() { sbCheckAuto(idx); }, 100);
 }
