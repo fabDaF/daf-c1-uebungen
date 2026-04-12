@@ -508,8 +508,8 @@ var satzbauData=[
     valid:[['Die','Ministerin','enthielt','sich','jedes','öffentlichen','Kommentars']], punct:'.' },
   { parts:['Der','Gutachter','bediente','sich','neuester','statistischer','Methoden'],
     valid:[['Der','Gutachter','bediente','sich','neuester','statistischer','Methoden']], punct:'.' },
-  { parts:['Das','Konzept','ermangelt','jeder','empirischen','Grundlage'],
-    valid:[['Das','Konzept','ermangelt','jeder','empirischen','Grundlage']], punct:'.' },
+  { parts:['Das','gesamte','Konzept','ermangelt','jeder','empirischen','Grundlage'],
+    valid:[['Das','gesamte','Konzept','ermangelt','jeder','empirischen','Grundlage']], punct:'.' },
   { parts:['Er','entledigte','sich','seiner','lästigen','Verpflichtungen','mit','einem','Schreiben'],
     valid:[['Er','entledigte','sich','seiner','lästigen','Verpflichtungen','mit','einem','Schreiben']], punct:'.' },
 ];
@@ -535,16 +535,32 @@ function sbChipClick(chip){
   if(sbClickSelected) sbClickSelected.classList.remove('selected');
   sbClickSelected=chip; chip.classList.add('selected');
 }
-function sbCheckAuto(idx){
+function sbColorRow(idx){
   var row=document.getElementById('sb-row-'+idx);
-  if(!row) return;
-  var words=Array.from(row.querySelectorAll('.chip')).map(function(c){ return c.dataset.orig; });
+  var chips=Array.from(row.querySelectorAll('.chip'));
+  var words=chips.map(function(c){ return c.dataset.orig; });
   var data=satzbauData[idx];
   var ok=data.valid.some(function(v){ return v.length===words.length&&v.every(function(w,i){ return w===words[i]; }); });
+  chips.forEach(function(c){ c.classList.remove('correct','incorrect'); c.classList.add(ok?'correct':'incorrect'); });
   row.classList.toggle('correct',ok); row.classList.toggle('incorrect',!ok&&words.length>0);
+  return ok;
+}
+function sbCheckAuto(idx){
+  var bank=document.getElementById('sb-bank-'+idx);
+  var row=document.getElementById('sb-row-'+idx);
   var fb=document.getElementById('sb-fb-'+idx);
-  if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
-  else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  if(!row) return;
+  if(bank&&bank.querySelectorAll('.chip').length>0){
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c){ c.classList.remove('correct','incorrect'); });
+    row.classList.remove('correct','incorrect');
+    fb.textContent=''; fb.className='satzbau-feedback';
+    return;
+  }
+  setTimeout(function(){
+    var ok=sbColorRow(idx);
+    if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
+    else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  },500);
 }
 function checkSbAllDone(){
   if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3);
