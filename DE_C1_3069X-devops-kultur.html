@@ -462,16 +462,16 @@ var MC_DATA = [
 ];
 
 var satzbauData = [
-  { parts: ["Die", "Übersetzung", "abstrakter", "Werte", "in", "Mikropraktiken", "ist", "lernpsychologisch", "gut", "begründet"], valid: ["Die", "Übersetzung", "abstrakter", "Werte", "in", "Mikropraktiken", "ist", "lernpsychologisch", "gut", "begründet"], punct: "." },
-  { parts: ["Psychologische", "Sicherheit", "setzt", "voraus", "dass", "Führung", "Fehleroffenheit", "aktiv", "modelliert"], valid: ["Psychologische", "Sicherheit", "setzt", "voraus", "dass", "Führung", "Fehleroffenheit", "aktiv", "modelliert"], punct: "." },
-  { parts: ["Die", "Kausalrichtung", "zwischen", "Haltungen", "und", "Hochleistung", "ist", "empirisch", "umstritten"], valid: ["Die", "Kausalrichtung", "zwischen", "Haltungen", "und", "Hochleistung", "ist", "empirisch", "umstritten"], punct: "." },
-  { parts: ["Das", "Konzept", "setzt", "ein", "Minimum", "an", "organisationaler", "Gesundheit", "voraus"], valid: ["Das", "Konzept", "setzt", "ein", "Minimum", "an", "organisationaler", "Gesundheit", "voraus"], punct: "." },
-  { parts: ["Kulturelle", "Transformation", "ist", "ein", "iterativer", "kontextabhängiger", "Prozess"], valid: ["Kulturelle", "Transformation", "ist", "ein", "iterativer", "kontextabhängiger", "Prozess"], punct: "." },
-  { parts: ["Ein", "reifes", "Team", "betreibt", "systemische", "Ursachenanalyse", "statt", "Schuldzuweisungen"], valid: ["Ein", "reifes", "Team", "betreibt", "systemische", "Ursachenanalyse", "statt", "Schuldzuweisungen"], punct: "." },
+  { parts: ["die", "Übersetzung", "abstrakter", "Werte", "in", "Mikropraktiken", "ist", "lernpsychologisch", "gut", "begründet"], valid: ["die", "Übersetzung", "abstrakter", "Werte", "in", "Mikropraktiken", "ist", "lernpsychologisch", "gut", "begründet"], punct: "." },
+  { parts: ["psychologische", "Sicherheit", "setzt", "voraus", "dass", "Führung", "Fehleroffenheit", "aktiv", "modelliert"], valid: ["psychologische", "Sicherheit", "setzt", "voraus", "dass", "Führung", "Fehleroffenheit", "aktiv", "modelliert"], punct: "." },
+  { parts: ["die", "Kausalrichtung", "zwischen", "Haltungen", "und", "Hochleistung", "ist", "empirisch", "umstritten"], valid: ["die", "Kausalrichtung", "zwischen", "Haltungen", "und", "Hochleistung", "ist", "empirisch", "umstritten"], punct: "." },
+  { parts: ["das", "Konzept", "setzt", "ein", "Minimum", "an", "organisationaler", "Gesundheit", "voraus"], valid: ["das", "Konzept", "setzt", "ein", "Minimum", "an", "organisationaler", "Gesundheit", "voraus"], punct: "." },
+  { parts: ["kulturelle", "Transformation", "ist", "ein", "iterativer", "kontextabhängiger", "Prozess"], valid: ["kulturelle", "Transformation", "ist", "ein", "iterativer", "kontextabhängiger", "Prozess"], punct: "." },
+  { parts: ["ein", "reifes", "Team", "betreibt", "systemische", "Ursachenanalyse", "statt", "Schuldzuweisungen"], valid: ["ein", "reifes", "Team", "betreibt", "systemische", "Ursachenanalyse", "statt", "Schuldzuweisungen"], punct: "." },
   { parts: ["Verhaltensanker", "überführen", "abstrakte", "Haltungen", "in", "beobachtbare", "Handlungen"], valid: ["Verhaltensanker", "überführen", "abstrakte", "Haltungen", "in", "beobachtbare", "Handlungen"], punct: "." },
-  { parts: ["Das", "Konzept", "weist", "eine", "charakteristische", "Leerstelle", "auf"], valid: ["Das", "Konzept", "weist", "eine", "charakteristische", "Leerstelle", "auf"], punct: "." },
+  { parts: ["das", "Konzept", "weist", "eine", "charakteristische", "Leerstelle", "auf"], valid: ["das", "Konzept", "weist", "eine", "charakteristische", "Leerstelle", "auf"], punct: "." },
   { parts: ["Transparenz", "senkt", "Reibungsverluste", "und", "stärkt", "das", "gegenseitige", "Vertrauen"], valid: ["Transparenz", "senkt", "Reibungsverluste", "und", "stärkt", "das", "gegenseitige", "Vertrauen"], punct: "." },
-  { parts: ["Das", "Koinzidenzproblem", "bleibt", "im", "Konzept", "unbehandelt"], valid: ["Das", "Koinzidenzproblem", "bleibt", "im", "Konzept", "unbehandelt"], punct: "." },
+  { parts: ["das", "Koinzidenzproblem", "bleibt", "im", "Konzept", "unbehandelt"], valid: ["das", "Koinzidenzproblem", "bleibt", "im", "Konzept", "unbehandelt"], punct: "." },
 ];
 
 var WORTSCHATZ = [
@@ -743,6 +743,17 @@ function resetMC() {
 // ═══════════════════════════════════════════════════════
 var sbDragged = null;
 
+function sbCapitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+
+function sbUpdateCapitalization(row) {
+  var chips = Array.from(row.querySelectorAll('.chip'));
+  chips.forEach(function(c, i) {
+    var orig = c.dataset.word;
+    var isNomen = orig.charAt(0) === orig.charAt(0).toUpperCase() && orig.charAt(0) !== orig.charAt(0).toLowerCase();
+    c.textContent = isNomen ? orig : (i === 0 ? sbCapitalize(orig) : orig);
+  });
+}
+
 function sbRegisterZone(zone, idx) {
   zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('dragover'); });
   zone.addEventListener('dragleave', function(){ zone.classList.remove('dragover'); });
@@ -750,7 +761,16 @@ function sbRegisterZone(zone, idx) {
     e.preventDefault(); zone.classList.remove('dragover');
     if (!sbDragged) return;
     if (sbDragged.dataset.sbIdx !== String(idx)) return;
-    zone.appendChild(sbDragged);
+    var isBuilder = zone.classList.contains('sentence-builder');
+    if (isBuilder) {
+      zone.appendChild(sbDragged);
+      sbUpdateCapitalization(zone);
+    } else {
+      sbDragged.textContent = sbDragged.dataset.word;
+      zone.appendChild(sbDragged);
+      var builder = document.getElementById('builder-'+idx);
+      if (builder) sbUpdateCapitalization(builder);
+    }
     sbCheckAuto(idx);
   });
 }
@@ -777,11 +797,16 @@ function buildSatzbau() {
       chip.addEventListener('dragend', function(){ sbDragged=null; });
       chip.addEventListener('click', function(){
         timerAutoStart(5);
-        var isInBuilder = chip.closest('.sentence-builder');
+        var builder = document.getElementById('builder-'+idx);
+        var bank = document.getElementById('chips-'+idx);
+        var isInBuilder = !!chip.closest('.sentence-builder');
         if (isInBuilder) {
-          document.getElementById('chips-'+idx).appendChild(chip);
+          chip.textContent = chip.dataset.word;
+          bank.appendChild(chip);
+          sbUpdateCapitalization(builder);
         } else {
-          document.getElementById('builder-'+idx).appendChild(chip);
+          builder.appendChild(chip);
+          sbUpdateCapitalization(builder);
         }
         sbCheckAuto(idx);
       });
@@ -800,7 +825,9 @@ function sbCheckAuto(idx) {
   var correct = attempt.join(' ') === item.valid.join(' ');
   builder.className = correct ? 'sentence-builder correct' : 'sentence-builder incorrect';
   if (fb) {
-    fb.textContent = correct ? '✓ Richtig! ' + item.valid.join(' ') + item.punct : '✗ Noch nicht ganz richtig.';
+    var sentence = item.valid.join(' ');
+    sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+    fb.textContent = correct ? '✓ Richtig! ' + sentence + item.punct : '✗ Noch nicht ganz richtig.';
     fb.className = correct ? 'satzbau-feedback correct' : 'satzbau-feedback incorrect';
   }
   if (correct) {
@@ -822,9 +849,12 @@ function sbShowSolution() {
     var chips = Array.from(builder.querySelectorAll('.chip'));
     chips.sort(function(a,b){ return item.valid.indexOf(a.dataset.word) - item.valid.indexOf(b.dataset.word); });
     chips.forEach(function(c){ builder.appendChild(c); });
+    sbUpdateCapitalization(builder);
     builder.className = 'sentence-builder correct';
     var fb = document.getElementById('sfb-'+idx);
-    if (fb) { fb.textContent='✓ Lösung: '+item.valid.join(' ')+item.punct; fb.className='satzbau-feedback correct'; }
+    var sentence = item.valid.join(' ');
+    sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+    if (fb) { fb.textContent='✓ Lösung: '+sentence+item.punct; fb.className='satzbau-feedback correct'; }
   });
 }
 
@@ -834,7 +864,10 @@ function sbReset() {
     var builder = document.getElementById('builder-'+idx);
     var fb = document.getElementById('sfb-'+idx);
     if (!chipsBox || !builder) return;
-    Array.from(builder.querySelectorAll('.chip')).forEach(function(c){ chipsBox.appendChild(c); });
+    Array.from(builder.querySelectorAll('.chip')).forEach(function(c){
+      c.textContent = c.dataset.word;
+      chipsBox.appendChild(c);
+    });
     builder.className='sentence-builder';
     if (fb) { fb.textContent=''; fb.className='satzbau-feedback'; }
     var chips = Array.from(chipsBox.querySelectorAll('.chip'));
