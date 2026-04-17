@@ -40,8 +40,8 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 /* ── CONTROL-BAR (Timer + Buttons) ──────────────────────── */
 .timer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding: 6px 12px; background: #f8f9fa; border-radius: 8px; flex-wrap: wrap; gap: 6px; }
 .btn-row { display: flex; gap: 6px; }
-.btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: 4px 12px; font-size: 0.82em; color: #888; cursor: pointer; transition: all 0.15s; font-weight: 500; }
-.btn:hover { border-color: #667eea; color: #667eea; }
+.btn { background: #f5f7ff; border: 1px solid #c5cff5; border-radius: 8px; padding: 6px 16px; font-size: 0.85em; color: #667eea; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+.btn:hover { background: #667eea; color: white; border-color: #667eea; }
 .timer-display { display: flex; gap: 14px; font-size: 0.82em; color: #bbb; font-variant-numeric: tabular-nums; }
 
 /* ── ENTDECKUNGS-TAB ─────────────────────────────────────── */
@@ -185,7 +185,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step active" id="mc-step0">
-      <h4>Im ersten Beispiel steht „nach eingehender Prüfung" hinter dem finiten Verb. Was nennt man dieses Phänomen?</h4>
+      <h4>Im ersten Beispiel steht „nach eingehender Prüfung“ hinter dem finiten Verb. Was nennt man dieses Phänomen?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(0,this,false)">Vorfeldbesetzung</button>
         <button class="mc-btn" onclick="mcCheck(0,this,true)">Ausklammerung</button>
@@ -196,7 +196,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step1">
-      <h4>„Dass er sich nicht schuldig fühlt, hat er erklärt." — Was steht hier im Vorfeld (Position vor dem finiten Verb)?</h4>
+      <h4>„Dass er sich nicht schuldig fühlt, hat er erklärt.“ — Was steht hier im Vorfeld (Position vor dem finiten Verb)?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Das Subjekt <em>er</em></button>
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Das finite Verb <em>hat</em></button>
@@ -218,7 +218,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step3">
-      <h4>„Den Mut, den hatte er nie." — Was ist das grammatische Phänomen in diesem Satz?</h4>
+      <h4>„Den Mut, den hatte er nie.“ — Was ist das grammatische Phänomen in diesem Satz?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(3,this,false)">Ausklammerung einer Adjektivgruppe</button>
         <button class="mc-btn" onclick="mcCheck(3,this,false)">Vorfeldbesetzung durch einen Infinitivsatz</button>
@@ -514,14 +514,14 @@ var satzbauData=[
     valid:[['Den','Vorwurf,','den','wies','sie','entschieden','zurück']], punct:'.' },
   { parts:['Das','Projekt','wurde','abgebrochen,','weil','die','Mittel','fehlten'],
     valid:[['Das','Projekt','wurde','abgebrochen,','weil','die','Mittel','fehlten']], punct:'.' },
-  { parts:['Zu','schweigen','wäre','das','Klügste','gewesen'],
-    valid:[['Zu','schweigen','wäre','das','Klügste','gewesen']], punct:'.' },
+  { parts:['Zu','schweigen','wäre','wohl','das','Klügste','gewesen'],
+    valid:[['Zu','schweigen','wäre','wohl','das','Klügste','gewesen']], punct:'.' },
   { parts:['Er','hat','das','Angebot','abgelehnt,','trotz','der','günstigen','Konditionen'],
     valid:[['Er','hat','das','Angebot','abgelehnt,','trotz','der','günstigen','Konditionen']], punct:'.' },
   { parts:['Dass','sie','lügt,','davon','bin','ich','überzeugt'],
     valid:[['Dass','sie','lügt,','davon','bin','ich','überzeugt']], punct:'.' },
-  { parts:['Diesen','Fehler','darf','man','nicht','unterschätzen'],
-    valid:[['Diesen','Fehler','darf','man','nicht','unterschätzen']], punct:'.' },
+  { parts:['Diesen','wichtigen','Fehler','darf','man','nicht','unterschätzen'],
+    valid:[['Diesen','wichtigen','Fehler','darf','man','nicht','unterschätzen']], punct:'.' },
   { parts:['Die','Direktorin','hat','erklärt,','dass','sie','zurücktreten','werde'],
     valid:[['Die','Direktorin','hat','erklärt,','dass','sie','zurücktreten','werde']], punct:'.' },
 ];
@@ -548,17 +548,33 @@ function sbChipClick(chip){
   if(sbClickSelected) sbClickSelected.classList.remove('selected');
   sbClickSelected=chip; chip.classList.add('selected');
 }
-function sbCheckAuto(idx){
+function sbColorRow(idx){
   var row=document.getElementById('sb-row-'+idx);
-  if(!row) return;
-  var words=Array.from(row.querySelectorAll('.chip')).map(function(c){ return c.dataset.orig; });
+  var chips=Array.from(row.querySelectorAll('.chip'));
+  var words=chips.map(function(c){ return c.dataset.orig; });
   var data=satzbauData[idx];
   var ok=data.valid.some(function(v){ return v.length===words.length&&v.every(function(w,i){ return w===words[i]; }); });
+  chips.forEach(function(c){ c.classList.remove('correct','incorrect'); c.classList.add(ok?'correct':'incorrect'); });
   row.classList.toggle('correct',ok);
   row.classList.toggle('incorrect',!ok&&words.length>0);
+  return ok;
+}
+function sbCheckAuto(idx){
+  var bank=document.getElementById('sb-bank-'+idx);
+  var row=document.getElementById('sb-row-'+idx);
   var fb=document.getElementById('sb-fb-'+idx);
-  if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
-  else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  if(!row) return;
+  if(bank&&bank.querySelectorAll('.chip').length>0){
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c){ c.classList.remove('correct','incorrect'); });
+    row.classList.remove('correct','incorrect');
+    fb.textContent=''; fb.className='satzbau-feedback';
+    return;
+  }
+  setTimeout(function(){
+    var ok=sbColorRow(idx);
+    if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
+    else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  },500);
 }
 function checkSbAllDone(){
   if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3);

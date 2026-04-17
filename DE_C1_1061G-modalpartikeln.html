@@ -40,8 +40,8 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 /* ── CONTROL-BAR (Timer + Buttons) ──────────────────────── */
 .timer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding: 6px 12px; background: #f8f9fa; border-radius: 8px; flex-wrap: wrap; gap: 6px; }
 .btn-row { display: flex; gap: 6px; }
-.btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: 4px 12px; font-size: 0.82em; color: #888; cursor: pointer; transition: all 0.15s; font-weight: 500; }
-.btn:hover { border-color: #667eea; color: #667eea; }
+.btn { background: #f5f7ff; border: 1px solid #c5cff5; border-radius: 8px; padding: 6px 16px; font-size: 0.85em; color: #667eea; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+.btn:hover { background: #667eea; color: white; border-color: #667eea; }
 .timer-display { display: flex; gap: 14px; font-size: 0.82em; color: #bbb; font-variant-numeric: tabular-nums; }
 
 /* ── ENTDECKUNGS-TAB ─────────────────────────────────────── */
@@ -169,18 +169,18 @@ input.correct + .vocab-hint { display: inline; }
     <h2>📖 Entdecken</h2>
     <div class="entdeck-intro">
       <h3>Vergleiche die Varianten — was verändert die Modalpartikel?</h3>
-      <p>„Das ist klar."
+      <p>„Das ist klar.“
          &nbsp;vs.&nbsp;
-         „Das ist <span class="hl">doch</span> klar." (Erinnerung an geteiltes Wissen)</p>
-      <p>„Komm her."
+         „Das ist <span class=“hl">doch</span> klar." (Erinnerung an geteiltes Wissen)</p>
+      <p>„Komm her.“
          &nbsp;vs.&nbsp;
-         „Komm <span class="hl">mal</span> her." (mildere, freundlichere Aufforderung)</p>
-      <p>„Was ist los?"
+         „Komm <span class=“hl">mal</span> her." (mildere, freundlichere Aufforderung)</p>
+      <p>„Was ist los?“
          &nbsp;vs.&nbsp;
-         „Was ist <span class="hl">denn</span> los?" (echtes Interesse / leichte Überraschung)</p>
-      <p>„Das ist schwierig."
+         „Was ist <span class=“hl">denn</span> los?" (echtes Interesse / leichte Überraschung)</p>
+      <p>„Das ist schwierig.“
          &nbsp;vs.&nbsp;
-         „Das ist <span class="hl">eben</span> schwierig." (resignierte Feststellung — so ist es nun mal)</p>
+         „Das ist <span class=“hl">eben</span> schwierig." (resignierte Feststellung — so ist es nun mal)</p>
     </div>
 
     <div class="progress-dots">
@@ -202,7 +202,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step1">
-      <h4>„Das wirst du <em>schon</em> schaffen." — Was drückt <em>schon</em> hier aus?</h4>
+      <h4>„Das wirst du <em>schon</em> schaffen.“ — Was drückt <em>schon</em> hier aus?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Ungeduld und Druck</button>
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Überraschung über den Erfolg</button>
@@ -213,7 +213,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step2">
-      <h4>„Mach das <em>bloß</em> nicht!" — Was drückt <em>bloß</em> in einem Imperativsatz aus?</h4>
+      <h4>„Mach das <em>bloß</em> nicht!“ — Was drückt <em>bloß</em> in einem Imperativsatz aus?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(2,this,false)">Eine sanfte Empfehlung</button>
         <button class="mc-btn" onclick="mcCheck(2,this,true)">Eine dringende Warnung mit emotionalem Nachdruck</button>
@@ -224,7 +224,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step3">
-      <h4>„Er ist <em>wohl</em> krank." — Was unterscheidet diesen Satz von „Er ist krank."?</h4>
+      <h4>„Er ist <em>wohl</em> krank.“ — Was unterscheidet diesen Satz von „Er ist krank.“?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher weiß es sicher.</button>
         <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher fragt nach.</button>
@@ -496,16 +496,16 @@ function zeigeLoesung(){ document.querySelectorAll('#lueckenContainer input').fo
 function resetLuecken(){ timerResetOne(2); initLuecken(); }
 
 var satzbauData=[
-  { parts:['Das','weißt','du','doch','schon','lange'],
-    valid:[['Das','weißt','du','doch','schon','lange']], punct:'.' },
+  { parts:['Das','weißt','du','doch','schon','sehr','lange'],
+    valid:[['Das','weißt','du','doch','schon','sehr','lange']], punct:'.' },
   { parts:['Was','ist','denn','plötzlich','mit','ihm','passiert'],
     valid:[['Was','ist','denn','plötzlich','mit','ihm','passiert']], punct:'?' },
-  { parts:['Er','ist','wohl','noch','im','Büro'],
-    valid:[['Er','ist','wohl','noch','im','Büro']], punct:'.' },
+  { parts:['Er','ist','wohl','noch','immer','im','Büro'],
+    valid:[['Er','ist','wohl','noch','immer','im','Büro']], punct:'.' },
   { parts:['Das','wird','schon','klappen','—','keine','Sorge'],
     valid:[['Das','wird','schon','klappen','—','keine','Sorge']], punct:'.' },
-  { parts:['Komm','doch','mal','kurz','ins','Büro'],
-    valid:[['Komm','doch','mal','kurz','ins','Büro']], punct:'.' },
+  { parts:['Komm','doch','bitte','mal','kurz','ins','Büro'],
+    valid:[['Komm','doch','bitte','mal','kurz','ins','Büro']], punct:'.' },
   { parts:['Das','ist','eben','so','—','daran','führt','kein','Weg','vorbei'],
     valid:[['Das','ist','eben','so','—','daran','führt','kein','Weg','vorbei']], punct:'.' },
   { parts:['Du','kannst','ruhig','widersprechen','—','das','ist','erwünscht'],
@@ -532,15 +532,32 @@ function sbChipClick(chip){
   if(sbClickSelected) sbClickSelected.classList.remove('selected');
   sbClickSelected=chip; chip.classList.add('selected');
 }
-function sbCheckAuto(idx){
-  var row=document.getElementById('sb-row-'+idx); if(!row) return;
-  var words=Array.from(row.querySelectorAll('.chip')).map(function(c){ return c.dataset.orig; });
+function sbColorRow(idx){
+  var row=document.getElementById('sb-row-'+idx);
+  var chips=Array.from(row.querySelectorAll('.chip'));
+  var words=chips.map(function(c){ return c.dataset.orig; });
   var data=satzbauData[idx];
   var ok=data.valid.some(function(v){ return v.length===words.length&&v.every(function(w,i){ return w===words[i]; }); });
+  chips.forEach(function(c){ c.classList.remove('correct','incorrect'); c.classList.add(ok?'correct':'incorrect'); });
   row.classList.toggle('correct',ok); row.classList.toggle('incorrect',!ok&&words.length>0);
+  return ok;
+}
+function sbCheckAuto(idx){
+  var bank=document.getElementById('sb-bank-'+idx);
+  var row=document.getElementById('sb-row-'+idx);
   var fb=document.getElementById('sb-fb-'+idx);
-  if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
-  else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  if(!row) return;
+  if(bank&&bank.querySelectorAll('.chip').length>0){
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c){ c.classList.remove('correct','incorrect'); });
+    row.classList.remove('correct','incorrect');
+    fb.textContent=''; fb.className='satzbau-feedback';
+    return;
+  }
+  setTimeout(function(){
+    var ok=sbColorRow(idx);
+    if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
+    else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  },500);
 }
 function checkSbAllDone(){ if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3); }
 function sbShowSolution(idx){

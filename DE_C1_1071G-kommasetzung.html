@@ -40,8 +40,8 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 /* ── CONTROL-BAR (Timer + Buttons) ──────────────────────── */
 .timer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding: 6px 12px; background: #f8f9fa; border-radius: 8px; flex-wrap: wrap; gap: 6px; }
 .btn-row { display: flex; gap: 6px; }
-.btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: 4px 12px; font-size: 0.82em; color: #888; cursor: pointer; transition: all 0.15s; font-weight: 500; }
-.btn:hover { border-color: #667eea; color: #667eea; }
+.btn { background: #f5f7ff; border: 1px solid #c5cff5; border-radius: 8px; padding: 6px 16px; font-size: 0.85em; color: #667eea; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+.btn:hover { background: #667eea; color: white; border-color: #667eea; }
 .timer-display { display: flex; gap: 14px; font-size: 0.82em; color: #bbb; font-variant-numeric: tabular-nums; }
 
 /* ── ENTDECKUNGS-TAB ─────────────────────────────────────── */
@@ -169,14 +169,14 @@ input.correct + .vocab-hint { display: inline; }
     <h2>📖 Entdecken</h2>
     <div class="entdeck-intro">
       <h3>Betrachte diese Satzpaare — wo gehört das Komma, und was ist der Unterschied?</h3>
-      <p>❌ „Sie erklärte <span class="hl">dass</span> sie ablehnt."
-         &nbsp;&nbsp;✅ „Sie erklärte<span class="hl">,</span> dass sie ablehnt."</p>
-      <p>✅ „Er versuchte, die Aufgabe zu lösen."
-         &nbsp;&nbsp;❓ „Er versuchte die Aufgabe zu lösen." (fehlendes Komma vor erweiterter Infinitivgruppe)</p>
-      <p>❌ „<span class="hl">Das</span> er kommt, überrascht mich."
-         &nbsp;&nbsp;✅ „<span class="hl">Dass</span> er kommt, überrascht mich."</p>
-      <p>❌ „wider <span class="hl">Wiederholen</span>"
-         &nbsp;&nbsp;✅ „wider <span class="hl">Erwarten</span>" | „wieder <span class="hl">kommen</span>"</p>
+      <p>❌ „Sie erklärte <span class=“hl">dass</span> sie ablehnt."
+         &nbsp;&nbsp;✅ „Sie erklärte<span class=“hl">,</span> dass sie ablehnt."</p>
+      <p>✅ „Er versuchte, die Aufgabe zu lösen.“
+         &nbsp;&nbsp;❓ „Er versuchte die Aufgabe zu lösen.“ (fehlendes Komma vor erweiterter Infinitivgruppe)</p>
+      <p>❌ „<span class=“hl">Das</span> er kommt, überrascht mich."
+         &nbsp;&nbsp;✅ „<span class=“hl">Dass</span> er kommt, überrascht mich."</p>
+      <p>❌ „wider <span class=“hl">Wiederholen</span>"
+         &nbsp;&nbsp;✅ „wider <span class=“hl">Erwarten</span>" | „wieder <span class=“hl">kommen</span>"</p>
     </div>
 
     <div class="progress-dots">
@@ -191,17 +191,17 @@ input.correct + .vocab-hint { display: inline; }
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur wenn der Nebensatz länger als fünf Wörter ist.</button>
         <button class="mc-btn" onclick="mcCheck(0,this,true)">Immer — jeder Nebensatz wird durch Komma vom Hauptsatz abgegrenzt, unabhängig von seiner Länge.</button>
-        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur bei kausalen Nebensätzen mit „weil" oder „da".</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur bei kausalen Nebensätzen mit „weil“ oder „da“.</button>
         <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur wenn der Nebensatz vor dem Hauptsatz steht.</button>
       </div>
       <div class="mc-feedback" id="mcfb0"></div>
     </div>
 
     <div class="mc-step" id="mc-step1">
-      <h4>„Er bat sie, ihm zu helfen." — Warum steht hier ein Komma?</h4>
+      <h4>„Er bat sie, ihm zu helfen.“ — Warum steht hier ein Komma?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil „ihm" ein indirektes Objekt ist.</button>
-        <button class="mc-btn" onclick="mcCheck(1,this,true)">Weil „ihm zu helfen" eine erweiterte Infinitivgruppe ist, die durch „zu" eingeleitet wird und ein eigenes Objekt enthält.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil „ihm“ ein indirektes Objekt ist.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,true)">Weil „ihm zu helfen“ eine erweiterte Infinitivgruppe ist, die durch „zu“ eingeleitet wird und ein eigenes Objekt enthält.</button>
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil das Komma nach Verben des Bittens immer obligatorisch ist.</button>
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil der Infinitiv am Satzende steht.</button>
       </div>
@@ -209,7 +209,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step2">
-      <h4>„__ ist klar, dass er kommt." — Welches Wort fehlt am Satzanfang?</h4>
+      <h4>„__ ist klar, dass er kommt.“ — Welches Wort fehlt am Satzanfang?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(2,this,false)">Dass — denn der Nebensatz leitet den Satz ein.</button>
         <button class="mc-btn" onclick="mcCheck(2,this,true)">Es — als formales Subjekt, das auf den folgenden dass-Satz verweist.</button>
@@ -220,10 +220,10 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step3">
-      <h4>„Das Ergebnis ist besser als erwartet, __ es dennoch Kritik gibt." — Welche Konjunktion passt?</h4>
+      <h4>„Das Ergebnis ist besser als erwartet, __ es dennoch Kritik gibt.“ — Welche Konjunktion passt?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(3,this,false)">weil</button>
-        <button class="mc-btn" onclick="mcCheck(3,this,false)">obwohl — daher steht dann kein Komma vor „obwohl"</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">obwohl — daher steht dann kein Komma vor „obwohl“</button>
         <button class="mc-btn" onclick="mcCheck(3,this,true)">obwohl — das Komma steht korrekt vor der Konjunktion</button>
         <button class="mc-btn" onclick="mcCheck(3,this,false)">und — dann entfällt das Komma</button>
       </div>
@@ -239,11 +239,11 @@ input.correct + .vocab-hint { display: inline; }
         <li><strong>Partizipialgruppe:</strong> Komma bei erweiterter Partizipialgruppe: <em>Von der Nachricht überrascht, reagierte er kaum.</em></li>
         <li><strong>Einschübe / Appositionen:</strong> Werden beidseitig durch Komma abgetrennt: <em>Der Minister, ein erfahrener Jurist, lehnte ab.</em></li>
         <li><strong>dass ≠ das:</strong> <em>dass</em> = Konjunktion (Nebensatz einleitend). <em>das</em> = Artikel oder Relativpronomen.</li>
-        <li><strong>seit ≠ seid:</strong> <em>seit</em> = Präposition / Konjunktion (zeitlich). <em>seid</em> = 2. Pers. Pl. von „sein".</li>
+        <li><strong>seit ≠ seid:</strong> <em>seit</em> = Präposition / Konjunktion (zeitlich). <em>seid</em> = 2. Pers. Pl. von „sein“.</li>
         <li><strong>wider ≠ wieder:</strong> <em>wider</em> = gegen (<em>wider Erwarten</em>). <em>wieder</em> = erneut (<em>wieder kommen</em>).</li>
       </ul>
       <div class="rk-example">
-        <b>Faustregel dass/das:</b> Ersetze es durch „dieses" — geht das? → <em>das</em> (Artikel/Pronomen). Geht es nicht? → <em>dass</em> (Konjunktion).
+        <b>Faustregel dass/das:</b> Ersetze es durch „dieses“ — geht das? → <em>das</em> (Artikel/Pronomen). Geht es nicht? → <em>dass</em> (Konjunktion).
       </div>
     </div>
   </div>
@@ -522,15 +522,32 @@ function sbChipClick(chip){
   if(sbClickSelected) sbClickSelected.classList.remove('selected');
   sbClickSelected=chip; chip.classList.add('selected');
 }
-function sbCheckAuto(idx){
-  var row=document.getElementById('sb-row-'+idx); if(!row) return;
-  var words=Array.from(row.querySelectorAll('.chip')).map(function(c){ return c.dataset.orig; });
+function sbColorRow(idx){
+  var row=document.getElementById('sb-row-'+idx);
+  var chips=Array.from(row.querySelectorAll('.chip'));
+  var words=chips.map(function(c){ return c.dataset.orig; });
   var data=satzbauData[idx];
   var ok=data.valid.some(function(v){ return v.length===words.length&&v.every(function(w,i){ return w===words[i]; }); });
+  chips.forEach(function(c){ c.classList.remove('correct','incorrect'); c.classList.add(ok?'correct':'incorrect'); });
   row.classList.toggle('correct',ok); row.classList.toggle('incorrect',!ok&&words.length>0);
+  return ok;
+}
+function sbCheckAuto(idx){
+  var bank=document.getElementById('sb-bank-'+idx);
+  var row=document.getElementById('sb-row-'+idx);
   var fb=document.getElementById('sb-fb-'+idx);
-  if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
-  else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  if(!row) return;
+  if(bank&&bank.querySelectorAll('.chip').length>0){
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c){ c.classList.remove('correct','incorrect'); });
+    row.classList.remove('correct','incorrect');
+    fb.textContent=''; fb.className='satzbau-feedback';
+    return;
+  }
+  setTimeout(function(){
+    var ok=sbColorRow(idx);
+    if(ok){ fb.textContent='✓ Richtig!'; fb.className='satzbau-feedback correct'; checkSbAllDone(); }
+    else { fb.textContent=''; fb.className='satzbau-feedback'; }
+  },500);
 }
 function checkSbAllDone(){ if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3); }
 function sbShowSolution(idx){

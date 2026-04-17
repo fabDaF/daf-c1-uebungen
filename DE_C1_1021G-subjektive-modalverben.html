@@ -40,8 +40,8 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 /* ── CONTROL-BAR (Timer + Buttons) ──────────────────────── */
 .timer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding: 6px 12px; background: #f8f9fa; border-radius: 8px; flex-wrap: wrap; gap: 6px; }
 .btn-row { display: flex; gap: 6px; }
-.btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: 4px 12px; font-size: 0.82em; color: #888; cursor: pointer; transition: all 0.15s; font-weight: 500; }
-.btn:hover { border-color: #667eea; color: #667eea; }
+.btn { background: #f5f7ff; border: 1px solid #c5cff5; border-radius: 8px; padding: 6px 16px; font-size: 0.85em; color: #667eea; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+.btn:hover { background: #667eea; color: white; border-color: #667eea; }
 .timer-display { display: flex; gap: 14px; font-size: 0.82em; color: #bbb; font-variant-numeric: tabular-nums; }
 
 /* ── ENTDECKUNGS-TAB ─────────────────────────────────────── */
@@ -202,7 +202,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step1">
-      <h4>„Der Zeuge <em>soll</em> den Verdächtigen erkannt haben." — Was drückt <em>sollen</em> hier aus?</h4>
+      <h4>„Der Zeuge <em>soll</em> den Verdächtigen erkannt haben.“ — Was drückt <em>sollen</em> hier aus?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Eine Pflicht des Zeugen, etwas zu erkennen</button>
         <button class="mc-btn" onclick="mcCheck(1,this,false)">Die eigene Vermutung des Sprechers</button>
@@ -213,7 +213,7 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step" id="mc-step2">
-      <h4>„Er <em>will</em> von dem Vorfall nichts gewusst haben." — Wessen Aussage wird hier wiedergegeben?</h4>
+      <h4>„Er <em>will</em> von dem Vorfall nichts gewusst haben.“ — Wessen Aussage wird hier wiedergegeben?</h4>
       <div class="mc-options">
         <button class="mc-btn" onclick="mcCheck(2,this,false)">Die Aussage Dritter (Hörensagen)</button>
         <button class="mc-btn" onclick="mcCheck(2,this,false)">Die Schlussfolgerung des Sprechers aus Fakten</button>
