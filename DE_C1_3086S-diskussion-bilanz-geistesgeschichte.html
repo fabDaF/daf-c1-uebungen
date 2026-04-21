@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3086S – Diskussion: Bilanz &amp; Geistesgeschichte</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+.container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
+.header h1 { font-size: 2.2em; font-family: Georgia, 'Times New Roman', serif; color: white; margin-bottom: 8px; border: none; padding: 0; }
+.header p { font-size: 1.1em; font-family: Georgia, 'Times New Roman', serif; opacity: 0.95; color: rgba(255,255,255,0.9); margin: 0; }
+.header .big-emoji { font-size: 2.6em; display: block; margin-top: 8px; }
+.nav { display: flex; flex-wrap: nowrap; background: #f8f9fa; border-top: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+.nav-btn { flex: 1; padding: 14px 10px; text-align: center; cursor: pointer; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; transition: all 0.3s; font-size: 0.92em; font-weight: 500; color: #666; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.nav-btn:last-child { border-right: none; }
+.nav-btn:hover { background: #e9ecef; color: #495057; }
+.nav-btn.active { background: white; color: #667eea; font-weight: 700; border-bottom: 3px solid #667eea; }
+.nav-emoji { font-size: 1.3em; line-height: 1.2; }
+.nav-label { font-size: 0.78em; margin-top: 2px; line-height: 1.2; }
+.section { display: none; }
+.section.active { display: block; }
+.sec-inner { padding: 26px 30px 30px 30px; }
+.tab-banner { width: 100%; height: 180px; object-fit: cover; display: block; }
+h2 { font-family: Georgia, serif; color: #4a3a7a; margin-bottom: 14px; font-size: 1.35rem; }
+.section-title { font-size: 1.4em; font-weight: 700; color: #4a3a7a; font-family: Georgia, serif; margin-bottom: 10px; }
+.section-sub { color: #888; font-size: 0.92em; margin-bottom: 20px; line-height: 1.6; }
+.hilfe-box { background: #f0f4ff; border-left: 4px solid #667eea; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 22px; font-size: 0.9em; color: #444; line-height: 1.6; }
+.redemittel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.redemittel-card { background: #fff; border: 2px solid #e0e4f0; border-radius: 10px; padding: 16px 18px; }
+.redemittel-card h3 { color: #667eea; margin-bottom: 10px; font-size: 1em; border-bottom: 2px solid #eef1fc; padding-bottom: 6px; }
+.redemittel-card ul { list-style: none; padding: 0; }
+.redemittel-card ul li { padding: 6px 0; color: #444; font-size: 0.95em; line-height: 1.5; border-bottom: 1px solid #f8f9fc; }
+.redemittel-card ul li:last-child { border-bottom: none; }
+.redemittel-card ul li::before { content: "\25B8 "; color: #667eea; font-weight: bold; }
+.prompt-card { background: #fff; border: 2px solid #e0e4f0; border-left: 5px solid #667eea; border-radius: 10px; padding: 20px 22px; margin-bottom: 18px; }
+.prompt-card h3 { color: #667eea; margin-bottom: 10px; font-size: 1.1em; }
+.prompt-card p { color: #444; line-height: 1.65; font-size: 0.97em; margin-bottom: 8px; }
+.prompt-card .prompt-q { background: #eef1fc; padding: 10px 14px; border-radius: 6px; margin: 10px 0; color: #333; font-style: italic; line-height: 1.55; }
+.prompt-card .prompt-tip { color: #555; font-size: 0.9em; margin-top: 8px; background: #fafbff; padding: 8px 12px; border-radius: 6px; border-left: 3px solid #c5cae9; }
+.pro-con { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.pro-col, .con-col { background: #fff; border-radius: 10px; padding: 18px; border: 2px solid #e0e4f0; }
+.pro-col { border-left: 4px solid #4caf50; }
+.con-col { border-left: 4px solid #e74c3c; }
+.pro-col h3 { color: #27ae60; margin-bottom: 10px; }
+.con-col h3 { color: #c0392b; margin-bottom: 10px; }
+.pro-col ul, .con-col ul { padding-left: 18px; color: #444; line-height: 1.7; font-size: 0.94em; }
+.pro-col ul li, .con-col ul li { margin-bottom: 6px; }
+.rollen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.rolle-card { background: #fff; border: 2px solid #e0e4f0; border-radius: 10px; padding: 16px 18px; }
+.rolle-card h3 { color: #667eea; margin-bottom: 8px; font-size: 1em; }
+.rolle-card .rolle-emoji { font-size: 1.8em; display: block; margin-bottom: 6px; }
+.rolle-card p { font-size: 0.9em; color: #444; line-height: 1.55; }
+.thema-chip { display: inline-block; background: #e8eaf6; color: #3949ab; padding: 3px 10px; border-radius: 12px; font-size: 0.78em; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.thema-chip.kultur { background: #f3e5f5; color: #6a1b9a; }
+.thema-chip.merz { background: #e3f2fd; color: #1565c0; }
+@media (max-width: 600px) {
+  body { padding: 8px; }
+  .nav { flex-wrap: wrap; }
+  .nav-btn { flex: 1 1 33%; min-width: 0; font-size: 0.8em; padding: 10px 6px; border-right: 1px solid #ddd; }
+  .nav-btn:last-child { border-right: 1px solid #ddd; }
+  .pro-con { grid-template-columns: 1fr; }
+}
+.author-footer { text-align: center; margin-top: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; padding: 16px; font-size: 0.8rem; color: #aaa; }
+.author-footer a { color: #aaa; }
+.author-name { font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+  <h1>Diskussion: Bilanz &amp; Geistesgeschichte</h1>
+  <p style="font-family: Georgia, serif;">C1 – Lektion 3086S &nbsp;|&nbsp; Redemittel, Sprechanlässe, Rollenspiel</p>
+  <div class="big-emoji">🗣️</div>
+</div>
+
+<div class="nav">
+  <div class="nav-btn active" onclick="showSection(0)"><span class="nav-emoji">🗣️</span><span class="nav-label">Redemittel</span></div>
+  <div class="nav-btn" onclick="showSection(1)"><span class="nav-emoji">💬</span><span class="nav-label">Sprechanlässe</span></div>
+  <div class="nav-btn" onclick="showSection(2)"><span class="nav-emoji">❓</span><span class="nav-label">Diskussion</span></div>
+  <div class="nav-btn" onclick="showSection(3)"><span class="nav-emoji">⚖️</span><span class="nav-label">Pro &amp; Contra</span></div>
+  <div class="nav-btn" onclick="showSection(4)"><span class="nav-emoji">🎭</span><span class="nav-label">Rollenspiel</span></div>
+</div>
+
+<!-- ═══════════════════ TAB 0: REDEMITTEL ═══════════════════ -->
+<div class="section active" id="sec-0">
+  <img src="https://images.pexels.com/photos/1181532/pexels-photo-1181532.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Diskussion">
+  <div class="sec-inner">
+    <div class="section-title">🗣️ Redemittel für Bilanz und historische Bewertung</div>
+    <div class="section-sub">Nützliche Wendungen, um Einschätzungen zu begründen, Positionen zu vergleichen und rückblickend zu bewerten.</div>
+
+    <div class="redemittel-grid">
+      <div class="redemittel-card">
+        <h3>Eine Bilanz ziehen</h3>
+        <ul>
+          <li>Nach zwölf Monaten lässt sich folgende Bilanz ziehen: …</li>
+          <li>Unter dem Strich bleibt festzuhalten, dass …</li>
+          <li>Die Regierung hat einen Teil ihrer Versprechen eingelöst, andere jedoch …</li>
+          <li>Im Rückblick zeigt sich, dass …</li>
+          <li>Das Urteil fällt differenziert aus.</li>
+        </ul>
+      </div>
+      <div class="redemittel-card">
+        <h3>Zustimmen &amp; Widersprechen</h3>
+        <ul>
+          <li>Dem kann ich nur zustimmen, weil …</li>
+          <li>Da bin ich anderer Ansicht: …</li>
+          <li>Dem möchte ich in dieser Schärfe widersprechen.</li>
+          <li>In einem Punkt gebe ich dir recht, aber …</li>
+          <li>Das sehe ich grundsätzlich anders.</li>
+        </ul>
+      </div>
+      <div class="redemittel-card">
+        <h3>Position begründen</h3>
+        <ul>
+          <li>Meiner Ansicht nach liegt das daran, dass …</li>
+          <li>Der entscheidende Grund ist, dass …</li>
+          <li>Dafür spricht vor allem, dass …</li>
+          <li>Aus zwei Gründen halte ich das für richtig: erstens …, zweitens …</li>
+          <li>Ich stütze mich dabei auf …</li>
+        </ul>
+      </div>
+      <div class="redemittel-card">
+        <h3>Historisch einordnen</h3>
+        <ul>
+          <li>Im historischen Vergleich zeigt sich, dass …</li>
+          <li>Das erinnert an die Situation nach 1968, als …</li>
+          <li>Schon in der Aufklärung hat man …</li>
+          <li>Die Parallele zur Reformation liegt darin, dass …</li>
+          <li>In einer längeren Perspektive betrachtet …</li>
+        </ul>
+      </div>
+      <div class="redemittel-card">
+        <h3>Abwägen</h3>
+        <ul>
+          <li>Einerseits …, andererseits …</li>
+          <li>Das spricht für …, das dagegen, dass …</li>
+          <li>Man muss hier zwischen … und … unterscheiden.</li>
+          <li>Auf den ersten Blick … , bei näherer Betrachtung jedoch …</li>
+          <li>Es kommt darauf an, aus welcher Perspektive man das beurteilt.</li>
+        </ul>
+      </div>
+      <div class="redemittel-card">
+        <h3>Schlussfolgern</h3>
+        <ul>
+          <li>Daraus ziehe ich den Schluss, dass …</li>
+          <li>Unter dem Strich bedeutet das …</li>
+          <li>Am Ende bleibt der Eindruck, dass …</li>
+          <li>Für die Zukunft heißt das …</li>
+          <li>Wenn man das ernst nimmt, folgt daraus, dass …</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hilfe-box">
+      <strong>Tipp:</strong> Verwende pro Beitrag zwei bis drei dieser Wendungen. Wer jeden Satz mit „ich finde“ oder „meiner Meinung nach“ beginnt, wirkt auf C1-Niveau ungenau. Variiere bewusst.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 1: SPRECHANLÄSSE ═══════════════════ -->
+<div class="section" id="sec-1">
+  <img src="https://images.pexels.com/photos/1181435/pexels-photo-1181435.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Gespräch">
+  <div class="sec-inner">
+    <div class="section-title">💬 Sprechanlässe</div>
+    <div class="section-sub">Kurze Impulse für gelenkte Gespräche. Jede Aufgabe kombiniert einen konkreten Befund mit einer offenen Frage — so bekommt die Antwort Substanz.</div>
+
+    <div class="prompt-card">
+      <span class="thema-chip merz">Politik</span>
+      <h3>1 · Aktivrente — Symbol oder Substanz?</h3>
+      <p>Die Merz-Regierung hat als erstes großes Reformgesetz die Aktivrente umgesetzt: Rentnerinnen und Rentner, die freiwillig weiterarbeiten, können bis zu 2000 € im Monat steuerfrei dazuverdienen. Das Gesetz trat am 1. Januar 2026 in Kraft.</p>
+      <div class="prompt-q">Ist die Aktivrente eher ein arbeitsmarktpolitisches Instrument oder ein symbolisches Versprechen an die ältere Wählerschaft? Begründe deine Einschätzung.</div>
+      <div class="prompt-tip">Verwende mindestens eine Redemittel-Wendung zum Abwägen und eine zum Schlussfolgern.</div>
+    </div>
+
+    <div class="prompt-card">
+      <span class="thema-chip kultur">Geistesgeschichte</span>
+      <h3>2 · Luthers Thesenanschlag 1517 — Provokation oder Plan?</h3>
+      <p>Als Martin Luther 1517 seine 95 Thesen gegen den Ablasshandel veröffentlichte, war das ursprünglich eine theologische Intervention. Innerhalb weniger Jahre wurde daraus die Reformation — eine der tiefsten Brüche der europäischen Geschichte.</p>
+      <div class="prompt-q">War Luther ein strategischer Reformer oder jemand, der die eigene Wirkung selbst unterschätzt hat? Welche Hinweise sprechen für deine Lesart?</div>
+      <div class="prompt-tip">Verwende Redemittel zum historischen Einordnen.</div>
+    </div>
+
+    <div class="prompt-card">
+      <span class="thema-chip merz">Politik</span>
+      <h3>3 · Migration und das Bundesverfassungsgericht</h3>
+      <p>Die Regierung Merz setzte an den Binnengrenzen großflächige Zurückweisungen durch. Im Februar 2026 stellte das Bundesverfassungsgericht fest, dass Teile dieser Praxis europarechtlich fragwürdig sind.</p>
+      <div class="prompt-q">Wie bewertest du das Spannungsverhältnis zwischen Regierungshandeln und Verfassungsgericht? Soll die Exekutive nachgeben, oder ist die Reibung der Preis für Durchsetzung?</div>
+      <div class="prompt-tip">Formuliere in zwei Schritten: erst Beschreibung der Lage, dann Bewertung.</div>
+    </div>
+
+    <div class="prompt-card">
+      <span class="thema-chip kultur">Geistesgeschichte</span>
+      <h3>4 · „Habe Mut, dich deines eigenen Verstandes zu bedienen“</h3>
+      <p>Kant definierte 1784 die Aufklärung als „Ausgang des Menschen aus seiner selbstverschuldeten Unmündigkeit“. Mündigkeit heißt für ihn: selbst denken, nicht bloß übernehmen.</p>
+      <div class="prompt-q">Wo siehst du in der heutigen Mediengesellschaft neue Formen von „Unmündigkeit“? Und wo eher neue Formen von Mündigkeit?</div>
+      <div class="prompt-tip">Baue eine Brücke zwischen historischem Begriff und Gegenwart. Nutze Redemittel zum historischen Einordnen.</div>
+    </div>
+
+    <div class="prompt-card">
+      <span class="thema-chip merz">Politik</span>
+      <h3>5 · Die verwässerte Bürgergeld-Reform</h3>
+      <p>Die geplante Verschärfung des Bürgergelds zur „Neuen Grundsicherung“ verlor auf dem Weg durch Bundestag und Vermittlungsausschuss viele ihrer harten Kanten. Kritiker sprechen von einer verwässerten Reform, die Regierung von einem „tragfähigen Kompromiss“.</p>
+      <div class="prompt-q">Ist ein Kompromiss immer ein Erfolg — oder manchmal nur der kleinste gemeinsame Nenner?</div>
+      <div class="prompt-tip">Verwende Redemittel zum Abwägen und zum Widersprechen.</div>
+    </div>
+
+    <div class="prompt-card">
+      <span class="thema-chip kultur">Geistesgeschichte</span>
+      <h3>6 · 1968 — Kulturrevolution oder Kurzschluss?</h3>
+      <p>Die Studentenbewegung von 1968 hat in Deutschland Hochschulreform, Familienrecht, Sexualität und Erinnerungskultur dauerhaft verändert. Kritiker sehen darin auch den Ursprung einer Moralisierung der Öffentlichkeit, die bis heute wirkt.</p>
+      <div class="prompt-q">Was ist das nachhaltigste Erbe von 1968 — das emanzipatorische oder das moralisierende? Begründe mit einem konkreten Beispiel.</div>
+      <div class="prompt-tip">Nutze das Redemittel „In einer längeren Perspektive betrachtet …“.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 2: DISKUSSIONSFRAGEN ═══════════════════ -->
+<div class="section" id="sec-2">
+  <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Gruppendiskussion">
+  <div class="sec-inner">
+    <div class="section-title">❓ Diskussionsfragen</div>
+    <div class="section-sub">Offene Fragen für Paar- oder Gruppengespräche. Jede Frage darf 3–5 Minuten diskutiert werden — keine schnellen Antworten.</div>
+
+    <div class="prompt-card">
+      <h3>1 · Sollte ein Regierungschef nach zwölf Monaten Rechenschaft ablegen?</h3>
+      <div class="prompt-q">Ist eine öffentliche Zwischenbilanz ein Stabilitätsanker oder eine populistische Ritualfigur?</div>
+    </div>
+
+    <div class="prompt-card">
+      <h3>2 · Welche historische Epoche hätte Deutschland gut getan, wenn sie länger gedauert hätte?</h3>
+      <div class="prompt-q">Weimarer Klassik, Aufklärung, 1968-Jahre — oder eine andere? Warum?</div>
+    </div>
+
+    <div class="prompt-card">
+      <h3>3 · Wahlversprechen: moralische Pflicht oder strategisches Angebot?</h3>
+      <div class="prompt-q">Darf man ein Versprechen an Umstände anpassen, oder gilt: Wort ist Wort?</div>
+    </div>
+
+    <div class="prompt-card">
+      <h3>4 · Nominalstil in politischen Reden — Präzision oder Verschleierung?</h3>
+      <div class="prompt-q">Wenn ein Politiker von „Maßnahmen zur Prüfung der Verfahrensanforderungen“ spricht: Klarheit oder Nebel?</div>
+    </div>
+
+    <div class="prompt-card">
+      <h3>5 · Braucht jede Generation ihre eigene Aufklärung?</h3>
+      <div class="prompt-q">Oder ist der Begriff „Aufklärung“ historisch abgeschlossen und gehört ins Museum?</div>
+    </div>
+
+    <div class="prompt-card">
+      <h3>6 · Welche Rolle spielt Sprache im politischen Urteil?</h3>
+      <div class="prompt-q">Beeinflusst die Wahl eines Wortes („Zurückweisung“ vs. „Abschiebung“, „Reform“ vs. „Kürzung“) die politische Bewertung — oder folgt die Sprache der Sache?</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 3: PRO & CONTRA ═══════════════════ -->
+<div class="section" id="sec-3">
+  <img src="https://images.pexels.com/photos/6077327/pexels-photo-6077327.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Waage">
+  <div class="sec-inner">
+    <div class="section-title">⚖️ Pro &amp; Contra</div>
+    <div class="section-sub">Zwei Thesen im Austausch: jeweils die besten Argumente beider Seiten. Bestimmt pro Person eine Seite und diskutiert drei Minuten ohne Unterbrechung.</div>
+
+    <h2 style="margin-top:10px;">Streitfrage A — Aktivrente bis 2000 € steuerfrei</h2>
+    <div class="pro-con">
+      <div class="pro-col">
+        <h3>Pro</h3>
+        <ul>
+          <li>Fachkräftemangel: erfahrene Köpfe bleiben länger im Arbeitsmarkt.</li>
+          <li>Kein Zwang — wer nicht will, muss nicht.</li>
+          <li>Entlastet die Sozialkassen, weil Beiträge weiter fließen.</li>
+          <li>Anerkennung: Arbeit im Alter wird wertgeschätzt, nicht bestraft.</li>
+          <li>Setzt einen liberalen Kontrapunkt zur Frühverrentungsmentalität.</li>
+        </ul>
+      </div>
+      <div class="con-col">
+        <h3>Contra</h3>
+        <ul>
+          <li>Begünstigt tendenziell Besserverdiener, die gesund weiterarbeiten können.</li>
+          <li>Steuerausfälle, die anderswo fehlen.</li>
+          <li>Arbeitsmarktpolitik via Steuerprivileg ist unsauber.</li>
+          <li>Jüngere könnten sich zurückgesetzt fühlen: Warum Privileg nur für Alte?</li>
+          <li>Verschiebt das Problem, statt die Rente strukturell zu reformieren.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 style="margin-top:20px;">Streitfrage B — „Die Aufklärung ist unvollendet“</h2>
+    <div class="pro-con">
+      <div class="pro-col">
+        <h3>Pro (unvollendet)</h3>
+        <ul>
+          <li>Medienmanipulation und Verschwörungserzählungen zeigen, dass Mündigkeit brüchig bleibt.</li>
+          <li>Aufklärung ist Prozess, kein Zustand — jede Generation muss sie neu erringen.</li>
+          <li>Neue Themen (KI, Klima, Bioethik) verlangen nach aufklärerischem Denken.</li>
+          <li>Habermas, Honneth und andere argumentieren explizit für ein „Projekt Moderne“, das weitergeht.</li>
+        </ul>
+      </div>
+      <div class="con-col">
+        <h3>Contra (abgeschlossen oder überholt)</h3>
+        <ul>
+          <li>Der historische Kontext (absolutistische Fürsten, Kirche als Machtfaktor) ist heute verschwunden.</li>
+          <li>Der universale Vernunftbegriff wurde postkolonial und feministisch zurecht kritisiert.</li>
+          <li>Moderne Gesellschaften brauchen andere Werkzeuge als reinen Rationalismus.</li>
+          <li>Die Aufklärung selbst hat problematische Schattenseiten (Rassentheorien, Eurozentrik).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 4: ROLLENSPIEL ═══════════════════ -->
+<div class="section" id="sec-4">
+  <img src="https://images.pexels.com/photos/7103129/pexels-photo-7103129.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Pressekonferenz">
+  <div class="sec-inner">
+    <div class="section-title">🎭 Rollenspiel: Pressekonferenz „Ein Jahr Merz“</div>
+    <div class="section-sub">
+      Ein Jahr nach dem Amtsantritt hält das Bundeskanzleramt eine Pressekonferenz zur Bilanz. Drei Rollen, drei Positionen, 10 bis 15 Minuten Gespräch. Eine Person moderiert.
+    </div>
+
+    <div class="rollen-grid">
+      <div class="rolle-card">
+        <span class="rolle-emoji">🎙️</span>
+        <h3>Moderator:in</h3>
+        <p>Begrüßt, stellt die Themenschwerpunkte vor (Aktivrente, Migration, Bürgergeld), verteilt das Wort, fasst am Ende zusammen. Verwendet Bilanz-Redemittel.</p>
+      </div>
+      <div class="rolle-card">
+        <span class="rolle-emoji">🏛️</span>
+        <h3>Regierungssprecher:in</h3>
+        <p>Verteidigt die Bilanz. Betont Umgesetztes (Aktivrente, Migration), relativiert Verzögertes (Körperschaftsteuer) und spricht vom „tragfähigen Kompromiss“ beim Bürgergeld.</p>
+      </div>
+      <div class="rolle-card">
+        <span class="rolle-emoji">📰</span>
+        <h3>Oppositionsjournalist:in</h3>
+        <p>Fragt nach den nicht eingelösten Versprechen. Konfrontiert mit dem BVerfG-Urteil zur Migration und der verwässerten Bürgergeld-Reform. Hakt nach, wenn Antworten ausweichen.</p>
+      </div>
+      <div class="rolle-card">
+        <span class="rolle-emoji">🎓</span>
+        <h3>Politikwissenschaftler:in</h3>
+        <p>Ordnet historisch ein. Vergleicht mit früheren „100-Tage-“ und „Jahresbilanzen“, verweist auf die Aufklärungs-Idee von Rechenschaft und Öffentlichkeit. Bleibt überparteilich.</p>
+      </div>
+    </div>
+
+    <div class="hilfe-box" style="margin-top:20px;">
+      <strong>Ablauf-Vorschlag:</strong><br>
+      (1) Moderator:in eröffnet (1 Minute).<br>
+      (2) Regierungssprecher:in gibt kurzen Bilanz-Überblick (2 Minuten).<br>
+      (3) Journalist:in stellt zwei kritische Fragen (3 Minuten Dialog).<br>
+      (4) Politikwissenschaftler:in ordnet ein (2 Minuten).<br>
+      (5) Offene Runde, alle Rollen (3 Minuten).<br>
+      (6) Moderator:in schließt mit einer Bilanz-Wendung.
+    </div>
+
+    <div class="hilfe-box">
+      <strong>Nach dem Spiel:</strong> Feedback in zwei Schritten. Erst: Welche Redemittel wurden gut verwendet? Dann: Welche Passage war besonders überzeugend — warum?
+    </div>
+  </div>
+</div>
+
+<div class="author-footer">
+  <span class="author-name">&copy; Frank Burkert</span> &middot; DaF-Materialien &middot;
+  <a href="mailto:FrankBurkert@fabdaf.onmicrosoft.com">FrankBurkert@fabdaf.onmicrosoft.com</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+function showSection(idx) {
+  document.querySelectorAll('.section').forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+  document.querySelectorAll('.nav-btn').forEach(function(b,i){ b.classList.toggle('active', i===idx); });
+}
+</script>
+</body>
+</html>
