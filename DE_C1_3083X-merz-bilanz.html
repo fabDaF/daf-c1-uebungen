@@ -154,6 +154,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 .satzbau-feedback { font-size: 0.9em; font-weight: 600; margin-top: 6px; min-height: 1.2em; }
 .satzbau-feedback.correct { color: #27ae60; }
 .satzbau-feedback.incorrect { color: #e74c3c; }
+.sb-punkt { font-size: 1.1em; font-weight: 700; color: #27ae60; margin-left: 2px; align-self: center; user-select: none; }
 
 /* Wortschatz */
 #wortschatzContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -849,6 +850,14 @@ function sbCheckAuto(idx) {
   var attempt = chips.map(function(c){ return c.dataset.word; });
   var correct = attempt.join(' ') === item.valid.join(' ');
   builder.className = correct ? 'sentence-builder correct' : 'sentence-builder incorrect';
+  var oldPunkt = builder.querySelector('.sb-punkt');
+  if (oldPunkt) oldPunkt.parentNode.removeChild(oldPunkt);
+  if (correct) {
+    var punkt = document.createElement('span');
+    punkt.className = 'sb-punkt';
+    punkt.textContent = item.punct || '.';
+    builder.appendChild(punkt);
+  }
   if (fb) {
     var sentence = item.valid.join(' ');
     sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
@@ -876,6 +885,12 @@ function sbShowSolution() {
     chips.forEach(function(c){ builder.appendChild(c); });
     sbUpdateCapitalization(builder);
     builder.className = 'sentence-builder correct';
+    var oldPunkt = builder.querySelector('.sb-punkt');
+    if (oldPunkt) oldPunkt.parentNode.removeChild(oldPunkt);
+    var punkt = document.createElement('span');
+    punkt.className = 'sb-punkt';
+    punkt.textContent = item.punct || '.';
+    builder.appendChild(punkt);
     var fb = document.getElementById('sfb-'+idx);
     var sentence = item.valid.join(' ');
     sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
@@ -889,6 +904,8 @@ function sbReset() {
     var builder = document.getElementById('builder-'+idx);
     var fb = document.getElementById('sfb-'+idx);
     if (!chipsBox || !builder) return;
+    var oldPunkt = builder.querySelector('.sb-punkt');
+    if (oldPunkt) oldPunkt.parentNode.removeChild(oldPunkt);
     Array.from(builder.querySelectorAll('.chip')).forEach(function(c){
       c.textContent = c.dataset.word;
       chipsBox.appendChild(c);
