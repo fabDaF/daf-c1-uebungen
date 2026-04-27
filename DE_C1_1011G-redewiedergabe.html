@@ -303,9 +303,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
     <div class="hilfe-box">
       <strong>Aufgabe:</strong> Setze die richtige Konjunktiv-I-Form (oder Ersatzform mit Konjunktiv II) ein.
     </div>
-    <div class="wortkasten">
-      <b>Hilfen:</b> sei &nbsp;·&nbsp; seien &nbsp;·&nbsp; habe &nbsp;·&nbsp; hätten &nbsp;·&nbsp; werde &nbsp;·&nbsp; würden &nbsp;·&nbsp; gehe &nbsp;·&nbsp; müsse &nbsp;·&nbsp; könne &nbsp;·&nbsp; gebe
-    </div>
+    <div class="wortkasten"><b>Hilfen:</b> habe &nbsp;·&nbsp; sei &nbsp;·&nbsp; werde &nbsp;·&nbsp; stehe &nbsp;·&nbsp; bemühe &nbsp;·&nbsp; könnten</div>
     <div id="luecken-container"></div>
   </div>
 </div>
@@ -348,7 +346,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
       </div>
     </div>
     <div class="hilfe-box">
-      <strong>Aufgabe:</strong> Tippe das deutsche Verb des Sagens bzw. den Konnektor zur passenden Bedeutung.
+      <strong>Aufgabe:</strong> Tippe das deutsche Verb (oder den Konnektor) zur Bedeutungs-Beschreibung.
     </div>
     <div id="vocabContainer"></div>
   </div>
@@ -440,18 +438,18 @@ var draggedChip = null;
 var selectedChip = null;
 
 var ZUO_DATA = [
-  {"text":"betonen","cat":"aktiv"},
-  {"text":"unterstreichen","cat":"aktiv"},
-  {"text":"beteuern","cat":"aktiv"},
-  {"text":"hervorheben","cat":"aktiv"},
-  {"text":"versichern","cat":"aktiv"},
-  {"text":"klarstellen","cat":"aktiv"},
-  {"text":"behaupten","cat":"passiv"},
-  {"text":"mutmaßen","cat":"passiv"},
-  {"text":"vorgeben","cat":"passiv"},
-  {"text":"suggerieren","cat":"passiv"},
-  {"text":"unterstellen","cat":"passiv"},
-  {"text":"raunen","cat":"passiv"}
+  { id:'z1',  text:'betonen',        cat:'aktiv'  },
+  { id:'z2',  text:'unterstreichen', cat:'aktiv'  },
+  { id:'z3',  text:'beteuern',       cat:'aktiv'  },
+  { id:'z4',  text:'hervorheben',    cat:'aktiv'  },
+  { id:'z5',  text:'versichern',     cat:'aktiv'  },
+  { id:'z6',  text:'klarstellen',    cat:'aktiv'  },
+  { id:'z7',  text:'behaupten',      cat:'passiv' },
+  { id:'z8',  text:'mutmaßen',       cat:'passiv' },
+  { id:'z9',  text:'vorgeben',       cat:'passiv' },
+  { id:'z10', text:'suggerieren',    cat:'passiv' },
+  { id:'z11', text:'unterstellen',   cat:'passiv' },
+  { id:'z12', text:'raunen',         cat:'passiv' }
 ];
 
 function initZuo() {
@@ -526,30 +524,16 @@ function resetZuo() { initZuo(); }
 
 // ── Lückentext (Tab 2) ───────────────────────────────────────
 var LUECKEN = [
-  {
-    "text":"Die Wirtschaftsweise erklärte, die deutsche Konjunktur ___ sich zwar erholt, doch das Wachstum ___ schwach.",
-    "loesungen":["habe","sei"]
-  },
-  {
-    "text":"Der Sprecher des Auswärtigen Amtes betonte, man ___ sich weiterhin um diplomatische Lösungen, doch ein Durchbruch ___ noch nicht in Sicht.",
-    "loesungen":["bemühe","sei"]
-  },
-  {
-    "text":"Die Klägerin behauptete vor Gericht, sie ___ den Vertrag nie unterschrieben und ___ von dessen Inhalt erst durch die Presse erfahren.",
-    "loesungen":["habe","habe"]
-  },
-  {
-    "text":"Forscher des Max-Planck-Instituts mutmaßen, die neuen Erkenntnisse ___ die bisherigen Theorien grundlegend infrage stellen.",
-    "loesungen":["könnten"]
-  },
-  {
-    "text":"Die Vorständin räumte ein, das Unternehmen ___ in den vergangenen zwei Jahren strategische Fehler begangen, ___ aber bereits umfassende Korrekturen eingeleitet.",
-    "loesungen":["habe","habe"]
-  },
-  {
-    "text":"Der Wahlforscher gab zu bedenken, die Mehrheit der Befragten ___ skeptisch, ob die angekündigten Reformen tatsächlich umgesetzt ___.",
-    "loesungen":["sei","würden"]
-  }
+  { id:1,  before:'Die Wirtschaftsweise erklärte, die deutsche Konjunktur ', answer:'habe', after:' sich zwar erholt, doch das Wachstum sei nach wie vor schwach.' },
+  { id:2,  before:'Der Sprecher des Auswärtigen Amtes betonte, man ',       answer:'bemühe', after:' sich weiterhin um diplomatische Lösungen.' },
+  { id:3,  before:'Die Klägerin behauptete vor Gericht, sie ',               answer:'habe', after:' den Vertrag nie unterschrieben.' },
+  { id:4,  before:'Forscher des Max-Planck-Instituts mutmaßen, die neuen Erkenntnisse ', answer:'könnten', after:' die bisherigen Theorien grundlegend infrage stellen.' },
+  { id:5,  before:'Die Vorständin räumte ein, das Unternehmen ',             answer:'habe', after:' in den vergangenen zwei Jahren strategische Fehler begangen.' },
+  { id:6,  before:'Der Wahlforscher gab zu bedenken, die Mehrheit der Befragten ', answer:'sei', after:' skeptisch hinsichtlich der angekündigten Reformen.' },
+  { id:7,  before:'Die Ministerin versicherte, die Reform ',                 answer:'werde', after:' keine Mehrkosten für die Steuerzahler verursachen.' },
+  { id:8,  before:'Der Bürgermeister erklärte, das Projekt ',                answer:'sei', after:' termingerecht abgeschlossen worden.' },
+  { id:9,  before:'Der Sprecher fragte die Vorsitzende, ob sie zu weiteren Anhörungen bereit ', answer:'sei', after:'.' },
+  { id:10, before:'Die Kanzlerin ließ wissen, Deutschland ',                 answer:'stehe', after:' fest zu seinen europäischen Bündnispartnern.' }
 ];
 
 function initLuecken() {
@@ -589,12 +573,12 @@ function resetLuecken() { initLuecken(); }
 
 // ── Satzbau (Tab 3) — Standard satzbau-drag-drop ─────────────
 var satzbauData = [
-  {"words":["der","Vorstand","ließ","verlauten",",","man","sehe","sich","gezwungen",",","Stellen","abzubauen","."]},
-  {"words":["die","Ministerin","betonte",",","die","Reform","werde","keine","Mehrkosten","verursachen","."]},
-  {"words":["der","Bürgermeister","räumte","ein",",","die","Sanierung","habe","länger","gedauert","als","geplant","."]},
-  {"words":["die","Kanzlerin","versicherte",",","Deutschland","stehe","fest","zu","seinen","Bündnispartnern","."]},
-  {"words":["der","Sprecher","fragte",",","ob","es","weitere","Stellungnahmen","gebe","."]},
-  {"words":["die","Klägerin","behauptete",",","sie","sei","zu","keinem","Zeitpunkt","über","das","Risiko","aufgeklärt","worden","."]}
+  { parts:['der','Vorstand','ließ','verlauten',',','man','sehe','sich','gezwungen',',','Stellen','abzubauen','.'] },
+  { parts:['die','Ministerin','betonte',',','die','Reform','werde','keine','Mehrkosten','verursachen','.'] },
+  { parts:['der','Bürgermeister','räumte','ein',',','die','Sanierung','habe','länger','gedauert','als','geplant','.'] },
+  { parts:['die','Kanzlerin','versicherte',',','Deutschland','stehe','fest','zu','seinen','Bündnispartnern','.'] },
+  { parts:['der','Sprecher','fragte',',','ob','es','weitere','Stellungnahmen','gebe','.'] },
+  { parts:['die','Klägerin','behauptete',',','sie','sei','zu','keinem','Zeitpunkt','informiert','worden','.'] }
 ];
 
 var sbDragged = null;
@@ -850,20 +834,20 @@ function resetSatzbau() { initSatzbau(); }
 
 // ── Wortschatz (Tab 4) ───────────────────────────────────────
 var WORTSCHATZ = [
-  {"de":"betonen","hint":"nachdrücklich hervorheben"},
-  {"de":"unterstreichen","hint":"die Bedeutung von etw. besonders deutlich machen"},
-  {"de":"hervorheben","hint":"einen Aspekt auffällig machen"},
-  {"de":"einräumen","hint":"widerstrebend zugeben"},
-  {"de":"eingestehen","hint":"einen Fehler/eine Schwäche offen zugeben"},
-  {"de":"klarstellen","hint":"einen Sachverhalt unmissverständlich deutlich machen"},
-  {"de":"behaupten","hint":"etw. ohne Beweis als wahr ausgeben"},
-  {"de":"mutmaßen","hint":"vermuten, ohne sicher zu sein"},
-  {"de":"vorgeben","hint":"etw. fälschlich als Begründung anführen"},
-  {"de":"suggerieren","hint":"unterschwellig nahelegen"},
-  {"de":"verlautbaren","hint":"offiziell mitteilen (formell)"},
-  {"de":"erläutern","hint":"detailliert erklären"},
-  {"de":"vortragen","hint":"einen Sachverhalt geordnet darlegen"},
-  {"de":"zumal","hint":"Konnektor: vor allem deshalb, weil"}
+  { id:1,  en:'nachdrücklich hervorheben',                       de:'betonen' },
+  { id:2,  en:'die Bedeutung von etw. besonders deutlich machen', de:'unterstreichen' },
+  { id:3,  en:'einen Aspekt auffällig machen',                   de:'hervorheben' },
+  { id:4,  en:'widerstrebend zugeben',                            de:'einräumen' },
+  { id:5,  en:'einen Fehler offen zugeben',                       de:'eingestehen' },
+  { id:6,  en:'einen Sachverhalt unmissverständlich deutlich machen', de:'klarstellen' },
+  { id:7,  en:'etw. ohne Beweis als wahr ausgeben',               de:'behaupten' },
+  { id:8,  en:'vermuten, ohne sicher zu sein',                    de:'mutmaßen' },
+  { id:9,  en:'etw. fälschlich als Begründung anführen',          de:'vorgeben' },
+  { id:10, en:'unterschwellig nahelegen',                         de:'suggerieren' },
+  { id:11, en:'offiziell mitteilen (formell, gehoben)',           de:'verlautbaren' },
+  { id:12, en:'detailliert erklären',                             de:'erläutern' },
+  { id:13, en:'einen Sachverhalt geordnet darlegen',              de:'vortragen' },
+  { id:14, en:'Konnektor: vor allem deshalb, weil',               de:'zumal' }
 ];
 
 function initVocab() {
