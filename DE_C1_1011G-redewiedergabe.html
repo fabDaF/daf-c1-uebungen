@@ -573,12 +573,18 @@ function resetLuecken() { initLuecken(); }
 
 // ── Satzbau (Tab 3) — Standard satzbau-drag-drop ─────────────
 var satzbauData = [
-  { parts:['der','Vorstand','ließ','verlauten',',','man','sehe','sich','gezwungen',',','Stellen','abzubauen','.'] },
-  { parts:['die','Ministerin','betonte',',','die','Reform','werde','keine','Mehrkosten','verursachen','.'] },
-  { parts:['der','Bürgermeister','räumte','ein',',','die','Sanierung','habe','länger','gedauert','als','geplant','.'] },
-  { parts:['die','Kanzlerin','versicherte',',','Deutschland','stehe','fest','zu','seinen','Bündnispartnern','.'] },
-  { parts:['der','Sprecher','fragte',',','ob','es','weitere','Stellungnahmen','gebe','.'] },
-  { parts:['die','Klägerin','behauptete',',','sie','sei','zu','keinem','Zeitpunkt','informiert','worden','.'] }
+  { parts:['der','Vorstand','ließ','verlauten',',','man','sehe','sich','gezwungen',',','Stellen','abzubauen'],
+    valid:[['der','Vorstand','ließ','verlauten',',','man','sehe','sich','gezwungen',',','Stellen','abzubauen']], punct:'.' },
+  { parts:['die','Ministerin','betonte',',','die','Reform','werde','keine','Mehrkosten','verursachen'],
+    valid:[['die','Ministerin','betonte',',','die','Reform','werde','keine','Mehrkosten','verursachen']], punct:'.' },
+  { parts:['der','Bürgermeister','räumte','ein',',','die','Sanierung','habe','länger','gedauert','als','geplant'],
+    valid:[['der','Bürgermeister','räumte','ein',',','die','Sanierung','habe','länger','gedauert','als','geplant']], punct:'.' },
+  { parts:['die','Kanzlerin','versicherte',',','Deutschland','stehe','fest','zu','seinen','Bündnispartnern'],
+    valid:[['die','Kanzlerin','versicherte',',','Deutschland','stehe','fest','zu','seinen','Bündnispartnern']], punct:'.' },
+  { parts:['der','Sprecher','fragte',',','ob','es','weitere','Stellungnahmen','gebe'],
+    valid:[['der','Sprecher','fragte',',','ob','es','weitere','Stellungnahmen','gebe']], punct:'.' },
+  { parts:['die','Klägerin','behauptete',',','sie','sei','zu','keinem','Zeitpunkt','informiert','worden'],
+    valid:[['die','Klägerin','behauptete',',','sie','sei','zu','keinem','Zeitpunkt','informiert','worden']], punct:'.' }
 ];
 
 var sbDragged = null;
