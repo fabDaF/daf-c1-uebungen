@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1 – Lektion 1027R · Kant: Was ist Aufklärung?</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+.header h1 { font-size: 2.2em; font-family: Georgia, 'Times New Roman', serif; color: white; margin-bottom: 8px; border: none; padding: 0; }
+.header p { font-size: 1.1em; font-family: Georgia, 'Times New Roman', serif; opacity: 0.95; color: rgba(255,255,255,0.9); margin: 0; }
+.header .big-emoji { font-size: 2.6em; display: block; margin-top: 8px; }
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    background: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+.nav-btn {
+    flex: 1;
+    padding: 14px 10px;
+    text-align: center;
+    cursor: pointer;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    transition: all 0.3s;
+    font-size: 0.92em;
+    font-weight: 500;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.nav-btn:last-child { border-right: none; }
+.nav-btn:hover { background: #e9ecef; color: #495057; }
+.nav-btn.active { background: white; color: #667eea; font-weight: 600; border-bottom: 3px solid #667eea; }
+.nav-emoji { font-size: 1.3em; line-height: 1.2; }
+.nav-label { font-size: 0.78em; margin-top: 2px; line-height: 1.2; }
+.section { display: none; }
+.section.active { display: block; }
+.tab-banner { width: 100%; max-height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+@media (max-width: 600px) { .tab-banner { max-height: 120px; } }
+.sec-inner { padding: 28px; }
+.control-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding: 6px 12px; background: #f8f9fa; border-radius: 8px; }
+.btn-row { display: flex; gap: 6px; }
+.btn { background: #f5f7ff; border: 1px solid #c5cff5; border-radius: 8px; padding: 6px 16px; font-size: 0.85em; color: #667eea; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+.btn:hover { background: #667eea; color: white; border-color: #667eea; }
+.timer-display { display: flex; gap: 14px; font-size: 0.82em; color: #bbb; font-variant-numeric: tabular-nums; }
+.hilfe-box { background: #f0f4ff; border-left: 4px solid #667eea; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 22px; font-size: 0.9em; color: #444; line-height: 1.6; }
+.section-title { font-size: 1.4em; font-weight: 700; color: #667eea; margin-bottom: 8px; }
+.section-sub { color: #888; font-size: 0.92em; margin-bottom: 20px; }
+
+/* Vorentlastung */
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 4px; }
+.vocab-card { background: #f8f9ff; border: 1px solid #dde3ff; border-radius: 10px; padding: 14px 16px; }
+.vocab-term { font-weight: 700; color: #667eea; font-size: 1.05em; margin-bottom: 5px; }
+.vocab-def { color: #555; font-size: 0.92em; line-height: 1.5; }
+
+/* Lesetext */
+.lese-text {
+    max-width: 640px;
+    margin: 0 auto;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.0em;
+    line-height: 1.9;
+    color: #1a1a1a;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+.lese-text h3 { font-size: 1.05em; color: #667eea; margin: 22px 0 6px 0; font-family: 'Segoe UI', sans-serif; }
+.lese-text p { margin-bottom: 1em; text-indent: 1.4em; }
+.lese-text p:first-of-type, .lese-text h3 + p { text-indent: 0; }
+.story-source { margin-top: 24px; color: #aaa; font-size: 0.8em; text-align: right; max-width: 640px; margin-left: auto; margin-right: auto; }
+.vocab-hl { background: #ffe9a0; border-radius: 3px; padding: 1px 3px; font-weight: 600; cursor: help; }
+
+/* Genus */
+.genus-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; background: #f8f8f8; border: 1px dashed #bbb; border-radius: 10px; min-height: 60px; margin-bottom: 18px; }
+.genus-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+@media (max-width: 600px) { .genus-grid { grid-template-columns: 1fr 1fr; } }
+.genus-zone-wrap { display: flex; flex-direction: column; align-items: center; }
+.genus-label { font-size: 1.3em; font-weight: 700; color: #667eea; margin-bottom: 8px; padding: 4px 18px; background: #eef0ff; border-radius: 20px; }
+.drop-zone { min-height: 80px; border-radius: 10px; border: 2px dashed #c5cae9; padding: 8px; background: #fafbff; width: 100%; display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; transition: background 0.2s; }
+.drop-zone.dragover { background: #e8eaff; border-color: #667eea; }
+
+/* Chips */
+.chip { background: white; border: 2px solid #667eea; color: #667eea; padding: 8px 14px; border-radius: 20px; cursor: move; font-weight: 500; font-size: 0.9em; transition: all 0.2s; user-select: none; white-space: nowrap; }
+.chip.correct { background: #27ae60; border-color: #27ae60; color: white; }
+.chip.wrong { background: #e74c3c; border-color: #e74c3c; color: white; }
+.chip.incorrect { background: #e74c3c; border-color: #e74c3c; color: white; }
+.chip.punct-chip { background: #f8f8f8; border: 2px solid #667eea; padding: 8px 16px; color: #333; font-weight: 700; font-size: 1.3em; min-width: 18px; text-align: center; }
+
+/* Lückentext */
+.luecken-item { background: #f8f9ff; padding: 14px 18px; margin-bottom: 12px; border-radius: 10px; border-left: 4px solid #667eea; line-height: 2.0; font-size: 0.95em; }
+input.blank {
+    border: none;
+    border-bottom: 2px solid #667eea;
+    background: transparent;
+    padding: 3px 6px;
+    font-family: inherit;
+    font-size: 0.95em;
+    outline: none;
+    transition: all 0.2s;
+    min-width: 4ch;
+}
+input.blank:focus { border-bottom-color: #764ba2; }
+input.blank.ok { border-bottom-color: #27ae60; color: #27ae60; font-weight: 700; }
+input.blank.no { border-bottom-color: #e74c3c; color: #e74c3c; }
+input.blank.correct { border-bottom-color: #27ae60; background: #e8f8f0; }
+input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
+.wortkasten { background: #f3e5f5; border-radius: 8px; padding: 10px 16px; margin-bottom: 16px; font-size: 0.88em; color: #5a3e9e; line-height: 1.7; }
+
+/* Multiple Choice */
+.mc-exercise { background: #fff; border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(102,126,234,0.13); border: 1px solid #e3e6f8; }
+.mc-question { font-size: 1.05em; color: #222; margin-bottom: 12px; line-height: 1.55; font-weight: 600; }
+.mc-opts { display: flex; flex-direction: column; gap: 8px; }
+.mc-opt { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 1.5px solid #c5cae9; border-radius: 8px; background: #fafbff; cursor: pointer; font-size: 0.93em; text-align: left; line-height: 1.45; transition: all .2s; width: 100%; box-sizing: border-box; }
+.mc-opt:hover { border-color: #667eea; background: #eef0ff; }
+.mc-letter { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; border-radius: 50%; background: #e8eaf6; color: #667eea; font-weight: 700; font-size: 0.82em; flex-shrink: 0; margin-top: 1px; }
+.mc-opt.correct { border-color: #27ae60; background: #e8f5e9; color: #2e7d32; }
+.mc-opt.correct .mc-letter { background: #27ae60; color: #fff; }
+.mc-opt.wrong { border-color: #e74c3c; background: #ffebee; color: #c62828; }
+.mc-opt.wrong .mc-letter { background: #e74c3c; color: #fff; }
+.mc-opt:disabled { cursor: not-allowed; opacity: 0.75; }
+
+/* Satzbau */
+.satzbau-item { background: #fafbff; border: 1px solid #e0e4ff; border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; }
+.chips-container { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; background: #f8f8f8; border-radius: 10px; min-height: 56px; margin-bottom: 10px; }
+.sentence-builder { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px; background: white; border: 2px dashed #ccc; border-radius: 10px; min-height: 56px; align-items: center; margin-bottom: 6px; }
+.sentence-builder.correct { border-color: #27ae60; background: #f0fff4; }
+.sentence-builder.incorrect { border-color: #e74c3c; background: #fff5f5; }
+.satzbau-feedback { font-size: 0.9em; font-weight: 600; margin-top: 6px; min-height: 1.2em; }
+.satzbau-feedback.correct { color: #27ae60; }
+.satzbau-feedback.incorrect { color: #e74c3c; }
+.sb-punkt { font-size: 1.1em; font-weight: 700; color: #27ae60; margin-left: 2px; align-self: center; user-select: none; }
+
+/* Wortschatz */
+#wortschatzContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 600px) { #wortschatzContainer { grid-template-columns: 1fr; } }
+
+/* Footer */
+.author-footer { text-align: center; margin-top: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; padding: 16px; font-size: 0.8rem; color: #aaa; }
+.author-footer a { color: #aaa; }
+.author-name { font-weight: 700; }
+
+/* Responsive Nav */
+@media (max-width: 600px) {
+    body { padding: 8px; }
+    .nav { flex-wrap: wrap; }
+    .nav-btn { flex: 1 1 33%; min-width: 0; font-size: 0.75em; padding: 10px 6px; border-right: 1px solid #ddd; }
+    .nav-btn:last-child { border-right: 1px solid #ddd; }
+    .sec-inner { padding: 16px; }
+    .genus-grid { grid-template-columns: 1fr 1fr; }
+}
+
+    /* Schreibwerkstatt */
+    .schreib-aufgabe-karte { background: #f8f9ff; padding: 16px 18px; margin-bottom: 16px; border-radius: 10px; border-left: 4px solid #667eea; transition: all 0.25s; }
+    .schreib-aufgabe-karte.gesendet { background: #f1f8e9; border-left-color: #689f38; }
+    .schreib-aufgabe-nr { display: inline-block; background: #667eea; color: white; font-weight: 700; font-size: 0.85em; padding: 2px 10px; border-radius: 12px; margin-right: 8px; vertical-align: middle; }
+    .schreib-aufgabe-karte.gesendet .schreib-aufgabe-nr { background: #689f38; }
+    .schreib-aufgabe-titel { font-weight: 700; color: #4a148c; font-size: 1.0em; vertical-align: middle; }
+    .schreib-aufgabe-karte.gesendet .schreib-aufgabe-titel { color: #33691e; }
+    .schreib-aufgabe-frage { color: #555; font-size: 0.92em; line-height: 1.5; margin: 8px 0 10px 0; }
+    .schreib-mini-textarea { width: 100%; min-height: 100px; border: 1.5px solid #c5cff5; border-radius: 8px; padding: 10px 12px; font-family: Georgia, 'Times New Roman', serif; font-size: 0.95em; line-height: 1.6; color: #1a1a1a; resize: vertical; outline: none; transition: border-color 0.2s; background: #fefefe; }
+    .schreib-mini-textarea:focus { border-color: #667eea; box-shadow: 0 0 0 2px rgba(102,126,234,0.15); }
+    .schreib-mini-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; flex-wrap: wrap; gap: 10px; }
+    .schreib-mini-meta { font-size: 0.82em; color: #888; }
+    .schreib-mini-meta strong { color: #667eea; font-weight: 700; }
+    .schreib-mini-status { font-size: 0.82em; color: #689f38; font-weight: 600; }
+    .schreib-mini-status.error { color: #c62828; }
+    .schreib-mini-btn { padding: 7px 14px; border-radius: 6px; border: 1.5px solid #667eea; background: white; color: #667eea; font-size: 0.83em; font-weight: 600; cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .schreib-mini-btn:hover:not(:disabled) { background: #667eea; color: white; box-shadow: 0 2px 6px rgba(102,126,234,0.3); }
+    .schreib-mini-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .schreib-mini-btn.gesendet { border-color: #689f38; color: #689f38; background: #f1f8e9; }
+    .schreib-mini-btn.gesendet:hover:not(:disabled) { background: #689f38; color: white; }
+    .schreib-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; padding-top: 18px; border-top: 1px solid #e0e4ff; }
+    .schreib-btn { padding: 10px 20px; border-radius: 8px; border: none; font-size: 0.95em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .schreib-btn-primary { background: #667eea; color: white; }
+    .schreib-btn-primary:hover:not(:disabled) { background: #5568d3; box-shadow: 0 4px 12px rgba(102,126,234,0.35); transform: translateY(-1px); }
+    .schreib-btn-primary:disabled { background: #c5cff5; cursor: not-allowed; }
+    .schreib-btn-ghost { background: transparent; color: #667eea; border: 1.5px solid #c5cff5; }
+    .schreib-btn-ghost:hover { background: #f5f7ff; border-color: #667eea; }
+    .schreib-status { margin-top: 14px; padding: 12px 16px; border-radius: 8px; font-size: 0.92em; line-height: 1.5; display: none; }
+    .schreib-status.success { display: block; background: #e8f5e9; border-left: 4px solid #27ae60; color: #1b5e20; }
+    .schreib-status.error { display: block; background: #ffebee; border-left: 4px solid #e74c3c; color: #b71c1c; }
+    .schreib-status.info { display: block; background: #e3f2fd; border-left: 4px solid #2196f3; color: #0d47a1; }
+    .schreib-name { width: 100%; max-width: 360px; padding: 10px 14px; border: 2px solid #e74c3c; border-radius: 8px; font-family: inherit; font-size: 0.98em; outline: none; transition: border-color 0.2s, background 0.2s; margin-bottom: 12px; background: #fff5f5; }
+    .schreib-name.ok { border-color: #27ae60; background: #f1f8e9; }
+    .schreib-name:focus { border-color: #667eea; background: #fff; box-shadow: 0 0 0 2px rgba(102,126,234,0.15); }
+    .schreib-name-block { background: #fff8e1; border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 8px; margin-bottom: 24px; }
+    .schreib-label { display: block; font-size: 0.95em; color: #b71c1c; font-weight: 600; margin-bottom: 6px; }
+    .schreib-name-block .schreib-label-hint { color: #555; font-size: 0.85em; font-weight: 400; margin-top: 4px; }
+    .schreib-name:focus { border-color: #667eea; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Kant: Was ist Aufklärung?</h1>
+    <p>C1.1 – Lektion 1027R · Lesen · Königsberg 1784, Sapere aude, öffentlicher Vernunftgebrauch</p>
+    <div class="big-emoji">💡</div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-btn active" onclick="showSection(0)">
+      <span class="nav-emoji">📖</span>
+      <span class="nav-label">Vorentlastung</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(1)">
+      <span class="nav-emoji">📄</span>
+      <span class="nav-label">Lesetext</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(2)">
+      <span class="nav-emoji">🔤</span>
+      <span class="nav-label">Genus</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(3)">
+      <span class="nav-emoji">✏️</span>
+      <span class="nav-label">Lückentext</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(4)">
+      <span class="nav-emoji">☑️</span>
+      <span class="nav-label">Multiple Choice</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(5)">
+      <span class="nav-emoji">🧩</span>
+      <span class="nav-label">Satzbau</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(6)">
+      <span class="nav-emoji">📨</span>
+      <span class="nav-label">Schreibwerkstatt</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(7)">
+      <span class="nav-emoji">📝</span>
+      <span class="nav-label">Wortschatz</span>
+    </div>
+  </div>
+
+  <!-- TAB 0: Vorentlastung -->
+  <div class="section active" id="sec-0">
+    <img class="tab-banner" src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bibliothek mit Globus">
+    <div class="sec-inner">
+      <div class="section-title">📖 Vorentlastung</div>
+      <div class="section-sub">Acht Begriffe der Aufklärungs-Philosophie — von der Unmündigkeit bis zum öffentlichen Vernunftgebrauch.</div>
+      <div id="vorentlastungGrid" class="vocab-grid"></div>
+    </div>
+  </div>
+
+  <!-- TAB 1: Lesetext -->
+  <div class="section" id="sec-1">
+    <img class="tab-banner" src="https://images.pexels.com/photos/2128249/pexels-photo-2128249.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Aufgeschlagenes altes Buch">
+    <div class="sec-inner">
+      <div class="section-title">📄 ‚Sapere aude!‘ — Kants kürzeste und folgenreichste Antwort</div>
+      <div class="section-sub">Eine philosophiehistorische Hintergrundanalyse zu Immanuel Kants Essay von 1784 — und seiner ungebrochenen Aktualität im Zeitalter der KI.</div>
+      <div class="lese-text">
+        <p>Im Dezemberheft 1784 der <em>Berlinischen Monatsschrift</em> erschien ein achtseitiger Aufsatz, der bis heute als die berühmteste deutsche Antwort auf eine philosophische Frage gilt. Verfasst hatte ihn der damals sechzigjährige Königsberger Professor <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">Immanuel Kant</span>, gestellt hatte sie ein Jahr zuvor der Berliner Pfarrer Johann Friedrich Zöllner: <em>Was ist Aufklärung?</em> Kants Antwort, knapp und programmatisch, lautete: <em>Aufklärung ist der Ausgang des Menschen aus seiner selbstverschuldeten Unmündigkeit.</em> Der Satz wurde zur Definition einer ganzen Epoche.</p>
+
+        <h3>Was Kant unter Unmündigkeit versteht</h3>
+        <p><span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">Unmündigkeit</span> ist für Kant die Unfähigkeit, sich des eigenen Verstandes ohne Anleitung anderer zu bedienen. Selbstverschuldet ist sie dann, wenn dieser Mangel nicht aus dem Verstand selbst herrührt — also nicht aus Dummheit, Krankheit oder mangelnder Bildung —, sondern aus der Bequemlichkeit und Feigheit des Einzelnen, der lieber ein Buch, einen Pfarrer, einen Arzt oder einen Vorgesetzten für sich denken lässt, als selbst nachzudenken. Kants berühmtes Bild: Es ist so bequem, unmündig zu sein. Wer einen Vormund hat, der ihm das Gewissen, das Lehrbuch und das Diätetikum vorschreibt, der hat sich selbst nicht zu bemühen.</p>
+
+        <h3>Sapere aude — der Wahlspruch der Aufklärung</h3>
+        <p>Aus dieser Diagnose leitet Kant einen Imperativ ab, den er in einem lateinischen Zitat aus Horaz fasst: <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">Sapere aude!</span> — Habe den Mut, dich deines eigenen Verstandes zu bedienen. Es ist eine moralische, keine intellektuelle Aufforderung: Wer aus der Unmündigkeit heraustritt, riskiert. Er riskiert, sich zu irren. Er riskiert, mit der Tradition, der Kirche, der Obrigkeit in Konflikt zu geraten. Er riskiert sogar, einsam zu werden. Aufklärung ist für Kant deshalb kein Wissen, sondern eine Haltung — eine, die den Mut zur Selbständigkeit voraussetzt.</p>
+
+        <h3>Öffentlich versus privat — eine entscheidende Unterscheidung</h3>
+        <p>Was den Text bis heute spannungsreich macht, ist Kants Unterscheidung zwischen dem <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">öffentlichen</span> und dem <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">privaten Vernunftgebrauch</span>. Privater Vernunftgebrauch — und das ist, was uns heute fast paradox vorkommt — ist für Kant das Denken im Amt: Der Soldat muss seinen Befehl ausführen, der Beamte seine Vorschrift, der Pfarrer die Lehre seiner Kirche. In dieser Funktion darf er nicht räsonieren, sonst zerfällt das Gemeinwesen. Öffentlicher Vernunftgebrauch ist dagegen das Denken in der Rolle des Gelehrten: Wenn derselbe Beamte abends einen Aufsatz schreibt, in dem er die Vorschrift kritisch prüft, ist das die ‚öffentliche‘ Sphäre. Sie muss frei bleiben — sonst gibt es keine Aufklärung. Heute würden wir das Verhältnis umgekehrt nennen; aber Kants Kerngedanke trägt: In manchen Rollen muss der Mensch funktional handeln, in anderen muss ihm das Denken erlaubt sein, gerade auch das kritische.</p>
+
+        <h3>Friedrich der Große — der aufgeklärte Monarch</h3>
+        <p>Dass Kant 1784 so frei schreiben konnte, hatte einen konkreten Adressaten: König Friedrich II. von Preußen, gestorben 1786 — also kurz nach Erscheinen des Aufsatzes. Kant nennt ihn explizit den ‚philosophischen König‘ und schreibt seinem Zeitalter den ehrenden Titel zu: ‚Wir leben in einem Zeitalter der Aufklärung — aber noch nicht in einem aufgeklärten Zeitalter.‘ Die Differenzierung ist subtil und folgenreich. Aufklärung ist ein Prozess, kein Zustand. Sie ist nie abgeschlossen. Wer denkt, er sei jetzt aufgeklärt, hat den Vorgang schon wieder verlassen.</p>
+
+        <h3>2024 — das Kant-Jubiläum</h3>
+        <p>Am 22. April 2024 hätte Kant seinen 300. Geburtstag gefeiert. In Deutschland, in Königsberg — heute Kaliningrad —, in den USA und in Japan fanden große Tagungen, Ausstellungen und Lesungen statt. Die Wahl war kein Zufall. Kants Imperativ trifft eine Zeit, in der wir uns wieder fragen müssen, was Mündigkeit heißt. Wenn ein KI-Modell uns in Sekunden eine Antwort auf jede Frage liefert, kann ich dann noch ‚meinen eigenen Verstand‘ benutzen — oder lasse ich mich von einem System leiten, das mich beruhigt, ohne mich zu fordern? Wenn Algorithmen meine Nachrichten kuratieren, lebe ich dann noch in der ‚Öffentlichkeit‘, von der Kant sprach? Die Antworten sind offen. Aber die Fragen sind in seinem Sinne — und das ist mehr, als die meisten 240 Jahre alten Aufsätze von sich sagen können.</p>
+
+        <h3>Bilanz: Ein kurzer Aufsatz, ein langes Echo</h3>
+        <p>Was Kants Text so beweglich gehalten hat, ist seine Form: keine Theorie, keine Definition, sondern ein Imperativ. <em>Habe den Mut, dich deines eigenen Verstandes zu bedienen.</em> Acht Wörter, die jede Generation neu zwingen, sich zu fragen, wer hier eigentlich denkt — und ob er damit aufhört, sobald es unbequem wird. Die deutsche Sprache hat von Kant viele Sätze geerbt. Dieser ist der vielleicht praktischste. Und er funktioniert nur, wenn man ihn auf sich selbst anwendet.</p>
+      </div>
+      <div class="story-source">Quelle: Hintergrundanalyse für den DaF-Unterricht · C1.1 – Lektion 1027R · nach Lingoda C1_1027R, frei umgearbeitet · Kant, ‚Beantwortung der Frage: Was ist Aufklärung?‘ (1784) · Kant-300-Jubiläum 22. April 2024 · Stand April 2026</div>
+    </div>
+  </div>
+
+  <!-- TAB 2: Genus -->
+  <div class="section" id="sec-genus">
+    <img class="tab-banner" src="https://images.pexels.com/photos/1005012/pexels-photo-1005012.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Alte Bibliothek">
+    <div class="sec-inner">
+      <h2>🔤 Genus</h2>
+      <div class="control-bar">
+        <div class="btn-row">
+          <button class="btn" onclick="showGenusLoesung()">Lösungen</button>
+          <button class="btn" onclick="resetGenus(); resetTimer(2);">Neu starten</button>
+        </div>
+        <div class="timer-display">
+          <span>⏱ <span id="timer-2">00:00</span></span>
+          <span>🏆 <span id="best-2">--:--</span></span>
+        </div>
+      </div>
+      <div class="hilfe-box">Ziehe jedes Nomen in die richtige Spalte: <strong>der</strong>, <strong>die</strong>, <strong>das</strong> oder <strong>Plural</strong>.</div>
+      <div id="genus-bank" class="genus-bank"></div>
+      <div class="genus-grid">
+        <div class="genus-zone-wrap">
+          <div class="genus-label">der</div>
+          <div class="drop-zone" id="zone-der" data-cat="der"></div>
+        </div>
+        <div class="genus-zone-wrap">
+          <div class="genus-label">die</div>
+          <div class="drop-zone" id="zone-die" data-cat="die"></div>
+        </div>
+        <div class="genus-zone-wrap">
+          <div class="genus-label">das</div>
+          <div class="drop-zone" id="zone-das" data-cat="das"></div>
+        </div>
+        <div class="genus-zone-wrap">
+          <div class="genus-label">Plural</div>
+          <div class="drop-zone" id="zone-pl" data-cat="pl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: Lückentext -->
+  <div class="section" id="sec-luecke">
+    <img class="tab-banner" src="https://images.pexels.com/photos/207703/pexels-photo-207703.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Federkiel und Tinte">
+    <div class="sec-inner">
+      <h2>✏️ Lückentext</h2>
+      <div class="control-bar">
+        <div class="btn-row">
+          <button class="btn" onclick="showLueckeLoesung()">Lösungen</button>
+          <button class="btn" onclick="resetLuecke(); resetTimer(3);">Neu starten</button>
+        </div>
+        <div class="timer-display">
+          <span>⏱ <span id="timer-3">00:00</span></span>
+          <span>🏆 <span id="best-3">--:--</span></span>
+        </div>
+      </div>
+      <div class="hilfe-box">Ergänze die fehlenden Wörter. Die Wörter stehen im Kasten.</div>
+      <div class="wortkasten" id="wortkasten-luecke"></div>
+      <div id="lueckenContainer"></div>
+    </div>
+  </div>
+
+  <!-- TAB 4: Multiple Choice -->
+  <div class="section" id="sec-mc">
+    <img class="tab-banner" src="https://images.pexels.com/photos/2965269/pexels-photo-2965269.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Statuen Aufklärung">
+    <div class="sec-inner">
+      <h2>☑️ Multiple Choice</h2>
+      <div class="control-bar">
+        <div class="btn-row">
+          <button class="btn" onclick="resetMC(); resetTimer(4);">Neu starten</button>
+        </div>
+        <div class="timer-display">
+          <span>⏱ <span id="timer-4">00:00</span></span>
+          <span>🏆 <span id="best-4">--:--</span></span>
+        </div>
+      </div>
+      <div class="hilfe-box">Sieben Verständnisfragen zum Lesetext. Wähle die zutreffende Antwort.</div>
+      <div id="mcContainer"></div>
+    </div>
+  </div>
+
+  <!-- TAB 5: Satzbau -->
+  <div class="section" id="sec-satzbau">
+    <img class="tab-banner" src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Notebook am Schreibtisch">
+    <div class="sec-inner">
+      <h2>🧩 Satzbau</h2>
+      <div class="control-bar">
+        <div class="btn-row">
+          <button class="btn" onclick="sbShowAllSolutions()">Lösungen</button>
+          <button class="btn" onclick="resetSatzbau(); resetTimer(5);">Neu starten</button>
+        </div>
+        <div class="timer-display">
+          <span>⏱ <span id="timer-5">00:00</span></span>
+          <span>🏆 <span id="best-5">--:--</span></span>
+        </div>
+      </div>
+      <div class="hilfe-box">Bringe die Wörter in die richtige Reihenfolge. Der Schlusspunkt erscheint automatisch beim grünen Treffer.</div>
+      <div id="satzbauContainer"></div>
+    </div>
+  </div>
+
+    <!-- TAB 6: Schreibwerkstatt -->
+  <div class="section" id="sec-schreib">
+    <img class="tab-banner" src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Schreibtisch mit Notebook">
+    <div class="sec-inner">
+      <h2>📨 Schreibwerkstatt</h2>
+      <div class="hilfe-box">Fünf kurze Schreibaufgaben zur Lektion. Jede ist in zwei bis drei Minuten zu schaffen — schreib spontan, du musst nicht alle bearbeiten. <strong>Jede einzelne Antwort kannst du direkt mit ihrem eigenen Senden-Button an Frank schicken</strong>; der Sammelbutton am Ende ist nur für den Fall, dass du mehrere auf einmal abgeben willst.</div>
+
+      <div class="schreib-name-block">
+        <label class="schreib-label" for="schreib-name">Dein Name — Pflicht, damit Frank weiß, wer schreibt:</label>
+        <input type="text" id="schreib-name" class="schreib-name" placeholder="z. B. Hiroshi Tanaka" autocomplete="name">
+        <div class="schreib-label-hint">Ohne Namen wird keine Antwort gesendet. Der Name bleibt im Browser gespeichert — du musst ihn nur einmal eintragen.</div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">1</span><span class="schreib-aufgabe-titel">Wann hast du selbst gedacht?</span>
+        <div class="schreib-aufgabe-frage">Erinnere dich an einen konkreten Moment, in dem du eine Meinung oder eine Entscheidung gegen die Bequemlichkeit, gegen den Rat von Familie, Freunden oder Vorgesetzten allein durchdacht hast. Vier bis fünf Sätze: Was war es, hast du dich behauptet, was hat es dich gekostet?</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="1" data-titel="Wann hast du selbst gedacht?"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-1">0</strong> <span class="schreib-mini-status" id="status-1"></span></span>
+          <button class="schreib-mini-btn" id="send-1" onclick="schreibSendenEinzeln(1)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">2</span><span class="schreib-aufgabe-titel">KI als neuer Vormund?</span>
+        <div class="schreib-aufgabe-frage">Wenn ein KI-Modell dir alle Antworten gibt — verlierst du dann den Mut, deinen eigenen Verstand zu gebrauchen, oder gewinnst du Zeit für eigentliches Denken? Vertrete eine Position mit zwei konkreten Argumenten — und sei skeptisch gegen die jeweils einfache Antwort.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="2" data-titel="KI als neuer Vormund?"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-2">0</strong> <span class="schreib-mini-status" id="status-2"></span></span>
+          <button class="schreib-mini-btn" id="send-2" onclick="schreibSendenEinzeln(2)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">3</span><span class="schreib-aufgabe-titel">Privat oder öffentlich?</span>
+        <div class="schreib-aufgabe-frage">Kant unterscheidet Vernunftgebrauch im Amt (privat — gehorchen) und als Gelehrter (öffentlich — kritisieren). In welchen Rollen bist du heute beruflich oder privat — und wo gilt für dich die Pflicht zur Funktion, wo das Recht zur Kritik? Eine kurze Analyse in vier bis fünf Sätzen.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="3" data-titel="Privat oder öffentlich?"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-3">0</strong> <span class="schreib-mini-status" id="status-3"></span></span>
+          <button class="schreib-mini-btn" id="send-3" onclick="schreibSendenEinzeln(3)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">4</span><span class="schreib-aufgabe-titel">Sind wir aufgeklärt?</span>
+        <div class="schreib-aufgabe-frage">Kant: ‚Wir leben in einem Zeitalter der Aufklärung — aber noch nicht in einem aufgeklärten Zeitalter.‘ Bewerte 240 Jahre später: Würdest du das auch heute noch sagen — oder hat sich etwas Entscheidendes verändert? Bewerte ehrlich, mit zwei Begründungen.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="4" data-titel="Sind wir aufgeklärt?"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-4">0</strong> <span class="schreib-mini-status" id="status-4"></span></span>
+          <button class="schreib-mini-btn" id="send-4" onclick="schreibSendenEinzeln(4)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">5</span><span class="schreib-aufgabe-titel">Erfinde dein eigenes ‚Sapere aude!‘</span>
+        <div class="schreib-aufgabe-frage">Erfinde — knapp und originell, mindestens drei Sätze — einen Wahlspruch für 2026, der die Funktion erfüllt, die ‚Sapere aude!‘ 1784 erfüllte: ein Imperativ in zwei oder drei Wörtern, der den Zentralkonflikt unserer Zeit auf den Punkt bringt. Sei ungewöhnlich, nicht braver als nötig.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="5" data-titel="Erfinde dein eigenes ‚Sapere aude!‘"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-5">0</strong> <span class="schreib-mini-status" id="status-5"></span></span>
+          <button class="schreib-mini-btn" id="send-5" onclick="schreibSendenEinzeln(5)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+<div class="schreib-actions">
+        <button class="schreib-btn schreib-btn-primary" id="btn-schreib-senden" onclick="schreibSendenAlleNochOffenen()">📨 Alle noch nicht gesendeten Antworten schicken</button>
+        <button class="schreib-btn schreib-btn-ghost" onclick="schreibKopieren()">📋 In Zwischenablage</button>
+        <button class="schreib-btn schreib-btn-ghost" onclick="schreibLeeren()">🗑️ Alles zurücksetzen</button>
+      </div>
+      <div class="schreib-status" id="schreib-status"></div>
+    </div>
+  </div>
+
+<!-- TAB 6: Wortschatz -->
+  <div class="section" id="sec-wortschatz">
+    <img class="tab-banner" src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wörterbuch im Bokeh">
+    <div class="sec-inner">
+      <h2>📝 Wortschatz</h2>
+      <div class="control-bar">
+        <div class="btn-row">
+          <button class="btn" onclick="showWortschatzLoesung()">Lösungen</button>
+          <button class="btn" onclick="resetWortschatz(); resetTimer(6);">Neu starten</button>
+        </div>
+        <div class="timer-display">
+          <span>⏱ <span id="timer-6">00:00</span></span>
+          <span>🏆 <span id="best-6">--:--</span></span>
+        </div>
+      </div>
+      <div class="hilfe-box">Tippe das deutsche Wort zur Bedeutung. Bei Nomen ist der Artikel Pflicht.</div>
+      <div id="wortschatzContainer"></div>
+    </div>
+  </div>
+
+  <div class="author-footer">
+  <span class="author-name">&copy; Frank Burkert</span> &middot; DaF-Materialien &middot;
+  <a href="mailto:FrankBurkert@fabdaf.onmicrosoft.com">FrankBurkert@fabdaf.onmicrosoft.com</a>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATEN
+// ═══════════════════════════════════════════════════════
+
+var VORENTLASTUNG = [
+  { term: "Immanuel Kant (1724–1804)",                def: "Königsberger Philosoph, einer der einflussreichsten Denker der europäischen Aufklärung — Hauptwerke: Kritik der reinen Vernunft (1781), Kritik der praktischen Vernunft (1788), Beantwortung der Frage Was ist Aufklärung? (1784)." },
+  { term: "die Aufklärung (Sg.)",                     def: "europäisches Denkprogramm des 17./18. Jahrhunderts: Vernunft, Selbständigkeit, Toleranz, Menschenrechte — Kants Aufsatz von 1784 ist ihre kürzeste Selbstbestimmung." },
+  { term: "die Unmündigkeit (Sg.)",                   def: "bei Kant: die Unfähigkeit, sich des eigenen Verstandes ohne Anleitung eines anderen zu bedienen — selbstverschuldet, wenn nicht Dummheit, sondern Bequemlichkeit der Grund ist." },
+  { term: "Sapere aude! (lat.)",                      def: "‚Habe den Mut, dich deines eigenen Verstandes zu bedienen.‘ — von Kant aus Horaz übernommener Wahlspruch der Aufklärung; mehr ein moralischer als ein intellektueller Imperativ." },
+  { term: "der öffentliche Vernunftgebrauch (Sg.)",   def: "bei Kant: das Denken eines Menschen in der Rolle des Gelehrten — frei, kritisch, an die Allgemeinheit gerichtet; muss in einer aufgeklärten Gesellschaft jederzeit möglich sein." },
+  { term: "der private Vernunftgebrauch (Sg.)",       def: "bei Kant — paradoxerweise — das Denken im Amt: Soldat, Beamter, Pfarrer in ihrer Funktion; hier darf nicht räsoniert werden, sonst zerfällt das Gemeinwesen." },
+  { term: "die Berlinische Monatsschrift (Sg.)",      def: "1783–1796 erscheinende preußische Zeitschrift der Aufklärung, in deren Dezemberheft 1784 Kants Aufklärungs-Aufsatz publiziert wurde." },
+  { term: "Friedrich II. (1712–1786)",                 def: "preußischer König, von Kant als ‚philosophischer König‘ bezeichnet — sein vergleichsweise toleranter Regierungsstil ermöglichte Kant, 1784 so offen zu schreiben." }
+];
+
+var GENUS_DATA = [
+  { word: "💡 Aufklärung",         cat: "die" },
+  { word: "🔓 Mündigkeit",         cat: "die" },
+  { word: "🧠 Verstand",            cat: "der" },
+  { word: "⚖️ Vernunft",             cat: "die" },
+  { word: "📜 Aufsatz",              cat: "der" },
+  { word: "👑 Monarchie",          cat: "die" },
+  { word: "📖 Pfarrer",              cat: "der" },
+  { word: "🎓 Schriften",           cat: "pl" }
+];
+
+var LUECKE_DATA = [
+  { pre: "Kants Aufsatz erschien im Dezember ", ans: "1784", post: " in der Berlinischen Monatsschrift." },
+  { pre: "Den Anstoß gab ein Jahr zuvor der Berliner Pfarrer Johann Friedrich ", ans: "Zöllner", post: "." },
+  { pre: "Kants berühmte Definition: Aufklärung ist der Ausgang des Menschen aus seiner selbstverschuldeten ", ans: "Unmündigkeit", post: "." },
+  { pre: "Der lateinische Wahlspruch ‚Sapere ", ans: "aude", post: "!‘ stammt ursprünglich aus einer Epistel des römischen Dichters Horaz." },
+  { pre: "Kant unterscheidet den öffentlichen vom privaten ", ans: "Vernunftgebrauch", post: "." },
+  { pre: "Der von Kant als ‚philosophischer König‘ bezeichnete preußische Monarch war ", ans: "Friedrich", post: " II." },
+  { pre: "Im Jahr ", ans: "2024", post: " wurde Kants 300. Geburtstag in Königsberg, Deutschland, den USA und Japan begangen." }
+];
+
+var MC_DATA = [
+  { q: "In welchem Jahr und in welcher Zeitschrift erschien Kants Aufsatz ‚Beantwortung der Frage: Was ist Aufklärung?‘?",
+    opts: ["1781, Kritik der reinen Vernunft als Anhang", "1784, Berlinische Monatsschrift", "1788, Kritik der praktischen Vernunft", "1804, posthum"], correct: 1 },
+  { q: "Wer stellte ein Jahr zuvor die Frage, auf die Kant antwortete?",
+    opts: ["Friedrich II. selbst", "der Berliner Pfarrer Johann Friedrich Zöllner", "Moses Mendelssohn", "Friedrich Schiller"], correct: 1 },
+  { q: "Wie lautet Kants berühmte Definition von Aufklärung?",
+    opts: ["Aufklärung ist die Herrschaft der Vernunft über die Religion.", "Aufklärung ist der Ausgang des Menschen aus seiner selbstverschuldeten Unmündigkeit.", "Aufklärung ist die Trennung von Staat und Kirche.", "Aufklärung ist die wissenschaftliche Erklärung der Welt."], correct: 1 },
+  { q: "Was bedeutet ‚Sapere aude!‘?",
+    opts: ["‚Wisse, was du tust!‘", "‚Habe den Mut, dich deines eigenen Verstandes zu bedienen!‘", "‚Lerne von den Klugen!‘", "‚Glaube und prüfe!‘"], correct: 1 },
+  { q: "Wie unterscheidet Kant öffentlichen und privaten Vernunftgebrauch?",
+    opts: ["Privat = zu Hause, öffentlich = auf der Straße", "Privat = im Amt (Soldat, Beamter, Pfarrer); öffentlich = als Gelehrter, der sich an die Allgemeinheit wendet", "Privat = mündlich, öffentlich = schriftlich", "Privat = unter Christen, öffentlich = unter Andersgläubigen"], correct: 1 },
+  { q: "Welchen preußischen König nennt Kant einen ‚philosophischen König‘?",
+    opts: ["Friedrich Wilhelm I.", "Friedrich II. (Friedrich der Große)", "Friedrich Wilhelm II.", "Friedrich Wilhelm III."], correct: 1 },
+  { q: "Was schließt Kant aus seinem Eindruck der Gegenwart?",
+    opts: ["Wir leben bereits in einem aufgeklärten Zeitalter.", "Aufklärung ist ein abgeschlossener Vorgang.", "Wir leben in einem Zeitalter der Aufklärung — aber noch nicht in einem aufgeklärten Zeitalter.", "Aufklärung ist nicht möglich, solange Könige herrschen."], correct: 2 }
+];
+
+var satzbauData = [
+  { parts: ["Kants","Aufsatz","erschien","1784","in","Berlin"],
+    valid: ["Kants","Aufsatz","erschien","1784","in","Berlin"], punct: "." },
+  { parts: ["Aufklärung","ist","der","Ausgang","aus","der","selbstverschuldeten","Unmündigkeit"],
+    valid: ["Aufklärung","ist","der","Ausgang","aus","der","selbstverschuldeten","Unmündigkeit"], punct: "." },
+  { parts: ["der","Wahlspruch","der","Aufklärung","heißt","Sapere","aude"],
+    valid: ["der","Wahlspruch","der","Aufklärung","heißt","Sapere","aude"], punct: "." },
+  { parts: ["der","öffentliche","Vernunftgebrauch","muss","jederzeit","frei","sein"],
+    valid: ["der","öffentliche","Vernunftgebrauch","muss","jederzeit","frei","sein"], punct: "." },
+  { parts: ["wir","leben","in","einem","Zeitalter","der","Aufklärung",",","aber","noch","nicht","in","einem","aufgeklärten"],
+    valid: ["wir","leben","in","einem","Zeitalter","der","Aufklärung",",","aber","noch","nicht","in","einem","aufgeklärten"], punct: "." },
+  { parts: ["Aufklärung","ist","ein","Prozess",",","kein","Zustand"],
+    valid: ["Aufklärung","ist","ein","Prozess",",","kein","Zustand"], punct: "." }
+];
+
+var WORTSCHATZ = [
+  { id:1,  type:"n",   en:"💡 the Enlightenment",                artikel:"die", de:"Aufklärung",            plural:"–" },
+  { id:2,  type:"n",   en:"🔓 the autonomy / coming-of-age",      artikel:"die", de:"Mündigkeit",            plural:"–" },
+  { id:3,  type:"n",   en:"🧠 the understanding (faculty)",       artikel:"der", de:"Verstand",              plural:"–" },
+  { id:4,  type:"n",   en:"⚖️ the reason (faculty)",              artikel:"die", de:"Vernunft",              plural:"–" },
+  { id:5,  type:"n",   en:"📜 the imperative",                    artikel:"der", de:"Imperativ",             plural:"Imperative" },
+  { id:6,  type:"n",   en:"😶 the cowardice",                     artikel:"die", de:"Feigheit",              plural:"–" },
+  { id:7,  type:"n",   en:"😴 the laziness / convenience",         artikel:"die", de:"Bequemlichkeit",        plural:"–" },
+  { id:8,  type:"n",   en:"📚 the essay / treatise",                artikel:"der", de:"Aufsatz",               plural:"Aufsätze" },
+  { id:9,  type:"n",   en:"🌐 the public sphere",                  artikel:"die", de:"Öffentlichkeit",        plural:"–" },
+  { id:10, type:"v",   en:"to think for oneself",                  artikel:"",    de:"selbst denken",         plural:"" },
+  { id:11, type:"v",   en:"to dare / have the courage",            artikel:"",    de:"wagen",                 plural:"" },
+  { id:12, type:"v",   en:"to abolish (a state)",                  artikel:"",    de:"aufheben",              plural:"" },
+  { id:13, type:"adj", en:"enlightened",                            artikel:"",    de:"aufgeklärt",            plural:"" },
+  { id:14, type:"adj", en:"self-incurred / self-imposed",            artikel:"",    de:"selbstverschuldet",     plural:"" }
+];
+
+// ═══════════════════════════════════════════════════════
+// TIMER
+// ═══════════════════════════════════════════════════════
+var BEST_KEY = 'best_1027C1_';
+var _tv = {}, _ti = {}, _tr = {};
+
+function _pad(n) { return String(n).padStart(2,'0'); }
+function _fmt(s) { return _pad(Math.floor(s/60))+':'+_pad(s%60); }
+
+function timerAutoStart(n) {
+  if (_tv[n]) return;
+  _tv[n] = true;
+  _tr[n] = 0;
+  clearInterval(_ti[n]);
+  _ti[n] = setInterval(function() {
+    _tr[n]++;
+    var el = document.getElementById('timer-'+n);
+    if (el) el.textContent = _fmt(_tr[n]);
+  }, 1000);
+  var best = localStorage.getItem(BEST_KEY+n);
+  var bel = document.getElementById('best-'+n);
+  if (bel) bel.textContent = best ? _fmt(parseInt(best)) : '--:--';
+}
+
+function timerStop(n) {
+  if (!_tv[n]) return;
+  clearInterval(_ti[n]);
+  var prev = localStorage.getItem(BEST_KEY+n);
+  if (!prev || _tr[n] < parseInt(prev)) {
+    localStorage.setItem(BEST_KEY+n, _tr[n]);
+    var bel = document.getElementById('best-'+n);
+    if (bel) bel.textContent = _fmt(_tr[n]);
+  }
+  _tv[n] = false;
+}
+function stopTimer(n) { timerStop(n); }
+
+function resetTimer(n) {
+  clearInterval(_ti[n]);
+  _tv[n] = false; _tr[n] = 0;
+  var el = document.getElementById('timer-'+n);
+  if (el) el.textContent = '00:00';
+}
+
+function initTimers(tabs) {
+  tabs.forEach(function(n) {
+    var el = document.getElementById('timer-'+n);
+    if (el) el.textContent = '00:00';
+    var best = localStorage.getItem(BEST_KEY+n);
+    var bel = document.getElementById('best-'+n);
+    if (bel) bel.textContent = best ? _fmt(parseInt(best)) : '--:--';
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════════════════
+function showSection(idx) {
+  var secs = document.querySelectorAll('.section');
+  var btns = document.querySelectorAll('.nav-btn');
+  secs.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+  btns.forEach(function(b,i){ b.classList.toggle('active', i===idx); });
+}
+
+// ═══════════════════════════════════════════════════════
+// VORENTLASTUNG
+// ═══════════════════════════════════════════════════════
+function buildVorentlastung() {
+  var grid = document.getElementById('vorentlastungGrid');
+  if (!grid) return;
+  VORENTLASTUNG.forEach(function(item) {
+    var card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = '<div class="vocab-term">'+item.term+'</div><div class="vocab-def">'+item.def+'</div>';
+    grid.appendChild(card);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// GENUS
+// ═══════════════════════════════════════════════════════
+var draggedChip = null;
+
+function buildGenus() {
+  var bank = document.getElementById('genus-bank');
+  if (!bank) return;
+  var shuffled = GENUS_DATA.slice().sort(function(){return Math.random()-0.5;});
+  shuffled.forEach(function(item) {
+    var chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = item.word;
+    chip.dataset.cat = item.cat;
+    chip.draggable = true;
+    chip.addEventListener('dragstart', function(e){ draggedChip=chip; timerAutoStart(2); e.dataTransfer.effectAllowed='move'; });
+    chip.addEventListener('dragend', function(){ draggedChip=null; });
+    bank.appendChild(chip);
+  });
+  document.querySelectorAll('.drop-zone').forEach(function(zone){
+    zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('dragover'); });
+    zone.addEventListener('dragleave', function(){ zone.classList.remove('dragover'); });
+    zone.addEventListener('drop', function(e){
+      e.preventDefault(); zone.classList.remove('dragover');
+      if (!draggedChip) return;
+      zone.appendChild(draggedChip);
+      var correct = draggedChip.dataset.cat === zone.dataset.cat;
+      draggedChip.classList.toggle('correct', correct);
+      draggedChip.classList.toggle('wrong', !correct);
+      checkGenusAllOk();
+    });
+  });
+}
+
+function checkGenusAllOk() {
+  var chips = document.querySelectorAll('#sec-genus .chip');
+  if (!chips.length) return;
+  var allOk = Array.from(chips).every(function(c){ return c.classList.contains('correct'); });
+  if (allOk) timerStop(2);
+}
+
+function showGenusLoesung() {
+  timerStop(2);
+  GENUS_DATA.forEach(function(item) {
+    document.querySelectorAll('.chip').forEach(function(chip){
+      if (chip.textContent.trim() === item.word.trim()) {
+        var zone = document.getElementById('zone-'+item.cat);
+        if (zone) { zone.appendChild(chip); chip.className='chip correct'; }
+      }
+    });
+  });
+}
+
+function resetGenus() {
+  var bank = document.getElementById('genus-bank');
+  if (!bank) return;
+  document.querySelectorAll('.drop-zone .chip').forEach(function(chip){
+    chip.className='chip';
+    bank.appendChild(chip);
+  });
+  var shuffled = Array.from(bank.children).sort(function(){return Math.random()-0.5;});
+  shuffled.forEach(function(c){ bank.appendChild(c); });
+}
+
+// ═══════════════════════════════════════════════════════
+// LÜCKENTEXT
+// ═══════════════════════════════════════════════════════
+function buildLuecke() {
+  var wk = document.getElementById('wortkasten-luecke');
+  var ct = document.getElementById('lueckenContainer');
+  if (!wk || !ct) return;
+  var words = LUECKE_DATA.map(function(d){ return d.ans; }).sort(function(){return Math.random()-0.5;});
+  wk.textContent = words.join(' · ');
+  LUECKE_DATA.forEach(function(item, i) {
+    var ph = item.ans;
+    var w = Math.max(ph.length * 1.1, 8) + 'ch';
+    var div = document.createElement('div');
+    div.className = 'luecken-item';
+    div.innerHTML = item.pre +
+      '<input class="blank" id="blank-'+i+'" type="text" placeholder="" style="width:'+w+'">' +
+      item.post;
+    var inp = div.querySelector('input');
+    inp.addEventListener('input', function(){ liveCheck(inp, item.ans, i); });
+    ct.appendChild(div);
+  });
+}
+
+function liveCheck(inp, ans, i) {
+  timerAutoStart(3);
+  var val = inp.value.trim();
+  if (!val) { inp.className='blank'; return; }
+  var lcVal = val.toLowerCase(), lcAns = ans.toLowerCase();
+  if (lcVal === lcAns) { inp.className = 'blank ok'; }
+  else if (lcAns.indexOf(lcVal) === 0) { inp.className = 'blank'; return; }
+  else { inp.className = 'blank no'; }
+  var ok = lcVal === lcAns;
+  if (ok) {
+    var allOk = LUECKE_DATA.every(function(_,j){
+      var el = document.getElementById('blank-'+j);
+      return el && el.classList.contains('ok');
+    });
+    if (allOk) timerStop(3);
+  }
+}
+
+function showLueckeLoesung() {
+  timerStop(3);
+  LUECKE_DATA.forEach(function(item, i){
+    var inp = document.getElementById('blank-'+i);
+    if (inp) { inp.value=item.ans; inp.className='blank correct'; }
+  });
+}
+
+function resetLuecke() {
+  LUECKE_DATA.forEach(function(_,i){
+    var inp = document.getElementById('blank-'+i);
+    if (inp) { inp.value=''; inp.className='blank'; }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// MULTIPLE CHOICE
+// ═══════════════════════════════════════════════════════
+function buildMC() {
+  var ct = document.getElementById('mcContainer');
+  if (!ct) return;
+  MC_DATA.forEach(function(item, qi) {
+    var div = document.createElement('div');
+    div.className = 'mc-exercise';
+    var optsHtml = item.opts.map(function(opt, oi){
+      return '<button class="mc-opt" onclick="checkMC(this,'+qi+','+oi+')"><span class="mc-letter">'+['A','B','C','D'][oi]+'</span><span>'+opt+'</span></button>';
+    }).join('');
+    div.innerHTML = '<div class="mc-question">'+(qi+1)+'. '+item.q+'</div><div class="mc-opts">'+optsHtml+'</div>';
+    ct.appendChild(div);
+  });
+}
+
+function checkMC(btn, qi, oi) {
+  timerAutoStart(4);
+  var ex = btn.closest('.mc-exercise');
+  if (ex.querySelector('.correct')) return;
+  var btns = ex.querySelectorAll('.mc-opt');
+  btns.forEach(function(b){ b.disabled=true; });
+  btn.classList.add(oi===MC_DATA[qi].correct ? 'correct' : 'wrong');
+  if (oi===MC_DATA[qi].correct) {
+    var allOk = document.querySelectorAll('.mc-exercise .correct').length === MC_DATA.length;
+    if (allOk) timerStop(4);
+  }
+}
+
+function showMCLoesung() {
+  timerStop(4);
+  MC_DATA.forEach(function(item, qi){
+    var ex = document.querySelectorAll('.mc-exercise')[qi];
+    if (!ex) return;
+    var btns = ex.querySelectorAll('.mc-opt');
+    btns.forEach(function(b,oi){ b.disabled=true; if(oi===item.correct) b.classList.add('correct'); });
+  });
+}
+
+function resetMC() {
+  MC_DATA.forEach(function(_,qi){
+    var ex = document.querySelectorAll('.mc-exercise')[qi];
+    if (!ex) return;
+    ex.querySelectorAll('.mc-opt').forEach(function(b){
+      b.disabled=false; b.classList.remove('correct','wrong');
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// SATZBAU
+// ═══════════════════════════════════════════════════════
+var sbDragged = null;
+
+function sbCapitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+
+function sbUpdateCapitalization(row) {
+  var chips = Array.from(row.querySelectorAll('.chip'));
+  chips.forEach(function(c, i) {
+    var orig = c.dataset.word;
+    var isNomen = orig.charAt(0) === orig.charAt(0).toUpperCase() && orig.charAt(0) !== orig.charAt(0).toLowerCase();
+    c.textContent = isNomen ? orig : (i === 0 ? sbCapitalize(orig) : orig);
+  });
+}
+
+function sbRegisterZone(zone, idx) {
+  zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', function(){ zone.classList.remove('dragover'); });
+  zone.addEventListener('drop', function(e){
+    e.preventDefault(); zone.classList.remove('dragover');
+    if (!sbDragged) return;
+    if (sbDragged.dataset.sbIdx !== String(idx)) return;
+    var isBuilder = zone.classList.contains('sentence-builder');
+    if (isBuilder) {
+      zone.appendChild(sbDragged);
+      sbUpdateCapitalization(zone);
+    } else {
+      sbDragged.textContent = sbDragged.dataset.word;
+      zone.appendChild(sbDragged);
+      var builder = document.getElementById('builder-'+idx);
+      if (builder) sbUpdateCapitalization(builder);
+    }
+    sbCheckAuto(idx);
+  });
+}
+
+function buildSatzbau() {
+  var ct = document.getElementById('satzbauContainer');
+  if (!ct) return;
+  satzbauData.forEach(function(item, idx) {
+    var shuffled = item.parts.slice().sort(function(){return Math.random()-0.5;});
+    var chipsHtml = shuffled.map(function(p){
+      return '<div class="chip" draggable="true" data-word="'+p+'" data-sb-idx="'+idx+'">'+p+'</div>';
+    }).join('');
+    var div = document.createElement('div');
+    div.className = 'satzbau-item';
+    div.innerHTML =
+      '<div class="chips-container" id="chips-'+idx+'">'+chipsHtml+'</div>'+
+      '<div class="sentence-builder" id="builder-'+idx+'"></div>'+
+      '<div class="satzbau-feedback" id="sfb-'+idx+'"></div>';
+    ct.appendChild(div);
+    var builder = div.querySelector('#builder-'+idx);
+    sbRegisterZone(builder, idx);
+    div.querySelectorAll('.chip').forEach(function(chip){
+      chip.addEventListener('dragstart', function(e){ sbDragged=chip; timerAutoStart(5); e.dataTransfer.effectAllowed='move'; });
+      chip.addEventListener('dragend', function(){ sbDragged=null; });
+      chip.addEventListener('click', function(){
+        timerAutoStart(5);
+        var builder = document.getElementById('builder-'+idx);
+        var bank = document.getElementById('chips-'+idx);
+        var isInBuilder = !!chip.closest('.sentence-builder');
+        if (isInBuilder) {
+          chip.textContent = chip.dataset.word;
+          bank.appendChild(chip);
+          sbUpdateCapitalization(builder);
+        } else {
+          builder.appendChild(chip);
+          sbUpdateCapitalization(builder);
+        }
+        sbCheckAuto(idx);
+      });
+    });
+    sbRegisterZone(div.querySelector('#chips-'+idx), idx);
+  });
+}
+
+function sbCheckAuto(idx) {
+  var builder = document.getElementById('builder-'+idx);
+  var fb = document.getElementById('sfb-'+idx);
+  var chips = Array.from(builder.querySelectorAll('.chip'));
+  var item = satzbauData[idx];
+  if (chips.length < item.valid.length) { builder.className='sentence-builder'; if(fb) fb.textContent=''; return; }
+  var attempt = chips.map(function(c){ return c.dataset.word; });
+  var correct = attempt.join(' ') === item.valid.join(' ');
+  builder.className = correct ? 'sentence-builder correct' : 'sentence-builder incorrect';
+  var oldPunkt = builder.querySelector('.sb-punkt');
+  if (oldPunkt) oldPunkt.parentNode.removeChild(oldPunkt);
+  if (correct) {
+    var punkt = document.createElement('span');
+    punkt.className = 'sb-punkt';
+    punkt.textContent = item.punct || '.';
+    builder.appendChild(punkt);
+  }
+  if (fb) {
+    var sentence = item.valid.join(' ');
+    sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+    fb.textContent = correct ? '✓ Richtig! ' + sentence + item.punct : '✗ Noch nicht ganz richtig.';
+    fb.className = correct ? 'satzbau-feedback correct' : 'satzbau-feedback incorrect';
+  }
+  if (correct) {
+    var allDone = satzbauData.every(function(_,i){
+      var b = document.getElementById('builder-'+i);
+      return b && b.classList.contains('correct');
+    });
+    if (allDone) timerStop(5);
+  }
+}
+
+function sbShowSolution() {
+  timerStop(5);
+  satzbauData.forEach(function(item, idx){
+    var builder = document.getElementById('builder-'+idx);
+    var chipsBox = document.getElementById('chips-'+idx);
+    if (!builder) return;
+    Array.from(chipsBox.querySelectorAll('.chip')).forEach(function(c){ builder.appendChild(c); });
+    var chips = Array.from(builder.querySelectorAll('.chip'));
+    chips.sort(function(a,b){ return item.valid.indexOf(a.dataset.word) - item.valid.indexOf(b.dataset.word); });
+    chips.forEach(function(c){ builder.appendChild(c); });
+    sbUpdateCapitalization(builder);
+    builder.className = 'sentence-builder correct';
+    var oldPunkt = builder.querySelector('.sb-punkt');
+    if (oldPunkt) oldPunkt.parentNode.removeChild(oldPunkt);
+    var punkt = document.createElement('span');
+    punkt.className = 'sb-punkt';
+    punkt.textContent = item.punct || '.';
+    builder.appendChild(punkt);
+    var fb = document.getElementById('sfb-'+idx);
+    var sentence = item.valid.join(' ');
+    sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+    if (fb) { fb.textContent='✓ Lösung: '+sentence+item.punct; fb.className='satzbau-feedback correct'; }
+  });
+}
+
+function sbReset() {
+  satzbauData.forEach(function(item, idx){
+    var chipsBox = document.getElementById('chips-'+idx);
+    var builder = document.getElementById('builder-'+idx);
+    var fb = document.getElementById('sfb-'+idx);
+    if (!chipsBox || !builder) return;
+    var oldPunkt = builder.querySelector('.sb-punkt');
+    if (oldPunkt) oldPunkt.parentNode.removeChild(oldPunkt);
+    Array.from(builder.querySelectorAll('.chip')).forEach(function(c){
+      c.textContent = c.dataset.word;
+      chipsBox.appendChild(c);
+    });
+    builder.className='sentence-builder';
+    if (fb) { fb.textContent=''; fb.className='satzbau-feedback'; }
+    var chips = Array.from(chipsBox.querySelectorAll('.chip'));
+    chips.sort(function(){return Math.random()-0.5;});
+    chips.forEach(function(c){ chipsBox.appendChild(c); });
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// WORTSCHATZ
+// ═══════════════════════════════════════════════════════
+function initWortschatz() {
+  var ct = document.getElementById('wortschatzContainer');
+  if (!ct) return;
+  ct.innerHTML = '';
+  WORTSCHATZ.forEach(function(item) {
+    var row = document.createElement('div');
+    row.className = 'luecken-item';
+    row.style.marginBottom = '0';
+    var prompt = document.createElement('div');
+    prompt.style.cssText = 'font-weight:600;color:#667eea;margin-bottom:6px;font-size:1.05em;';
+    prompt.textContent = item.en;
+    row.appendChild(prompt);
+    var fields = document.createElement('div');
+    fields.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;align-items:center;';
+    if (item.type === 'n') {
+      var artInp = document.createElement('input');
+      artInp.className='blank'; artInp.type='text';
+      artInp.placeholder='Artikel'; artInp.style.width='70px';
+      artInp.dataset.answer=item.artikel; artInp.dataset.field='art';
+      artInp.oninput=function(){ wortschatzLive(this); timerAutoStart(6); checkWortschatzAllOk(); };
+      fields.appendChild(artInp);
+      var wordInp = document.createElement('input');
+      wordInp.className='blank'; wordInp.type='text';
+      wordInp.placeholder='Wort'; wordInp.style.width='180px';
+      wordInp.dataset.answer=item.de; wordInp.dataset.field='word';
+      wordInp.oninput=function(){ wortschatzLive(this); timerAutoStart(6); checkWortschatzAllOk(); };
+      fields.appendChild(wordInp);
+      var plInp = document.createElement('input');
+      plInp.className='blank'; plInp.type='text';
+      plInp.placeholder='Plural'; plInp.style.width='160px';
+      plInp.dataset.answer=item.plural; plInp.dataset.field='plural';
+      if (item.plural === '–') {
+        plInp.value='–'; plInp.disabled=true;
+        plInp.classList.add('correct'); plInp.style.opacity='0.6';
+        plInp.title='Dieses Wort hat keinen Plural';
+      } else {
+        plInp.oninput=function(){ wortschatzLive(this); timerAutoStart(6); checkWortschatzAllOk(); };
+      }
+      fields.appendChild(plInp);
+    } else {
+      var inp = document.createElement('input');
+      inp.className='blank'; inp.type='text';
+      inp.placeholder='Deutsch'; inp.style.width='240px';
+      inp.dataset.answer=item.de; inp.dataset.field='word';
+      inp.oninput=function(){ wortschatzLive(this); timerAutoStart(6); checkWortschatzAllOk(); };
+      fields.appendChild(inp);
+    }
+    row.appendChild(fields);
+    ct.appendChild(row);
+  });
+}
+
+function wortschatzLive(inp) {
+  var user=inp.value, answer=inp.dataset.answer, field=inp.dataset.field;
+  inp.classList.remove('correct','wrong');
+  if (!user) return;
+  var cmpU=(field==='art')?user.toLowerCase().trim():user.trim();
+  var cmpA=(field==='art')?answer.toLowerCase():answer;
+  if(cmpU===cmpA){ inp.classList.add('correct'); }
+  else if(cmpA.indexOf(cmpU)===0){ /* Präfix — neutral */ }
+  else { inp.classList.add('wrong'); }
+}
+function checkWortschatzAllOk() {
+  var inputs=document.querySelectorAll('#sec-wortschatz input.blank');
+  var allOk=inputs.length>0 && Array.from(inputs).every(function(i){ return i.disabled||i.classList.contains('correct'); });
+  if(allOk) timerStop(6);
+}
+function showWortschatzLoesung() {
+  timerStop(6);
+  document.querySelectorAll('#sec-wortschatz input.blank').forEach(function(inp){
+    inp.value=inp.dataset.answer;
+    inp.classList.add('correct'); inp.classList.remove('wrong');
+  });
+}
+function resetWortschatz() {
+  document.querySelectorAll('#sec-wortschatz input.blank').forEach(function(inp){
+    if(!inp.disabled){ inp.value=''; inp.classList.remove('correct','wrong'); }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', function() {
+  initTimers([2,3,4,5,6]);
+  buildVorentlastung();
+  buildGenus();
+  buildLuecke();
+  buildMC();
+  buildSatzbau();
+  initWortschatz();
+  initSchreibwerkstatt();
+});
+// ── Schreibwerkstatt ──────────────────────────────────────────
+var SCHREIB_NAME_KEY = 'schreibwerkstatt_C1_1027R_name';
+var SCHREIB_KEY_PREFIX = 'schreibwerkstatt_C1_1027R_';
+var SCHREIB_SENT_PREFIX = 'schreibwerkstatt_C1_1027R_sent_';
+var FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/FrankBurkert@fabdaf.onmicrosoft.com';
+var SCHREIB_LEKTION = 'C1 – 1027R · Kant: Was ist Aufklärung?';
+
+function schreibNameOk() {
+  var inp = document.getElementById('schreib-name');
+  return !!(inp && inp.value.trim().length >= 2);
+}
+function schreibNameValidate() {
+  var inp = document.getElementById('schreib-name');
+  if (!inp) return;
+  if (schreibNameOk()) inp.classList.add('ok');
+  else inp.classList.remove('ok');
+}
+function initSchreibwerkstatt() {
+  var nameInp = document.getElementById('schreib-name');
+  if (nameInp) {
+    var savedName = localStorage.getItem(SCHREIB_NAME_KEY);
+    if (savedName) nameInp.value = savedName;
+    schreibNameValidate();
+    nameInp.addEventListener('input', function(){
+      localStorage.setItem(SCHREIB_NAME_KEY, nameInp.value);
+      schreibNameValidate();
+    });
+  }
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var nr = ta.dataset.aufgabe;
+    var saved = localStorage.getItem(SCHREIB_KEY_PREFIX + nr);
+    if (saved) ta.value = saved;
+    schreibUpdateCount(ta);
+    var sentInfo = localStorage.getItem(SCHREIB_SENT_PREFIX + nr);
+    if (sentInfo) schreibKarteAlsGesendetMarkieren(nr, sentInfo, true);
+    ta.addEventListener('input', function(){
+      schreibUpdateCount(ta);
+      localStorage.setItem(SCHREIB_KEY_PREFIX + nr, ta.value);
+      var btn = document.getElementById('send-' + nr);
+      if (btn && btn.classList.contains('gesendet')) { btn.classList.remove('gesendet'); btn.innerHTML = '📨 Erneut senden'; }
+    });
+  });
+}
+function schreibUpdateCount(ta) {
+  var nr = ta.dataset.aufgabe;
+  var text = ta.value.trim();
+  var words = text ? text.split(/\s+/).filter(function(w){ return w.length > 0; }).length : 0;
+  var wc = document.querySelector('.wc-' + nr);
+  if (wc) wc.textContent = words;
+}
+function schreibKarteAlsGesendetMarkieren(nr, info, beimLaden) {
+  var ta = document.querySelector('.schreib-mini-textarea[data-aufgabe="'+nr+'"]');
+  var karte = ta && ta.closest('.schreib-aufgabe-karte');
+  if (karte) karte.classList.add('gesendet');
+  var btn = document.getElementById('send-' + nr);
+  if (btn) { btn.classList.add('gesendet'); btn.innerHTML = beimLaden ? '✓ schon gesendet · erneut senden' : '✓ gesendet · erneut senden'; }
+  var status = document.getElementById('status-' + nr);
+  if (status) { status.classList.remove('error'); status.textContent = '✓ ' + info; }
+}
+function schreibStatusZeigen(typ, text) {
+  var box = document.getElementById('schreib-status');
+  if (!box) return;
+  box.className = 'schreib-status ' + typ; box.innerHTML = text;
+}
+function schreibAktuellerName() {
+  var nameInp = document.getElementById('schreib-name');
+  return (nameInp && nameInp.value || '').trim() || 'Anonyme Einsenderin / anonymer Einsender';
+}
+function schreibPostFormsubmit(subject, message, onOk, onErr) {
+  return fetch(FORMSUBMIT_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: schreibAktuellerName(), _subject: subject, _template: 'box', _captcha: 'false', lektion: SCHREIB_LEKTION, message: message })
+  })
+  .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(onOk).catch(onErr);
+}
+function schreibSendenEinzeln(nr) {
+  var ta = document.querySelector('.schreib-mini-textarea[data-aufgabe="'+nr+'"]');
+  var btn = document.getElementById('send-' + nr);
+  if (!ta || !btn) return;
+  var text = ta.value.trim();
+  if (text.length < 15) { var st = document.getElementById('status-' + nr); if (st) { st.classList.add('error'); st.textContent = 'noch zu kurz — schreib bitte etwas mehr'; } return; }
+  if (!schreibNameOk()) {
+    var st = document.getElementById('status-' + nr);
+    if (st) { st.classList.add('error'); st.textContent = '✗ Trage zuerst oben deinen Namen ein.'; }
+    var nameInp = document.getElementById('schreib-name');
+    if (nameInp) { nameInp.focus(); nameInp.scrollIntoView({behavior:'smooth', block:'center'}); }
+    return;
+  }
+  var titel = ta.dataset.titel || ('Aufgabe ' + nr);
+  var subject = '[' + schreibAktuellerName() + '] C1 1012X · Aufgabe ' + nr + ' · ' + titel;
+  var message = 'Von: ' + schreibAktuellerName() + '\n\n=== Aufgabe ' + nr + ': ' + titel + ' ===\n\n' + text;
+  btn.disabled = true;
+  var origLabel = btn.innerHTML;
+  btn.innerHTML = '⏳ Wird gesendet …';
+  schreibPostFormsubmit(subject, message,
+    function() {
+      btn.disabled = false;
+      var jetzt = new Date();
+      var info = 'gesendet um ' + String(jetzt.getHours()).padStart(2,'0') + ':' + String(jetzt.getMinutes()).padStart(2,'0');
+      localStorage.setItem(SCHREIB_SENT_PREFIX + nr, info);
+      schreibKarteAlsGesendetMarkieren(nr, info, false);
+    },
+    function() {
+      btn.disabled = false; btn.innerHTML = origLabel;
+      var st = document.getElementById('status-' + nr);
+      if (st) {
+        var subjectEnc = encodeURIComponent(subject);
+        var bodyEnc = encodeURIComponent('Name: ' + schreibAktuellerName() + '\n\n' + message);
+        st.classList.add('error');
+        st.innerHTML = '✗ Versand fehlgeschlagen — <a href="mailto:FrankBurkert@fabdaf.onmicrosoft.com?subject=' + subjectEnc + '&body=' + bodyEnc + '" style="color:#c62828;font-weight:700;">stattdessen per Mail-Programm</a>';
+      }
+    }
+  );
+}
+function schreibSendenAlleNochOffenen() {
+  if (!schreibNameOk()) {
+    schreibStatusZeigen('error', '✗ Trage zuerst oben deinen Namen ein — sonst kommt die Mail anonym an.');
+    var nameInp = document.getElementById('schreib-name');
+    if (nameInp) { nameInp.focus(); nameInp.scrollIntoView({behavior:'smooth', block:'center'}); }
+    return;
+  }
+  var btn = document.getElementById('btn-schreib-senden');
+  var offene = [];
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var nr = ta.dataset.aufgabe;
+    var text = ta.value.trim();
+    var sent = localStorage.getItem(SCHREIB_SENT_PREFIX + nr);
+    if (text.length >= 15 && !sent) offene.push({ nr: nr, ta: ta, text: text });
+  });
+  if (offene.length === 0) { schreibStatusZeigen('info', 'ℹ Es gibt nichts Neues zu senden.'); return; }
+  var teile = offene.map(function(o) {
+    var titel = o.ta.dataset.titel || ('Aufgabe ' + o.nr);
+    return '=== Aufgabe ' + o.nr + ': ' + titel + ' ===\n\n' + o.text;
+  });
+  var subject = '[' + schreibAktuellerName() + '] C1 1012X · ' + offene.length + ' Antworten';
+  var message = 'Von: ' + schreibAktuellerName() + '\n\n' + teile.join('\n\n');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ Wird gesendet …';
+  schreibStatusZeigen('info', '⏳ ' + offene.length + ' Antworten werden übermittelt …');
+  schreibPostFormsubmit(subject, message,
+    function() {
+      btn.disabled = false;
+      btn.innerHTML = '📨 Alle noch nicht gesendeten Antworten schicken';
+      var jetzt = new Date();
+      var info = 'gesendet um ' + String(jetzt.getHours()).padStart(2,'0') + ':' + String(jetzt.getMinutes()).padStart(2,'0');
+      offene.forEach(function(o) { localStorage.setItem(SCHREIB_SENT_PREFIX + o.nr, info); schreibKarteAlsGesendetMarkieren(o.nr, info, false); });
+      schreibStatusZeigen('success', '✓ <strong>' + offene.length + ' Antworten übermittelt.</strong> Frank meldet sich.');
+    },
+    function() {
+      btn.disabled = false;
+      btn.innerHTML = '📨 Alle noch nicht gesendeten Antworten schicken';
+      schreibStatusZeigen('error', '✗ Direkter Versand nicht möglich. Bitte per Karte einzeln versuchen.');
+    }
+  );
+}
+function schreibKopieren() {
+  var teile = [];
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var titel = ta.dataset.titel || ('Aufgabe ' + ta.dataset.aufgabe);
+    var text = ta.value.trim();
+    if (text) teile.push('=== Aufgabe ' + ta.dataset.aufgabe + ': ' + titel + ' ===\n\n' + text);
+  });
+  var inhalt = teile.join('\n\n');
+  if (!inhalt) { schreibStatusZeigen('error', '✗ Da ist noch nichts zum Kopieren.'); return; }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(inhalt).then(function(){ schreibStatusZeigen('success', '✓ Inhalt liegt in der Zwischenablage.'); });
+  } else { schreibStatusZeigen('error', '✗ Kopieren wird vom Browser nicht unterstützt.'); }
+}
+function schreibLeeren() {
+  if (!confirm('Wirklich alle fünf Aufgabenfelder leeren und die Sende-Markierungen zurücksetzen?')) return;
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var nr = ta.dataset.aufgabe;
+    ta.value = '';
+    localStorage.removeItem(SCHREIB_KEY_PREFIX + nr);
+    localStorage.removeItem(SCHREIB_SENT_PREFIX + nr);
+    schreibUpdateCount(ta);
+    var karte = ta.closest('.schreib-aufgabe-karte');
+    if (karte) karte.classList.remove('gesendet');
+    var btn = document.getElementById('send-' + nr);
+    if (btn) { btn.classList.remove('gesendet'); btn.innerHTML = '📨 Diese Antwort senden'; btn.disabled = false; }
+    var status = document.getElementById('status-' + nr);
+    if (status) { status.textContent = ''; status.classList.remove('error'); }
+  });
+  schreibStatusZeigen('info', 'ℹ Alles zurückgesetzt — du kannst neu beginnen.');
+}
+
+</script>
+</body>
+</html>
