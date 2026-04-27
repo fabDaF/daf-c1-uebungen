@@ -1,11 +1,13 @@
-# C1-Projekt — Übergabe an die nächste Session (C1.2 startet)
+# C1-Projekt — Übergabe an die nächste Session (C1.2 Einheit 2 startet)
 
-**Stand: 2026-04-27 · Verfasser: Claude (Opus 4.7) für Claude (nächster Chat)**
+**Stand: 2026-04-27 (Nachmittag) · Verfasser: Claude (Opus 4.7) für Claude (nächster Chat)**
 
 > Lies diese Datei vollständig, bevor Du eine Zeile am C1-Repo änderst.
-> Frank hat C1.1 in dieser Session vollständig durchgezogen — bis auf
-> die zwei W-Lektionen am Kursende. **48/200 Lektionen sind live.**
-> Du startest mit **C1.2 Einheit 1**.
+> Frank hat C1.1 vollständig durchgezogen, und ich habe heute Nachmittag
+> die acht Lektionen der **Einheit 1 von C1.2** ergänzt
+> (2011G–2018S). **56/200 Lektionen sind live.**
+> Du startest mit **C1.2 Einheit 2 — 2021G „Subjektive Bedeutung
+> der Modalverben"**.
 
 ---
 
@@ -33,7 +35,7 @@ am Werk.
 
 ---
 
-## 2 · Aktueller Stand: 48 / 200
+## 2 · Aktueller Stand: 56 / 200
 
 Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je
 **50 Lektionen** = **200 total**.
@@ -41,17 +43,26 @@ Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je
 | Kurs | G | X | R | S | W | Σ | Stand |
 |---|---|---|---|---|---|---|---|
 | C1.1 | 6/6 | 6/6 | 18/18 | 18/18 | 0/2 | **48/50** | komplett bis auf 1071W/1072W |
-| C1.2 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | ← **DU FÄNGST HIER AN** |
+| C1.2 | 1/6 | 1/6 | 3/18 | 3/18 | 0/2 | **8/50** | Einheit 1 fertig (2011G–2018S) |
 | C1.3 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
 | C1.4 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
-| **Σ** | **6/24** | **6/24** | **18/72** | **18/72** | **0/8** | **48/200** | |
+| **Σ** | **7/24** | **7/24** | **21/72** | **21/72** | **0/8** | **56/200** | |
 
 **Sonderblock** im selben Repo (außerhalb der 200):
 - **9011G–9071G** — frühere C1-Grammatikreihe (7 Dateien fertig)
 - **3081X–3086S** — Block „Geistesgeschichte & Bundespolitik" (6 Dateien fertig)
 
-**Nächste anstehende Lektion: 2011G „Logische Konnektoren, um Argumente
-anzubringen".**
+**Nächste anstehende Lektion: 2021G „Subjektive Bedeutung der Modalverben".**
+
+**Heute neu (2026-04-27 Nachmittag):**
+- 2011G · Logische Konnektoren — Argumente verknüpfen
+- 2012X · Modalität ausdrücken — Notwendigkeit, Zurückhaltung, Sicherheit
+- 2013R · Verschiedene deutsche Dialekte
+- 2014S · Visum und Staatsbürgerschaft (Reform 2024)
+- 2015R · Umgekehrter Kulturschock
+- 2016S · Deutschnamibier
+- 2017R · Heimweh und Fernweh (Schmidt von Lübeck)
+- 2018S · Firmenkultur in Deutschland
 
 ---
 
