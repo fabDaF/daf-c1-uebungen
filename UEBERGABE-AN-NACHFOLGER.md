@@ -5,7 +5,7 @@
 > Lies diese Datei vollständig, bevor Du eine einzige Zeile am C1-Repo änderst.
 > Frank hat alles delegiert und erwartet, dass Du autonom durchziehst und
 > **mehrere Lektionen pro Turn** lieferst, sobald die Pilot-Phase durch ist.
-> Aktueller Stand: **2 von 200 Lektionen fertig** (1011G, 1012X).
+> Aktueller Stand: **3 von 200 Lektionen fertig** (1011G, 1012X, 1013R).
 
 ---
 
@@ -38,11 +38,11 @@ Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je **50 Lektionen** =
 
 | Kurs | G | X | R | S | W | Σ | Stand |
 |---|---|---|---|---|---|---|---|
-| C1.1 | 1/6 | 1/6 | 0/18 | 0/18 | 0/2 | **2/50** | Einheit 1 (1011G ✅, 1012X ✅) |
+| C1.1 | 1/6 | 1/6 | 1/18 | 0/18 | 0/2 | **3/50** | Einheit 1 (1011G ✅, 1012X ✅, 1013R ✅) |
 | C1.2 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
 | C1.3 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
 | C1.4 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
-| **Σ** | **1/24** | **1/24** | **0/72** | **0/72** | **0/8** | **2/200** | |
+| **Σ** | **1/24** | **1/24** | **1/72** | **0/72** | **0/8** | **3/200** | |
 
 **Sonderblock** außerhalb der 200, im selben Repo:
 - **9011G–9071G** — frühere eigene Themenreihe (Nominalstil, subj. Modalverben,
@@ -50,8 +50,8 @@ Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je **50 Lektionen** =
   Kommasetzung), 7 Dateien fertig.
 - **3081X–3086S** — Block „Geistesgeschichte & Bundespolitik", 6 Dateien fertig.
 
-**Nächste anstehende Lektion: 1013R Technokultur in Berlin** — der erste
-R-Goldstandard, mit ernsthafter Recherche zur Berliner Clubgeschichte.
+**Nächste anstehende Lektion: 1014S Die ersten Musikinstrumente** — der
+erste S-Goldstandard. R-Goldstandard ist mit 1013R etabliert (siehe §13a).
 
 ---
 
@@ -114,9 +114,12 @@ $ROOT/htmlS/C1/DE_C1_3083X-merz-bilanz.html       # ältere X-Vorlage
 
 **Vorlage:** `DE_C1_1012X-analogien.html` (Schreibwerkstatt komplett integriert)
 
-### R-Datei (Lesen) — Goldstandard noch nicht definiert
-Nimm `DE_C2_0407S-online-shopping.html` als Vorbild (das ist der C2-R/S-Goldstandard).
-Beim ersten R-Pilot 1013R muss der C1-R-Goldstandard etabliert werden.
+### R-Datei (Lesen) — 8 Tabs, Goldstandard 1013R seit 27.04.2026
+Identische 8-Tab-Struktur wie X-Dateien (1012X), inkl. Schreibwerkstatt.
+Lesetext-Zielband 600–900 Wörter im journalistischen C1-Stil (siehe §11).
+**Vorlage:** `DE_C1_1013R-technokultur-berlin.html` (896 Wörter, mit 6 h3-
+Zwischenüberschriften, vier Faktenanker pro Absatz, klar argumentiertes
+Schluss-Bilanz-Kapitel).
 
 ### S-Datei (Sprechen) — Goldstandard noch nicht definiert
 Analog zu R.
@@ -414,8 +417,8 @@ und Frank-Wunsch: „Bewahre mich vor der Schande" (2026-04-27).
 |---|---|---|
 | 1011G | Redewiedergabe für Fortgeschrittene (Konjunktiv I) | ✅ |
 | 1012X | Analogien — Vergleichen, übertragen, erklären | ✅ |
-| **1013R** | **Die Technokultur in Berlin** | ← **NÄCHSTE** |
-| 1014S | Die ersten Musikinstrumente | offen |
+| 1013R | Die Technokultur in Berlin | ✅ |
+| **1014S** | **Die ersten Musikinstrumente** | ← **NÄCHSTE** |
 | 1015R | Musik und Intelligenz — Gibt es eine Verbindung? | offen |
 | 1016S | Neue Musikrichtungen | offen |
 | 1017R | Die musikalische Schönheit | offen |
@@ -428,10 +431,27 @@ und Frank-Wunsch: „Bewahre mich vor der Schande" (2026-04-27).
 | 1071W | Vergleichender Essay | offen |
 | 1072W | Rezension | offen |
 
-**Tipp zu 1013R:** Berliner Technokultur ist seit März 2024 UNESCO-immaterielles
-Kulturerbe — das wäre ein zentraler aktualisierender Anker. Außerdem: Tresor
-(seit 1991), Berghain (seit 2004), Watergate, Sisyphos. Die Lingoda-Folien
-sind dünn — bau einen ZEIT-Wissen-tauglichen 700–900-Wörter-Text.
+**Tipp zu 1014S:** Frühe Knochenflöten der Schwäbischen Alb (Hohle Fels,
+~40 000 Jahre, UNESCO-Welterbe seit 2017) sind der zentrale aktualisierende
+Anker — daneben Wendel-Flöten, Lithophone, prähistorische Trommeln. Die
+Lingoda-Folien werden dünn sein. S-Datei = Sprechen, also stärker auf
+Hör-/Gesprächsanlässe ausrichten als 1013R, aber dieselbe 8-Tab-Struktur
+mit Schreibwerkstatt.
+
+**Was 1013R gelehrt hat (für die nächsten R/S-Lektionen):**
+
+- Banner-Pool aus der Übergabe (256541, 267669, 5710614 …) ist
+  **inhaltlich falsch beschriftet**. 1486064 ist „Man holding chin", nicht
+  Vinyl. **Vor jeder Lektion neu suchen** über `https://www.pexels.com/search/<thema>/`
+  und IDs aus den URL-Slugs lesen. Die in 1013R verifizierten Treffer:
+  164853 (Vinyl), 426976 (Spotlights/Club), 316173 (DJ-Hände),
+  28961590 (Berlin-Mauer-Graffiti), 16378105 (DJ-Pult),
+  4144923 (Notebook), 267669 (Wörterbuch im Bokeh).
+- **Latenter Bug in 1012X-Vorlage:** `initSchreibwerkstatt()` wurde nie im
+  `DOMContentLoaded`-Handler aufgerufen → keine localStorage-
+  Wiederherstellung, keine Live-Namensvalidierung. In 1013R behoben. Frank
+  könnte das in 1012X nachziehen wollen — eine Zeile:
+  `initWortschatz();` → `initWortschatz(); initSchreibwerkstatt();`.
 
 ### C1.2 — Argumentation & Stilausbau (G-Themen)
 
