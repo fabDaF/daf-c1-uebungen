@@ -213,6 +213,10 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
       <span class="nav-label">Satzbau</span>
     </div>
     <div class="nav-btn" onclick="showSection(6)">
+      <span class="nav-emoji">📨</span>
+      <span class="nav-label">Schreibwerkstatt</span>
+    </div>
+    <div class="nav-btn" onclick="showSection(7)">
       <span class="nav-emoji">📝</span>
       <span class="nav-label">Wortschatz</span>
     </div>
@@ -354,7 +358,76 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
     </div>
   </div>
 
-  <!-- TAB 6: Wortschatz -->
+    <!-- TAB 6: Schreibwerkstatt -->
+  <div class="section" id="sec-schreib">
+    <img class="tab-banner" src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Schreibtisch mit Notebook">
+    <div class="sec-inner">
+      <h2>📨 Schreibwerkstatt</h2>
+      <div class="hilfe-box">Fünf kleine Schreibaufgaben rund um die Analogie — jede in zwei bis drei Minuten zu schaffen, jede mit einem anderen Fragetyp. <strong>Jede einzelne Antwort kannst du direkt mit ihrem eigenen Senden-Button an Frank schicken</strong>; der Sammelbutton am Ende ist für mehrere Antworten auf einmal.</div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">1</span><span class="schreib-aufgabe-titel">Die erste Analogie, die dir einfällt</span><span class="schreib-aufgabe-typ">autobiografisch</span>
+        <div class="schreib-aufgabe-frage">Welche Analogie aus deinem eigenen Sprach- oder Lernalltag fällt dir spontan ein? Beschreibe sie in vier Sätzen — und sag, was sie an deinem Lernen sichtbar macht.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="1" data-titel="Die erste Analogie, die dir einfällt"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-1">0</strong> <span class="schreib-mini-status" id="status-1"></span></span>
+          <button class="schreib-mini-btn" id="send-1" onclick="schreibSendenEinzeln(1)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">2</span><span class="schreib-aufgabe-titel">Politische Analogien — legitim oder Manipulation?</span><span class="schreib-aufgabe-typ">argumentativ</span>
+        <div class="schreib-aufgabe-frage">Politische Gegner werden manchmal mit historischen Diktatoren verglichen. Hältst du das für ein legitimes rhetorisches Mittel oder für unzulässige Manipulation? Argumentiere kurz und präzise — mit zwei Gründen für deine Position.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="2" data-titel="Politische Analogien — legitim oder Manipulation?"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-2">0</strong> <span class="schreib-mini-status" id="status-2"></span></span>
+          <button class="schreib-mini-btn" id="send-2" onclick="schreibSendenEinzeln(2)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">3</span><span class="schreib-aufgabe-titel">„Der Staat ist ein Schiff" — analysiert</span><span class="schreib-aufgabe-typ">analytisch</span>
+        <div class="schreib-aufgabe-frage">Prüfe die alte Analogie „Der Staat ist ein Schiff". Welche Aspekte überträgt sie sinnvoll, und welche entscheidenden Aspekte verschweigt sie oder verzerrt sie? Eine kurze, sachliche Analyse in vier bis fünf Sätzen.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="3" data-titel="„Der Staat ist ein Schiff" — analysiert"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-3">0</strong> <span class="schreib-mini-status" id="status-3"></span></span>
+          <button class="schreib-mini-btn" id="send-3" onclick="schreibSendenEinzeln(3)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">4</span><span class="schreib-aufgabe-titel">Wu wei oder paddeln?</span><span class="schreib-aufgabe-typ">bewertend</span>
+        <div class="schreib-aufgabe-frage">Im Lesetext steht die taoistische wu-wei-Analogie (sich von der Strömung tragen lassen) gegen das mühevolle Gegen-die-Strömung-Paddeln. Welche Lebenshaltung passt eher zu dir — und warum gerade diese? Begründe ehrlich, ohne Schönfärberei.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="4" data-titel="Wu wei oder paddeln?"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-4">0</strong> <span class="schreib-mini-status" id="status-4"></span></span>
+          <button class="schreib-mini-btn" id="send-4" onclick="schreibSendenEinzeln(4)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <div class="schreib-aufgabe-karte">
+        <span class="schreib-aufgabe-nr">5</span><span class="schreib-aufgabe-titel">Erfinde eine eigene Lehr-Analogie</span><span class="schreib-aufgabe-typ">kreativ</span>
+        <div class="schreib-aufgabe-frage">Erfinde eine neue, möglichst originelle Analogie, die einem Anfänger den Konjunktiv I erklärt. Mindestens drei Sätze. Die Analogie darf ungewöhnlich, schräg oder humorvoll sein — Hauptsache, sie macht etwas am Konjunktiv I sichtbar.</div>
+        <textarea class="schreib-mini-textarea" data-aufgabe="5" data-titel="Erfinde eine eigene Lehr-Analogie"></textarea>
+        <div class="schreib-mini-footer">
+          <span class="schreib-mini-meta">Wörter: <strong class="wc-5">0</strong> <span class="schreib-mini-status" id="status-5"></span></span>
+          <button class="schreib-mini-btn" id="send-5" onclick="schreibSendenEinzeln(5)">📨 Diese Antwort senden</button>
+        </div>
+      </div>
+
+      <label class="schreib-label" for="schreib-name">Dein Name (optional, für die Rückmeldung):</label>
+      <input type="text" id="schreib-name" class="schreib-name" placeholder="z. B. Hiroshi Tanaka">
+
+      <div class="schreib-actions">
+        <button class="schreib-btn schreib-btn-primary" id="btn-schreib-senden" onclick="schreibSendenAlleNochOffenen()">📨 Alle noch nicht gesendeten Antworten schicken</button>
+        <button class="schreib-btn schreib-btn-ghost" onclick="schreibKopieren()">📋 In Zwischenablage</button>
+        <button class="schreib-btn schreib-btn-ghost" onclick="schreibLeeren()">🗑️ Alles zurücksetzen</button>
+      </div>
+      <div class="schreib-status" id="schreib-status"></div>
+    </div>
+  </div>
+
+<!-- TAB 6: Wortschatz -->
   <div class="section" id="sec-wortschatz">
     <img class="tab-banner" src="https://images.pexels.com/photos/935949/pexels-photo-935949.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wörterbuch">
     <div class="sec-inner">
@@ -962,6 +1035,167 @@ document.addEventListener('DOMContentLoaded', function() {
   buildSatzbau();
   initWortschatz();
 });
+// ── Schreibwerkstatt ──────────────────────────────────────────
+var SCHREIB_NAME_KEY = 'schreibwerkstatt_C1_1012X_name';
+var SCHREIB_KEY_PREFIX = 'schreibwerkstatt_C1_1012X_';
+var SCHREIB_SENT_PREFIX = 'schreibwerkstatt_C1_1012X_sent_';
+var FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/frankburkert@gmx.net';
+var SCHREIB_LEKTION = 'C1 – 1012X · Analogien — Vergleichen, übertragen, erklären';
+
+function initSchreibwerkstatt() {
+  var nameInp = document.getElementById('schreib-name');
+  if (nameInp) {
+    var savedName = localStorage.getItem(SCHREIB_NAME_KEY);
+    if (savedName) nameInp.value = savedName;
+    nameInp.addEventListener('input', function(){ localStorage.setItem(SCHREIB_NAME_KEY, nameInp.value); });
+  }
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var nr = ta.dataset.aufgabe;
+    var saved = localStorage.getItem(SCHREIB_KEY_PREFIX + nr);
+    if (saved) ta.value = saved;
+    schreibUpdateCount(ta);
+    var sentInfo = localStorage.getItem(SCHREIB_SENT_PREFIX + nr);
+    if (sentInfo) schreibKarteAlsGesendetMarkieren(nr, sentInfo, true);
+    ta.addEventListener('input', function(){
+      schreibUpdateCount(ta);
+      localStorage.setItem(SCHREIB_KEY_PREFIX + nr, ta.value);
+      var btn = document.getElementById('send-' + nr);
+      if (btn && btn.classList.contains('gesendet')) { btn.classList.remove('gesendet'); btn.innerHTML = '📨 Erneut senden'; }
+    });
+  });
+}
+function schreibUpdateCount(ta) {
+  var nr = ta.dataset.aufgabe;
+  var text = ta.value.trim();
+  var words = text ? text.split(/\s+/).filter(function(w){ return w.length > 0; }).length : 0;
+  var wc = document.querySelector('.wc-' + nr);
+  if (wc) wc.textContent = words;
+}
+function schreibKarteAlsGesendetMarkieren(nr, info, beimLaden) {
+  var ta = document.querySelector('.schreib-mini-textarea[data-aufgabe="'+nr+'"]');
+  var karte = ta && ta.closest('.schreib-aufgabe-karte');
+  if (karte) karte.classList.add('gesendet');
+  var btn = document.getElementById('send-' + nr);
+  if (btn) { btn.classList.add('gesendet'); btn.innerHTML = beimLaden ? '✓ schon gesendet · erneut senden' : '✓ gesendet · erneut senden'; }
+  var status = document.getElementById('status-' + nr);
+  if (status) { status.classList.remove('error'); status.textContent = '✓ ' + info; }
+}
+function schreibStatusZeigen(typ, text) {
+  var box = document.getElementById('schreib-status');
+  if (!box) return;
+  box.className = 'schreib-status ' + typ; box.innerHTML = text;
+}
+function schreibAktuellerName() {
+  var nameInp = document.getElementById('schreib-name');
+  return (nameInp && nameInp.value || '').trim() || 'Anonyme Einsenderin / anonymer Einsender';
+}
+function schreibPostFormsubmit(subject, message, onOk, onErr) {
+  return fetch(FORMSUBMIT_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: schreibAktuellerName(), _subject: subject, _template: 'box', _captcha: 'false', lektion: SCHREIB_LEKTION, message: message })
+  })
+  .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(onOk).catch(onErr);
+}
+function schreibSendenEinzeln(nr) {
+  var ta = document.querySelector('.schreib-mini-textarea[data-aufgabe="'+nr+'"]');
+  var btn = document.getElementById('send-' + nr);
+  if (!ta || !btn) return;
+  var text = ta.value.trim();
+  if (text.length < 15) { var st = document.getElementById('status-' + nr); if (st) { st.classList.add('error'); st.textContent = 'noch zu kurz — schreib bitte etwas mehr'; } return; }
+  var titel = ta.dataset.titel || ('Aufgabe ' + nr);
+  var subject = 'C1 1012X · Aufgabe ' + nr + ' · ' + titel + ' · ' + schreibAktuellerName();
+  var message = '=== Aufgabe ' + nr + ': ' + titel + ' ===\n\n' + text;
+  btn.disabled = true;
+  var origLabel = btn.innerHTML;
+  btn.innerHTML = '⏳ Wird gesendet …';
+  schreibPostFormsubmit(subject, message,
+    function() {
+      btn.disabled = false;
+      var jetzt = new Date();
+      var info = 'gesendet um ' + String(jetzt.getHours()).padStart(2,'0') + ':' + String(jetzt.getMinutes()).padStart(2,'0');
+      localStorage.setItem(SCHREIB_SENT_PREFIX + nr, info);
+      schreibKarteAlsGesendetMarkieren(nr, info, false);
+    },
+    function() {
+      btn.disabled = false; btn.innerHTML = origLabel;
+      var st = document.getElementById('status-' + nr);
+      if (st) {
+        var subjectEnc = encodeURIComponent(subject);
+        var bodyEnc = encodeURIComponent('Name: ' + schreibAktuellerName() + '\n\n' + message);
+        st.classList.add('error');
+        st.innerHTML = '✗ Versand fehlgeschlagen — <a href="mailto:frankburkert@gmx.net?subject=' + subjectEnc + '&body=' + bodyEnc + '" style="color:#c62828;font-weight:700;">stattdessen per Mail-Programm</a>';
+      }
+    }
+  );
+}
+function schreibSendenAlleNochOffenen() {
+  var btn = document.getElementById('btn-schreib-senden');
+  var offene = [];
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var nr = ta.dataset.aufgabe;
+    var text = ta.value.trim();
+    var sent = localStorage.getItem(SCHREIB_SENT_PREFIX + nr);
+    if (text.length >= 15 && !sent) offene.push({ nr: nr, ta: ta, text: text });
+  });
+  if (offene.length === 0) { schreibStatusZeigen('info', 'ℹ Es gibt nichts Neues zu senden.'); return; }
+  var teile = offene.map(function(o) {
+    var titel = o.ta.dataset.titel || ('Aufgabe ' + o.nr);
+    return '=== Aufgabe ' + o.nr + ': ' + titel + ' ===\n\n' + o.text;
+  });
+  var subject = 'C1 1012X · ' + offene.length + ' Antworten · ' + schreibAktuellerName();
+  var message = teile.join('\n\n');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ Wird gesendet …';
+  schreibStatusZeigen('info', '⏳ ' + offene.length + ' Antworten werden übermittelt …');
+  schreibPostFormsubmit(subject, message,
+    function() {
+      btn.disabled = false;
+      btn.innerHTML = '📨 Alle noch nicht gesendeten Antworten schicken';
+      var jetzt = new Date();
+      var info = 'gesendet um ' + String(jetzt.getHours()).padStart(2,'0') + ':' + String(jetzt.getMinutes()).padStart(2,'0');
+      offene.forEach(function(o) { localStorage.setItem(SCHREIB_SENT_PREFIX + o.nr, info); schreibKarteAlsGesendetMarkieren(o.nr, info, false); });
+      schreibStatusZeigen('success', '✓ <strong>' + offene.length + ' Antworten übermittelt.</strong> Frank meldet sich.');
+    },
+    function() {
+      btn.disabled = false;
+      btn.innerHTML = '📨 Alle noch nicht gesendeten Antworten schicken';
+      schreibStatusZeigen('error', '✗ Direkter Versand nicht möglich. Bitte per Karte einzeln versuchen.');
+    }
+  );
+}
+function schreibKopieren() {
+  var teile = [];
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var titel = ta.dataset.titel || ('Aufgabe ' + ta.dataset.aufgabe);
+    var text = ta.value.trim();
+    if (text) teile.push('=== Aufgabe ' + ta.dataset.aufgabe + ': ' + titel + ' ===\n\n' + text);
+  });
+  var inhalt = teile.join('\n\n');
+  if (!inhalt) { schreibStatusZeigen('error', '✗ Da ist noch nichts zum Kopieren.'); return; }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(inhalt).then(function(){ schreibStatusZeigen('success', '✓ Inhalt liegt in der Zwischenablage.'); });
+  } else { schreibStatusZeigen('error', '✗ Kopieren wird vom Browser nicht unterstützt.'); }
+}
+function schreibLeeren() {
+  if (!confirm('Wirklich alle fünf Aufgabenfelder leeren und die Sende-Markierungen zurücksetzen?')) return;
+  document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta) {
+    var nr = ta.dataset.aufgabe;
+    ta.value = '';
+    localStorage.removeItem(SCHREIB_KEY_PREFIX + nr);
+    localStorage.removeItem(SCHREIB_SENT_PREFIX + nr);
+    schreibUpdateCount(ta);
+    var karte = ta.closest('.schreib-aufgabe-karte');
+    if (karte) karte.classList.remove('gesendet');
+    var btn = document.getElementById('send-' + nr);
+    if (btn) { btn.classList.remove('gesendet'); btn.innerHTML = '📨 Diese Antwort senden'; btn.disabled = false; }
+    var status = document.getElementById('status-' + nr);
+    if (status) { status.textContent = ''; status.classList.remove('error'); }
+  });
+  schreibStatusZeigen('info', 'ℹ Alles zurückgesetzt — du kannst neu beginnen.');
+}
+
 </script>
 </body>
 </html>
