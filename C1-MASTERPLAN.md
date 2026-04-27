@@ -6,37 +6,13 @@ Es wird **vor jeder Arbeit** an einer C1-HTML-Datei gelesen — ohne Ausnahme.
 
 ---
 
-## ⚠️ PFLICHT: Lingoda-Texte IMMER überarbeiten
+## ⚠️ Stand 2026-04-27 — Kursrichtungswechsel
 
-> **Die Lingoda-PDFs sind Ausgangsmaterial — kein fertiger Inhalt.**
-> Lingoda-C1-Texte sind für den Einsatz in den HTML-Übungen **nicht geeignet** und müssen
-> **immer vollständig neu geschrieben** werden.
-
-### Warum Lingoda-C1-Texte nicht verwendet werden dürfen wie sie sind
-
-- **Präsentationsformat:** Die Lingoda-C1-PDFs sind Lehrer-Präsentationsfolien — pro Folie steht kaum Text
-- **Keine Substanz:** Übungsanweisungen setzen einen Live-Lehrer voraus, der den Rest erklärt
-- **Zu flach für C1:** Sprachniveau und inhaltliche Tiefe entsprechen oft eher B2
-- **Keine Kohärenz:** Texte sind auf viele Folien verteilt — kein Lesefluss möglich
-
-### Was stattdessen zu tun ist
-
-#### Für G-Dateien (Grammatik) — Phase 1 Priorität
-1. Grammatikthema aus dem Lingoda-PDF entnehmen
-2. Eigenständige, präzise **Grammatikerklärung** auf C1-Niveau schreiben
-3. Eigene Beispielsätze — authentisch, komplex, mit C1-Wortschatz
-4. Beispielsätze spiegeln das **Grammatikthema in natürlichem Kontext** wider
-5. Lückentexte: anspruchsvoll, nicht trivial, auf C1-Niveau
-
-#### Für R-Dateien (Lesetexte) — Phase 2
-1. Thema aus Lingoda als Ausgangspunkt, Text **vollständig neu schreiben**
-2. Mindestens 500–700 Wörter (C1-Niveau)
-3. Akademischer oder journalistischer Stil
-4. Skill `skill-anspruchsvolle-texte` verwenden
-
-#### Für X- und S-Dateien — Phase 3
-1. Kommunikationsanlässe aus Lingoda als **Idee** nutzen
-2. Sprachniveau: C1 — komplexe Strukturen, formelle Wendungen, nuancierte Ausdrucksweise
+Mit der Bereitstellung des vollständigen Lingoda-C1-Korpus (200 PDFs in vier Kursen
+C1.1 – C1.4) wurde am 2026-04-27 entschieden: **C1 folgt ab sofort dem Lingoda-Schema 1:1**,
+analog zur C2-Pipeline. Die zuvor unter den Codes 1011G–1071G geführte eigene Themenreihe
+wurde in einen Sonderblock 9011G–9071G überführt und bleibt dort als „Vertiefungsblock"
+erhalten.
 
 ---
 
@@ -67,215 +43,178 @@ Bevor eine einzige Zeile geschrieben wird, nimmt Claude diese Haltung ein:
 
 ---
 
-## 📚 Kollokationswörterbuch — Quasthoff (Pflicht-Ressource)
+## 📚 Lingoda-Quellmaterial
 
-| Ressource | Pfad |
-|-----------|------|
-| PDF (vollständig) | `/sessions/fervent-sweet-einstein/mnt/fabDaF/Grammatik/Worterbuch-Der-Kollokationen.pdf` |
-| TXT (durchsuchbar) | `/sessions/fervent-sweet-einstein/mnt/fabDaF/Grammatik/Worterbuch-Der-Kollokationen.txt` |
+| Kurs | Pfad | PDFs |
+|------|------|------|
+| C1.1 | `lingoda c1/C 1.1/` | 50 |
+| C1.2 | `lingoda c1/C 1.2/` | 50 |
+| C1.3 | `lingoda c1/C 1.3/` | 50 |
+| C1.4 | `lingoda c1/C 1.4/` | 50 |
+
+**Lingoda-Schema pro Kurs:** 6 Einheiten × 8 Lektionen + 2W
+- Pro Einheit: `xx1G` (Grammatik) · `xx2X` (Extra/Kommunikation) ·
+  `xx3R` `xx5R` `xx7R` (3× Lesen) · `xx4S` `xx6S` `xx8S` (3× Sprechen)
+- Am Kursende: `xx71W` + `xx72W` (Schreiben)
+
+**Wichtig:** Anders als in der ursprünglichen Masterplan-Fassung gilt jetzt:
+**Lingoda-Codes 1:1 übernehmen.** Eine Datei `1011G` heißt 1011G,
+weil die Lingoda-PDF so heißt — auch wenn das ursprüngliche Lingoda-Material
+für die HTML-Übung neu geschrieben werden muss.
+
+---
+
+## 🗂️ Datei-Typen
+
+| Typ | Bedeutung | Tab-Struktur (5 Tabs) |
+|-----|-----------|----------------------|
+| G | Grammatik | Entdeckung · Zuordnung · Lückentext · Satzbau · Wortschatz |
+| X | Extra / Kommunikation | Vorentlastung · Lesetext · Lückentext · Satzbau · Wortschatz |
+| R | Lesetext | Vorentlastung · Lesetext · Genus · Lückentext · MC · Satzbau · Wortschatz |
+| S | Speaking | Vorentlastung · Lesetext · Genus · Lückentext · MC · Satzbau · Schreibwerkstatt · Wortschatz |
+| W | Schreiben | Anleitung · Modelltext · Mikroaufgaben · Wortschatz |
+
+Vorlagen pro Typ:
+- **G:** `DE_C1_1011G-redewiedergabe.html` (Pilot, ab 27.04.2026)
+- **R/S:** `DE_C2_0407S-online-shopping.html` (C2-Goldstandard, adaptiert)
+- **X/W:** noch zu pilotieren
+
+---
+
+## 🛠️ Pipeline pro Lektion
+
+```bash
+# 1. Vorlage kopieren
+cd /sessions/<mnt>/mnt/fabDaF/htmlS/C1
+cp DE_C1_1011G-redewiedergabe.html DE_C1_1012X-thema.html  # ggf. R/S/W-Vorlage
+
+# 2. Code & Titel umstellen
+FILE=DE_C1_1012X-thema.html
+sed -i 's/1011G/1012X/g' "$FILE"
+sed -i 's|<title>[^<]*</title>|<title>NEU – C1 Grammatik</title>|' "$FILE"
+sed -i 's|<h1>[^<]*</h1>|<h1>NEU</h1>|' "$FILE"
+
+# 3. Build-Script (Sec-Inhalte + Datenblöcke ersetzen)
+python3 /sessions/<mnt>/mnt/outputs/build_C1_1012X.py
+
+# 4. Audit + Dashboard + safe-commit
+scripts/safe-commit.sh "C1 1012X: Titel" htmlS/C1/DE_C1_1012X-thema.html htmlS/dashboard.html
+```
 
 ---
 
 ## 🖼️ Bild-Workflow
 
-**Phase 1 — Während der Erstellung:**
-- Pexels-Bilder als externe URL einbinden: `src="https://images.pexels.com/photos/ID/pexels-photo-ID.jpeg"`
+**Phase 1 — Während der Erstellung:** Pexels-Bilder als externe URL einbinden.
+**Phase 2 — Nach Fertigstellung:** Skill `pexels-bild-check` für Überprüfung und Einbettung.
 
-**Phase 2 — Nach Fertigstellung:**
-- Skill `pexels-bild-check` für Überprüfung und Einbettung
+Pexels-Banner aus dem Pilot 1011G (Themenfeld Sprache/Schreiben/Presse) — 1:1 für G-Dateien
+übernehmbar:
+- 1591056 — Zeitungen (Entdeckung)
+- 1181396 — Redaktion (Zuordnung)
+- 5710614 — Schreiben (Lückentext)
+- 267669 — Sprache (Satzbau)
+- 256541 — Bücher (Wortschatz)
 
 ---
 
 ## 📊 Dashboard
 
-Das einzige gültige Dashboard ist:
 ```
-/sessions/fervent-sweet-einstein/mnt/fabDaF/htmlS/dashboard.html
+htmlS/dashboard.html
 file:///Users/frankburkert/Cowork/htmlS/dashboard.html
 ```
 
-**Neue Kategorie `C1 Grammatik` im Dashboard anlegen.**
 **Pflicht nach jeder neuen C1-HTML-Datei:** Sofort ins Dashboard eintragen.
 
----
-
-## 0. Vor dem Start — Pflichtlektüre Skills
-
-| Skill | Wann |
-|-------|------|
-| `daf-grammatik-uebungen` | Bei jeder G-Datei |
-| `daf-html-layout` | Bei jeder Datei |
-| `satzbau-drag-drop` | Wenn Satzbau-Tab enthalten |
-| `daf-uebungsformen` | Immer |
-| `daf-bilder-pflicht` | Immer |
-| `textgestaltung-daf` | Wenn Lesetext-Tab enthalten |
-| `lesetext-hervorhebung` | Wenn Lesetext enthalten |
-| `daf-browser-test` | Nach Fertigstellung |
-| `skill-anspruchsvolle-texte` | Bei R-Dateien |
+Die C1-Sektion ist gegliedert in:
+1. **101x – 107x:** C1.1 (6 Einheiten + Schreibwerkstatt)
+2. **201x – 207x:** C1.2 (analog)
+3. **301x – 307x:** C1.3 (analog)
+4. **401x – 407x:** C1.4 (analog)
+5. **90xx:** Vertiefungsblock — frühere eigene G-Reihe
+6. **308x:** Sonder­projekt Geistesgeschichte & Bundespolitik
 
 ---
 
-## 1. Nomenklatur
+## 📋 Lingoda-Themenkatalog C1.1 – C1.4 (Grammatik-Schwerpunkte)
 
-### Dateiname-Schema
+### C1.1 — Konjunktiv-Welt & Stilfundament
+| Code | Thema |
+|---|---|
+| 1011G | Redewiedergabe für Fortgeschrittene (Konjunktiv I) ✅ |
+| 1021G | Zukunft in der Vergangenheit (würde-Form, Futur II) |
+| 1031G | Der Ärger mit hätte (Konjunktiv II Vergangenheit + Modalverben) |
+| 1041G | Nominalstil |
+| 1051G | Modalpartikeln für Fortgeschrittene |
+| 1061G | Ausdrücke der Schriftsprache (Genitiv-Präpositionen) |
+| 1071W | Vergleichender Essay |
+| 1072W | Rezension |
 
-```
-DE_C1_LLLLx-thema.html
-     ^^  ^^^^
-     ||  ||||__ x = Datei-Typ (G, R, X, S, W)
-     ||  |||___ Lektionsnummer innerhalb der Einheit (1–8)
-     ||  ||____ Einheitsnummer (01–07)
-     ||  |_____ Kurs (1 = C1.1 / 2 = C1.2 / …)
-     ||________ Niveau (C1)
-     |_________ Sprache
-```
+### C1.2 — Argumentation & Stilausbau
+| Code | Thema |
+|---|---|
+| 2011G | Logische Konnektoren (Argumente anbringen) |
+| 2021G | Subjektive Bedeutung der Modalverben |
+| 2031G | Partizipialkonstruktionen |
+| 2041G | Sonderstellung im Satz |
+| 2051G | Sich raffinierter ausdrücken |
+| 2061G | Immer wieder hätte |
+| 2071W / 2072W | Schreiben |
 
-Beispiel: `DE_C1_1011G-nominalstil.html`
+### C1.3 — Vertiefung
+| Code | Thema |
+|---|---|
+| 3011G | Verben mit Genitiv |
+| 3021G | Nominalisierung komplexer Strukturen |
+| 3031G | Konnektoren für Fortgeschrittene |
+| 3041G | Mehr über Partizipialkonstruktionen |
+| 3051G | Sich raffinierter ausdrücken (Wdh.) |
+| 3061G | Variable Verbpräfixe |
+| 3071W / 3072W | Schreiben |
 
-### Datei-Typen
+### C1.4 — Feinschliff
+| Code | Thema |
+|---|---|
+| 4011G | Fortgeschrittene Verwendung von Adjektiven |
+| 4021G | Fortgeschrittene Präpositionen der formalen Sprache |
+| 4031G | Das Passiv für Fortgeschrittene |
+| 4041G | (PDF-Encoding-Fehler — Inhalt nachprüfen) |
+| 4051G | Verben mit Präpositionen für Fortgeschrittene |
+| 4061G | Verb-Präfixe für Fortgeschrittene |
+| 4071W / 4072W | Schreiben |
 
-| Typ | Bedeutung | Tab-Struktur |
-|-----|-----------|--------------|
-| G | Grammatik | Entdecken + Regel + Lückentext + Satzbau + Wortschatz |
-| R | Lesetext | Vorentlastung + Lesetext + Lückentext + MC + Satzbau |
-| X | Extra / Kommunikation | Vorentlastung + Lückentext + Satzbau + Wortschatz |
-| S | Speaking | Sprechanlässe + Redemittel + Übungen |
-| W | Schreiben | Anleitung + Modelltext + Aufgabe |
+---
 
-### Quellmaterial (Lingoda-PDFs)
+## 📚 Kollokationswörterbuch — Quasthoff (Pflicht-Ressource)
 
-| Sub-Level | Pfad |
+| Ressource | Pfad |
 |-----------|------|
-| C1.1 | `/sessions/fervent-sweet-einstein/mnt/fabDaF/lingoda/C 1.1/` |
-| C1.2 | `/sessions/fervent-sweet-einstein/mnt/fabDaF/lingoda/C 1.2/` |
-| C1.3 | `/sessions/fervent-sweet-einstein/mnt/fabDaF/lingoda/C 1.3/` |
-| C1.4 | `/sessions/fervent-sweet-einstein/mnt/fabDaF/lingoda/C 1.4/` |
-
-### HTML-Zielordner
-
-```
-/sessions/fervent-sweet-einstein/mnt/fabDaF/htmlS/C1/
-```
+| PDF | `Grammatik/Worterbuch-Der-Kollokationen.pdf` |
+| TXT | `Grammatik/Worterbuch-Der-Kollokationen.txt` |
 
 ---
 
-## 2. Satzbau-Pflicht-Fix
+## 6. Fortschrittsstand (2026-04-27)
 
-⚠️ **Bekannter Bug:** Punct-Chips (`,.`) dürfen NICHT vorab in die Zone gesetzt werden.
+| Kurs | G | X | R | S | W | Σ | Stand |
+|---|---|---|---|---|---|---|---|
+| C1.1 | 1/6 | 0/6 | 0/18 | 0/18 | 0/2 | **1/50** | Einheit 1 (1011G ✅) |
+| C1.2 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
+| C1.3 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
+| C1.4 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
+| **Σ** | **1/24** | **0/24** | **0/72** | **0/72** | **0/8** | **1/200** | |
 
-```javascript
-// RICHTIG:
-var shuffled = shuffleArr(item.words);  // alle Wörter inkl. ,.
-
-// FALSCH (nie verwenden!):
-var nonPunct = item.words.filter(...);
-var shuffled = shuffleArr(nonPunct);
-```
-
----
-
-## 3. C1-Grammatik — Die 7 Kernthemen (Phase 1)
-
-Dies sind die **genuinen C1-Grammatikthemen** — Inhalte, die in B1/B2 nicht systematisch
-behandelt werden und echten Mehrwert für Fortgeschrittene bieten.
-
-| Datei | Grammatikthema | Einheit |
-|-------|---------------|---------|
-| `DE_C1_1011G-nominalstil.html` | Nominalstil | 101x — Schriftsprache & Stil |
-| `DE_C1_1021G-subjektive-modalverben.html` | Subjektive Bedeutung der Modalverben | 102x — Modalität & Nuance |
-| `DE_C1_1031G-sonderstellung-satz.html` | Sonderstellung im Satz | 103x — Satzarchitektur |
-| `DE_C1_1041G-variable-verbpraefixe.html` | Variable Verbpräfixe | 104x — Wortbildung & Bedeutung |
-| `DE_C1_1051G-verben-genitiv.html` | Verben mit Genitiv | 105x — Formale Sprache |
-| `DE_C1_1061G-modalpartikeln.html` | Modalpartikeln für Fortgeschrittene | 106x — Gesprochene Sprache |
-| `DE_C1_1071G-kommasetzung.html` | Kommasetzung & Rechtschreibung | 107x — Schriftliche Korrektheit |
-
-### Thematische Einheiten
-
-| Einheit | Thema | G-Datei | Zukünftige Dateien |
-|---------|-------|---------|-------------------|
-| 101x | Schriftsprache & Stil | 1011G | 1012R, 1013X, 1014S |
-| 102x | Modalität & Nuance | 1021G | 1022R, 1023X, 1024S |
-| 103x | Satzarchitektur | 1031G | 1032R, 1033X, 1034S |
-| 104x | Wortbildung & Bedeutung | 1041G | 1042R, 1043X, 1044S |
-| 105x | Formale Sprache | 1051G | 1052R, 1053X, 1054S |
-| 106x | Gesprochene Sprache | 1061G | 1062R, 1063X, 1064S |
-| 107x | Schriftliche Korrektheit | 1071G | 1072R, 1073X, 1074S |
+**Sonderblock** (außerhalb der 200): 9011G–9071G (7 ✅) + 308x (6 + 1 ✅).
 
 ---
 
-## 4. Fertigstellungsstatus C1
+## 7. Vorgehen pro Turn
 
-### Phase 1 — G-Dateien (7 Kernthemen)
+Pro Turn: **so viele Lektionen wie möglich**, in Lingoda-Reihenfolge. Reihenfolge innerhalb
+einer Einheit: G → X → R → S → R → S → R → S. Wenn eine Einheit komplett ist, weiter zur
+nächsten — bis Kontext oder Energie an Grenzen stoßen.
 
-| Datei | Grammatikthema | Status |
-|-------|---------------|--------|
-| DE_C1_1011G-nominalstil.html | Nominalstil | ✅ Fertig — Browser-Test bestanden (2026-03-28) |
-| DE_C1_1021G-subjektive-modalverben.html | Subjektive Bedeutung der Modalverben | ✅ Fertig — gepusht (2026-03-28) |
-| DE_C1_1031G-sonderstellung-satz.html | Sonderstellung im Satz | ✅ Fertig — gepusht (2026-03-28) |
-| DE_C1_1041G-variable-verbpraefixe.html | Variable Verbpräfixe | ✅ Fertig — gepusht (2026-03-28) |
-| DE_C1_1051G-verben-genitiv.html | Verben mit Genitiv | ✅ Fertig — gepusht (2026-03-28) |
-| DE_C1_1061G-modalpartikeln.html | Modalpartikeln für Fortgeschrittene | ✅ Fertig — gepusht (2026-03-28) |
-| DE_C1_1071G-kommasetzung.html | Kommasetzung & Rechtschreibung | ✅ Fertig — gepusht (2026-03-28) |
+Erst-Pilot pro Datei-Typ ist der Goldstandard für alle nachfolgenden Lektionen desselben Typs.
 
-### Phase 2 — R-, X-, S-Dateien (pro Einheit, nach Abschluss Phase 1)
-
-Für jede Einheit nach Abschluss der G-Datei:
-1. R-Datei (Lesetext zum Einheitsthema)
-2. X-Datei (Kommunikation & Extra-Übungen)
-3. S-Datei (Sprechen & Diskussion)
-
----
-
-## 5. Qualitäts-Checkliste C1
-
-### G-Dateien
-- [ ] Mindestens 10 Beispielsätze — authentisch, komplex, C1-Niveau?
-- [ ] Entdecken-Tab: Lernende erschließen die Regel selbst (nicht erklärt, sondern entdeckt)?
-- [ ] Lückentext: Kontext ist anspruchsvoll — kein banaler Schulbuchsatz?
-- [ ] Satzbau: Sätze haben 7–12 Chips, zeigen echte C1-Syntax?
-- [ ] Wortschatz: 12–16 Karten, C1-Niveau, Quasthoff-Kollokationen?
-- [ ] Kollokationen aus Quasthoff-Wörterbuch überprüft?
-- [ ] Kein Lehrton, kein Schulbuchstil?
-
-### R-Dateien (Phase 2)
-- [ ] Mindestens 500 Wörter?
-- [ ] Akademisch-journalistischer Stil?
-- [ ] Grammatikthema organisch eingebaut (nicht spürbar)?
-- [ ] Fakten mit WebSearch verifiziert?
-
----
-
-## 6. Zusammenfassung — Was ist zu tun?
-
-### Schritt 1 — Infrastruktur ✅
-- [x] Ordner `htmlS/C1/` anlegen
-- [x] C1-MASTERPLAN.md erstellen
-- [ ] Neue Kategorie „C1 Grammatik" im Dashboard anlegen
-
-### Schritt 2 — Phase 1: Die 7 G-Dateien
-Empfohlene Reihenfolge nach didaktischem Gewicht:
-1. **1011G Nominalstil** — häufigste Hürde bei C1-Lernenden, hoher Praxiswert
-2. **1021G Subjektive Modalverben** — subtiler Bedeutungsunterschied, großer Aha-Effekt
-3. **1041G Variable Verbpräfixe** — spielerisch, kontrastreich (umfahren vs. umfahren)
-4. **1031G Sonderstellung im Satz** — wichtig für gehobene Schriftsprache
-5. **1051G Verben mit Genitiv** — selten, aber korrekt
-6. **1061G Modalpartikeln** — für natürliche, nuancierte Kommunikation
-7. **1071G Kommasetzung** — systematisch, auch für Muttersprachler wertvoll
-
-### Schritt 3 — Browser-Test nach jeder Datei
-Skill `daf-browser-test` — testen bis 0 Fehler.
-
-### Schritt 4 — Dashboard aktualisieren
-Nach jeder fertiggestellten Datei sofort ins Dashboard eintragen.
-
-### ⚠️ Satzbau-Hinweis für künftige Dateien
-Die erste Datei (1011G) nutzt `pool-0`/`row-0` statt der Standard-IDs `sb-bank-0`/`sb-row-0`.
-Funktional bestanden, aber ab der nächsten Datei **immer** `satzbau-drag-drop`-Standard verwenden:
-`satzbauContainer` / `sb-bank-N` / `sb-row-N` / `sb-fb-N` / `sbDragged`
-
-### Gesamtumfang Phase 1
-| Phase | Dateien | Fertig |
-|-------|---------|--------|
-| Phase 1 (G-Dateien) | 7 | 7 |
-| Phase 2 (R, X, S) | 21 | 0 |
-| **Gesamt** | **28** | **7** |
+**1011G ist der G-Pilot — fertig am 27.04.2026.**

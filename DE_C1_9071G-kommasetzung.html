@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Variable Verbpräfixe – C1 Grammatik</title>
+<title>Kommasetzung &amp; Rechtschreibung – C1 Grammatik</title>
 <style>
 /* ── GLOBAL ──────────────────────────────────────────────── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -150,9 +150,9 @@ input.correct + .vocab-hint { display: inline; }
 <body>
 <div class="container">
   <div class="header">
-    <h1>Variable Verbpräfixe</h1>
-    <p>C1 Grammatik · Trennbar oder untrennbar — und was das bedeutet</p>
-    <div class="big-emoji">🔀</div>
+    <h1>Kommasetzung &amp; Rechtschreibung</h1>
+    <p>C1 Grammatik · Schriftliche Korrektheit systematisch beherrschen</p>
+    <div class="big-emoji">✍️</div>
   </div>
     <div class="nav">
     <div class="nav-btn active" onclick="showSection(0)"><span class="nav-emoji">📖</span><span class="nav-label">Entdecken</span></div>
@@ -164,23 +164,19 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 0: ENTDECKEN ████████ -->
 <div class="section active" id="sec-0">
-  <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Wortbildung">
+  <img src="https://images.pexels.com/photos/1925536/pexels-photo-1925536.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Schreiben">
   <div class="sec-inner">
     <h2>📖 Entdecken</h2>
     <div class="entdeck-intro">
-      <h3>Betrachte diese Satzpaare — dasselbe Verb, völlig andere Bedeutung.</h3>
-      <p>Er <span class="hl">fährt</span> das Absperrschild <span class="hl">um</span>.
-         &nbsp;&nbsp;|&nbsp;&nbsp;
-         Er <span class="hl">umfährt</span> die Baustelle auf einem Umweg.</p>
-      <p>Er <span class="hl">setzt</span> mit der Fähre <span class="hl">über</span>.
-         &nbsp;&nbsp;|&nbsp;&nbsp;
-         Der Dolmetscher <span class="hl">übersetzt</span> den Vertrag ins Englische.</p>
-      <p>Er <span class="hl">holt</span> das Buch morgen <span class="hl">wieder</span>.
-         &nbsp;&nbsp;|&nbsp;&nbsp;
-         Die Lehrerin <span class="hl">wiederholt</span> den Erklärungsansatz.</p>
-      <p>Er <span class="hl">stellt</span> das Fahrrad im Keller <span class="hl">unter</span>.
-         &nbsp;&nbsp;|&nbsp;&nbsp;
-         Man <span class="hl">unterstellt</span> ihm Befangenheit.</p>
+      <h3>Betrachte diese Satzpaare — wo gehört das Komma, und was ist der Unterschied?</h3>
+      <p>❌ „Sie erklärte <span class=“hl">dass</span> sie ablehnt."
+         &nbsp;&nbsp;✅ „Sie erklärte<span class=“hl">,</span> dass sie ablehnt."</p>
+      <p>✅ „Er versuchte, die Aufgabe zu lösen.“
+         &nbsp;&nbsp;❓ „Er versuchte die Aufgabe zu lösen.“ (fehlendes Komma vor erweiterter Infinitivgruppe)</p>
+      <p>❌ „<span class=“hl">Das</span> er kommt, überrascht mich."
+         &nbsp;&nbsp;✅ „<span class=“hl">Dass</span> er kommt, überrascht mich."</p>
+      <p>❌ „wider <span class=“hl">Wiederholen</span>"
+         &nbsp;&nbsp;✅ „wider <span class=“hl">Erwarten</span>" | „wieder <span class=“hl">kommen</span>"</p>
     </div>
 
     <div class="progress-dots">
@@ -191,62 +187,63 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step active" id="mc-step0">
-      <h4>Was bewirkt den Bedeutungsunterschied bei diesen Verbpaaren?</h4>
+      <h4>Wann steht vor einem Nebensatz zwingend ein Komma?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(0,this,false)">Das Subjekt des Satzes</button>
-        <button class="mc-btn" onclick="mcCheck(0,this,true)">Die Betonung und Trennbarkeit des Präfixes</button>
-        <button class="mc-btn" onclick="mcCheck(0,this,false)">Der Kasus des Objekts</button>
-        <button class="mc-btn" onclick="mcCheck(0,this,false)">Das Tempus (Präsens oder Präteritum)</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur wenn der Nebensatz länger als fünf Wörter ist.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,true)">Immer — jeder Nebensatz wird durch Komma vom Hauptsatz abgegrenzt, unabhängig von seiner Länge.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur bei kausalen Nebensätzen mit „weil“ oder „da“.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nur wenn der Nebensatz vor dem Hauptsatz steht.</button>
       </div>
       <div class="mc-feedback" id="mcfb0"></div>
     </div>
 
     <div class="mc-step" id="mc-step1">
-      <h4>„Er fährt das Absperrschild um.“ — Was bedeutet <em>umfahren</em> hier (trennbar)?</h4>
+      <h4>„Er bat sie, ihm zu helfen.“ — Warum steht hier ein Komma?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(1,this,false)">Er fährt in einem Bogen um das Schild herum.</button>
-        <button class="mc-btn" onclick="mcCheck(1,this,true)">Er stößt das Schild mit dem Fahrzeug um — es fällt.</button>
-        <button class="mc-btn" onclick="mcCheck(1,this,false)">Er fährt mit dem Schild ins Ausland.</button>
-        <button class="mc-btn" onclick="mcCheck(1,this,false)">Er hält neben dem Schild an.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil „ihm“ ein indirektes Objekt ist.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,true)">Weil „ihm zu helfen“ eine erweiterte Infinitivgruppe ist, die durch „zu“ eingeleitet wird und ein eigenes Objekt enthält.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil das Komma nach Verben des Bittens immer obligatorisch ist.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil der Infinitiv am Satzende steht.</button>
       </div>
       <div class="mc-feedback" id="mcfb1"></div>
     </div>
 
     <div class="mc-step" id="mc-step2">
-      <h4>„Man unterstellt ihm Befangenheit.“ — Was bedeutet <em>unterstellen</em> hier (untrennbar)?</h4>
+      <h4>„__ ist klar, dass er kommt.“ — Welches Wort fehlt am Satzanfang?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(2,this,false)">Er stellt sich unter ein Dach, um sich zu schützen.</button>
-        <button class="mc-btn" onclick="mcCheck(2,this,false)">Er stellt etwas unter ein Möbelstück.</button>
-        <button class="mc-btn" onclick="mcCheck(2,this,true)">Man wirft ihm etwas vor / schreibt ihm etwas zu (ohne Beweis).</button>
-        <button class="mc-btn" onclick="mcCheck(2,this,false)">Er erteilt ihm einen Befehl.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Dass — denn der Nebensatz leitet den Satz ein.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,true)">Es — als formales Subjekt, das auf den folgenden dass-Satz verweist.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Das — als Demonstrativpronomen.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Ob — denn es handelt sich um eine indirekte Frage.</button>
       </div>
       <div class="mc-feedback" id="mcfb2"></div>
     </div>
 
     <div class="mc-step" id="mc-step3">
-      <h4>Welche Faustregel gilt für variable Verbpräfixe (durch-, über-, um-, unter-, wieder-)?</h4>
+      <h4>„Das Ergebnis ist besser als erwartet, __ es dennoch Kritik gibt.“ — Welche Konjunktion passt?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(3,this,false)">Trennbare Verben sind immer formeller als untrennbare.</button>
-        <button class="mc-btn" onclick="mcCheck(3,this,false)">Beide Formen haben stets dieselbe Grundbedeutung.</button>
-        <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Unterschied ist nur in der Schriftsprache relevant.</button>
-        <button class="mc-btn" onclick="mcCheck(3,this,true)">Trennbare Präfixe sind betont und erzeugen oft konkrete Bedeutungen; untrennbare Präfixe sind unbetont und erzeugen oft abstrakte oder übertragene Bedeutungen.</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">weil</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">obwohl — daher steht dann kein Komma vor „obwohl“</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,true)">obwohl — das Komma steht korrekt vor der Konjunktion</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">und — dann entfällt das Komma</button>
       </div>
       <div class="mc-feedback" id="mcfb3"></div>
     </div>
 
     <div class="regel-karte" id="regelkarte">
-      <h3>📘 Die Regel: Variable Verbpräfixe</h3>
+      <h3>📘 Die Regel: Kommasetzung &amp; Rechtschreibung</h3>
       <ul>
-        <li>Die Präfixe <strong>durch-, über-, um-, unter-, wieder-, hinter-</strong> können trennbar oder untrennbar sein — mit jeweils anderer Bedeutung.</li>
-        <li><strong>Trennbar (Präfix betont):</strong> Das Präfix steht im Hauptsatz am Satzende. Bedeutung meist konkret, physisch, wörtlich.<br>
-          <em>Er fährt das Schild <strong>um</strong>. | Sie setzt mit der Fähre <strong>über</strong>. | Er holt das Buch <strong>wieder</strong>.</em></li>
-        <li><strong>Untrennbar (Präfix unbetont):</strong> Das Präfix bleibt am Verb. Bedeutung oft abstrakt, idiomatisch, übertragen.<br>
-          <em>Er <strong>umfährt</strong> die Sperrzone. | Der Dolmetscher <strong>übersetzt</strong>. | Sie <strong>wiederholt</strong> die These.</em></li>
-        <li><strong>Infinitiv:</strong> Trennbare Verben können mit <em>zu</em> zwischen Präfix und Verb stehen: <em>um|zufahren, wieder|zuholen</em>. Untrennbare nicht: <em>zu umfahren, zu übersetzen</em>.</li>
-        <li><strong>Partizip II:</strong> Trennbar → <em>umgefahren, übergesetzt</em>. Untrennbar → <em>umfahren, übersetzt</em> (kein Ge-).</li>
+        <li><strong>Nebensatz:</strong> Immer Komma vor einleitender Konjunktion (dass, weil, obwohl, wenn, da, ob, als, während …): <em>Er wartete, bis der Zug abfuhr.</em></li>
+        <li><strong>Erweiterte Infinitivgruppe:</strong> Komma obligatorisch, wenn die Gruppe ein eigenes Objekt oder eine Ergänzung enthält: <em>Er bat sie, das Protokoll zu verfassen.</em></li>
+        <li><strong>Einfacher Infinitiv:</strong> Kein Komma bei: <em>Er versucht zu schlafen.</em> (ohne Erweiterung)</li>
+        <li><strong>Partizipialgruppe:</strong> Komma bei erweiterter Partizipialgruppe: <em>Von der Nachricht überrascht, reagierte er kaum.</em></li>
+        <li><strong>Einschübe / Appositionen:</strong> Werden beidseitig durch Komma abgetrennt: <em>Der Minister, ein erfahrener Jurist, lehnte ab.</em></li>
+        <li><strong>dass ≠ das:</strong> <em>dass</em> = Konjunktion (Nebensatz einleitend). <em>das</em> = Artikel oder Relativpronomen.</li>
+        <li><strong>seit ≠ seid:</strong> <em>seit</em> = Präposition / Konjunktion (zeitlich). <em>seid</em> = 2. Pers. Pl. von „sein“.</li>
+        <li><strong>wider ≠ wieder:</strong> <em>wider</em> = gegen (<em>wider Erwarten</em>). <em>wieder</em> = erneut (<em>wieder kommen</em>).</li>
       </ul>
       <div class="rk-example">
-        <b>Kontrastpaar:</b> Er hat das Schild <em>umgefahren</em> (trennbar: umgestoßen). &nbsp;|&nbsp; Er hat die Sperrzone <em>umfahren</em> (untrennbar: in einem Bogen umgangen).
+        <b>Faustregel dass/das:</b> Ersetze es durch „dieses“ — geht das? → <em>das</em> (Artikel/Pronomen). Geht es nicht? → <em>dass</em> (Konjunktion).
       </div>
     </div>
   </div>
@@ -254,29 +251,26 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 1: ZUORDNUNG ████████ -->
 <div class="section" id="sec-1">
-  <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Zuordnung">
+  <img src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Zuordnung">
   <div class="sec-inner">
     <h2>🔀 Zuordnung</h2>
-    <div class="hilfe-box">Ordne die Sätze zu: <strong>Trennbares Verb</strong> (Präfix betont, Verb am Ende) oder <strong>Untrennbares Verb</strong> (Präfix unbetont, Verb zusammen).<br>
-    Klick = auswählen, nochmal klicken = in Zone ablegen.</div>
+    <div class="hilfe-box">Ordne die Sätze zu: <strong>Komma / Schreibung korrekt</strong> oder <strong>Fehler vorhanden</strong>. Klick = auswählen, Zone anklicken = ablegen.</div>
     <div class="timer-controls">
       <div class="btn-row">
         <button class="btn" onclick="resetZuordnung()">↺ Neu</button>
         <button class="btn" onclick="checkZuordnung()">✓ Prüfen</button>
       </div>
-      <div class="timer-display">
-        <span id="timer1-display">00:00</span>
-      </div>
+      <div class="timer-display"><span>⏱ <span id="timer-1">0:00</span></span><span>🏆 <span id="best-1">--:--</span></span></div>
     </div>
     <div class="chip-bank" id="zuo-bank"></div>
     <div class="zuo-layout">
       <div>
-        <div class="zuo-zone-label">🔓 Trennbar</div>
-        <div class="drop-zone" id="zone-trennbar" onclick="zoneClick('trennbar')"></div>
+        <div class="zuo-zone-label">✅ Korrekt</div>
+        <div class="drop-zone" id="zone-ok" onclick="zoneClick('ok')"></div>
       </div>
       <div>
-        <div class="zuo-zone-label">🔒 Untrennbar</div>
-        <div class="drop-zone" id="zone-untrennbar" onclick="zoneClick('untrennbar')"></div>
+        <div class="zuo-zone-label">❌ Fehler</div>
+        <div class="drop-zone" id="zone-err" onclick="zoneClick('err')"></div>
       </div>
     </div>
     <div class="counter-box">Richtig: <span id="zuo-score">0</span> / 12</div>
@@ -285,10 +279,10 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 2: LÜCKENTEXT ████████ -->
 <div class="section" id="sec-2">
-  <img src="https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Schreiben">
+  <img src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Lückentext">
   <div class="sec-inner">
     <h2>✏️ Lückentext</h2>
-    <div class="hilfe-box">Ergänze die korrekte konjugierte Form des untrennbaren Verbs.</div>
+    <div class="hilfe-box">Wähle die richtige Schreibweise: <em>dass</em> oder <em>das</em>? <em>seit</em> oder <em>seid</em>? <em>wider</em> oder <em>wieder</em>?</div>
     <div class="wortkasten" id="wortkasten"></div>
     <div class="timer-controls">
       <div class="btn-row">
@@ -303,10 +297,10 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 3: SATZBAU ████████ -->
 <div class="section" id="sec-3">
-  <img src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Satzbau">
+  <img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Satzbau">
   <div class="sec-inner">
     <h2>🧩 Satzbau</h2>
-    <div class="hilfe-box">Bringe die Wörter in die richtige Reihenfolge. Beachte: Trennbare Verben teilen sich im Satz — das Präfix steht am Ende.</div>
+    <div class="hilfe-box">Bringe die Elemente in die richtige Reihenfolge. Komma-Chips (,) gehören ebenfalls in die Lösung.</div>
     <div class="timer-controls">
       <div class="btn-row">
         <button class="btn" onclick="timerResetOne(3); sbShowAllSolutions()">💡 Alle Lösungen</button>
@@ -320,10 +314,10 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 4: WORTSCHATZ ████████ -->
 <div class="section" id="sec-4">
-  <img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Wortschatz">
+  <img src="https://images.pexels.com/photos/159581/dictionary-reference-book-learning-159581.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Wortschatz">
   <div class="sec-inner">
     <h2>📚 Wortschatz</h2>
-    <div class="hilfe-box">Tippe die deutsche Entsprechung. Klein­schreibung, Artikel und Leerzeichen werden geprüft.</div>
+    <div class="hilfe-box">Tippe die deutsche Entsprechung. Klein­schreibung und Leerzeichen werden geprüft.</div>
     <div class="timer-controls">
       <div class="btn-row">
         <button class="btn" onclick="timerResetOne(4); showVocabLoesung()">💡 Lösung</button>
@@ -335,26 +329,23 @@ input.correct + .vocab-hint { display: inline; }
   </div>
 </div>
 
-</div><!-- /.container -->
-
+</div>
 <div class="author-footer">
-  <span class="author-name">Frank Burkert</span> · DaF C1 · Variable Verbpräfixe ·
+  <span class="author-name">Frank Burkert</span> · DaF C1 · Kommasetzung &amp; Rechtschreibung ·
   <a href="https://fabdaf.github.io/daf-c1-uebungen/" target="_blank">fabDaF</a>
 </div>
 
 <script>
-// ── Navigation ──────────────────────────────────────────────────────────────
-function showSection(n) {
+function showSection(n){
   document.querySelectorAll('.section').forEach(function(s,i){ s.classList.toggle('active',i===n); });
   document.querySelectorAll('.nav-btn').forEach(function(b,i){ b.classList.toggle('active',i===n); });
-  if(n===1 && !document.getElementById('zuo-bank').children.length) initZuordnung();
-  if(n===2 && !document.getElementById('lueckenContainer').children.length) initLuecken();
-  if(n===3 && !document.getElementById('satzbauContainer').children.length) initSatzbau();
-  if(n===4 && !document.getElementById('vocabContainer').children.length) initVocab();
+  if(n===1&&!document.getElementById('zuo-bank').children.length) initZuordnung();
+  if(n===2&&!document.getElementById('lueckenContainer').children.length) initLuecken();
+  if(n===3&&!document.getElementById('satzbauContainer').children.length) initSatzbau();
+  if(n===4&&!document.getElementById('vocabContainer').children.length) initVocab();
 }
 
-// ── Timer ────────────────────────────────────────────────────────────────────
-var TIMER_PREFIX='C1_1041G_';
+var TIMER_PREFIX='C1_9071G_';
 var timerStarted=[false,false,false,false,false];
 var timerRunning=[false,false,false,false,false];
 var timerSeconds=[0,0,0,0,0];
@@ -387,6 +378,7 @@ function timerResetOne(n){
   if(el) el.textContent='0:00';
 }
 function fmtTime(s){ var m=Math.floor(s/60); var sec=s%60; return m+':'+(sec<10?'0':'')+sec; }
+// Bestzeiten laden
 document.addEventListener('DOMContentLoaded',function(){
   [1,2,3,4].forEach(function(n){
     var b=localStorage.getItem(TIMER_PREFIX+n);
@@ -394,183 +386,126 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 
-// ── MC Entdecken ─────────────────────────────────────────────────────────────
-var mcDone=[false,false,false,false];
-var mcCurrent=0;
+var mcDone=[false,false,false,false]; var mcCurrent=0;
 function mcCheck(step,btn,correct){
-  if(mcDone[step]) return;
-  mcDone[step]=true;
+  if(mcDone[step]) return; mcDone[step]=true;
   var fb=document.getElementById('mcfb'+step);
   if(correct){
-    btn.classList.add('correct');
-    fb.textContent='✓ Richtig!';
-    fb.className='mc-feedback ok';
+    btn.classList.add('correct'); fb.textContent='✓ Richtig!'; fb.className='mc-feedback ok';
     document.getElementById('pdot'+step).classList.add('done');
-    setTimeout(function(){
-      document.getElementById('mc-step'+step).classList.remove('active');
-      mcCurrent=step+1;
-      if(mcCurrent<4){
-        document.getElementById('mc-step'+mcCurrent).classList.add('active');
-      } else {
-        document.getElementById('regelkarte').style.display='block';
-      }
-    },900);
+    setTimeout(function(){ document.getElementById('mc-step'+step).classList.remove('active'); mcCurrent=step+1; if(mcCurrent<4) document.getElementById('mc-step'+mcCurrent).classList.add('active'); else document.getElementById('regelkarte').style.display='block'; },900);
   } else {
-    btn.classList.add('wrong');
-    fb.textContent='✗ Nicht ganz — versuche es nochmal.';
-    fb.className='mc-feedback err';
-    setTimeout(function(){ btn.classList.remove('wrong'); mcDone[step]=false; fb.textContent=''; }, 1200);
+    btn.classList.add('wrong'); fb.textContent='✗ Nicht ganz — versuche es nochmal.'; fb.className='mc-feedback err';
+    setTimeout(function(){ btn.classList.remove('wrong'); mcDone[step]=false; fb.textContent=''; },1200);
   }
 }
 
-// ── Zuordnung ────────────────────────────────────────────────────────────────
-var ZUO_DATA = [
-  { id:'z1',  text:'Er holt das Buch morgen wieder.',                        cat:'trennbar'   },
-  { id:'z2',  text:'Der LKW fährt das Straßenschild versehentlich um.',      cat:'trennbar'   },
-  { id:'z3',  text:'Die Fähre setzt hier stündlich über.',                   cat:'trennbar'   },
-  { id:'z4',  text:'Er tritt zur Konkurrenzpartei über.',                    cat:'trennbar'   },
-  { id:'z5',  text:'Stell das Rad im Keller unter.',                         cat:'trennbar'   },
-  { id:'z6',  text:'Er geht professionell mit Kritik um.',                   cat:'trennbar'   },
-  { id:'z7',  text:'Das Büro übersetzt alle Bescheide ins Türkische.',       cat:'untrennbar' },
-  { id:'z8',  text:'Die Autobahn umfährt den Ort großzügig.',                cat:'untrennbar' },
-  { id:'z9',  text:'Man unterstellte ihm Vetternwirtschaft.',                cat:'untrennbar' },
-  { id:'z10', text:'Die Rednerin wiederholt die Hauptthese abschließend.',   cat:'untrennbar' },
-  { id:'z11', text:'Das Urteil übertritt die Kompetenzgrenzen des Gerichts.',cat:'untrennbar' },
-  { id:'z12', text:'Der Fund durchbricht das bisherige Erklärungsparadigma.',cat:'untrennbar' },
+var ZUO_DATA=[
+  { id:'z1',  text:'Er sagte, dass er morgen kommt.',                                   cat:'ok'  },
+  { id:'z2',  text:'Sie bat ihn, das Protokoll zu verfassen.',                          cat:'ok'  },
+  { id:'z3',  text:'Das Ergebnis, das alle überraschte, wurde veröffentlicht.',         cat:'ok'  },
+  { id:'z4',  text:'Wider Erwarten fiel das Ergebnis positiv aus.',                    cat:'ok'  },
+  { id:'z5',  text:'Seit Wochen gibt es keine Neuigkeiten.',                            cat:'ok'  },
+  { id:'z6',  text:'Er wusste, dass er einen Fehler gemacht hatte.',                   cat:'ok'  },
+  { id:'z7',  text:'Er sagte dass er morgen kommt.',                                   cat:'err' },
+  { id:'z8',  text:'Das ist klar das sie recht hat.',                                  cat:'err' },
+  { id:'z9',  text:'Seid Jahren warten wir auf eine Entscheidung.',                   cat:'err' },
+  { id:'z10', text:'Wieder Erwarten verlief die Prüfung problemlos.',                  cat:'err' },
+  { id:'z11', text:'Er bat sie das Protokoll zu verfassen.',                           cat:'err' },
+  { id:'z12', text:'Die Ministerin, eine erfahrene Juristin lehnte ab.',               cat:'err' },
 ];
 var zuoSelected=null;
 function initZuordnung(){
   var bank=document.getElementById('zuo-bank');
-  bank.innerHTML='';
-  document.getElementById('zone-trennbar').innerHTML='';
-  document.getElementById('zone-untrennbar').innerHTML='';
+  bank.innerHTML=''; document.getElementById('zone-ok').innerHTML=''; document.getElementById('zone-err').innerHTML='';
   document.getElementById('zuo-score').textContent='0';
-  var items=shuffleArr(ZUO_DATA.slice());
-  items.forEach(function(item){
-    var chip=makeZuoChip(item);
+  shuffleArr(ZUO_DATA.slice()).forEach(function(item){
+    var chip=document.createElement('div');
+    chip.className='chip'; chip.dataset.id=item.id; chip.dataset.cat=item.cat;
+    chip.textContent=item.text; chip.style.cssText='max-width:100%;white-space:normal;line-height:1.4;padding:8px 14px;';
+    chip.addEventListener('click',function(){ zuoChipClick(chip); });
     bank.appendChild(chip);
   });
-}
-function makeZuoChip(item){
-  var chip=document.createElement('div');
-  chip.className='chip';
-  chip.dataset.id=item.id;
-  chip.dataset.cat=item.cat;
-  chip.textContent=item.text;
-  chip.style.maxWidth='100%';
-  chip.style.whiteSpace='normal';
-  chip.style.lineHeight='1.4';
-  chip.style.padding='8px 14px';
-  chip.addEventListener('click',function(){ zuoChipClick(chip); });
-  return chip;
 }
 function zuoChipClick(chip){
   if(chip.classList.contains('correct')) return;
   if(zuoSelected===chip){ chip.classList.remove('selected'); zuoSelected=null; return; }
   if(zuoSelected) zuoSelected.classList.remove('selected');
-  zuoSelected=chip;
-  chip.classList.add('selected');
+  zuoSelected=chip; chip.classList.add('selected');
 }
 function zoneClick(cat){
   if(!zuoSelected) return;
-  var zone=document.getElementById('zone-'+cat);
-  zone.appendChild(zuoSelected);
-  zuoSelected.classList.remove('selected');
-  zuoSelected=null;
-  timerAutoStart(1);
+  document.getElementById('zone-'+cat).appendChild(zuoSelected);
+  zuoSelected.classList.remove('selected'); zuoSelected=null; timerAutoStart(1);
 }
 function checkZuordnung(){
   var score=0;
   ZUO_DATA.forEach(function(item){
-    var chip=document.querySelector('[data-id="'+item.id+'"]');
-    if(!chip) return;
+    var chip=document.querySelector('[data-id="'+item.id+'"]'); if(!chip) return;
     var inZone=chip.closest('.drop-zone');
-    if(inZone&&inZone.id==='zone-'+item.cat){
-      chip.classList.add('correct'); score++;
-    } else {
-      chip.classList.add('incorrect');
-      setTimeout(function(){
-        chip.classList.remove('incorrect');
-        document.getElementById('zuo-bank').appendChild(chip);
-      },900);
-    }
+    if(inZone&&inZone.id==='zone-'+item.cat){ chip.classList.add('correct'); score++; }
+    else { chip.classList.add('incorrect'); setTimeout(function(){ chip.classList.remove('incorrect'); document.getElementById('zuo-bank').appendChild(chip); },900); }
   });
   document.getElementById('zuo-score').textContent=score;
   if(score===12) timerStop(1);
 }
 function resetZuordnung(){ timerResetOne(1); initZuordnung(); }
 
-// ── Lückentext ───────────────────────────────────────────────────────────────
-var LUECKEN = [
-  { id:1,  before:'Die Umgehungsstraße ',           answer:'umfährt',      after:' das Stadtzentrum in einem weiten Bogen.' },
-  { id:2,  before:'Der Lobbyist ',                  answer:'umgeht',       after:' Transparenzpflichten über Briefkastenfirmen.' },
-  { id:3,  before:'Die Konferenzdolmetscherin ',    answer:'übersetzt',    after:' simultan aus dem Arabischen ins Deutsche.' },
-  { id:4,  before:'Das Labor ',                     answer:'wiederholt',   after:' den Versuch, um Messungenauigkeiten auszuschließen.' },
-  { id:5,  before:'Wer Zollbestimmungen ',          answer:'übertritt',    after:', muss mit empfindlichen Strafen rechnen.' },
-  { id:6,  before:'Die neue Therapiemethode ',      answer:'durchbricht',  after:' jahrzehntelange Behandlungsroutinen.' },
-  { id:7,  before:'Man ',                           answer:'unterstellt',  after:' dem Konzern, Bilanzdaten zu verschleiern.' },
-  { id:8,  before:'Dem Buchhalter ',                answer:'unterläuft',   after:' ein gravierender Rechenfehler in der Jahresbilanz.' },
-  { id:9,  before:'Der Bauplan ',                   answer:'überschreitet',after:' die zulässigen Grenzwerte um das Doppelte.' },
-  { id:10, before:'Der Autor ',                     answer:'umschreibt',   after:' technische Sachverhalte durch anschauliche Beispiele.' },
+var LUECKEN=[
+  { id:1,  before:'Er erklärte, ',              answer:'dass',   after:' er an dem Projekt nicht mehr beteiligt sei.' },
+  { id:2,  before:'',                            answer:'Das',    after:' Ergebnis der Analyse liegt noch nicht vor.' },
+  { id:3,  before:'Man weiß, ',                 answer:'dass',   after:' Transparenz entscheidend für das Vertrauen ist.' },
+  { id:4,  before:'',                            answer:'Das',    after:' Komitee, das gestern tagte, hat keine Entscheidung getroffen.' },
+  { id:5,  before:'',                            answer:'Seit',   after:' der Reform gilt eine neue Regelung.' },
+  { id:6,  before:'Ihr ',                        answer:'seid',   after:' herzlich eingeladen, an der Diskussion teilzunehmen.' },
+  { id:7,  before:'',                            answer:'Wider',  after:' Erwarten verlief die Verhandlung konstruktiv.' },
+  { id:8,  before:'Die Akten wurden ',           answer:'wieder', after:' gefunden und dem Archiv übergeben.' },
+  { id:9,  before:'Die Frage ist, ',             answer:'ob',     after:' das Verfahren rechtens war.' },
+  { id:10, before:'',                            answer:'Obwohl', after:' die Datenlage dünn ist, zog man vorschnelle Schlüsse.' },
 ];
 function initLuecken(){
   var wk=document.getElementById('wortkasten');
   wk.innerHTML='<strong>Wortkasten:</strong> '+LUECKEN.map(function(l){ return l.answer; }).sort().join(' &nbsp;·&nbsp; ');
   var c=document.getElementById('lueckenContainer'); c.innerHTML='';
   LUECKEN.forEach(function(l){
-    var w=Math.max(110,l.answer.length*11);
+    var w=Math.max(80,l.answer.length*14);
     var div=document.createElement('div'); div.className='luecken-satz';
-    div.innerHTML=escH(l.before)+
-      '<input class="blank" data-answer="'+escH(l.answer.toLowerCase())+'" style="width:'+w+'px" placeholder="…" oninput="liveCheck(this);timerAutoStart(2);">'+
-      escH(l.after);
+    div.innerHTML=escH(l.before)+'<input class="blank" data-answer="'+escH(l.answer.toLowerCase())+'" style="width:'+w+'px" placeholder="…" oninput="liveCheck(this);timerAutoStart(2);">'+escH(l.after);
     c.appendChild(div);
   });
 }
 function liveCheck(inp){
-  var val=inp.value.trim().toLowerCase(), ans=inp.dataset.answer;
-  inp.classList.remove('correct','wrong');
-  if(!val.length) return;
+  var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong'); if(!val.length) return;
   if(val===ans){ inp.classList.add('correct'); checkLueckenDone(); }
-  else if(ans.startsWith(val)){ /* Prefix OK */ }
+  else if(ans.startsWith(val)){}
   else inp.classList.add('wrong');
 }
-function checkLueckenDone(){
-  var all=Array.from(document.querySelectorAll('#lueckenContainer input')).every(function(i){ return i.classList.contains('correct'); });
-  if(all) timerStop(2);
-}
-function zeigeLoesung(){
-  document.querySelectorAll('#lueckenContainer input').forEach(function(inp){
-    inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct');
-  });
-}
+function checkLueckenDone(){ if(Array.from(document.querySelectorAll('#lueckenContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(2); }
+function zeigeLoesung(){ document.querySelectorAll('#lueckenContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
 function resetLuecken(){ timerResetOne(2); initLuecken(); }
 
-// ── Satzbau ──────────────────────────────────────────────────────────────────
-var satzbauData = [
-  { parts:['Er','holt','die','Unterlagen','bis','morgen','wieder'],
-    valid:[['Er','holt','die','Unterlagen','bis','morgen','wieder']], punct:'.' },
-  { parts:['Das','Fahrzeug','umfährt','den','Unfallort','sehr','weiträumig'],
-    valid:[['Das','Fahrzeug','umfährt','den','Unfallort','sehr','weiträumig']], punct:'.' },
-  { parts:['Man','unterstellte','dem','Zeugen','eine','vorsätzliche','Falschaussage'],
-    valid:[['Man','unterstellte','dem','Zeugen','eine','vorsätzliche','Falschaussage']], punct:'.' },
-  { parts:['Das','Startup','umgeht','Meldepflichten','durch','ausländische','Firmensitze'],
-    valid:[['Das','Startup','umgeht','Meldepflichten','durch','ausländische','Firmensitze']], punct:'.' },
-  { parts:['Die','Forscherin','durchbricht','mit','diesem','Befund','das','gängige','Erklärungsmodell'],
-    valid:[['Die','Forscherin','durchbricht','mit','diesem','Befund','das','gängige','Erklärungsmodell']], punct:'.' },
-  { parts:['Er','fährt','das','große','Absperrschild','versehentlich','um'],
-    valid:[['Er','fährt','das','große','Absperrschild','versehentlich','um']], punct:'.' },
-  { parts:['Die','Übersetzerin','übersetzt','den','Vertrag','fristgerecht','ins','Japanische'],
-    valid:[['Die','Übersetzerin','übersetzt','den','Vertrag','fristgerecht','ins','Japanische']], punct:'.' },
+var satzbauData=[
+  { parts:['Er','bat','sie,','das','Protokoll','zu','verfassen'],
+    valid:[['Er','bat','sie,','das','Protokoll','zu','verfassen']], punct:'.' },
+  { parts:['Seit','dem','Beschluss,','der','einstimmig','fiel,','gilt','die','neue','Regelung'],
+    valid:[['Seit','dem','Beschluss,','der','einstimmig','fiel,','gilt','die','neue','Regelung']], punct:'.' },
+  { parts:['Dass','sie','recht','hatte,','musste','selbst','der','Vorsitzende','einräumen'],
+    valid:[['Dass','sie','recht','hatte,','musste','selbst','der','Vorsitzende','einräumen']], punct:'.' },
+  { parts:['Die','Direktorin,','eine','erfahrene','Juristin,','lehnte','den','Antrag','ab'],
+    valid:[['Die','Direktorin,','eine','erfahrene','Juristin,','lehnte','den','Antrag','ab']], punct:'.' },
+  { parts:['Das','Ergebnis','ist','besser,','als','alle','erwartet','hatten'],
+    valid:[['Das','Ergebnis','ist','besser,','als','alle','erwartet','hatten']], punct:'.' },
+  { parts:['Wider','Erwarten','verlief','die','Prüfung','ohne','Zwischenfälle'],
+    valid:[['Wider','Erwarten','verlief','die','Prüfung','ohne','Zwischenfälle']], punct:'.' },
+  { parts:['Er','wusste,','dass','er','einen','schweren','Fehler','gemacht','hatte'],
+    valid:[['Er','wusste,','dass','er','einen','schweren','Fehler','gemacht','hatte']], punct:'.' },
 ];
 
 var sbDragged=null;
 function sbMakeChip(word){
-  var chip=document.createElement('div');
-  chip.className='chip';
-  chip.dataset.orig=word;
-  chip.textContent=word;
-  chip.draggable=true;
-  chip.addEventListener('dragstart',function(e){ sbDragged=chip; chip.style.opacity='.5'; });
+  var chip=document.createElement('div'); chip.className='chip'; chip.dataset.orig=word; chip.textContent=word; chip.draggable=true;
+  chip.addEventListener('dragstart',function(){ sbDragged=chip; chip.style.opacity='.5'; });
   chip.addEventListener('dragend',function(){ chip.style.opacity='1'; sbDragged=null; });
   chip.addEventListener('click',function(){ sbChipClick(chip); });
   return chip;
@@ -578,10 +513,7 @@ function sbMakeChip(word){
 function sbRegisterZone(zone,idx){
   zone.addEventListener('dragover',function(e){ e.preventDefault(); zone.classList.add('dragover'); });
   zone.addEventListener('dragleave',function(){ zone.classList.remove('dragover'); });
-  zone.addEventListener('drop',function(e){
-    e.preventDefault(); zone.classList.remove('dragover');
-    if(sbDragged) { zone.appendChild(sbDragged); sbCheckAuto(idx); }
-  });
+  zone.addEventListener('drop',function(e){ e.preventDefault(); zone.classList.remove('dragover'); if(sbDragged){ zone.appendChild(sbDragged); sbCheckAuto(idx); } });
   zone.addEventListener('click',function(e){ if(sbClickSelected&&!e.target.classList.contains('chip')){ zone.appendChild(sbClickSelected); sbClickSelected.classList.remove('selected'); sbClickSelected=null; sbCheckAuto(idx); } });
 }
 var sbClickSelected=null;
@@ -597,8 +529,7 @@ function sbColorRow(idx){
   var data=satzbauData[idx];
   var ok=data.valid.some(function(v){ return v.length===words.length&&v.every(function(w,i){ return w===words[i]; }); });
   chips.forEach(function(c){ c.classList.remove('correct','incorrect'); c.classList.add(ok?'correct':'incorrect'); });
-  row.classList.toggle('correct',ok);
-  row.classList.toggle('incorrect',!ok&&words.length>0);
+  row.classList.toggle('correct',ok); row.classList.toggle('incorrect',!ok&&words.length>0);
   return ok;
 }
 function sbCheckAuto(idx){
@@ -618,75 +549,41 @@ function sbCheckAuto(idx){
     else { fb.textContent=''; fb.className='satzbau-feedback'; }
   },500);
 }
-function checkSbAllDone(){
-  var allOk=satzbauData.every(function(_,i){
-    var row=document.getElementById('sb-row-'+i);
-    return row&&row.classList.contains('correct');
-  });
-  if(allOk) timerStop(3);
-}
+function checkSbAllDone(){ if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3); }
 function sbShowSolution(idx){
-  var bank=document.getElementById('sb-bank-'+idx);
-  var row=document.getElementById('sb-row-'+idx);
-  var fb=document.getElementById('sb-fb-'+idx);
+  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
   var solution=satzbauData[idx].valid[0];
   var allChips=Array.from(bank.querySelectorAll('.chip')).concat(Array.from(row.querySelectorAll('.chip')));
   var used=[];
-  var placed=solution.map(function(word){
-    var chip=allChips.find(function(c,i){ return c.dataset.orig===word&&used.indexOf(i)===-1; });
-    if(chip){ used.push(allChips.indexOf(chip)); }
-    return chip;
-  }).filter(Boolean);
-  while(bank.firstChild) bank.removeChild(bank.firstChild);
-  while(row.firstChild) row.removeChild(row.firstChild);
-  placed.forEach(function(chip){
-    chip.textContent=chip.dataset.orig;
-    chip.classList.remove('correct','incorrect','selected');
-    row.appendChild(chip);
-  });
-  fb.textContent='';
-  setTimeout(function(){ sbCheckAuto(idx); },100);
+  var placed=solution.map(function(word){ var chip=allChips.find(function(c,i){ return c.dataset.orig===word&&used.indexOf(i)===-1; }); if(chip) used.push(allChips.indexOf(chip)); return chip; }).filter(Boolean);
+  while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
+  placed.forEach(function(chip){ chip.textContent=chip.dataset.orig; chip.classList.remove('correct','incorrect','selected'); row.appendChild(chip); });
+  fb.textContent=''; setTimeout(function(){ sbCheckAuto(idx); },100);
 }
 function sbShowAllSolutions(){ satzbauData.forEach(function(_,idx){ sbShowSolution(idx); }); }
 function sbResetOne(idx){
-  var bank=document.getElementById('sb-bank-'+idx);
-  var row=document.getElementById('sb-row-'+idx);
-  var fb=document.getElementById('sb-fb-'+idx);
-  while(bank.firstChild) bank.removeChild(bank.firstChild);
-  while(row.firstChild) row.removeChild(row.firstChild);
-  row.classList.remove('correct','incorrect');
-  fb.textContent=''; fb.className='satzbau-feedback';
-  var existing=row.querySelector('.sb-punkt');
-  if(existing) existing.parentNode.removeChild(existing);
+  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
+  while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
+  row.classList.remove('correct','incorrect'); fb.textContent=''; fb.className='satzbau-feedback';
   var parts=satzbauData[idx].parts.slice();
-  for(var i=parts.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp;
-  }
+  for(var i=parts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp; }
   parts.forEach(function(word){ bank.appendChild(sbMakeChip(word)); });
 }
 function initSatzbau(){
-  var container=document.getElementById('satzbauContainer');
-  container.innerHTML='';
+  var container=document.getElementById('satzbauContainer'); container.innerHTML='';
   satzbauData.forEach(function(ex,idx){
     var item=document.createElement('div'); item.className='satzbau-item';
     var bank=document.createElement('div'); bank.className='chips-container'; bank.id='sb-bank-'+idx;
     var row=document.createElement('div'); row.className='sentence-builder'; row.id='sb-row-'+idx;
     var fb=document.createElement('div'); fb.className='satzbau-feedback'; fb.id='sb-fb-'+idx;
     var parts=ex.parts.slice();
-    for(var i=parts.length-1;i>0;i--){
-      var j=Math.floor(Math.random()*(i+1));
-      var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp;
-    }
+    for(var i=parts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=parts[i]; parts[i]=parts[j]; parts[j]=tmp; }
     parts.forEach(function(word){ bank.appendChild(sbMakeChip(word)); });
-    sbRegisterZone(bank,idx);
-    sbRegisterZone(row,idx);
+    sbRegisterZone(bank,idx); sbRegisterZone(row,idx);
     var btnRow=document.createElement('div'); btnRow.style.cssText='display:flex;gap:8px;margin-top:6px;';
-    var solveBtn=document.createElement('button'); solveBtn.className='btn'; solveBtn.textContent='Lösen';
-    solveBtn.setAttribute('data-idx',idx);
+    var solveBtn=document.createElement('button'); solveBtn.className='btn'; solveBtn.textContent='Lösen'; solveBtn.setAttribute('data-idx',idx);
     solveBtn.addEventListener('click',function(){ sbShowSolution(parseInt(this.getAttribute('data-idx'))); });
-    var resetBtn=document.createElement('button'); resetBtn.className='btn'; resetBtn.textContent='↺ Neustart';
-    resetBtn.setAttribute('data-idx',idx);
+    var resetBtn=document.createElement('button'); resetBtn.className='btn'; resetBtn.textContent='↺ Neustart'; resetBtn.setAttribute('data-idx',idx);
     resetBtn.addEventListener('click',function(){ sbResetOne(parseInt(this.getAttribute('data-idx'))); });
     btnRow.appendChild(solveBtn); btnRow.appendChild(resetBtn);
     item.appendChild(bank); item.appendChild(row); item.appendChild(fb); item.appendChild(btnRow);
@@ -695,56 +592,42 @@ function initSatzbau(){
 }
 function resetSatzbau(){ initSatzbau(); }
 
-// ── Wortschatz ───────────────────────────────────────────────────────────────
-var WORTSCHATZ = [
-  { id:1,  en:'separable prefix verb',                    de:'das trennbare Verb' },
-  { id:2,  en:'inseparable prefix verb',                  de:'das untrennbare Verb' },
-  { id:3,  en:'to circumvent / to get around sth.',       de:'etw. umgehen' },
-  { id:4,  en:'to translate (written/spoken)',            de:'etw. übersetzen' },
-  { id:5,  en:'to repeat / to go over again',             de:'etw. wiederholen' },
-  { id:6,  en:'to insinuate / to impute to s.o.',        de:'jmdm. etw. unterstellen' },
-  { id:7,  en:'to break through / to breach a rule',     de:'etw. durchbrechen' },
-  { id:8,  en:'to violate / to transgress',               de:'etw. übertreten' },
-  { id:9,  en:'to knock over (with a vehicle)',           de:'etw. umfahren (trennb.)' },
-  { id:10, en:'shift in meaning / semantic change',       de:'die Bedeutungsverschiebung' },
-  { id:11, en:'word formation / derivation',              de:'die Wortbildung' },
-  { id:12, en:'prefix (grammar)',                         de:'das Präfix / die Vorsilbe' },
+var WORTSCHATZ=[
+  { id:1,  en:'comma (punctuation mark)',                          de:'das Komma' },
+  { id:2,  en:'subordinate clause / dependent clause',            de:'der Nebensatz' },
+  { id:3,  en:'infinitive clause / to-infinitive construction',   de:'die Infinitivgruppe' },
+  { id:4,  en:'participial clause / participial construction',    de:'die Partizipialgruppe' },
+  { id:5,  en:'apposition (explanatory addition)',                de:'die Apposition' },
+  { id:6,  en:'"dass" — subordinating conjunction',               de:'dass (Konjunktion)' },
+  { id:7,  en:'"das" — article or relative pronoun',              de:'das (Artikel / Pronomen)' },
+  { id:8,  en:'"seit" — since / for (time preposition)',          de:'seit (Präposition)' },
+  { id:9,  en:'"seid" — you are (2nd pers. pl. of sein)',         de:'seid (Verbform)' },
+  { id:10, en:'"wider" — against, contrary to',                  de:'wider (gegen)' },
+  { id:11, en:'"wieder" — again, once more',                     de:'wieder (erneut)' },
+  { id:12, en:'orthographic reform / spelling rules',            de:'die Rechtschreibreform' },
 ];
 function initVocab(){
   var c=document.getElementById('vocabContainer'); c.innerHTML='';
   shuffleArr(WORTSCHATZ.slice()).forEach(function(item){
     var div=document.createElement('div'); div.className='vocab-item';
     var w=Math.max(200,item.de.length*9);
-    div.innerHTML=
-      '<span class="vocab-en">'+escH(item.en)+'</span>'+
-      '<span class="vocab-arrow">➒</span>'+
-      '<div class="vocab-inputs">'+
-        '<input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+'" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this);timerAutoStart(4);">'+
-        '<span class="vocab-hint" id="vh-'+item.id+'">'+escH(item.de)+'</span>'+
-      '</div>';
+    div.innerHTML='<span class="vocab-en">'+escH(item.en)+'</span><span class="vocab-arrow">➒</span>'+
+      '<div class="vocab-inputs"><input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+'" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this);timerAutoStart(4);">'+
+      '<span class="vocab-hint" id="vh-'+item.id+'">'+escH(item.de)+'</span></div>';
     c.appendChild(div);
   });
 }
 function vocabLive(inp){
-  var val=inp.value.trim().toLowerCase(), ans=inp.dataset.answer;
-  inp.classList.remove('correct','wrong');
-  if(!val.length) return;
+  var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong'); if(!val.length) return;
   if(val===ans){ inp.classList.add('correct'); checkVocabDone(); }
-  else if(ans.startsWith(val)){ /* Prefix OK */ }
+  else if(ans.startsWith(val)){}
   else inp.classList.add('wrong');
 }
-function checkVocabDone(){
-  var all=Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); });
-  if(all) timerStop(4);
-}
-function showVocabLoesung(){
-  document.querySelectorAll('#vocabContainer input').forEach(function(inp){
-    inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct');
-  });
-}
+function checkVocabDone(){ if(Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(4); }
+function showVocabLoesung(){ document.querySelectorAll('#vocabContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
 function resetVocab(){ initVocab(); }
 
-// ── Utils ────────────────────────────────────────────────────────────────────
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
 function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 </script>

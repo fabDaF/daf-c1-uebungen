@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modalpartikeln – C1 Grammatik</title>
+<title>Verben mit Genitiv – C1 Grammatik</title>
 <style>
 /* ── GLOBAL ──────────────────────────────────────────────── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -150,9 +150,9 @@ input.correct + .vocab-hint { display: inline; }
 <body>
 <div class="container">
   <div class="header">
-    <h1>Modalpartikeln</h1>
-    <p>C1 Grammatik · Nuance, Haltung &amp; natürliche Kommunikation</p>
-    <div class="big-emoji">💬</div>
+    <h1>Verben mit Genitiv</h1>
+    <p>C1 Grammatik · Formale Sprache &amp; gehobener Stil</p>
+    <div class="big-emoji">📜</div>
   </div>
     <div class="nav">
     <div class="nav-btn active" onclick="showSection(0)"><span class="nav-emoji">📖</span><span class="nav-label">Entdecken</span></div>
@@ -164,23 +164,16 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 0: ENTDECKEN ████████ -->
 <div class="section active" id="sec-0">
-  <img src="https://images.pexels.com/photos/935949/pexels-photo-935949.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Gespräch">
+  <img src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Formale Sprache">
   <div class="sec-inner">
     <h2>📖 Entdecken</h2>
     <div class="entdeck-intro">
-      <h3>Vergleiche die Varianten — was verändert die Modalpartikel?</h3>
-      <p>„Das ist klar.“
-         &nbsp;vs.&nbsp;
-         „Das ist <span class=“hl">doch</span> klar." (Erinnerung an geteiltes Wissen)</p>
-      <p>„Komm her.“
-         &nbsp;vs.&nbsp;
-         „Komm <span class=“hl">mal</span> her." (mildere, freundlichere Aufforderung)</p>
-      <p>„Was ist los?“
-         &nbsp;vs.&nbsp;
-         „Was ist <span class=“hl">denn</span> los?" (echtes Interesse / leichte Überraschung)</p>
-      <p>„Das ist schwierig.“
-         &nbsp;vs.&nbsp;
-         „Das ist <span class=“hl">eben</span> schwierig." (resignierte Feststellung — so ist es nun mal)</p>
+      <h3>Betrachte diese Sätze — welchen Kasus hat das unterstrichene Objekt?</h3>
+      <p>Der Ausschuss <span class="hl">bediente sich</span> modernster Analysetechniken.</p>
+      <p>Die Gemeinde <span class="hl">gedenkt</span> <span class="hl">der Opfer</span> des Anschlags.</p>
+      <p>Der Abgeordnete <span class="hl">enthielt sich</span> <span class="hl">seiner Stimme</span>.</p>
+      <p>Das Gutachten <span class="hl">bedarf</span> <span class="hl">einer gründlichen Überarbeitung</span>.</p>
+      <p>Der Vorstand <span class="hl">nahm sich</span> <span class="hl">des Problems</span> persönlich an.</p>
     </div>
 
     <div class="progress-dots">
@@ -191,67 +184,64 @@ input.correct + .vocab-hint { display: inline; }
     </div>
 
     <div class="mc-step active" id="mc-step0">
-      <h4>Was ist die grammatische Besonderheit von Modalpartikeln?</h4>
+      <h4>„Die Gemeinde gedenkt <em>der Opfer</em>.“ — Welchen Kasus hat <em>der Opfer</em>?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind betont und tragen die Hauptaussage.</button>
-        <button class="mc-btn" onclick="mcCheck(0,this,true)">Sie sind unbetont, nicht erfragbar, nicht negierbar und nicht im Vorfeld möglich — sie modifizieren die Sprechhaltung.</button>
-        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie ersetzen das finite Verb und stehen an Position II.</button>
-        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind Konjunktionen, die Nebensätze einleiten.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Nominativ (die Opfer)</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Akkusativ (die Opfer → den/die)</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,true)">Genitiv (des/der/eines/einer)</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Dativ (dem/der)</button>
       </div>
       <div class="mc-feedback" id="mcfb0"></div>
     </div>
 
     <div class="mc-step" id="mc-step1">
-      <h4>„Das wirst du <em>schon</em> schaffen.“ — Was drückt <em>schon</em> hier aus?</h4>
+      <h4>Warum stehen diese Verben mit Genitiv und nicht mit Akkusativ oder Dativ?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(1,this,false)">Ungeduld und Druck</button>
-        <button class="mc-btn" onclick="mcCheck(1,this,false)">Überraschung über den Erfolg</button>
-        <button class="mc-btn" onclick="mcCheck(1,this,true)">Zuversicht und Ermutigung — der Sprecher glaubt daran</button>
-        <button class="mc-btn" onclick="mcCheck(1,this,false)">Eine Einschränkung oder ein Vorbehalt</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil sie alle reflexiv sind.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil der Genitiv im Deutschen immer formeller klingt als andere Kasus.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,true)">Weil diese Verben lexikalisch den Genitiv als Ergänzung fordern — es ist eine feste Rektion, die gelernt werden muss.</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">Weil das Objekt eine abstrakte Eigenschaft bezeichnet.</button>
       </div>
       <div class="mc-feedback" id="mcfb1"></div>
     </div>
 
     <div class="mc-step" id="mc-step2">
-      <h4>„Mach das <em>bloß</em> nicht!“ — Was drückt <em>bloß</em> in einem Imperativsatz aus?</h4>
+      <h4>„Das Projekt <em>bedarf</em> einer sorgfältigen Planung.“ — Was bedeutet <em>bedürfen</em> + Genitiv?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(2,this,false)">Eine sanfte Empfehlung</button>
-        <button class="mc-btn" onclick="mcCheck(2,this,true)">Eine dringende Warnung mit emotionalem Nachdruck</button>
-        <button class="mc-btn" onclick="mcCheck(2,this,false)">Eine höfliche Bitte</button>
-        <button class="mc-btn" onclick="mcCheck(2,this,false)">Resignation</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Das Projekt plant sorgfältig.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,true)">Das Projekt braucht / erfordert sorgfältige Planung.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Das Projekt verzichtet auf Planung.</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">Das Projekt beendet die Planung.</button>
       </div>
       <div class="mc-feedback" id="mcfb2"></div>
     </div>
 
     <div class="mc-step" id="mc-step3">
-      <h4>„Er ist <em>wohl</em> krank.“ — Was unterscheidet diesen Satz von „Er ist krank.“?</h4>
+      <h4>In welchem Register werden Genitiv-Verben hauptsächlich verwendet?</h4>
       <div class="mc-options">
-        <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher weiß es sicher.</button>
-        <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher fragt nach.</button>
-        <button class="mc-btn" onclick="mcCheck(3,this,true)">Der Sprecher äußert eine Vermutung — er ist nicht sicher, hält es aber für wahrscheinlich.</button>
-        <button class="mc-btn" onclick="mcCheck(3,this,false)">Der Sprecher bezweifelt die Aussage.</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">In der Alltagssprache und Umgangssprache</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">Nur in literarischen Texten des 19. Jahrhunderts</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,true)">In der gehobenen Schriftsprache, juristischen, akademischen und offiziellen Texten</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">In der gesprochenen Standardsprache</button>
       </div>
       <div class="mc-feedback" id="mcfb3"></div>
     </div>
 
     <div class="regel-karte" id="regelkarte">
-      <h3>📘 Die Regel: Modalpartikeln</h3>
+      <h3>📘 Die Regel: Verben mit Genitiv-Ergänzung</h3>
       <ul>
-        <li>Modalpartikeln stehen im <strong>Mittelfeld</strong> des Satzes, sind <strong>unbetont</strong> und nicht im Vorfeld möglich.</li>
-        <li><strong>doch</strong> → Erinnerung, Widerspruch, Überraschung: <em>Das weißt du doch.</em></li>
-        <li><strong>ja</strong> → Geteiltes Wissen, Ausruf: <em>Das ist ja interessant!</em></li>
-        <li><strong>denn</strong> → echtes Interesse, Irritation in Fragen: <em>Was willst du denn hier?</em></li>
-        <li><strong>mal</strong> → mildert Aufforderungen: <em>Hör mal zu. Komm mal vorbei.</em></li>
-        <li><strong>eben / halt</strong> → Resignation, unvermeidliche Feststellung: <em>Das ist eben so.</em></li>
-        <li><strong>schon</strong> → Zuversicht, Konzession: <em>Das klappt schon.</em></li>
-        <li><strong>wohl</strong> → Vermutung / Wahrscheinlichkeit: <em>Er ist wohl erkrankt.</em></li>
-        <li><strong>bloß / nur</strong> → Warnung (Imperativ) oder Ratlosigkeit (Frage): <em>Mach das bloß nicht!</em></li>
-        <li><strong>eigentlich</strong> → Kontrasterwartung oder echte Neugier: <em>Was wollten Sie eigentlich fragen?</em></li>
-        <li><strong>ruhig</strong> → Erlaubnis / Ermutigung: <em>Du kannst ruhig widersprechen.</em></li>
+        <li>Eine kleine, aber wichtige Gruppe von Verben regiert im Deutschen den <strong>Genitiv</strong>. Sie sind typisch für gehobene Schriftsprache.</li>
+        <li><strong>sich bedienen</strong> + Gen. → etw. nutzen/einsetzen: <em>sich modernster Methoden bedienen</em></li>
+        <li><strong>gedenken</strong> + Gen. → feierlich an etw. erinnern: <em>der Gefallenen gedenken</em></li>
+        <li><strong>sich enthalten</strong> + Gen. → auf etw. verzichten (auch: Enthaltung bei Abstimmung): <em>sich jedes Kommentars enthalten</em></li>
+        <li><strong>sich entledigen</strong> + Gen. → etw. loswerden / eine Aufgabe erledigen: <em>sich einer lästigen Pflicht entledigen</em></li>
+        <li><strong>bedürfen</strong> + Gen. → benötigen / erfordern (formell): <em>einer Genehmigung bedürfen</em></li>
+        <li><strong>sich annehmen</strong> + Gen. → sich um etw./jmdn. kümmern: <em>sich eines Falles annehmen</em></li>
+        <li><strong>sich rühmen</strong> + Gen. → etw. als eigene Leistung darstellen: <em>sich eines Erfolgs rühmen</em></li>
+        <li><strong>ermangeln</strong> + Gen. → an etw. fehlen lassen: <em>jeder Grundlage ermangeln</em></li>
       </ul>
       <div class="rk-example">
-        <b>Wichtig:</b> Dieselbe Partikel kann je nach Satzmodus (Aussage, Frage, Imperativ) eine andere Funktion haben.<br>
-        <em>Das ist <b>doch</b> klar.</em> (Erinnerung) vs. <em>Komm <b>doch</b> rein!</em> (freundliche Aufforderung)
+        <b>Merkhilfe:</b> Im Alltag oft mit Akkusativ ersetzt (z.B. <em>etwas brauchen</em> statt <em>einer Sache bedürfen</em>). In formellen Texten ist der Genitiv jedoch stilistisch geboten.
       </div>
     </div>
   </div>
@@ -259,10 +249,10 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 1: ZUORDNUNG ████████ -->
 <div class="section" id="sec-1">
-  <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Zuordnung">
+  <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Zuordnung">
   <div class="sec-inner">
     <h2>🔀 Zuordnung</h2>
-    <div class="hilfe-box">Ordne die Sätze zu: <strong>Vermutung / Einschätzung</strong> (wohl, schon, eigentlich) oder <strong>Emotion / Beziehung</strong> (doch, ja, mal, eben, bloß, denn).</div>
+    <div class="hilfe-box">Ordne die Sätze zu: <strong>Genitiv-Verb korrekt</strong> oder <strong>Genitiv-Verb falsch / fehlend</strong>. Klick = auswählen, Zone anklicken = ablegen.</div>
     <div class="timer-controls">
       <div class="btn-row">
         <button class="btn" onclick="resetZuordnung()">↺ Neu</button>
@@ -273,12 +263,12 @@ input.correct + .vocab-hint { display: inline; }
     <div class="chip-bank" id="zuo-bank"></div>
     <div class="zuo-layout">
       <div>
-        <div class="zuo-zone-label">🔮 Vermutung / Einschätzung</div>
-        <div class="drop-zone" id="zone-verm" onclick="zoneClick('verm')"></div>
+        <div class="zuo-zone-label">✅ Genitiv korrekt</div>
+        <div class="drop-zone" id="zone-korrekt" onclick="zoneClick('korrekt')"></div>
       </div>
       <div>
-        <div class="zuo-zone-label">💬 Emotion / Beziehung</div>
-        <div class="drop-zone" id="zone-emot" onclick="zoneClick('emot')"></div>
+        <div class="zuo-zone-label">❌ Genitiv falsch</div>
+        <div class="drop-zone" id="zone-falsch" onclick="zoneClick('falsch')"></div>
       </div>
     </div>
     <div class="counter-box">Richtig: <span id="zuo-score">0</span> / 12</div>
@@ -287,10 +277,10 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 2: LÜCKENTEXT ████████ -->
 <div class="section" id="sec-2">
-  <img src="https://images.pexels.com/photos/1925536/pexels-photo-1925536.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Lückentext">
+  <img src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Lückentext">
   <div class="sec-inner">
     <h2>✏️ Lückentext</h2>
-    <div class="hilfe-box">Welche Modalpartikel passt? Wähle aus dem Wortkasten die passendste.</div>
+    <div class="hilfe-box">Ergänze die korrekte Genitivform des Nomens in Klammern.</div>
     <div class="wortkasten" id="wortkasten"></div>
     <div class="timer-controls">
       <div class="btn-row">
@@ -305,10 +295,10 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 3: SATZBAU ████████ -->
 <div class="section" id="sec-3">
-  <img src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Satzbau">
+  <img src="https://images.pexels.com/photos/1053687/pexels-photo-1053687.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Satzbau">
   <div class="sec-inner">
     <h2>🧩 Satzbau</h2>
-    <div class="hilfe-box">Bringe die Wörter in die richtige Reihenfolge. Die Modalpartikel steht im Mittelfeld.</div>
+    <div class="hilfe-box">Bringe die Wörter in die richtige Reihenfolge. Achte auf den Genitiv nach dem Verb.</div>
     <div class="timer-controls">
       <div class="btn-row">
         <button class="btn" onclick="timerResetOne(3); sbShowAllSolutions()">💡 Alle Lösungen</button>
@@ -322,7 +312,7 @@ input.correct + .vocab-hint { display: inline; }
 
 <!-- ████████ TAB 4: WORTSCHATZ ████████ -->
 <div class="section" id="sec-4">
-  <img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Wortschatz">
+  <img src="https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=1000&h=180&fit=crop" class="tab-banner" alt="Wortschatz">
   <div class="sec-inner">
     <h2>📚 Wortschatz</h2>
     <div class="hilfe-box">Tippe die deutsche Entsprechung. Klein­schreibung und Leerzeichen werden geprüft.</div>
@@ -339,7 +329,7 @@ input.correct + .vocab-hint { display: inline; }
 
 </div>
 <div class="author-footer">
-  <span class="author-name">Frank Burkert</span> · DaF C1 · Modalpartikeln ·
+  <span class="author-name">Frank Burkert</span> · DaF C1 · Verben mit Genitiv ·
   <a href="https://fabdaf.github.io/daf-c1-uebungen/" target="_blank">fabDaF</a>
 </div>
 
@@ -353,7 +343,7 @@ function showSection(n){
   if(n===4&&!document.getElementById('vocabContainer').children.length) initVocab();
 }
 
-var TIMER_PREFIX='C1_1061G_';
+var TIMER_PREFIX='C1_9051G_';
 var timerStarted=[false,false,false,false,false];
 var timerRunning=[false,false,false,false,false];
 var timerSeconds=[0,0,0,0,0];
@@ -394,14 +384,20 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 
-var mcDone=[false,false,false,false]; var mcCurrent=0;
+var mcDone=[false,false,false,false];
+var mcCurrent=0;
 function mcCheck(step,btn,correct){
   if(mcDone[step]) return; mcDone[step]=true;
   var fb=document.getElementById('mcfb'+step);
   if(correct){
     btn.classList.add('correct'); fb.textContent='✓ Richtig!'; fb.className='mc-feedback ok';
     document.getElementById('pdot'+step).classList.add('done');
-    setTimeout(function(){ document.getElementById('mc-step'+step).classList.remove('active'); mcCurrent=step+1; if(mcCurrent<4) document.getElementById('mc-step'+mcCurrent).classList.add('active'); else document.getElementById('regelkarte').style.display='block'; },900);
+    setTimeout(function(){
+      document.getElementById('mc-step'+step).classList.remove('active');
+      mcCurrent=step+1;
+      if(mcCurrent<4) document.getElementById('mc-step'+mcCurrent).classList.add('active');
+      else document.getElementById('regelkarte').style.display='block';
+    },900);
   } else {
     btn.classList.add('wrong'); fb.textContent='✗ Nicht ganz — versuche es nochmal.'; fb.className='mc-feedback err';
     setTimeout(function(){ btn.classList.remove('wrong'); mcDone[step]=false; fb.textContent=''; },1200);
@@ -409,24 +405,24 @@ function mcCheck(step,btn,correct){
 }
 
 var ZUO_DATA=[
-  { id:'z1',  text:'Er ist wohl noch im Büro.',                               cat:'verm' },
-  { id:'z2',  text:'Das wird schon klappen.',                                  cat:'verm' },
-  { id:'z3',  text:'Was wollten Sie eigentlich fragen?',                       cat:'verm' },
-  { id:'z4',  text:'Das dürfte wohl der schwierigste Teil sein.',              cat:'verm' },
-  { id:'z5',  text:'Eigentlich hätte man früher eingreifen müssen.',           cat:'verm' },
-  { id:'z6',  text:'Er hat schon recht, aber es reicht nicht.',                cat:'verm' },
-  { id:'z7',  text:'Das weißt du doch.',                                       cat:'emot' },
-  { id:'z8',  text:'Was ist denn hier passiert?',                              cat:'emot' },
-  { id:'z9',  text:'Komm mal kurz her.',                                       cat:'emot' },
-  { id:'z10', text:'Das ist eben so — daran lässt sich nichts ändern.',       cat:'emot' },
-  { id:'z11', text:'Mach das bloß nicht nochmal.',                             cat:'emot' },
-  { id:'z12', text:'Das ist ja unglaublich!',                                  cat:'emot' },
+  { id:'z1',  text:'Der Verein gedenkt der Gründer.',                              cat:'korrekt' },
+  { id:'z2',  text:'Das Gericht bedient sich modernster forensischer Methoden.',   cat:'korrekt' },
+  { id:'z3',  text:'Der Antrag bedarf einer schriftlichen Begründung.',            cat:'korrekt' },
+  { id:'z4',  text:'Die Ministerin enthielt sich ihrer Stimme.',                   cat:'korrekt' },
+  { id:'z5',  text:'Der Anwalt nahm sich des Falls persönlich an.',                cat:'korrekt' },
+  { id:'z6',  text:'Der Bericht ermangelt jeder sachlichen Grundlage.',            cat:'korrekt' },
+  { id:'z7',  text:'Die Gemeinde gedenkt die Opfer des Krieges.',                  cat:'falsch'  },
+  { id:'z8',  text:'Das Projekt bedarf einen umfassenden Aktionsplan.',            cat:'falsch'  },
+  { id:'z9',  text:'Er enthielt sich den Kommentar.',                              cat:'falsch'  },
+  { id:'z10', text:'Der Ausschuss bediente sich modernen Methoden.',               cat:'falsch'  },
+  { id:'z11', text:'Sie entledigte sich die unangenehme Aufgabe.',                 cat:'falsch'  },
+  { id:'z12', text:'Er rühmte sich seinem Erfolg öffentlich.',                     cat:'falsch'  },
 ];
 var zuoSelected=null;
 function initZuordnung(){
   var bank=document.getElementById('zuo-bank');
-  bank.innerHTML=''; document.getElementById('zone-verm').innerHTML=''; document.getElementById('zone-emot').innerHTML='';
-  document.getElementById('zuo-score').textContent='0';
+  bank.innerHTML=''; document.getElementById('zone-korrekt').innerHTML='';
+  document.getElementById('zone-falsch').innerHTML=''; document.getElementById('zuo-score').textContent='0';
   shuffleArr(ZUO_DATA.slice()).forEach(function(item){
     var chip=document.createElement('div');
     chip.className='chip'; chip.dataset.id=item.id; chip.dataset.cat=item.cat;
@@ -449,7 +445,8 @@ function zoneClick(cat){
 function checkZuordnung(){
   var score=0;
   ZUO_DATA.forEach(function(item){
-    var chip=document.querySelector('[data-id="'+item.id+'"]'); if(!chip) return;
+    var chip=document.querySelector('[data-id="'+item.id+'"]');
+    if(!chip) return;
     var inZone=chip.closest('.drop-zone');
     if(inZone&&inZone.id==='zone-'+item.cat){ chip.classList.add('correct'); score++; }
     else { chip.classList.add('incorrect'); setTimeout(function(){ chip.classList.remove('incorrect'); document.getElementById('zuo-bank').appendChild(chip); },900); }
@@ -460,31 +457,34 @@ function checkZuordnung(){
 function resetZuordnung(){ timerResetOne(1); initZuordnung(); }
 
 var LUECKEN=[
-  { id:1,  before:'Das hast du ',         answer:'doch',       after:' selbst gesagt — erinnerst du dich nicht?' },
-  { id:2,  before:'Was ist ',             answer:'denn',       after:' plötzlich mit ihm los?' },
-  { id:3,  before:'Schau ',               answer:'mal',        after:' hier — das ist interessant.' },
-  { id:4,  before:'Das wird ',            answer:'schon',      after:' funktionieren — kein Grund zur Sorge.' },
-  { id:5,  before:'Er ist ',              answer:'wohl',       after:' verreist — sein Büro ist jedenfalls leer.' },
-  { id:6,  before:'Das ist ',             answer:'eben',       after:' der Preis des Erfolgs — daran führt kein Weg vorbei.' },
-  { id:7,  before:'Berühre das ',         answer:'bloß',       after:' nicht — das ist hochgiftig.' },
-  { id:8,  before:'Das ist ',             answer:'ja',         after:' eine überraschende Wendung!' },
-  { id:9,  before:'Was wolltest du ',     answer:'eigentlich', after:' mit dieser Frage bezwecken?' },
-  { id:10, before:'Du kannst ',           answer:'ruhig',      after:' Einwände erheben — das gehört zur Diskussion.' },
+  { id:1,  before:'Die Gedenkstätte erinnert an die Schrecken ',   answer:'des Krieges',             after:'.' },
+  { id:2,  before:'Der Antrag bedarf ',                             answer:'einer schriftlichen Genehmigung', after:'.' },
+  { id:3,  before:'Der Abgeordnete enthielt sich ',                 answer:'seiner Stimme',           after:'.' },
+  { id:4,  before:'Das Gutachten ermangelt ',                       answer:'jeder sachlichen Grundlage', after:'.' },
+  { id:5,  before:'Der Anwalt nahm sich ',                         answer:'des Falles',              after:' persönlich an.' },
+  { id:6,  before:'Die Behörde bediente sich ',                    answer:'moderner Analyseverfahren', after:'.' },
+  { id:7,  before:'Er entledigte sich ',                           answer:'seiner Verpflichtungen',  after:' mit einem kurzen Schreiben.' },
+  { id:8,  before:'Der Redner rühmte sich ',                       answer:'seiner internationalen Kontakte', after:'.' },
+  { id:9,  before:'Die Kommission gedenkt ',                       answer:'der Opfer',               after:' in einer Schweigeminute.' },
+  { id:10, before:'Das neue Verfahren bedarf noch ',               answer:'weiterer Tests',          after:'.' },
 ];
 function initLuecken(){
   var wk=document.getElementById('wortkasten');
   wk.innerHTML='<strong>Wortkasten:</strong> '+LUECKEN.map(function(l){ return l.answer; }).sort().join(' &nbsp;·&nbsp; ');
   var c=document.getElementById('lueckenContainer'); c.innerHTML='';
   LUECKEN.forEach(function(l){
-    var w=Math.max(80,l.answer.length*14);
+    var w=Math.max(160,l.answer.length*10);
     var div=document.createElement('div'); div.className='luecken-satz';
-    div.innerHTML=escH(l.before)+'<input class="blank" data-answer="'+escH(l.answer.toLowerCase())+'" style="width:'+w+'px" placeholder="…" oninput="liveCheck(this);timerAutoStart(2);">'+escH(l.after);
+    div.innerHTML=escH(l.before)+
+      '<input class="blank" data-answer="'+escH(l.answer.toLowerCase())+'" style="width:'+w+'px" placeholder="…" oninput="liveCheck(this);timerAutoStart(2);">'+
+      escH(l.after);
     c.appendChild(div);
   });
 }
 function liveCheck(inp){
   var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
-  inp.classList.remove('correct','wrong'); if(!val.length) return;
+  inp.classList.remove('correct','wrong');
+  if(!val.length) return;
   if(val===ans){ inp.classList.add('correct'); checkLueckenDone(); }
   else if(ans.startsWith(val)){}
   else inp.classList.add('wrong');
@@ -492,29 +492,32 @@ function liveCheck(inp){
 function checkLueckenDone(){
   if(Array.from(document.querySelectorAll('#lueckenContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(2);
 }
-function zeigeLoesung(){ document.querySelectorAll('#lueckenContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
+function zeigeLoesung(){
+  document.querySelectorAll('#lueckenContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); });
+}
 function resetLuecken(){ timerResetOne(2); initLuecken(); }
 
 var satzbauData=[
-  { parts:['Das','weißt','du','doch','schon','sehr','lange'],
-    valid:[['Das','weißt','du','doch','schon','sehr','lange']], punct:'.' },
-  { parts:['Was','ist','denn','plötzlich','mit','ihm','passiert'],
-    valid:[['Was','ist','denn','plötzlich','mit','ihm','passiert']], punct:'?' },
-  { parts:['Er','ist','wohl','noch','immer','im','Büro'],
-    valid:[['Er','ist','wohl','noch','immer','im','Büro']], punct:'.' },
-  { parts:['Das','wird','schon','klappen','—','keine','Sorge'],
-    valid:[['Das','wird','schon','klappen','—','keine','Sorge']], punct:'.' },
-  { parts:['Komm','doch','bitte','mal','kurz','ins','Büro'],
-    valid:[['Komm','doch','bitte','mal','kurz','ins','Büro']], punct:'.' },
-  { parts:['Das','ist','eben','so','—','daran','führt','kein','Weg','vorbei'],
-    valid:[['Das','ist','eben','so','—','daran','führt','kein','Weg','vorbei']], punct:'.' },
-  { parts:['Du','kannst','ruhig','widersprechen','—','das','ist','erwünscht'],
-    valid:[['Du','kannst','ruhig','widersprechen','—','das','ist','erwünscht']], punct:'.' },
+  { parts:['Die','Gemeinde','gedenkt','der','Gefallenen','des','Zweiten','Weltkriegs'],
+    valid:[['Die','Gemeinde','gedenkt','der','Gefallenen','des','Zweiten','Weltkriegs']], punct:'.' },
+  { parts:['Das','Vorhaben','bedarf','einer','umfassenden','rechtlichen','Prüfung'],
+    valid:[['Das','Vorhaben','bedarf','einer','umfassenden','rechtlichen','Prüfung']], punct:'.' },
+  { parts:['Der','Anwalt','nahm','sich','des','komplizierten','Falls','persönlich','an'],
+    valid:[['Der','Anwalt','nahm','sich','des','komplizierten','Falls','persönlich','an']], punct:'.' },
+  { parts:['Die','Ministerin','enthielt','sich','jedes','öffentlichen','Kommentars'],
+    valid:[['Die','Ministerin','enthielt','sich','jedes','öffentlichen','Kommentars']], punct:'.' },
+  { parts:['Der','Gutachter','bediente','sich','neuester','statistischer','Methoden'],
+    valid:[['Der','Gutachter','bediente','sich','neuester','statistischer','Methoden']], punct:'.' },
+  { parts:['Das','gesamte','Konzept','ermangelt','jeder','empirischen','Grundlage'],
+    valid:[['Das','gesamte','Konzept','ermangelt','jeder','empirischen','Grundlage']], punct:'.' },
+  { parts:['Er','entledigte','sich','seiner','lästigen','Verpflichtungen','mit','einem','Schreiben'],
+    valid:[['Er','entledigte','sich','seiner','lästigen','Verpflichtungen','mit','einem','Schreiben']], punct:'.' },
 ];
 
 var sbDragged=null;
 function sbMakeChip(word){
-  var chip=document.createElement('div'); chip.className='chip'; chip.dataset.orig=word; chip.textContent=word; chip.draggable=true;
+  var chip=document.createElement('div');
+  chip.className='chip'; chip.dataset.orig=word; chip.textContent=word; chip.draggable=true;
   chip.addEventListener('dragstart',function(){ sbDragged=chip; chip.style.opacity='.5'; });
   chip.addEventListener('dragend',function(){ chip.style.opacity='1'; sbDragged=null; });
   chip.addEventListener('click',function(){ sbChipClick(chip); });
@@ -559,20 +562,23 @@ function sbCheckAuto(idx){
     else { fb.textContent=''; fb.className='satzbau-feedback'; }
   },500);
 }
-function checkSbAllDone(){ if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3); }
+function checkSbAllDone(){
+  if(satzbauData.every(function(_,i){ var r=document.getElementById('sb-row-'+i); return r&&r.classList.contains('correct'); })) timerStop(3);
+}
 function sbShowSolution(idx){
-  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
+  var bank=document.getElementById('sb-bank-'+idx), row=document.getElementById('sb-row-'+idx), fb=document.getElementById('sb-fb-'+idx);
   var solution=satzbauData[idx].valid[0];
   var allChips=Array.from(bank.querySelectorAll('.chip')).concat(Array.from(row.querySelectorAll('.chip')));
   var used=[];
   var placed=solution.map(function(word){ var chip=allChips.find(function(c,i){ return c.dataset.orig===word&&used.indexOf(i)===-1; }); if(chip) used.push(allChips.indexOf(chip)); return chip; }).filter(Boolean);
-  while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
+  while(bank.firstChild) bank.removeChild(bank.firstChild);
+  while(row.firstChild) row.removeChild(row.firstChild);
   placed.forEach(function(chip){ chip.textContent=chip.dataset.orig; chip.classList.remove('correct','incorrect','selected'); row.appendChild(chip); });
   fb.textContent=''; setTimeout(function(){ sbCheckAuto(idx); },100);
 }
 function sbShowAllSolutions(){ satzbauData.forEach(function(_,idx){ sbShowSolution(idx); }); }
 function sbResetOne(idx){
-  var bank=document.getElementById('sb-bank-'+idx),row=document.getElementById('sb-row-'+idx),fb=document.getElementById('sb-fb-'+idx);
+  var bank=document.getElementById('sb-bank-'+idx), row=document.getElementById('sb-row-'+idx), fb=document.getElementById('sb-fb-'+idx);
   while(bank.firstChild) bank.removeChild(bank.firstChild); while(row.firstChild) row.removeChild(row.firstChild);
   row.classList.remove('correct','incorrect'); fb.textContent=''; fb.className='satzbau-feedback';
   var parts=satzbauData[idx].parts.slice();
@@ -591,9 +597,11 @@ function initSatzbau(){
     parts.forEach(function(word){ bank.appendChild(sbMakeChip(word)); });
     sbRegisterZone(bank,idx); sbRegisterZone(row,idx);
     var btnRow=document.createElement('div'); btnRow.style.cssText='display:flex;gap:8px;margin-top:6px;';
-    var solveBtn=document.createElement('button'); solveBtn.className='btn'; solveBtn.textContent='Lösen'; solveBtn.setAttribute('data-idx',idx);
+    var solveBtn=document.createElement('button'); solveBtn.className='btn'; solveBtn.textContent='Lösen';
+    solveBtn.setAttribute('data-idx',idx);
     solveBtn.addEventListener('click',function(){ sbShowSolution(parseInt(this.getAttribute('data-idx'))); });
-    var resetBtn=document.createElement('button'); resetBtn.className='btn'; resetBtn.textContent='↺ Neustart'; resetBtn.setAttribute('data-idx',idx);
+    var resetBtn=document.createElement('button'); resetBtn.className='btn'; resetBtn.textContent='↺ Neustart';
+    resetBtn.setAttribute('data-idx',idx);
     resetBtn.addEventListener('click',function(){ sbResetOne(parseInt(this.getAttribute('data-idx'))); });
     btnRow.appendChild(solveBtn); btnRow.appendChild(resetBtn);
     item.appendChild(bank); item.appendChild(row); item.appendChild(fb); item.appendChild(btnRow);
@@ -603,18 +611,18 @@ function initSatzbau(){
 function resetSatzbau(){ initSatzbau(); }
 
 var WORTSCHATZ=[
-  { id:1,  en:'modal particle (a small, unstressed nuance word)', de:'die Modalpartikel' },
-  { id:2,  en:'"doch" — reminder of shared knowledge',            de:'doch (Erinnerung)' },
-  { id:3,  en:'"ja" — shared assumption / exclamation',           de:'ja (geteiltes Wissen)' },
-  { id:4,  en:'"denn" — interest or mild irritation in questions',de:'denn (echtes Interesse)' },
-  { id:5,  en:'"mal" — softens requests / imperatives',           de:'mal (Milderung)' },
-  { id:6,  en:'"eben/halt" — resignation, that\'s just how it is',de:'eben / halt (Resignation)' },
-  { id:7,  en:'"schon" — reassurance / concession',               de:'schon (Zuversicht)' },
-  { id:8,  en:'"wohl" — probability / assumption',                de:'wohl (Vermutung)' },
-  { id:9,  en:'"bloß/nur" — warning in imperatives',              de:'bloß / nur (Warnung)' },
-  { id:10, en:'"eigentlich" — contrast or genuine curiosity',     de:'eigentlich (Kontrasterwartung)' },
-  { id:11, en:'"ruhig" — permission or encouragement',           de:'ruhig (Erlaubnis)' },
-  { id:12, en:'speaker attitude / pragmatic force',              de:'die Sprechhaltung' },
+  { id:1,  en:'to make use of sth. / to avail oneself of sth.',    de:'sich etw. (Gen.) bedienen' },
+  { id:2,  en:'to commemorate / to pay tribute to',                de:'jmds. / einer Sache gedenken' },
+  { id:3,  en:'to abstain from / to refrain from',                 de:'sich einer Sache enthalten' },
+  { id:4,  en:'to rid oneself of / to discharge a duty',           de:'sich einer Sache entledigen' },
+  { id:5,  en:'to require / to be in need of (formal)',            de:'einer Sache bedürfen' },
+  { id:6,  en:'to take care of / to deal with (a matter)',         de:'sich einer Sache annehmen' },
+  { id:7,  en:'to boast of / to pride oneself on',                 de:'sich einer Sache rühmen' },
+  { id:8,  en:'to lack / to be wanting in',                        de:'einer Sache ermangeln' },
+  { id:9,  en:'genitive object / genitive complement',             de:'das Genitivobjekt' },
+  { id:10, en:'verb government / subcategorization',               de:'die Valenz / die Rektion' },
+  { id:11, en:'formal / elevated register',                        de:'der gehobene Stil' },
+  { id:12, en:'to abstain (in a vote)',                            de:'sich enthalten' },
 ];
 function initVocab(){
   var c=document.getElementById('vocabContainer'); c.innerHTML='';
@@ -622,19 +630,23 @@ function initVocab(){
     var div=document.createElement('div'); div.className='vocab-item';
     var w=Math.max(200,item.de.length*9);
     div.innerHTML='<span class="vocab-en">'+escH(item.en)+'</span><span class="vocab-arrow">➒</span>'+
-      '<div class="vocab-inputs"><input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+'" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this);timerAutoStart(4);">'+
+      '<div class="vocab-inputs"><input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+
+      '" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this);timerAutoStart(4);">'+
       '<span class="vocab-hint" id="vh-'+item.id+'">'+escH(item.de)+'</span></div>';
     c.appendChild(div);
   });
 }
 function vocabLive(inp){
   var val=inp.value.trim().toLowerCase(),ans=inp.dataset.answer;
-  inp.classList.remove('correct','wrong'); if(!val.length) return;
+  inp.classList.remove('correct','wrong');
+  if(!val.length) return;
   if(val===ans){ inp.classList.add('correct'); checkVocabDone(); }
   else if(ans.startsWith(val)){}
   else inp.classList.add('wrong');
 }
-function checkVocabDone(){ if(Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(4); }
+function checkVocabDone(){
+  if(Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); })) timerStop(4);
+}
 function showVocabLoesung(){ document.querySelectorAll('#vocabContainer input').forEach(function(inp){ inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct'); }); }
 function resetVocab(){ initVocab(); }
 
