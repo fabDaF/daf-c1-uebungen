@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1 – Lektion 1061G · Ausdrücke der Schriftsprache (Genitiv-Präpositionen)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+.container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
+.header h1 { font-size: 2.2em; font-family: Georgia, 'Times New Roman', serif; color: white; margin-bottom: 8px; border: none; padding: 0; }
+.header p { font-size: 1.1em; font-family: Georgia, 'Times New Roman', serif; opacity: 0.95; color: rgba(255,255,255,0.9); margin: 0; }
+.header .big-emoji { font-size: 2.6em; display: block; margin-top: 8px; }
+.nav { display: flex; flex-wrap: nowrap; background: #f8f9fa; border-top: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+.nav-btn { flex: 1; padding: 14px 10px; text-align: center; cursor: pointer; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; transition: all 0.3s; font-size: 0.92em; font-weight: 500; color: #666; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.nav-btn:last-child { border-right: none; }
+.nav-btn:hover { background: #e8ecff; color: #667eea; }
+.nav-btn.active { background: white; color: #667eea; font-weight: 700; border-bottom: 3px solid #667eea; }
+.nav-emoji { font-size: 1.3em; line-height: 1.2; }
+.nav-label { font-size: 0.78em; margin-top: 2px; line-height: 1.2; }
+.section { display: none; }
+.section.active { display: block; }
+@media (max-width: 600px) {
+  body { padding: 8px; }
+  .nav { flex-wrap: wrap; }
+  .nav-btn { flex: 1 1 33%; min-width: 0; font-size: 0.8em; padding: 10px 6px; border-right: 1px solid #ddd; }
+  .nav-btn:last-child { border-right: 1px solid #ddd; }
+}
+/* Entdeckungs-Tab */
+.entdeck-intro { background: #f3e5f5; border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; border-left: 5px solid #9c27b0; font-size: 0.97rem; line-height: 1.75; }
+.entdeck-intro h3 { color: #6a1b9a; margin-bottom: 10px; font-size: 1.05rem; }
+.hl { background: #e1bee7; border-radius: 4px; padding: 0 4px; color: #4a148c; font-weight: 700; }
+.satzpaar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.sz-verbal { background: #f5f5f5; border-radius: 8px; padding: 10px 14px; font-size: 0.91rem; color: #555; border-left: 3px solid #bbb; }
+.sz-nominal { background: #e8f5e9; border-radius: 8px; padding: 10px 14px; font-size: 0.91rem; color: #333; border-left: 3px solid #43a047; }
+.satz-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #999; letter-spacing: 0.05em; margin-bottom: 4px; }
+@media (max-width: 600px) { .satzpaar { grid-template-columns: 1fr; } }
+.mc-step { display: none; background: #fafbff; border-radius: 12px; padding: 18px 22px; margin-bottom: 16px; border: 1px solid #c5cae9; }
+.mc-step.active { display: block; }
+.mc-step h4 { color: #3949ab; margin-bottom: 12px; font-size: 0.97rem; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-btn { padding: 9px 16px; border: 2px solid #c5cae9; border-radius: 8px; background: #fff; cursor: pointer; text-align: left; font-size: 0.92rem; transition: all .2s; }
+.mc-btn:hover { border-color: #667eea; background: #f3f4ff; }
+.mc-btn.correct { border-color: #43a047; background: #e8f5e9; color: #2e7d32; font-weight: 700; }
+.mc-btn.wrong { border-color: #e53935; background: #ffebee; color: #c62828; }
+.mc-feedback { margin-top: 10px; font-size: 0.88rem; min-height: 1.3em; }
+.mc-feedback.ok { color: #2e7d32; font-weight: 700; }
+.mc-feedback.err { color: #c62828; }
+.progress-dots { display: flex; gap: 8px; margin-bottom: 20px; }
+.pdot { width: 14px; height: 14px; border-radius: 50%; background: #c5cae9; transition: background .3s; }
+.pdot.done { background: #667eea; }
+.regel-karte { display: none; background: linear-gradient(135deg, #e8eaf6, #ede7f6); border-radius: 14px; padding: 22px 26px; border-left: 5px solid #3949ab; margin-top: 10px; }
+.regel-karte h3 { color: #1a237e; margin-bottom: 12px; font-size: 1.05rem; }
+.regel-karte ul { margin-left: 18px; }
+.regel-karte li { color: #333; line-height: 1.9; font-size: 0.95rem; }
+.rk-example { background: #fff; border-radius: 8px; padding: 10px 14px; margin-top: 12px; border-left: 3px solid #7c4dff; font-size: 0.9rem; color: #333; line-height: 1.7; }
+.rk-example b { color: #3949ab; }
+/* Chips – Standard: weiß mit lila Rahmen (satzbau-drag-drop Skill) */
+.chip { background: white; border: 2px solid #667eea; color: #667eea; padding: 8px 14px; border-radius: 20px; cursor: move; font-weight: 500; font-size: 0.9em; transition: all 0.2s; user-select: none; white-space: nowrap; }
+.chip.selected { background: #667eea; color: white; border-color: #4a5fd4; transform: scale(1.05); box-shadow: 0 2px 8px rgba(102,126,234,0.4); cursor: pointer; }
+.chip:active { cursor: grabbing; }
+.chip.correct   { background: #27ae60; border-color: #27ae60; color: white; }
+.chip.incorrect { background: #e74c3c; border-color: #e74c3c; color: white; }
+.chip.wrong     { background: #e74c3c; border-color: #e74c3c; color: white; }
+.chip.selected  { outline: 3px solid #f39c12; }
+.chip.punct-chip { background: #f8f8f8; border: 2px solid #667eea; padding: 8px 16px; color: #333; font-weight: 700; font-size: 1.3em; min-width: 18px; text-align: center; cursor: move; }
+.chip.punct-chip.correct   { background: #27ae60; border-color: #27ae60; color: white; }
+.chip.punct-chip.incorrect { background: #e74c3c; border-color: #e74c3c; color: white; }
+/* Drag zones */
+.chip-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #f8f9fa; border-radius: 10px; margin-bottom: 14px; min-height: 54px; }
+.chips-container { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; background: #f8f8f8; border-radius: 10px; min-height: 56px; margin-bottom: 10px; }
+.sentence-builder { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px; background: white; border: 2px dashed #ccc; border-radius: 10px; min-height: 56px; align-items: center; margin-bottom: 6px; }
+.sentence-builder.correct   { border-color: #27ae60; background: #f0fff4; }
+.sentence-builder.incorrect { border-color: #e74c3c; background: #fff5f5; }
+.drop-zone { min-height: 110px; border-radius: 10px; border: 2px dashed #c5cae9; padding: 10px; background: #fafbff; transition: background .2s; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+.drop-zone.dragover { background: #e8eaff; border-color: #667eea; }
+.satzbau-feedback { font-size: 0.9em; font-weight: 600; margin-top: 6px; min-height: 1.2em; }
+.satzbau-feedback.correct   { color: #27ae60; }
+.satzbau-feedback.incorrect { color: #e74c3c; }
+.sb-punkt { font-size: 1.1em; font-weight: 700; color: #27ae60; margin-left: 2px; align-self: center; user-select: none; }
+/* Zuordnung */
+.zuo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.zuo-zone-label { font-weight: 700; color: #3949ab; font-size: 0.9rem; margin-bottom: 8px; }
+@media (max-width: 600px) { .zuo-layout { grid-template-columns: 1fr; } }
+/* Lückentext */
+input.blank { border: 2px solid #c5cae9; border-radius: 6px; padding: 3px 8px; font-size: 0.9rem; font-family: inherit; outline: none; transition: border-color .2s, background .2s; background: white; margin: 0 2px; }
+input.blank:focus { border-color: #667eea; }
+input.blank.correct { border-color: #27ae60; background: #e8f5e9; }
+input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
+.correction-hint { font-size: 0.78rem; color: #27ae60; font-weight: 700; margin-left: 4px; white-space: nowrap; }
+.luecken-satz { background: #f8f9fa; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; line-height: 2.2; font-size: 0.93rem; color: #333; }
+/* Satzbau */
+.satzbau-item { margin-bottom: 20px; }
+/* Timer / Controls */
+.timer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 6px; }
+.btn-row { display: flex; gap: 6px; }
+.btn { background: #f5f7ff; border: 1px solid #c5cff5; border-radius: 8px; padding: 6px 16px; font-size: 0.85em; color: #667eea; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+.btn:hover { background: #f0f0f0; color: #555; }
+.timer-display { display: flex; gap: 14px; font-size: 0.82em; color: #bbb; font-variant-numeric: tabular-nums; }
+/* Hilfe-Box */
+.hilfe-box { background: #f0f4ff; border-left: 4px solid #667eea; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 22px; font-size: 0.9em; color: #444; line-height: 1.6; }
+/* Wortkasten */
+.wortkasten { background: #ede7f6; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; font-size: 0.88rem; color: #4a148c; line-height: 1.8; }
+.wortkasten b { color: #6a1b9a; }
+/* Wortschatz */
+#vocabContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.vocab-item { background: #f8f9ff; padding: 12px 14px; border-radius: 10px; border-left: 4px solid #667eea; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0; }
+.vocab-en { font-weight: 600; color: #764ba2; min-width: 200px; font-size: 0.93em; }
+.vocab-arrow { color: #ccc; font-size: 1.2em; }
+.vocab-inputs input { border: none; border-bottom: 2px solid #667eea; background: #fff; padding: 4px 8px; font-family: inherit; font-size: 0.93em; outline: none; transition: all 0.2s; min-width: 220px; }
+.vocab-inputs input:focus { border-bottom-color: #764ba2; background: #f0f7ff; }
+.vocab-inputs input.correct { border-bottom-color: #27ae60; background: #e8f8f0; }
+.vocab-inputs input.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
+.vocab-hint { color: #27ae60; font-weight: 600; font-size: 0.8em; margin-left: 6px; display: none; }
+/* Counter */
+.counter-box { font-size: 0.85rem; color: #888; margin-top: 10px; }
+.counter-box span { font-weight: 700; color: #667eea; }
+/* Tab banner */
+.tab-banner { width: 100%; height: 180px; object-fit: cover; display: block; }
+/* Footer */
+.author-footer { text-align: center; margin-top: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; padding: 16px; font-size: 0.8rem; color: #aaa; }
+.author-footer a { color: #aaa; }
+.author-name { font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+  <h1>Ausdrücke der Schriftsprache</h1>
+  <p style="font-family: Georgia, serif;">C1.1 – Lektion 1061G &nbsp;|&nbsp; Grammatik · Genitiv-Präpositionen &amp; gehobenes Register</p>
+  <div class="big-emoji">📜</div>
+</div>
+
+<div class="nav">
+  <div class="nav-btn active" onclick="showSection(0)"><span class="nav-emoji">📖</span><span class="nav-label">Entdeckung</span></div>
+  <div class="nav-btn" onclick="showSection(1)"><span class="nav-emoji">🔀</span><span class="nav-label">Zuordnung</span></div>
+  <div class="nav-btn" onclick="showSection(2)"><span class="nav-emoji">✏️</span><span class="nav-label">Lückentext</span></div>
+  <div class="nav-btn" onclick="showSection(3)"><span class="nav-emoji">🧩</span><span class="nav-label">Satzbau</span></div>
+  <div class="nav-btn" onclick="showSection(4)"><span class="nav-emoji">📚</span><span class="nav-label">Wortschatz</span></div>
+</div>
+
+<!-- ═══════════════════ TAB 0: ENTDECKUNG ═══════════════════ -->
+<div class="section active" id="sec-0">
+  <img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Bücherregal">
+  <div style="padding: 28px 30px;">
+
+    <h2>📖 Entdecke die Regel selbst</h2>
+    <div class="entdeck-intro">
+      <h3>📜 Schriftsprache und Genitiv-Präpositionen</h3>
+      <p>Lies die Satzpaare. Was unterscheidet die linke Spalte (gesprochene Sprache) von der rechten (Schriftsprache)?</p>
+    </div>
+
+    <div class="satzpaar">
+      <div><div class="satz-label">Gesprochen / Dativ</div><div class="sz-verbal">Wegen dem Wetter bleibt die Wanderung aus.</div></div>
+      <div><div class="satz-label">Schriftsprache / Genitiv</div><div class="sz-nominal">Wegen <span class="hl">des Wetters</span> entfällt die Wanderung.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Gesprochen</div><div class="sz-verbal">Trotz dem Stress kommt sie pünktlich.</div></div>
+      <div><div class="satz-label">Schriftsprache</div><div class="sz-nominal">Trotz <span class="hl">des Stresses</span> erscheint sie pünktlich.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Gesprochen</div><div class="sz-verbal">Innerhalb von zwei Wochen ist alles fertig.</div></div>
+      <div><div class="satz-label">Schriftsprache</div><div class="sz-nominal">Innerhalb <span class="hl">zweier Wochen</span> ist das Vorhaben abgeschlossen.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Selten gehoben</div><div class="sz-verbal">Anstatt des Briefes — eine Mail.</div></div>
+      <div><div class="satz-label">Sehr formell</div><div class="sz-nominal">Mittels <span class="hl">eines Schreibens</span> kündigte sie das Engagement.</div></div>
+    </div>
+    <div class="satzpaar">
+      <div><div class="satz-label">Akademisch / juristisch</div><div class="sz-verbal">Hinsichtlich des Vertrags besteht Klärungsbedarf.</div></div>
+      <div><div class="satz-label">Auch akademisch</div><div class="sz-nominal">Bezüglich <span class="hl">der genannten Aspekte</span> liegt eine eindeutige Position vor.</div></div>
+    </div>
+
+    <div class="progress-dots" style="margin-top:24px;">
+      <div class="pdot" id="pdot0"></div>
+      <div class="pdot" id="pdot1"></div>
+      <div class="pdot" id="pdot2"></div>
+      <div class="pdot" id="pdot3"></div>
+    </div>
+
+    <div class="mc-step active" id="mc-step0">
+      <h4>❓ Welche Funktion erfüllen Genitiv-Präpositionen im Deutschen?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie ersetzen Verben.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,true)">Sie verbinden Substantive im Genitiv mit dem Hauptsatz und sind typisch für gehobene, formelle, schriftliche Register.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind nur in der Lyrik üblich.</button>
+        <button class="mc-btn" onclick="mcCheck(0,this,false)">Sie sind im Deutschen ausgestorben.</button>
+      </div>
+      <div class="mc-feedback" id="mcfb0"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step1">
+      <h4>❓ Welche der folgenden Präpositionen verlangen den Genitiv?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">mit, von, bei, zu</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,true)">wegen, trotz, anstatt, mittels, aufgrund, hinsichtlich</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">in, an, auf, unter</button>
+        <button class="mc-btn" onclick="mcCheck(1,this,false)">durch, für, ohne, gegen</button>
+      </div>
+      <div class="mc-feedback" id="mcfb1"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step2">
+      <h4>❓ In welchem Register werden Genitiv-Präpositionen besonders häufig verwendet?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">in der Umgangssprache und in WhatsApp-Nachrichten</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,true)">in juristischen, akademischen und behördlichen Texten</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">nur in Werbung</button>
+        <button class="mc-btn" onclick="mcCheck(2,this,false)">nur in der Schweiz</button>
+      </div>
+      <div class="mc-feedback" id="mcfb2"></div>
+    </div>
+
+    <div class="mc-step" id="mc-step3">
+      <h4>❓ Was passiert in der Umgangssprache mit Genitiv-Präpositionen?</h4>
+      <div class="mc-options">
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">sie werden komplett vermieden</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,true)">sie werden oft mit dem Dativ kombiniert: ‚wegen dem Wetter‘ statt ‚wegen des Wetters‘ — ein Phänomen, das als Sprachwandel beschrieben wird</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">sie verwandeln sich in Akkusativ</button>
+        <button class="mc-btn" onclick="mcCheck(3,this,false)">sie werden in der Schweiz noch korrekt benutzt</button>
+      </div>
+      <div class="mc-feedback" id="mcfb3"></div>
+    </div>
+
+    <div class="regel-karte" id="regelkarte">
+      <h3>📐 Die Regel: Genitiv-Präpositionen</h3>
+      <ul>
+        <li><strong>Was sie sind:</strong> Präpositionen, die ein Substantiv im Genitiv verlangen — ein Markenzeichen der gehobenen, schriftlichen deutschen Sprache.</li>
+        <li><strong>Häufige Genitiv-Präpositionen:</strong> <em>wegen, trotz, statt/anstatt, während, innerhalb, außerhalb, oberhalb, unterhalb, diesseits, jenseits, mittels, aufgrund, anlässlich, infolge, betreffs, hinsichtlich, bezüglich, ungeachtet</em> — über fünfzig Präpositionen insgesamt.</li>
+        <li><strong>Sprachwandel:</strong> In der gesprochenen Sprache verlieren viele dieser Präpositionen den Genitiv und nehmen den Dativ an: ‚wegen dem Wetter‘, ‚trotz dem Stress‘. Im offiziellen Deutsch (Bewerbung, Behörde, Studium) ist das nicht akzeptabel; in entspannten Gesprächen schon.</li>
+        <li><strong>Bedeutungsgruppen:</strong> Kausal (wegen, aufgrund, infolge), Konzessiv (trotz, ungeachtet), Lokal (innerhalb, oberhalb, jenseits), Temporal (während, anlässlich), Final (zwecks), Modal (mittels), Bezugnahmend (hinsichtlich, bezüglich, betreffs).</li>
+        <li><strong>Schriftsprache braucht sie:</strong> Wer in akademischer oder juristischer Sprache schreibt, kommt ohne Genitiv-Präpositionen nicht aus. Sie sind das Hauptmerkmal eines erwachsenen Schriftstils.</li>
+        <li><strong>Achtung:</strong> Bei Pronomen oder Eigennamen wird oft <em>von</em> statt Genitiv verwendet: ‚wegen ihm‘ ist nicht falsch, ‚wegen seiner‘ klingt überholt. In modernen Texten: ‚wegen seines Verhaltens‘ — aber nicht ‚wegen seiner‘.</li>
+      </ul>
+      <div class="rk-example">
+        <b>Faustregel-Tabelle:</b><br>
+        <em>kausal:</em> wegen + Gen, aufgrund + Gen, infolge + Gen<br>
+        <em>konzessiv:</em> trotz + Gen, ungeachtet + Gen<br>
+        <em>lokal:</em> innerhalb / außerhalb + Gen, oberhalb / unterhalb + Gen, diesseits / jenseits + Gen<br>
+        <em>temporal:</em> während + Gen, anlässlich + Gen, binnen + Gen<br>
+        <em>modal:</em> mittels + Gen, vermöge + Gen<br>
+        <em>bezugnehmend:</em> hinsichtlich, bezüglich, betreffs, in Anbetracht — alle + Gen
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 1: ZUORDNUNG ═══════════════════ -->
+
+<div class="section" id="sec-1">
+  <img src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Redaktion">
+  <div style="padding: 28px 30px;">
+    <h2>🔀 Genitiv-Präpositionen nach Bedeutungsgruppe ordnen</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showZuoLoesung()">Lösungen</button>
+        <button class="btn" onclick="resetZuo(); timerResetOne(1);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-1">0:00</span></span>
+        <span>🏆 <span id="best-1">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Ordne die zwölf Genitiv-Präpositionen den passenden Spalten zu.<br>
+      <strong>Kausal/konzessiv:</strong> Grund, Trotz. &nbsp;|&nbsp;
+      <strong>Räumlich/zeitlich:</strong> Ort, Zeit, modal-bezugnehmend.
+    </div>
+    <div class="chip-bank" id="zuo-bank" ondragover="allowDrop(event)" ondrop="dropBank(event)" onclick="clickBank(event)"></div>
+    <div class="zuo-layout">
+      <div>
+        <div class="zuo-zone-label">⚡ Kausal / Konzessiv</div>
+        <div class="drop-zone" id="zone-aktiv" data-cat="aktiv"
+          ondragover="allowDrop(event)" ondrop="dropZuo(event,this)" onclick="clickZone(event,this)"></div>
+      </div>
+      <div>
+        <div class="zuo-zone-label">🌍 Lokal / Temporal / Bezugnehmend</div>
+        <div class="drop-zone" id="zone-passiv" data-cat="passiv"
+          ondragover="allowDrop(event)" ondrop="dropZuo(event,this)" onclick="clickZone(event,this)"></div>
+      </div>
+    </div>
+    <div class="counter-box">Richtig: <span id="zuo-ok">0</span> / 12</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 2: LÜCKENTEXT ═══════════════════ -->
+<div class="section" id="sec-2">
+  <img src="https://images.pexels.com/photos/5710614/pexels-photo-5710614.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Schreiben">
+  <div style="padding: 28px 30px;">
+    <h2>✏️ Lückentext — Konjunktiv I aus dem Zeitungsartikel</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showLueckenLoesung()">Lösungen</button>
+        <button class="btn" onclick="resetLuecken(); timerResetOne(2);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-2">0:00</span></span>
+        <span>🏆 <span id="best-2">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Setze die passende Genitiv-Präposition ein.
+    </div>
+    <div class="wortkasten"><b>Hilfen:</b> wegen &nbsp;·&nbsp; trotz &nbsp;·&nbsp; während &nbsp;·&nbsp; innerhalb &nbsp;·&nbsp; aufgrund &nbsp;·&nbsp; hinsichtlich &nbsp;·&nbsp; mittels &nbsp;·&nbsp; anlässlich &nbsp;·&nbsp; statt &nbsp;·&nbsp; oberhalb</div>
+    <div id="luecken-container"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 3: SATZBAU ═══════════════════ -->
+<div class="section" id="sec-3">
+  <img src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Sprache">
+  <div style="padding: 28px 30px;">
+    <h2>🧩 Satzbau — Genitiv-Präpositionen im Kontext</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="sbShowAllSolutions()">Lösungen</button>
+        <button class="btn" onclick="resetSatzbau(); timerResetOne(3);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-3">0:00</span></span>
+        <span>🏆 <span id="best-3">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Bringe die Wörter in die richtige Reihenfolge. Achte auf die Genitiv-Endungen und die Position der Präposition.
+    </div>
+    <div id="satzbauContainer"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB 4: WORTSCHATZ ═══════════════════ -->
+<div class="section" id="sec-4">
+  <img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1000&h=300&fit=crop" class="tab-banner" alt="Bücher Wortschatz">
+  <div style="padding: 28px 30px;">
+    <h2>📚 Wortschatz — Genitiv-Präpositionen und ihre Bedeutung</h2>
+    <div class="timer-controls">
+      <div class="btn-row">
+        <button class="btn" onclick="showVocabLoesung()">Lösungen</button>
+        <button class="btn" onclick="resetVocab(); timerResetOne(4);">Neu starten</button>
+      </div>
+      <div class="timer-display">
+        <span>⏱ <span id="timer-4">0:00</span></span>
+        <span>🏆 <span id="best-4">--:--</span></span>
+      </div>
+    </div>
+    <div class="hilfe-box">
+      <strong>Aufgabe:</strong> Tippe die Genitiv-Präposition oder das Schriftsprache-Wort zur Beschreibung.
+    </div>
+    <div id="vocabContainer"></div>
+  </div>
+</div>
+
+<div class="author-footer">
+  <span class="author-name">&copy; Frank Burkert</span> &middot; DaF-Materialien &middot;
+  <a href="mailto:FrankBurkert@fabdaf.onmicrosoft.com">FrankBurkert@fabdaf.onmicrosoft.com</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ── Navigation ──────────────────────────────────────────────
+function showSection(idx) {
+  document.querySelectorAll('.section').forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+  document.querySelectorAll('.nav-btn').forEach(function(b,i){ b.classList.toggle('active', i===idx); });
+}
+
+// ── Timer ────────────────────────────────────────────────────
+var TIMER_PREFIX = 'C1_1061G_';
+var timerStarted  = [false,false,false,false,false];
+var timerRunning  = [false,false,false,false,false];
+var timerSeconds  = [0,0,0,0,0];
+var timerIntervals = [null,null,null,null,null];
+
+function timerAutoStart(n) {
+  if (timerStarted[n]) return;
+  timerStarted[n] = true; timerRunning[n] = true;
+  timerIntervals[n] = setInterval(function() {
+    timerSeconds[n]++;
+    var el = document.getElementById('timer-' + n);
+    if (el) el.textContent = fmtTime(timerSeconds[n]);
+  }, 1000);
+}
+function timerStop(n) {
+  if (!timerRunning[n]) return;
+  clearInterval(timerIntervals[n]); timerRunning[n] = false;
+  var best = parseInt(localStorage.getItem(TIMER_PREFIX + n) || '999999');
+  if (timerSeconds[n] > 0 && timerSeconds[n] < best) {
+    localStorage.setItem(TIMER_PREFIX + n, timerSeconds[n]);
+    var el = document.getElementById('best-' + n);
+    if (el) el.textContent = fmtTime(timerSeconds[n]);
+  }
+}
+function timerResetOne(n) {
+  clearInterval(timerIntervals[n]); timerRunning[n] = false; timerStarted[n] = false; timerSeconds[n] = 0;
+  var el = document.getElementById('timer-' + n);
+  if (el) el.textContent = '0:00';
+}
+function fmtTime(s) { var m=Math.floor(s/60); var sec=s%60; return m+':'+(sec<10?'0':'')+sec; }
+
+window.addEventListener('load', function() {
+  [1,2,3,4].forEach(function(n) {
+    var b = localStorage.getItem(TIMER_PREFIX + n);
+    if (b) { var el = document.getElementById('best-'+n); if (el) el.textContent = fmtTime(parseInt(b)); }
+  });
+  initZuo(); initLuecken(); initSatzbau(); initVocab();
+});
+
+// ── Entdeckungs-MC ───────────────────────────────────────────
+var mcDone = [false,false,false,false];
+function mcCheck(step, btn, correct) {
+  var btns = btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  var fb = document.getElementById('mcfb' + step);
+  if (correct) {
+    btn.classList.add('correct');
+    fb.textContent = '\u2713 Richtig!'; fb.className = 'mc-feedback ok';
+    mcDone[step] = true;
+    document.getElementById('pdot' + step).classList.add('done');
+    setTimeout(function() {
+      var next = document.getElementById('mc-step' + (step + 1));
+      if (next) next.classList.add('active');
+      else document.getElementById('regelkarte').style.display = 'block';
+    }, 700);
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent = '\u2717 Nicht ganz \u2014 schau nochmal genau hin.'; fb.className = 'mc-feedback err';
+    setTimeout(function() {
+      btns.forEach(function(b) { b.disabled = false; b.classList.remove('wrong','correct'); });
+      fb.textContent = ''; fb.className = 'mc-feedback';
+    }, 1400);
+  }
+}
+
+// ── Zuordnung (Tab 1) ────────────────────────────────────────
+var draggedChip = null;
+var selectedChip = null;
+
+var ZUO_DATA = [
+  { id:'z1',  text:'wegen',                cat:'aktiv'  },
+  { id:'z2',  text:'aufgrund',             cat:'aktiv'  },
+  { id:'z3',  text:'infolge',              cat:'aktiv'  },
+  { id:'z4',  text:'trotz',                cat:'aktiv'  },
+  { id:'z5',  text:'ungeachtet',           cat:'aktiv'  },
+  { id:'z6',  text:'kraft',                cat:'aktiv'  },
+  { id:'z7',  text:'innerhalb',            cat:'passiv' },
+  { id:'z8',  text:'außerhalb',            cat:'passiv' },
+  { id:'z9',  text:'jenseits',             cat:'passiv' },
+  { id:'z10', text:'während',              cat:'passiv' },
+  { id:'z11', text:'hinsichtlich',         cat:'passiv' },
+  { id:'z12', text:'mittels',              cat:'passiv' }
+];
+
+function initZuo() {
+  var bank = document.getElementById('zuo-bank');
+  bank.innerHTML = '';
+  document.getElementById('zone-aktiv').innerHTML = '';
+  document.getElementById('zone-passiv').innerHTML = '';
+  document.getElementById('zuo-ok').textContent = '0';
+  selectedChip = null;
+  shuffleArr(ZUO_DATA.slice()).forEach(function(item) {
+    bank.appendChild(makeZuoChip(item));
+  });
+}
+
+function makeZuoChip(item) {
+  var chip = document.createElement('div');
+  chip.className = 'chip'; chip.textContent = item.text;
+  chip.dataset.id = item.id; chip.dataset.cat = item.cat;
+  chip.draggable = true;
+  chip.addEventListener('dragstart', function(e) { draggedChip = chip; e.dataTransfer.setData('text/plain',''); });
+  chip.addEventListener('dragend', function() { colorAllZuoChips(); });
+  chip.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (selectedChip === chip) { selectedChip = null; chip.classList.remove('selected'); }
+    else { if (selectedChip) selectedChip.classList.remove('selected'); selectedChip = chip; chip.classList.add('selected'); }
+  });
+  return chip;
+}
+
+function allowDrop(e) { e.preventDefault(); }
+
+function dropZuo(e, zone) {
+  e.preventDefault(); if (!draggedChip) return;
+  zone.appendChild(draggedChip); draggedChip = null;
+  colorAllZuoChips(); timerAutoStart(1);
+}
+function dropBank(e) {
+  e.preventDefault(); if (!draggedChip) return;
+  document.getElementById('zuo-bank').appendChild(draggedChip); draggedChip = null; colorAllZuoChips();
+}
+function clickZone(e, zone) {
+  if (!selectedChip) return;
+  zone.appendChild(selectedChip); selectedChip.classList.remove('selected'); selectedChip = null;
+  colorAllZuoChips(); timerAutoStart(1);
+}
+function clickBank(e) {
+  if (!selectedChip) return;
+  document.getElementById('zuo-bank').appendChild(selectedChip); selectedChip.classList.remove('selected'); selectedChip = null;
+  colorAllZuoChips();
+}
+
+function colorZuoChip(chip) {
+  var zone = chip.closest('.drop-zone');
+  if (zone) { chip.classList.remove('correct','wrong'); chip.classList.add(chip.dataset.cat === zone.dataset.cat ? 'correct' : 'wrong'); }
+  else { chip.classList.remove('correct','wrong'); }
+}
+function colorAllZuoChips() {
+  var ok = 0;
+  document.querySelectorAll('#sec-1 .chip').forEach(function(chip) { colorZuoChip(chip); if (chip.classList.contains('correct')) ok++; });
+  document.getElementById('zuo-ok').textContent = ok;
+  if (ok === ZUO_DATA.length) timerStop(1);
+}
+function showZuoLoesung() {
+  ZUO_DATA.forEach(function(item) {
+    var chip = document.querySelector('[data-id="' + item.id + '"]');
+    if (!chip) return;
+    document.getElementById(item.cat === 'aktiv' ? 'zone-aktiv' : 'zone-passiv').appendChild(chip);
+  });
+  colorAllZuoChips();
+}
+function resetZuo() { initZuo(); }
+
+// ── Lückentext (Tab 2) ───────────────────────────────────────
+var LUECKEN = [
+  { id:1,  before:'',                                                                  answer:'Wegen', after:' des starken Regens wurde das Konzert verschoben.' },
+  { id:2,  before:'',                                                                  answer:'Trotz', after:' aller Bemühungen erreichte er das Ziel nicht.' },
+  { id:3,  before:'',                                                                  answer:'Während', after:' der Pandemie blieben viele Geschäfte geschlossen.' },
+  { id:4,  before:'',                                                                  answer:'Innerhalb', after:' weniger Tage war das Buch ausverkauft.' },
+  { id:5,  before:'',                                                                  answer:'Aufgrund', after:' der neuen Vorschriften ändert sich das Verfahren.' },
+  { id:6,  before:'',                                                                  answer:'Hinsichtlich', after:' der Kosten muss noch verhandelt werden.' },
+  { id:7,  before:'',                                                                  answer:'Mittels', after:' eines Beschlusses wurde die Maßnahme rechtskräftig.' },
+  { id:8,  before:'',                                                                  answer:'Anlässlich', after:' seines 50. Geburtstags gab es eine kleine Feier.' },
+  { id:9,  before:'',                                                                  answer:'Statt', after:' eines Briefes schickte sie eine Mail.' },
+  { id:10, before:'',                                                                  answer:'Oberhalb', after:' der Schneegrenze ist die Vegetation karg.' }
+];
+
+function initLuecken() {
+  var c = document.getElementById('luecken-container'); c.innerHTML = '';
+  LUECKEN.forEach(function(item) {
+    var div = document.createElement('div'); div.className = 'luecken-satz';
+    var w = Math.max(90, item.answer.length * 12);
+    div.innerHTML = escH(item.before) +
+      '<input type="text" class="blank" id="lk-'+item.id+'" data-answer="'+escH(item.answer)+'" style="width:'+w+'px" oninput="lueckenLive(this); timerAutoStart(2);">' +
+      '<span class="correction-hint" id="lkhint-'+item.id+'" style="display:none">'+escH(item.answer)+'</span>' +
+      escH(item.after);
+    c.appendChild(div);
+  });
+}
+
+function lueckenLive(inp) {
+  var val = inp.value.trim(), ans = inp.dataset.answer;
+  inp.classList.remove('correct','wrong');
+  if (!val.length) return;
+  if (val.toLowerCase() === ans.toLowerCase()) inp.classList.add('correct');
+  else if (ans.toLowerCase().startsWith(val.toLowerCase())) { /* gültiger Prefix */ }
+  else inp.classList.add('wrong');
+  checkLueckenDone();
+}
+function checkLueckenDone() {
+  var all = true;
+  LUECKEN.forEach(function(item) { var inp=document.getElementById('lk-'+item.id); if (!inp||!inp.classList.contains('correct')) all=false; });
+  if (all) timerStop(2);
+}
+function showLueckenLoesung() {
+  LUECKEN.forEach(function(item) {
+    var inp = document.getElementById('lk-'+item.id); if (!inp) return;
+    inp.value = item.answer; inp.classList.remove('wrong'); inp.classList.add('correct');
+  });
+}
+function resetLuecken() { initLuecken(); }
+
+// ── Satzbau (Tab 3) — Standard satzbau-drag-drop ─────────────
+var satzbauData = [
+  { parts:['wegen','des','starken','Regens','blieb','das','Spiel','aus'],
+    valid:[['wegen','des','starken','Regens','blieb','das','Spiel','aus']], punct:'.' },
+  { parts:['trotz','aller','Bemühungen','konnte','der','Patient','nicht','gerettet','werden'],
+    valid:[['trotz','aller','Bemühungen','konnte','der','Patient','nicht','gerettet','werden']], punct:'.' },
+  { parts:['innerhalb','weniger','Wochen','war','das','Buch','ausverkauft'],
+    valid:[['innerhalb','weniger','Wochen','war','das','Buch','ausverkauft']], punct:'.' },
+  { parts:['hinsichtlich','der','Kosten','besteht','Klärungsbedarf'],
+    valid:[['hinsichtlich','der','Kosten','besteht','Klärungsbedarf']], punct:'.' },
+  { parts:['anlässlich','des','Jubiläums','wurde','eine','Festschrift','herausgegeben'],
+    valid:[['anlässlich','des','Jubiläums','wurde','eine','Festschrift','herausgegeben']], punct:'.' },
+  { parts:['mittels','eines','Beschlusses','wurde','die','Regelung','geändert'],
+    valid:[['mittels','eines','Beschlusses','wurde','die','Regelung','geändert']], punct:'.' }
+];
+
+var sbDragged = null;
+
+function getSbCursor() {
+  var c = document.getElementById('sb-insert-cursor');
+  if (!c) {
+    c = document.createElement('div');
+    c.id = 'sb-insert-cursor';
+    c.style.cssText = 'width:3px;min-height:32px;background:#e67e22;border-radius:2px;align-self:stretch;pointer-events:none;flex-shrink:0;';
+  }
+  return c;
+}
+function getSbInsertPos(zone, clientX) {
+  var chips = Array.from(zone.querySelectorAll('.chip'));
+  for (var i = 0; i < chips.length; i++) {
+    var r = chips[i].getBoundingClientRect();
+    if (clientX < r.left + r.width / 2) return chips[i];
+  }
+  return null;
+}
+function sbCapitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+function sbUpdateCapitalization(row) {
+  Array.from(row.querySelectorAll('.chip')).forEach(function(c, i) {
+    var orig = c.dataset.orig;
+    if (orig === ',' || orig === ';') return;
+    var isProper = orig.charAt(0) === orig.charAt(0).toUpperCase() && orig.charAt(0) !== orig.charAt(0).toLowerCase();
+    c.textContent = isProper ? orig : (i === 0 ? sbCapitalize(orig) : orig);
+  });
+}
+function sbMakeChip(word) {
+  var chip = document.createElement('div');
+  chip.className = 'chip';
+  if (word === ',' || word === ';') chip.classList.add('punct-chip');
+  chip.textContent = word;
+  chip.dataset.orig = word;
+  chip.draggable = true;
+  chip.addEventListener('dragstart', function(e) {
+    sbDragged = chip;
+    timerAutoStart(3);
+    e.dataTransfer.setData('text/plain', '');
+    setTimeout(function() { chip.style.opacity = '0.4'; }, 0);
+  });
+  chip.addEventListener('dragend', function() {
+    chip.style.opacity = '';
+    sbDragged = null;
+    var c = document.getElementById('sb-insert-cursor');
+    if (c && c.parentNode) c.parentNode.removeChild(c);
+  });
+  chip.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var sel = document.querySelector('.chip.selected');
+    if (sel === chip) { chip.classList.remove('selected'); return; }
+    if (sel) {
+      if (sel.dataset.sbIdx !== chip.dataset.sbIdx) { sel.classList.remove('selected'); return; }
+      chip.parentElement.insertBefore(sel, chip);
+      sel.classList.remove('selected');
+      var zId = chip.parentElement.id || '';
+      var idx = parseInt(zId.replace('sb-bank-','').replace('sb-row-',''));
+      if (!isNaN(idx)) { sbUpdateCapitalization(document.getElementById('sb-row-'+idx)); sbCheckAuto(idx); }
+    } else {
+      chip.classList.add('selected');
+    }
+  });
+  return chip;
+}
+function sbRegisterZone(zone, idx) {
+  zone.addEventListener('click', function(e) {
+    if (e.target !== zone) return;
+    var sel = document.querySelector('.chip.selected');
+    if (sel) {
+      if (sel.dataset.sbIdx !== String(idx)) { sel.classList.remove('selected'); return; }
+      zone.appendChild(sel);
+      sel.classList.remove('selected');
+      sbUpdateCapitalization(document.getElementById('sb-row-'+idx));
+      sbCheckAuto(idx);
+    }
+  });
+  zone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    if (!sbDragged) return;
+    if (sbDragged.dataset.sbIdx !== String(idx)) return;
+    var cursor = getSbCursor();
+    var before = getSbInsertPos(zone, e.clientX);
+    if (before) zone.insertBefore(cursor, before);
+    else zone.appendChild(cursor);
+  });
+  zone.addEventListener('dragleave', function(e) {
+    if (!zone.contains(e.relatedTarget)) {
+      var c = document.getElementById('sb-insert-cursor');
+      if (c && c.parentNode === zone) zone.removeChild(c);
+    }
+  });
+  zone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    if (!sbDragged) return;
+    if (sbDragged.dataset.sbIdx !== String(idx)) return;
+    var cursor = document.getElementById('sb-insert-cursor');
+    if (cursor && cursor.parentNode === zone) {
+      zone.insertBefore(sbDragged, cursor);
+      zone.removeChild(cursor);
+    } else {
+      zone.appendChild(sbDragged);
+    }
+    sbDragged = null;
+    var row = document.getElementById('sb-row-' + idx);
+    sbUpdateCapitalization(row);
+    sbCheckAuto(idx);
+  });
+}
+function sbColorRow(idx) {
+  var row = document.getElementById('sb-row-' + idx);
+  var chips = Array.from(row.querySelectorAll('.chip'));
+  var order = chips.map(function(c) { return c.dataset.orig; });
+  var ok = satzbauData[idx].valid.some(function(v) {
+    return JSON.stringify(v) === JSON.stringify(order);
+  });
+  chips.forEach(function(c) {
+    c.classList.remove('correct', 'incorrect');
+    c.classList.add(ok ? 'correct' : 'incorrect');
+  });
+  var existing = row.querySelector('.sb-punkt');
+  if (existing) existing.parentNode.removeChild(existing);
+  if (ok) {
+    var punkt = document.createElement('span');
+    punkt.className = 'sb-punkt';
+    punkt.textContent = satzbauData[idx].punct || '.';
+    row.appendChild(punkt);
+  }
+  return ok;
+}
+function sbCheckAuto(idx) {
+  var bank = document.getElementById('sb-bank-' + idx);
+  var row  = document.getElementById('sb-row-' + idx);
+  var fb   = document.getElementById('sb-fb-' + idx);
+  if (bank.querySelectorAll('.chip').length > 0) {
+    row.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('correct', 'incorrect'); });
+    row.classList.remove('correct', 'incorrect');
+    fb.textContent = '';
+    return;
+  }
+  setTimeout(function() {
+    timerAutoStart(3);
+    var ok = sbColorRow(idx);
+    if (ok) {
+      row.classList.add('correct'); row.classList.remove('incorrect');
+      fb.className = 'satzbau-feedback correct';
+      fb.textContent = '✓ Korrekt!';
+      sbCheckAllDone();
+    } else {
+      row.classList.add('incorrect'); row.classList.remove('correct');
+      fb.className = 'satzbau-feedback incorrect';
+      fb.textContent = '✗ Falsche Reihenfolge – verschiebe die Chips!';
+    }
+  }, 500);
+}
+function sbCheckAllDone() {
+  var allOk = satzbauData.every(function(_, i) {
+    var row = document.getElementById('sb-row-' + i);
+    return row && row.classList.contains('correct');
+  });
+  if (allOk) timerStop(3);
+}
+function sbShowSolution(idx) {
+  var bank = document.getElementById('sb-bank-' + idx);
+  var row  = document.getElementById('sb-row-' + idx);
+  var fb   = document.getElementById('sb-fb-' + idx);
+  var solution = satzbauData[idx].valid[0];
+  var allChips = Array.from(bank.querySelectorAll('.chip')).concat(Array.from(row.querySelectorAll('.chip')));
+  var used = [];
+  var placed = solution.map(function(word) {
+    var chip = allChips.find(function(c, i) { return c.dataset.orig === word && used.indexOf(i) === -1; });
+    if (chip) { used.push(allChips.indexOf(chip)); }
+    return chip;
+  }).filter(Boolean);
+  while (bank.firstChild) bank.removeChild(bank.firstChild);
+  while (row.firstChild)  row.removeChild(row.firstChild);
+  placed.forEach(function(chip) {
+    chip.textContent = chip.dataset.orig;
+    chip.classList.remove('correct', 'incorrect', 'selected');
+    row.appendChild(chip);
+  });
+  sbUpdateCapitalization(row);
+  fb.textContent = '';
+  setTimeout(function() { sbCheckAuto(idx); }, 100);
+}
+function sbShowAllSolutions() {
+  satzbauData.forEach(function(_, idx) { sbShowSolution(idx); });
+}
+function sbResetOne(idx) {
+  var bank = document.getElementById('sb-bank-' + idx);
+  var row  = document.getElementById('sb-row-' + idx);
+  var fb   = document.getElementById('sb-fb-'   + idx);
+  while (bank.firstChild) bank.removeChild(bank.firstChild);
+  while (row.firstChild)  row.removeChild(row.firstChild);
+  row.classList.remove('correct', 'incorrect');
+  fb.textContent = ''; fb.className = 'satzbau-feedback';
+  var existing = row.querySelector('.sb-punkt');
+  if (existing) existing.parentNode.removeChild(existing);
+  var parts = satzbauData[idx].parts.slice();
+  for (var i = parts.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = parts[i]; parts[i] = parts[j]; parts[j] = tmp;
+  }
+  parts.forEach(function(word) { var c=sbMakeChip(word); c.dataset.sbIdx=String(idx); bank.appendChild(c); });
+}
+function initSatzbau() {
+  var container = document.getElementById('satzbauContainer');
+  container.innerHTML = '';
+  satzbauData.forEach(function(ex, idx) {
+    var item = document.createElement('div');
+    item.className = 'satzbau-item';
+
+    var bank = document.createElement('div');
+    bank.className = 'chips-container';
+    bank.id = 'sb-bank-' + idx;
+
+    var row = document.createElement('div');
+    row.className = 'sentence-builder';
+    row.id = 'sb-row-' + idx;
+
+    var fb = document.createElement('div');
+    fb.className = 'satzbau-feedback';
+    fb.id = 'sb-fb-' + idx;
+
+    var parts = ex.parts.slice();
+    for (var i = parts.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = parts[i]; parts[i] = parts[j]; parts[j] = tmp;
+    }
+    parts.forEach(function(word) { var c=sbMakeChip(word); c.dataset.sbIdx=String(idx); bank.appendChild(c); });
+
+    sbRegisterZone(bank, idx);
+    sbRegisterZone(row, idx);
+
+    var btnRow = document.createElement('div');
+    btnRow.style.cssText = 'display:flex; gap:8px; margin-top:6px;';
+    var solveBtn = document.createElement('button');
+    solveBtn.className = 'btn'; solveBtn.textContent = 'Lösen';
+    solveBtn.setAttribute('data-idx', idx);
+    solveBtn.addEventListener('click', function() { sbShowSolution(parseInt(this.getAttribute('data-idx'))); });
+    var resetBtn = document.createElement('button');
+    resetBtn.className = 'btn'; resetBtn.textContent = '↺ Neustart';
+    resetBtn.setAttribute('data-idx', idx);
+    resetBtn.addEventListener('click', function() { sbResetOne(parseInt(this.getAttribute('data-idx'))); });
+    btnRow.appendChild(solveBtn); btnRow.appendChild(resetBtn);
+
+    item.appendChild(bank); item.appendChild(row); item.appendChild(fb); item.appendChild(btnRow);
+    container.appendChild(item);
+  });
+}
+function resetSatzbau() { initSatzbau(); }
+
+// ── Wortschatz (Tab 4) ───────────────────────────────────────
+var WORTSCHATZ = [
+  { id:1,  en:'kausale Genitiv-Präposition: ‚weil‘ in formell',     de:'wegen' },
+  { id:2,  en:'kausal, häufig in Behördentexten',                    de:'aufgrund' },
+  { id:3,  en:'kausale Folge, ‚als Folge von‘',                      de:'infolge' },
+  { id:4,  en:'konzessiv: ‚obwohl etwas der Fall ist‘',              de:'trotz' },
+  { id:5,  en:'sehr formell-konzessiv: ‚trotz aller / gegen‘',      de:'ungeachtet' },
+  { id:6,  en:'temporal: ‚zur selben Zeit wie‘',                     de:'während' },
+  { id:7,  en:'temporal: ‚zum Anlass‘',                                de:'anlässlich' },
+  { id:8,  en:'lokal: ‚innen‘',                                       de:'innerhalb' },
+  { id:9,  en:'lokal: ‚über etwas‘',                                  de:'oberhalb' },
+  { id:10, en:'modal: ‚mit Hilfe von‘ in formell',                    de:'mittels' },
+  { id:11, en:'bezugnehmend: ‚in Bezug auf‘',                         de:'hinsichtlich' },
+  { id:12, en:'bezugnehmend: ähnlich, oft im Schriftverkehr',          de:'bezüglich' },
+  { id:13, en:'final: ‚mit dem Ziel von‘',                            de:'zwecks' },
+  { id:14, en:'modal-juristisch: ‚aufgrund eines Rechts‘',            de:'kraft' }
+];
+
+function initVocab() {
+  var c = document.getElementById('vocabContainer'); c.innerHTML = '';
+  shuffleArr(WORTSCHATZ.slice()).forEach(function(item) {
+    var div = document.createElement('div'); div.className = 'vocab-item';
+    var w = Math.max(220, item.de.length * 9);
+    div.innerHTML =
+      '<span class="vocab-en">'+escH(item.en)+'</span>' +
+      '<span class="vocab-arrow">→</span>' +
+      '<div class="vocab-inputs">' +
+        '<input type="text" data-id="'+item.id+'" data-answer="'+escH(item.de.toLowerCase())+'" placeholder="Deutsch" style="width:'+w+'px" oninput="vocabLive(this); timerAutoStart(4);">' +
+        '<span class="vocab-hint" id="vh-'+item.id+'">'+escH(item.de)+'</span>' +
+      '</div>';
+    c.appendChild(div);
+  });
+}
+function vocabLive(inp) {
+  var val=inp.value.trim().toLowerCase(), ans=inp.dataset.answer;
+  inp.classList.remove('correct','wrong');
+  if (!val.length) return;
+  if (val===ans) { inp.classList.add('correct'); checkVocabDone(); }
+  else if (ans.startsWith(val)) { /* Prefix OK */ }
+  else inp.classList.add('wrong');
+}
+function checkVocabDone() {
+  var all=Array.from(document.querySelectorAll('#vocabContainer input')).every(function(i){ return i.classList.contains('correct'); });
+  if (all) timerStop(4);
+}
+function showVocabLoesung() {
+  document.querySelectorAll('#vocabContainer input').forEach(function(inp) {
+    inp.value=inp.dataset.answer; inp.classList.remove('wrong'); inp.classList.add('correct');
+  });
+}
+function resetVocab() { initVocab(); }
+
+// ── Utils ────────────────────────────────────────────────────
+function shuffleArr(a) { for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
