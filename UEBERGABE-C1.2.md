@@ -35,7 +35,7 @@ am Werk.
 
 ---
 
-## 2 · Aktueller Stand: 56 / 200
+## 2 · Aktueller Stand: 64 / 200
 
 Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je
 **50 Lektionen** = **200 total**.
@@ -43,10 +43,10 @@ Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je
 | Kurs | G | X | R | S | W | Σ | Stand |
 |---|---|---|---|---|---|---|---|
 | C1.1 | 6/6 | 6/6 | 18/18 | 18/18 | 0/2 | **48/50** | komplett bis auf 1071W/1072W |
-| C1.2 | 1/6 | 1/6 | 3/18 | 3/18 | 0/2 | **8/50** | Einheit 1 fertig (2011G–2018S) |
+| C1.2 | 2/6 | 2/6 | 6/18 | 6/18 | 0/2 | **16/50** | Einheiten 1 + 2 fertig (2011–2028) |
 | C1.3 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
 | C1.4 | 0/6 | 0/6 | 0/18 | 0/18 | 0/2 | 0/50 | offen |
-| **Σ** | **7/24** | **7/24** | **21/72** | **21/72** | **0/8** | **56/200** | |
+| **Σ** | **8/24** | **8/24** | **24/72** | **24/72** | **0/8** | **64/200** | |
 
 **Sonderblock** im selben Repo (außerhalb der 200):
 - **9011G–9071G** — frühere C1-Grammatikreihe (7 Dateien fertig)
