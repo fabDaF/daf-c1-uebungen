@@ -499,7 +499,7 @@ blockiert ohne Namen. `[Name]` an den ANFANG des Subjects, `Von: Name`
 als erste Body-Zeile.
 
 ### Stolperstein 5: Mail-Adresse hardcoded
-**Symptom:** Mails landen in `frankburkert@gmx.net` statt im fabDaF-Postfach.
+**Symptom:** Mails landen in `unterricht@fabdaf.onmicrosoft.com` statt im fabDaF-Postfach.
 **Ursache:** C2-Default kopiert, nicht aus dem Footer der C1-Datei gezogen.
 **Fix:** `FOOTER_MAIL=$(grep -oE 'mailto:[A-Za-z0-9._%+-]+@…' …)` in jedem Build-Script.
 
