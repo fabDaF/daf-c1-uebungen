@@ -332,7 +332,7 @@ selbst — nicht durch Etiketten.
 
 **Mail-Adresse aus Footer ziehen** — niemals hardcoden. Memory
 `feedback_schreibwerkstatt-mail-aus-footer.md`. In C1 lautet sie
-`FrankBurkert@fabdaf.onmicrosoft.com`.
+`unterricht@fabdaf.onmicrosoft.com`.
 
 ```bash
 FOOTER_MAIL=$(grep -oE 'mailto:[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+' "$F" | head -1 | sed 's/^mailto://')
