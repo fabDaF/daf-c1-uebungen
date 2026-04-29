@@ -486,25 +486,26 @@ function zeigeLoesung(){ document.querySelectorAll('#lueckenContainer input').fo
 function resetLuecken(){ timerResetOne(2); initLuecken(); }
 
 var satzbauData=[
-  { parts:['Er','bat','sie,','das','Protokoll','zu','verfassen'],
-    valid:[['Er','bat','sie,','das','Protokoll','zu','verfassen']], punct:'.' },
-  { parts:['Seit','dem','Beschluss,','der','einstimmig','fiel,','gilt','die','neue','Regelung'],
-    valid:[['Seit','dem','Beschluss,','der','einstimmig','fiel,','gilt','die','neue','Regelung']], punct:'.' },
-  { parts:['Dass','sie','recht','hatte,','musste','selbst','der','Vorsitzende','einräumen'],
-    valid:[['Dass','sie','recht','hatte,','musste','selbst','der','Vorsitzende','einräumen']], punct:'.' },
-  { parts:['Die','Direktorin,','eine','erfahrene','Juristin,','lehnte','den','Antrag','ab'],
-    valid:[['Die','Direktorin,','eine','erfahrene','Juristin,','lehnte','den','Antrag','ab']], punct:'.' },
-  { parts:['Das','Ergebnis','ist','besser,','als','alle','erwartet','hatten'],
-    valid:[['Das','Ergebnis','ist','besser,','als','alle','erwartet','hatten']], punct:'.' },
+  { parts:['Er','bat','sie',',','das','Protokoll','zu','verfassen'],
+    valid:[['Er','bat','sie',',','das','Protokoll','zu','verfassen']], punct:'.' },
+  { parts:['Seit','dem','Beschluss',',','der','einstimmig','fiel',',','gilt','die','neue','Regelung'],
+    valid:[['Seit','dem','Beschluss',',','der','einstimmig','fiel',',','gilt','die','neue','Regelung']], punct:'.' },
+  { parts:['Dass','sie','recht','hatte',',','musste','selbst','der','Vorsitzende','einräumen'],
+    valid:[['Dass','sie','recht','hatte',',','musste','selbst','der','Vorsitzende','einräumen']], punct:'.' },
+  { parts:['Die','Direktorin',',','eine','erfahrene','Juristin',',','lehnte','den','Antrag','ab'],
+    valid:[['Die','Direktorin',',','eine','erfahrene','Juristin',',','lehnte','den','Antrag','ab']], punct:'.' },
+  { parts:['Das','Ergebnis','ist','besser',',','als','alle','erwartet','hatten'],
+    valid:[['Das','Ergebnis','ist','besser',',','als','alle','erwartet','hatten']], punct:'.' },
   { parts:['Wider','Erwarten','verlief','die','Prüfung','ohne','Zwischenfälle'],
     valid:[['Wider','Erwarten','verlief','die','Prüfung','ohne','Zwischenfälle']], punct:'.' },
-  { parts:['Er','wusste,','dass','er','einen','schweren','Fehler','gemacht','hatte'],
-    valid:[['Er','wusste,','dass','er','einen','schweren','Fehler','gemacht','hatte']], punct:'.' },
+  { parts:['Er','wusste',',','dass','er','einen','schweren','Fehler','gemacht','hatte'],
+    valid:[['Er','wusste',',','dass','er','einen','schweren','Fehler','gemacht','hatte']], punct:'.' },
 ];
 
 var sbDragged=null;
 function sbMakeChip(word){
   var chip=document.createElement('div'); chip.className='chip'; chip.dataset.orig=word; chip.textContent=word; chip.draggable=true;
+  if (word === ',' || word === ';') chip.classList.add('punct-chip');
   chip.addEventListener('dragstart',function(){ sbDragged=chip; chip.style.opacity='.5'; });
   chip.addEventListener('dragend',function(){ chip.style.opacity='1'; sbDragged=null; });
   chip.addEventListener('click',function(){ sbChipClick(chip); });

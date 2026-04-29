@@ -510,20 +510,20 @@ function zeigeLoesung(){
 function resetLuecken(){ timerResetOne(2); initLuecken(); }
 
 var satzbauData=[
-  { parts:['Den','Vorwurf,','den','wies','sie','entschieden','zurück'],
-    valid:[['Den','Vorwurf,','den','wies','sie','entschieden','zurück']], punct:'.' },
-  { parts:['Das','Projekt','wurde','abgebrochen,','weil','die','Mittel','fehlten'],
-    valid:[['Das','Projekt','wurde','abgebrochen,','weil','die','Mittel','fehlten']], punct:'.' },
+  { parts:['Den','Vorwurf',',','den','wies','sie','entschieden','zurück'],
+    valid:[['Den','Vorwurf',',','den','wies','sie','entschieden','zurück']], punct:'.' },
+  { parts:['Das','Projekt','wurde','abgebrochen',',','weil','die','Mittel','fehlten'],
+    valid:[['Das','Projekt','wurde','abgebrochen',',','weil','die','Mittel','fehlten']], punct:'.' },
   { parts:['Zu','schweigen','wäre','wohl','das','Klügste','gewesen'],
     valid:[['Zu','schweigen','wäre','wohl','das','Klügste','gewesen']], punct:'.' },
-  { parts:['Er','hat','das','Angebot','abgelehnt,','trotz','der','günstigen','Konditionen'],
-    valid:[['Er','hat','das','Angebot','abgelehnt,','trotz','der','günstigen','Konditionen']], punct:'.' },
-  { parts:['Dass','sie','lügt,','davon','bin','ich','überzeugt'],
-    valid:[['Dass','sie','lügt,','davon','bin','ich','überzeugt']], punct:'.' },
+  { parts:['Er','hat','das','Angebot','abgelehnt',',','trotz','der','günstigen','Konditionen'],
+    valid:[['Er','hat','das','Angebot','abgelehnt',',','trotz','der','günstigen','Konditionen']], punct:'.' },
+  { parts:['Dass','sie','lügt',',','davon','bin','ich','überzeugt'],
+    valid:[['Dass','sie','lügt',',','davon','bin','ich','überzeugt']], punct:'.' },
   { parts:['Diesen','wichtigen','Fehler','darf','man','nicht','unterschätzen'],
     valid:[['Diesen','wichtigen','Fehler','darf','man','nicht','unterschätzen']], punct:'.' },
-  { parts:['Die','Direktorin','hat','erklärt,','dass','sie','zurücktreten','werde'],
-    valid:[['Die','Direktorin','hat','erklärt,','dass','sie','zurücktreten','werde']], punct:'.' },
+  { parts:['Die','Direktorin','hat','erklärt',',','dass','sie','zurücktreten','werde'],
+    valid:[['Die','Direktorin','hat','erklärt',',','dass','sie','zurücktreten','werde']], punct:'.' },
 ];
 
 var sbDragged=null;
@@ -531,6 +531,7 @@ function sbMakeChip(word){
   var chip=document.createElement('div');
   chip.className='chip'; chip.dataset.orig=word; chip.textContent=word;
   chip.draggable=true;
+  if (word === ',' || word === ';') chip.classList.add('punct-chip');
   chip.addEventListener('dragstart',function(){ sbDragged=chip; chip.style.opacity='.5'; });
   chip.addEventListener('dragend',function(){ chip.style.opacity='1'; sbDragged=null; });
   chip.addEventListener('click',function(){ sbChipClick(chip); });
