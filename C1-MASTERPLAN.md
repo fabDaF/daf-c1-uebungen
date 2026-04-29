@@ -8,8 +8,8 @@ Es wird **vor jeder Arbeit** an einer C1-HTML-Datei gelesen — ohne Ausnahme.
 
 ## ⚠️ Stand 2026-04-27 — Kursrichtungswechsel
 
-Mit der Bereitstellung des vollständigen Lingoda-C1-Korpus (200 PDFs in vier Kursen
-C1.1 – C1.4) wurde am 2026-04-27 entschieden: **C1 folgt ab sofort dem Lingoda-Schema 1:1**,
+Mit der Bereitstellung des vollständigen Quell-C1-Korpus (200 PDFs in vier Kursen
+C1.1 – C1.4) wurde am 2026-04-27 entschieden: **C1 folgt ab sofort dem Quell-Schema 1:1**,
 analog zur C2-Pipeline. Die zuvor unter den Codes 1011G–1071G geführte eigene Themenreihe
 wurde in einen Sonderblock 9011G–9071G überführt und bleibt dort als „Vertiefungsblock"
 erhalten.
@@ -43,23 +43,23 @@ Bevor eine einzige Zeile geschrieben wird, nimmt Claude diese Haltung ein:
 
 ---
 
-## 📚 Lingoda-Quellmaterial
+## 📚 Quellmaterial
 
 | Kurs | Pfad | PDFs |
 |------|------|------|
-| C1.1 | `lingoda c1/C 1.1/` | 50 |
-| C1.2 | `lingoda c1/C 1.2/` | 50 |
-| C1.3 | `lingoda c1/C 1.3/` | 50 |
-| C1.4 | `lingoda c1/C 1.4/` | 50 |
+| C1.1 | `quelltexte-c1/C 1.1/` | 50 |
+| C1.2 | `quelltexte-c1/C 1.2/` | 50 |
+| C1.3 | `quelltexte-c1/C 1.3/` | 50 |
+| C1.4 | `quelltexte-c1/C 1.4/` | 50 |
 
-**Lingoda-Schema pro Kurs:** 6 Einheiten × 8 Lektionen + 2W
+**Quell-Schema pro Kurs:** 6 Einheiten × 8 Lektionen + 2W
 - Pro Einheit: `xx1G` (Grammatik) · `xx2X` (Extra/Kommunikation) ·
   `xx3R` `xx5R` `xx7R` (3× Lesen) · `xx4S` `xx6S` `xx8S` (3× Sprechen)
 - Am Kursende: `xx71W` + `xx72W` (Schreiben)
 
 **Wichtig:** Anders als in der ursprünglichen Masterplan-Fassung gilt jetzt:
-**Lingoda-Codes 1:1 übernehmen.** Eine Datei `1011G` heißt 1011G,
-weil die Lingoda-PDF so heißt — auch wenn das ursprüngliche Lingoda-Material
+**Quell-Codes 1:1 übernehmen.** Eine Datei `1011G` heißt 1011G,
+weil die Quell-PDF so heißt — auch wenn das ursprüngliche Quell-Material
 für die HTML-Übung neu geschrieben werden muss.
 
 ---
@@ -137,7 +137,7 @@ Die C1-Sektion ist gegliedert in:
 
 ---
 
-## 📋 Lingoda-Themenkatalog C1.1 – C1.4 (Grammatik-Schwerpunkte)
+## 📋 Quell-Themenkatalog C1.1 – C1.4 (Grammatik-Schwerpunkte)
 
 ### C1.1 — Konjunktiv-Welt & Stilfundament
 | Code | Thema |
@@ -211,7 +211,7 @@ Die C1-Sektion ist gegliedert in:
 
 ## 7. Vorgehen pro Turn
 
-Pro Turn: **so viele Lektionen wie möglich**, in Lingoda-Reihenfolge. Reihenfolge innerhalb
+Pro Turn: **so viele Lektionen wie möglich**, in Quell-Reihenfolge. Reihenfolge innerhalb
 einer Einheit: G → X → R → S → R → S → R → S. Wenn eine Einheit komplett ist, weiter zur
 nächsten — bis Kontext oder Energie an Grenzen stoßen.
 

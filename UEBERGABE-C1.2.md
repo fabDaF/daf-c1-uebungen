@@ -37,7 +37,7 @@ am Werk.
 
 ## 2 · Aktueller Stand: 64 / 200
 
-Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je
+Quell-Curriculum C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je
 **50 Lektionen** = **200 total**.
 
 | Kurs | G | X | R | S | W | Σ | Stand |
@@ -66,11 +66,11 @@ Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je
 
 ---
 
-## 3 · C1.2 — Übersicht aller 50 Lingoda-Themen
+## 3 · C1.2 — Übersicht aller 50 Quell-Themen
 
 ### Einheit 1 (2011–2018) — Argumentation, Konnektoren
 
-| Code | Lingoda-Thema |
+| Code | Quell-Thema |
 |---|---|
 | **2011G** | **Logische Konnektoren, um Argumente anzubringen** ← NÄCHSTE |
 | 2012X | (PDF lesen) |
@@ -119,11 +119,11 @@ ROOT=/sessions/$MNT/mnt/fabDaF
 # C1-Repo (eigenes Git-Repo: daf-c1-uebungen)
 $ROOT/htmlS/C1/
 
-# Lingoda-PDFs (200 PDFs in 4 Kursen)
-$ROOT/lingoda c1/C 1.1/   ← C1.1 (alle abgearbeitet)
-$ROOT/lingoda c1/C 1.2/   ← DU ARBEITEST HIER
-$ROOT/lingoda c1/C 1.3/
-$ROOT/lingoda c1/C 1.4/
+# Quell-PDFs (200 PDFs in 4 Kursen)
+$ROOT/quelltexte-c1/C 1.1/   ← C1.1 (alle abgearbeitet)
+$ROOT/quelltexte-c1/C 1.2/   ← DU ARBEITEST HIER
+$ROOT/quelltexte-c1/C 1.3/
+$ROOT/quelltexte-c1/C 1.4/
 
 # Dashboard
 $ROOT/htmlS/dashboard.html
@@ -169,10 +169,10 @@ $ROOT/htmlS/C1/DE_C1_1041G-nominalstil.html           # weiterer G-Anschauungs­
 ## 6 · Pipeline pro Lektion (kompakt)
 
 ```bash
-# 1) Lingoda-PDF lesen
+# 1) Quell-PDF lesen
 python3 -c "
 from pypdf import PdfReader
-r = PdfReader('$ROOT/lingoda c1/C 1.2/C1_2011G_DE.pdf')
+r = PdfReader('$ROOT/quelltexte-c1/C 1.2/C1_2011G_DE.pdf')
 for i, p in enumerate(r.pages):
     t = p.extract_text()
     if t.strip(): print(f'--- S{i+1} ---'); print(t[:400])
@@ -322,7 +322,7 @@ C1-Sektion im Dashboard hat folgende Struktur:
 ```
 
 **Tags-Konvention:** alle Eigennamen, Konzepte, Personen, Daten der
-Lektion + `c1 c1.2` + `lingoda` als Schluss-Anker. Frank sucht über
+Lektion + `c1 c1.2` + `fabdaf` als Schluss-Anker. Frank sucht über
 Tags. Lieber zu viele als zu wenige.
 
 ---
@@ -525,10 +525,10 @@ ROOT=/sessions/$MNT/mnt/fabDaF
 # 2. Sandbox-Auth einrichten
 cd $ROOT && bash scripts/setup-sandbox-credentials.sh
 
-# 3. Lingoda-PDF 2011G lesen
+# 3. Quell-PDF 2011G lesen
 python3 -c "
 from pypdf import PdfReader
-r = PdfReader('$ROOT/lingoda c1/C 1.2/C1_2011G_DE.pdf')
+r = PdfReader('$ROOT/quelltexte-c1/C 1.2/C1_2011G_DE.pdf')
 for i, p in enumerate(r.pages):
     t = p.extract_text()
     if t.strip(): print(f'--- S{i+1} ---'); print(t)
@@ -539,7 +539,7 @@ for f in 2011G 2012X 2013R 2014S 2015R 2016S 2017R 2018S; do
   echo \"=== $f ===\"
   python3 -c \"
 from pypdf import PdfReader
-r = PdfReader('$ROOT/lingoda c1/C 1.2/C1_${f}_DE.pdf')
+r = PdfReader('$ROOT/quelltexte-c1/C 1.2/C1_${f}_DE.pdf')
 print(r.pages[0].extract_text()[:200])
 \"
 done

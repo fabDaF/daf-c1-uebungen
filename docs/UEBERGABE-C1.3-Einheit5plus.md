@@ -42,12 +42,12 @@ und DE_C1_3048S für RXSW.
 cd /sessions/.../mnt/outputs
 
 # 1. PDF lesen
-pdftotext -layout "lingoda c1/C 1.3/C1_NNNNT_DE.pdf" NNNNT.txt
+pdftotext -layout "quelltexte-c1/C 1.3/C1_NNNNT_DE.pdf" NNNNT.txt
 sed -n '40,140p' NNNNT.txt    # Inhalt überfliegen
 
 # 2. Bilder extrahieren
 mkdir -p pdf_NNNNT
-pdfimages -j -p "lingoda c1/C 1.3/C1_NNNNT_DE.pdf" pdf_NNNNT/img
+pdfimages -j -p "quelltexte-c1/C 1.3/C1_NNNNT_DE.pdf" pdf_NNNNT/img
 # Top-5 Previews:
 cd pdf_NNNNT && python3 -c "..." # (siehe vorhandene Skripte)
 
@@ -83,7 +83,7 @@ Pro Lektion:
 - **Lesetext** 800-1500 Wörter, akademisch-essayistisch, mind. 4 vocab-hl
   Markierungen aus VORENTLASTUNG-Liste.
 - **Quellenangabe** im Format: <em>Quelle: Hintergrundanalyse für den
-  DaF-Unterricht · C1.3 – Lektion NNNNT · nach Lingoda C1_NNNNT, frei
+  DaF-Unterricht · C1.3 – Lektion NNNNT · nach  C1_NNNNT, frei
   erweitert · [3-5 Bezugspersonen mit Daten] · Stand April 2026</em>
 - **Schreibwerkstatt:** 5 Mikroaufgaben (40-80 Wörter), nie eine große.
 - **Anführungszeichen-Regex** läuft im Build automatisch.
@@ -98,7 +98,7 @@ Für G-Lektionen:
 1. Diese Datei lesen.
 2. PDF von 3052X öffnen:
    ```bash
-   pdftotext -layout "lingoda c1/C 1.3/C1_3052X_DE.pdf" /tmp/3052X.txt
+   pdftotext -layout "quelltexte-c1/C 1.3/C1_3052X_DE.pdf" /tmp/3052X.txt
    head -40 /tmp/3052X.txt
    ```
 3. Templates aus 3051G und 3048S rekonstruieren (siehe oben).

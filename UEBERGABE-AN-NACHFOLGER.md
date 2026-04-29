@@ -32,7 +32,7 @@ Stoppsignal — gilt sofort, nicht später.
 
 ## 2 · Aktueller Stand: 2 / 200
 
-Lingoda C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je **50 Lektionen** =
+Quell-Curriculum C1 hat **vier Kurse** (C1.1, C1.2, C1.3, C1.4) mit je **50 Lektionen** =
 **200 total**. Pro Kurs: 6 Einheiten × 8 Lektionen (1G + 1X + 3R + 3S) +
 2 W am Kursende.
 
@@ -68,11 +68,11 @@ ROOT=/sessions/$MNT/mnt/fabDaF
 # C1-Repo (eigenes Git-Repo: daf-c1-uebungen)
 $ROOT/htmlS/C1/
 
-# Lingoda-Korpus (200 PDFs in 4 Kursen)
-$ROOT/lingoda c1/C 1.1/
-$ROOT/lingoda c1/C 1.2/
-$ROOT/lingoda c1/C 1.3/
-$ROOT/lingoda c1/C 1.4/
+# Quell-Korpus (200 PDFs in 4 Kursen)
+$ROOT/quelltexte-c1/C 1.1/
+$ROOT/quelltexte-c1/C 1.2/
+$ROOT/quelltexte-c1/C 1.3/
+$ROOT/quelltexte-c1/C 1.4/
 # Der Ordner "C 1" (ohne Punkt) ist redundant und kann ignoriert werden
 
 # Dashboard
@@ -304,7 +304,7 @@ C1-Sektion im Dashboard hat aktuell die Struktur:
 ```
 
 **Tags-Konvention:** alle Eigennamen, Konzepte, Personen, Daten der Lektion
-+ `c1 c1.1` (oder entsprechend) + `lingoda` als Schluss-Anker. Frank sucht
++ `c1 c1.1` (oder entsprechend) + `fabdaf` als Schluss-Anker. Frank sucht
 über die Tags. Lieber zu viele als zu wenige.
 
 ---
@@ -413,7 +413,7 @@ und Frank-Wunsch: „Bewahre mich vor der Schande" (2026-04-27).
 
 ### C1.1 — Konjunktiv-Welt & Stilfundament (1011G ✅, 1012X ✅)
 
-| Code | Lingoda-Thema | Status |
+| Code | Quell-Thema | Status |
 |---|---|---|
 | 1011G | Redewiedergabe für Fortgeschrittene (Konjunktiv I) | ✅ |
 | 1012X | Analogien — Vergleichen, übertragen, erklären | ✅ |
@@ -434,7 +434,7 @@ und Frank-Wunsch: „Bewahre mich vor der Schande" (2026-04-27).
 **Tipp zu 1014S:** Frühe Knochenflöten der Schwäbischen Alb (Hohle Fels,
 ~40 000 Jahre, UNESCO-Welterbe seit 2017) sind der zentrale aktualisierende
 Anker — daneben Wendel-Flöten, Lithophone, prähistorische Trommeln. Die
-Lingoda-Folien werden dünn sein. S-Datei = Sprechen, also stärker auf
+Quell-Folien werden dünn sein. S-Datei = Sprechen, also stärker auf
 Hör-/Gesprächsanlässe ausrichten als 1013R, aber dieselbe 8-Tab-Struktur
 mit Schreibwerkstatt.
 
@@ -569,10 +569,10 @@ verifizieren oder Chrome-MCP-Batch-Fetch.
 MNT=$(ls /sessions/ 2>/dev/null | head -1)
 ROOT=/sessions/$MNT/mnt/fabDaF
 
-# 2. Lingoda-PDF lesen
+# 2. Quell-PDF lesen
 python3 -c "
 from pypdf import PdfReader
-r = PdfReader('$ROOT/lingoda c1/C 1.1/C1_1013R_DE.pdf')
+r = PdfReader('$ROOT/quelltexte-c1/C 1.1/C1_1013R_DE.pdf')
 for i, p in enumerate(r.pages): print(f'--- S{i+1} ---'); print(p.extract_text())
 "
 

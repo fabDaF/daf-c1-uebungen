@@ -99,18 +99,18 @@ als Base64 eingebettet und können ignoriert werden (regex
 
 ```bash
 # 1. PDF-Inhalt lesen
-pdftotext -layout "lingoda c1/C 1.3/C1_NNNNT_DE.pdf" outputs/NNNNT.txt
+pdftotext -layout "quelltexte-c1/C 1.3/C1_NNNNT_DE.pdf" outputs/NNNNT.txt
 
 # 2. Bilder extrahieren + Previews
 mkdir -p outputs/pdf_NNNNT
-pdfimages -j -p "lingoda c1/C 1.3/C1_NNNNT_DE.pdf" outputs/pdf_NNNNT/img
+pdfimages -j -p "quelltexte-c1/C 1.3/C1_NNNNT_DE.pdf" outputs/pdf_NNNNT/img
 # Top-8 nach Dateigröße als Previews 360px breit per PIL skalieren
 
 # 3. 4-6 Bilder visuell inspizieren mit Read auf preview-*.jpg
 # Banner-Zuordnung für die 8 Tabs notieren
 
 # 4. spec_NNNN.py schreiben (Vorlage: spec_3013R.py oder spec_3014S.py)
-#    Inhalt frei essayistisch erweitern aus dem Lingoda-PDF
+#    Inhalt frei essayistisch erweitern aus dem Quell-PDF
 #    - 8 VORENTLASTUNG-Karten
 #    - 8 GENUS_DATA (3-2-2-1: der/die/das/pl)
 #    - 7 LUECKE_DATA
@@ -141,16 +141,16 @@ Volltextsuche).
 
 **Themenkern Einheit 1:** Umweltschutz, Klimawandel, Nachhaltigkeit,
 Wissenschaftsgeschichte. Die nächsten Einheiten haben andere Themen
-— PDFs einzeln lesen, Lingoda-Themen NICHT paraphrasieren, sondern
+— PDFs einzeln lesen, Quell-Themen NICHT paraphrasieren, sondern
 mit reichhaltigem Hintergrund frei erweitern.
 
 **Lesetext-Stil:** akademisch-essayistisch, 800-1500 Wörter, mit
 h3-Zwischentiteln, konkreten Daten, historischen Bezügen, prominenten
-Personen. Lingoda nur als Themenanker — der Lesetext kommt aus dem
-Hintergrund-Wissen, nicht aus der Lingoda-Vorlage.
+Personen.  nur als Themenanker — der Lesetext kommt aus dem
+Hintergrund-Wissen, nicht aus der Quell-Vorlage.
 
 **Quellenangabe:** `Quelle: Hintergrundanalyse für den DaF-Unterricht
-· C1.3 – Lektion NNNNT · nach Lingoda C1_NNNNT, frei erweitert ·
+· C1.3 – Lektion NNNNT · nach  C1_NNNNT, frei erweitert ·
 [3-5 Bezugspersonen mit Daten] · Stand April 2026`
 
 **vocab-hl Markierungen:** mindestens 4 — sonst Test rot. Tipp:
@@ -185,7 +185,7 @@ git push origin main
 2. `git pull` falls nötig (wir sind auf `1765578cde642a` Stand).
 3. PDF von 3021G lesen:
    ```bash
-   pdftotext -layout "lingoda c1/C 1.3/C1_3021G_DE.pdf" /tmp/3021G.txt
+   pdftotext -layout "quelltexte-c1/C 1.3/C1_3021G_DE.pdf" /tmp/3021G.txt
    head -40 /tmp/3021G.txt
    ```
 4. Aus `DE_C1_3013R-null-emissions-staedte.html` per Python das
@@ -227,7 +227,7 @@ Bei diesem Tempo: 5-8 weitere Sessions bis C1.3 fertig.
 
 - **PDF-Bilder Top-Auswahl** läuft per Sortierung nach Dateigröße.
   Die größten 8 sind meist die thematisch besten.
-- **Bilder visuell prüfen** ist Pflicht — Lingoda hat manchmal
+- **Bilder visuell prüfen** ist Pflicht —  hat manchmal
   generische Bilder (Kind mit Baum, Konsumentin im Supermarkt),
   die nur teilweise zum Thema passen. Verwerten lassen sich diese
   meist als Banner für Schreibwerkstatt oder Wortschatz, wo der

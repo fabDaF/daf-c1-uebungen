@@ -9,7 +9,7 @@ Adressat: nächste Cowork-Session, die C1.3 zu Ende baut.
 
 ### Komplett abgeschlossen
 
-- **C1.1** — alle 48 Lingoda-Lektionen mit PDF-Bildern
+- **C1.1** — alle 48 Quell-Lektionen mit PDF-Bildern
 - **C1.2** — alle **50 Lektionen** komplett:
   - Einheit 1 (2011G–2018S): 8/8
   - Einheit 2 (2021G–2028S): 8/8
@@ -18,7 +18,7 @@ Adressat: nächste Cowork-Session, die C1.3 zu Ende baut.
   - Einheit 5 (2051G–2058S): 8/8
   - Einheit 6 (2061G–2068S): 8/8
   - Schreibwerkstatt 2071W + 2072W: 2/2
-- **C2** (Lingoda) — alle 72 Lektionen (siehe Memory-Eintrag `project_c2_komplett.md`)
+- **C2** (externe Vorlage) — alle 72 Lektionen (siehe Memory-Eintrag `project_c2_komplett.md`)
 
 ### Begonnen, aber offen — **Hauptaufgabe**
 
@@ -27,7 +27,7 @@ Adressat: nächste Cowork-Session, die C1.3 zu Ende baut.
 Fertig:
 - 3011G · Verben mit Genitiv → `htmlS/C1/DE_C1_3011G-verben-genitiv.html`
 
-Offen (49 Lektionen, alle Lingoda-PDFs liegen unter `lingoda c1/C 1.3/`):
+Offen (49 Lektionen, alle Quell-PDFs liegen unter `quelltexte-c1/C 1.3/`):
 
 ```
 Einheit 1 (3012X-3018S):  3012X 3013R 3014S 3015R 3016S 3017R 3018S
@@ -39,7 +39,7 @@ Einheit 6 (3061G-3068S):  3061G 3062X 3063R 3064S 3065R 3066S 3067R 3068S
 Schreibwerkstatt:          3071W 3072W (vermutlich vorhanden, prüfen)
 ```
 
-Zusätzlich: Es gibt auch `C 1.4`-PDFs im Lingoda-Ordner. Frank hat aber explizit C1.3 als Ziel gesetzt — C1.4 ist optional und nicht Teil der Übergabe.
+Zusätzlich: Es gibt auch `C 1.4`-PDFs im Quell-Ordner. Frank hat aber explizit C1.3 als Ziel gesetzt — C1.4 ist optional und nicht Teil der Übergabe.
 
 ### Codeberg-Spiegelung
 
@@ -55,7 +55,7 @@ Frank hat zwischenzeitlich einen **Codeberg-Mirror** eingerichtet. Er spiegelt d
 Das Build-Schema, das in dieser Session ~30-mal funktioniert hat:
 
 ```
-Lingoda-PDF lesen
+Quell-PDF lesen
   → Inhalt skizzieren (Lernziele, Vokabel-Themen)
   → pdfimages extrahieren
   → 6-10 Bilder visuell prüfen (Read-Tool auf preview/*.jpg)
@@ -71,7 +71,7 @@ Lingoda-PDF lesen
 
 | Was | Sandbox-Pfad | Mac-Pfad |
 |---|---|---|
-| Lingoda-PDFs | `/sessions/.../mnt/fabDaF/lingoda c1/C 1.3/C1_NNNNT_DE.pdf` | `~/Cowork/Projekte/fabDaF/lingoda c1/C 1.3/` |
+| Quell-PDFs | `/sessions/.../mnt/fabDaF/quelltexte-c1/C 1.3/C1_NNNNT_DE.pdf` | `~/Cowork/Projekte/fabDaF/quelltexte-c1/C 1.3/` |
 | Output-HTMLs | `/sessions/.../mnt/fabDaF/htmlS/C1/DE_C1_NNNNT-slug.html` | `~/Cowork/Projekte/fabDaF/htmlS/C1/` |
 | Build-Skripte | `/sessions/.../mnt/outputs/build_NNNNT.py` | (sandbox-only, scratch) |
 | JSDOM-Tests | `/sessions/.../mnt/outputs/test_C1_RXS.js` und `test_C1_G.js` | (sandbox-only) |
@@ -112,9 +112,9 @@ bash scripts/safe-commit.sh "Commit-Nachricht" htmlS/C1/DE_C1_NNNNT-slug.html
 
 ### Lesetext-Länge und Stil
 
-- **R/X/S-Lesetext:** ca. 800–1.500 Wörter, akademisch-essayistisch, mit `h3`-Zwischentiteln. Nicht Lingoda paraphrasieren — **frei erweitern** mit reichhaltigem Hintergrund (historische Daten, Personen, Statistiken). Lingoda nur als Themenanker.
+- **R/X/S-Lesetext:** ca. 800–1.500 Wörter, akademisch-essayistisch, mit `h3`-Zwischentiteln. Nicht  paraphrasieren — **frei erweitern** mit reichhaltigem Hintergrund (historische Daten, Personen, Statistiken).  nur als Themenanker.
 - **W-Lesetext:** Ähnlich, aber Schwerpunkt auf Schreibtechnik. Praktische Tipps, Geschichte der Textsorte, Stil-Hinweise.
-- **Quellenangabe** am Ende: `Quelle: Hintergrundanalyse für den DaF-Unterricht · C1.3 – Lektion NNNNT · nach Lingoda C1_NNNNT, frei erweitert · [3-5 Bezugspersonen mit Daten] · Stand April 2026`
+- **Quellenangabe** am Ende: `Quelle: Hintergrundanalyse für den DaF-Unterricht · C1.3 – Lektion NNNNT · nach  C1_NNNNT, frei erweitert · [3-5 Bezugspersonen mit Daten] · Stand April 2026`
 
 ### Vokabel-Markierungen (KRITISCH für Test)
 
@@ -136,7 +136,7 @@ c = re.sub(r'„([^„"…\n]{1,80})"', lambda m: '„' + m.group(1) + '"', c)
 
 ### Bilder visuell prüfen
 
-**Pflicht.** Vor jedem Build mit `Read`-Tool auf 6–10 Preview-JPGs schauen, thematisch passende auswählen, ungeeignete (Tiere mit Hut, Tankstellen, generische Stockfotos) ablehnen. Wenn ein PDF nur generische Bilder bietet, sind 5–7 verschiedene Bilder ausreichend; ggf. einige für mehrere Tabs mit unterschiedlichem Crop wiederverwenden. Memory: `feedback_pexels-chrome.md` (analog für Lingoda-Bilder).
+**Pflicht.** Vor jedem Build mit `Read`-Tool auf 6–10 Preview-JPGs schauen, thematisch passende auswählen, ungeeignete (Tiere mit Hut, Tankstellen, generische Stockfotos) ablehnen. Wenn ein PDF nur generische Bilder bietet, sind 5–7 verschiedene Bilder ausreichend; ggf. einige für mehrere Tabs mit unterschiedlichem Crop wiederverwenden. Memory: `feedback_pexels-chrome.md` (analog für Quell-Bilder).
 
 ### Dashboard-Eintrag
 
@@ -179,7 +179,7 @@ In dieser Session habe ich pro Lektion ca. 12–15 Minuten gebraucht (PDF lesen,
 - **R-Slot** (ungerade Nicht-G/X): Lesetexte (Literatur, Geschichte, Wissenschaft, Politik, Reisen)
 - **S-Slot** (gerade): Sprechen (Debatte, Smalltalk, Reflexion, Vortrag)
 
-Die Lingoda-PDF-Inhalte vorab am Schluss dieser Datei in einem kurzen Stichwort-Index, damit nicht jedes PDF einzeln gelesen werden muss (siehe §7).
+Die Quell-PDF-Inhalte vorab am Schluss dieser Datei in einem kurzen Stichwort-Index, damit nicht jedes PDF einzeln gelesen werden muss (siehe §7).
 
 ### Quality Gate
 
@@ -213,7 +213,7 @@ Build-Pipeline, Tests, Skill-Liste, Memory-Einträge — alles unverändert seit
 2. `git pull` (falls nötig) — wir sind auf Stand `969007a4`.
 3. PDF von **3012X** lesen:
    ```bash
-   pdftotext -layout "/sessions/.../mnt/fabDaF/lingoda c1/C 1.3/C1_3012X_DE.pdf" 3012X.txt
+   pdftotext -layout "/sessions/.../mnt/fabDaF/quelltexte-c1/C 1.3/C1_3012X_DE.pdf" 3012X.txt
    head -40 3012X.txt
    ```
 4. Bilder extrahieren:
@@ -231,7 +231,7 @@ Build-Pipeline, Tests, Skill-Liste, Memory-Einträge — alles unverändert seit
 
 ## 7. Stichwort-Index der 49 verbleibenden C1.3-PDFs
 
-(Auf Basis der Lingoda-Titel — kompletter Inhalt erst beim Bauen lesen)
+(Auf Basis der Quell-Titel — kompletter Inhalt erst beim Bauen lesen)
 
 ```
 3012X  Kommunikation       — siehe PDF
@@ -245,7 +245,7 @@ Build-Pipeline, Tests, Skill-Liste, Memory-Einträge — alles unverändert seit
 …
 ```
 
-Frank kennt seine Lingoda-PDFs am besten — bei Unsicherheit kurz fragen, ansonsten die PDFs der Reihe nach durcharbeiten.
+Frank kennt seine Quell-PDFs am besten — bei Unsicherheit kurz fragen, ansonsten die PDFs der Reihe nach durcharbeiten.
 
 ---
 
@@ -262,7 +262,7 @@ Aus `~/Library/Application Support/Claude/.../memory/MEMORY.md` — die wichtigs
 - `feedback_immer-pushen.md` — nach Audit-Fixes IMMER `git push`
 - `feedback_kein-write-tool-fuer-git.md` — Write auf .git/* blockiert
 - `reference_git-index-workaround.md` — `safe-commit.sh "msg" file …`
-- `feedback_pexels-chrome.md` — analog für Lingoda-Bilder: visuell prüfen
+- `feedback_pexels-chrome.md` — analog für Quell-Bilder: visuell prüfen
 - `feedback_anfuehrungszeichen-u201c.md` — Regex vor Commit
 - `feedback_schreibwerkstatt-mikroaufgaben.md` — 5 statt 1
 - `feedback_naechste-datei.md` — bei „nächste" einfach die folgende
@@ -307,7 +307,7 @@ Wenn 3072W (oder die letzte W-Lektion) committed ist:
 
 ## 11. Wichtige Anti-Anti-Patterns (kurz)
 
-- **Nicht** Lingoda paraphrasieren — frei erweitern mit reichhaltigem Hintergrund.
+- **Nicht**  paraphrasieren — frei erweitern mit reichhaltigem Hintergrund.
 - **Nicht** Bilder ungeprüft übernehmen — visuelle Kontrolle Pflicht.
 - **Nicht** den ersten Tab als Textwüste — interaktiv gestalten.
 - **Nicht** `.git/`-Dateien per Write-Tool — nur per Bash.
