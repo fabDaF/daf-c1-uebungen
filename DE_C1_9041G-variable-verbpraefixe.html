@@ -515,7 +515,7 @@ var LUECKEN = [
 ];
 function initLuecken(){
   var wk=document.getElementById('wortkasten');
-  wk.innerHTML='<strong>Wortkasten:</strong> '+LUECKEN.map(function(l){ return l.answer; }).sort().join(' &nbsp;·&nbsp; ');
+  wk.innerHTML='<strong>Wortkasten:</strong> '+shuffleArray(LUECKEN.map(function(l){ return l.answer; })).join(' &nbsp;·&nbsp; ');
   var c=document.getElementById('lueckenContainer'); c.innerHTML='';
   LUECKEN.forEach(function(l){
     var w=Math.max(110,l.answer.length*11);
@@ -747,6 +747,15 @@ function resetVocab(){ initVocab(); }
 // ── Utils ────────────────────────────────────────────────────────────────────
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
 function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// Fisher-Yates-Shuffle für Wortkasten
+function shuffleArray(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+}
 </script>
 </body>
 </html>
