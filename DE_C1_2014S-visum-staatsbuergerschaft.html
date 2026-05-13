@@ -445,7 +445,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
         <textarea class="schreib-mini-textarea" data-aufgabe="1" data-titel="Eigene Migrations-Erfahrung"></textarea>
         <div class="schreib-mini-footer">
           <span class="schreib-mini-meta">Wörter: <strong class="wc-1">0</strong> <span class="schreib-mini-status" id="status-1"></span></span>
-          <button class="schreib-mini-btn" id="send-1" onclick="schreibSendenEinzeln(1)">📨 Diese Antwort senden</button>
+          <button class="schreib-mini-btn" id="send-1" onclick="schreibSendenEinzeln(1)">📨 An Frank senden</button>
         </div>
       </div>
 
@@ -455,7 +455,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
         <textarea class="schreib-mini-textarea" data-aufgabe="2" data-titel="Reform-Bilanz"></textarea>
         <div class="schreib-mini-footer">
           <span class="schreib-mini-meta">Wörter: <strong class="wc-2">0</strong> <span class="schreib-mini-status" id="status-2"></span></span>
-          <button class="schreib-mini-btn" id="send-2" onclick="schreibSendenEinzeln(2)">📨 Diese Antwort senden</button>
+          <button class="schreib-mini-btn" id="send-2" onclick="schreibSendenEinzeln(2)">📨 An Frank senden</button>
         </div>
       </div>
 
@@ -465,7 +465,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
         <textarea class="schreib-mini-textarea" data-aufgabe="3" data-titel="Sprachhürde analysieren"></textarea>
         <div class="schreib-mini-footer">
           <span class="schreib-mini-meta">Wörter: <strong class="wc-3">0</strong> <span class="schreib-mini-status" id="status-3"></span></span>
-          <button class="schreib-mini-btn" id="send-3" onclick="schreibSendenEinzeln(3)">📨 Diese Antwort senden</button>
+          <button class="schreib-mini-btn" id="send-3" onclick="schreibSendenEinzeln(3)">📨 An Frank senden</button>
         </div>
       </div>
 
@@ -475,7 +475,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
         <textarea class="schreib-mini-textarea" data-aufgabe="4" data-titel="Vergleich der Heimat"></textarea>
         <div class="schreib-mini-footer">
           <span class="schreib-mini-meta">Wörter: <strong class="wc-4">0</strong> <span class="schreib-mini-status" id="status-4"></span></span>
-          <button class="schreib-mini-btn" id="send-4" onclick="schreibSendenEinzeln(4)">📨 Diese Antwort senden</button>
+          <button class="schreib-mini-btn" id="send-4" onclick="schreibSendenEinzeln(4)">📨 An Frank senden</button>
         </div>
       </div>
 
@@ -485,7 +485,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
         <textarea class="schreib-mini-textarea" data-aufgabe="5" data-titel="Mini-Beratung"></textarea>
         <div class="schreib-mini-footer">
           <span class="schreib-mini-meta">Wörter: <strong class="wc-5">0</strong> <span class="schreib-mini-status" id="status-5"></span></span>
-          <button class="schreib-mini-btn" id="send-5" onclick="schreibSendenEinzeln(5)">📨 Diese Antwort senden</button>
+          <button class="schreib-mini-btn" id="send-5" onclick="schreibSendenEinzeln(5)">📨 An Frank senden</button>
         </div>
       </div>
 
@@ -1370,7 +1370,7 @@ function schreibLeeren() {
     var karte = ta.closest('.schreib-aufgabe-karte');
     if (karte) karte.classList.remove('gesendet');
     var btn = document.getElementById('send-' + nr);
-    if (btn) { btn.classList.remove('gesendet'); btn.innerHTML = '📨 Diese Antwort senden'; btn.disabled = false; }
+    if (btn) { btn.classList.remove('gesendet'); btn.innerHTML = '📨 An Frank senden'; btn.disabled = false; }
     var status = document.getElementById('status-' + nr);
     if (status) { status.textContent = ''; status.classList.remove('error'); }
   });
