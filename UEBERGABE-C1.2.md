@@ -387,7 +387,7 @@ var BEST_KEY             = 'best_2011C1_';
 
 **Footer-Mail dynamisch ziehen** (nicht hardcoden, Memory):
 ```javascript
-var FOOTER_MAIL = 'unterricht@fabdaf.onmicrosoft.com';
+var FOOTER_MAIL = 'unterricht@frankburkert-daf.de';
 var FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/' + FOOTER_MAIL;
 ```
 

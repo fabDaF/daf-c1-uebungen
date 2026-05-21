@@ -332,7 +332,7 @@ selbst — nicht durch Etiketten.
 
 **Mail-Adresse aus Footer ziehen** — niemals hardcoden. Memory
 `feedback_schreibwerkstatt-mail-aus-footer.md`. In C1 lautet sie
-`unterricht@fabdaf.onmicrosoft.com`.
+`unterricht@frankburkert-daf.de`.
 
 ```bash
 FOOTER_MAIL=$(grep -oE 'mailto:[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+' "$F" | head -1 | sed 's/^mailto://')
@@ -499,7 +499,7 @@ blockiert ohne Namen. `[Name]` an den ANFANG des Subjects, `Von: Name`
 als erste Body-Zeile.
 
 ### Stolperstein 5: Mail-Adresse hardcoded
-**Symptom:** Mails landen in `unterricht@fabdaf.onmicrosoft.com` statt im fabDaF-Postfach.
+**Symptom:** Mails landen in `unterricht@frankburkert-daf.de` statt im fabDaF-Postfach.
 **Ursache:** C2-Default kopiert, nicht aus dem Footer der C1-Datei gezogen.
 **Fix:** `FOOTER_MAIL=$(grep -oE 'mailto:[A-Za-z0-9._%+-]+@…' …)` in jedem Build-Script.
 
