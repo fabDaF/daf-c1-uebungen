@@ -579,17 +579,36 @@ var MC_DATA = [
 
 var satzbauData = [
   { parts:["die","NYSE","wurde","1792","unter","einer","Platane","gegründet"],
-    valid:["die","NYSE","wurde","1792","unter","einer","Platane","gegründet"], punct:"." },
+    valid:[
+      ["die","NYSE","wurde","1792","unter","einer","Platane","gegründet"],
+      ["1792","wurde","die","NYSE","unter","einer","Platane","gegründet"],
+      ["unter","einer","Platane","wurde","die","NYSE","1792","gegründet"]
+    ], punct:"." },
   { parts:["am","15.","September","2008","brach","Lehman","Brothers","zusammen"],
-    valid:["am","15.","September","2008","brach","Lehman","Brothers","zusammen"], punct:"." },
+    valid:[
+      ["am","15.","September","2008","brach","Lehman","Brothers","zusammen"],
+      ["Lehman","Brothers","brach","am","15.","September","2008","zusammen"]
+    ], punct:"." },
   { parts:["der","DAX","umfasst","seit","2021","insgesamt","40","deutsche","Leitwerte"],
-    valid:["der","DAX","umfasst","seit","2021","insgesamt","40","deutsche","Leitwerte"], punct:"." },
+    valid:[
+      ["der","DAX","umfasst","seit","2021","insgesamt","40","deutsche","Leitwerte"],
+      ["seit","2021","umfasst","der","DAX","insgesamt","40","deutsche","Leitwerte"]
+    ], punct:"." },
   { parts:["Algorithmen","ersetzen","heute","den","Großteil","des","menschlichen","Handels"],
-    valid:["Algorithmen","ersetzen","heute","den","Großteil","des","menschlichen","Handels"], punct:"." },
+    valid:[
+      ["Algorithmen","ersetzen","heute","den","Großteil","des","menschlichen","Handels"],
+      ["heute","ersetzen","Algorithmen","den","Großteil","des","menschlichen","Handels"]
+    ], punct:"." },
   { parts:["risikoaverse","Anleger","bevorzugen","langfristige","und","sichere","Investitionen"],
-    valid:["risikoaverse","Anleger","bevorzugen","langfristige","und","sichere","Investitionen"], punct:"." },
+    valid:[
+      ["risikoaverse","Anleger","bevorzugen","langfristige","und","sichere","Investitionen"],
+      ["risikoaverse","Anleger","bevorzugen","sichere","und","langfristige","Investitionen"]
+    ], punct:"." },
   { parts:["der","NASDAQ","ist","seit","1971","die","wichtigste","Tech-Börse","der","Welt"],
-    valid:["der","NASDAQ","ist","seit","1971","die","wichtigste","Tech-Börse","der","Welt"], punct:"." }
+    valid:[
+      ["der","NASDAQ","ist","seit","1971","die","wichtigste","Tech-Börse","der","Welt"],
+      ["seit","1971","ist","der","NASDAQ","die","wichtigste","Tech-Börse","der","Welt"]
+    ], punct:"." }
 ];
 
 var WORTSCHATZ = [
@@ -939,9 +958,13 @@ function sbCheckAuto(idx) {
   var fb = document.getElementById('sfb-'+idx);
   var chips = Array.from(builder.querySelectorAll('.chip'));
   var item = satzbauData[idx];
-  if (chips.length < item.valid.length) { builder.className='sentence-builder'; if(fb) fb.textContent=''; return; }
-  var attempt = chips.map(function(c){ return c.dataset.word; });
-  var correct = attempt.join(' ') === item.valid.join(' ');
+  // Normalisiere valid auf Array von Arrays (Abwärtskompatibilität)
+  var validVariants = Array.isArray(item.valid[0]) ? item.valid : [item.valid];
+  // Erwartete Länge = Länge der ersten Variante (alle Varianten gleich lang)
+  var expectedLen = validVariants[0].length;
+  if (chips.length < expectedLen) { builder.className='sentence-builder'; if(fb) fb.textContent=''; return; }
+  var attempt = chips.map(function(c){ return c.dataset.word; }).join(' ');
+  var correct = validVariants.some(function(v){ return attempt === v.join(' '); });
   builder.className = correct ? 'sentence-builder correct' : 'sentence-builder incorrect';
   var oldPunkt = builder.querySelector('.sb-punkt');
   if (oldPunkt) oldPunkt.parentNode.removeChild(oldPunkt);
@@ -952,9 +975,10 @@ function sbCheckAuto(idx) {
     builder.appendChild(punkt);
   }
   if (fb) {
-    var sentence = item.valid.join(' ');
+    // Zeige im Feedback die TATSÄCHLICH gebaute Variante (oder erste Vorlage bei Fehler)
+    var sentence = correct ? attempt : validVariants[0].join(' ');
     sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
-    fb.textContent = correct ? '✓ Richtig! ' + sentence + item.punct : '✗ Noch nicht ganz richtig.';
+    fb.textContent = correct ? '✓ Richtig! ' + sentence + (item.punct || '.') : '✗ Noch nicht ganz richtig.';
     fb.className = correct ? 'satzbau-feedback correct' : 'satzbau-feedback incorrect';
   }
   if (correct) {
@@ -972,9 +996,11 @@ function sbShowSolution() {
     var builder = document.getElementById('builder-'+idx);
     var chipsBox = document.getElementById('chips-'+idx);
     if (!builder) return;
+    // Nutze die erste Variante als kanonische Lösung
+    var solution = Array.isArray(item.valid[0]) ? item.valid[0] : item.valid;
     Array.from(chipsBox.querySelectorAll('.chip')).forEach(function(c){ builder.appendChild(c); });
     var chips = Array.from(builder.querySelectorAll('.chip'));
-    chips.sort(function(a,b){ return item.valid.indexOf(a.dataset.word) - item.valid.indexOf(b.dataset.word); });
+    chips.sort(function(a,b){ return solution.indexOf(a.dataset.word) - solution.indexOf(b.dataset.word); });
     chips.forEach(function(c){ builder.appendChild(c); });
     sbUpdateCapitalization(builder);
     builder.className = 'sentence-builder correct';
@@ -985,9 +1011,9 @@ function sbShowSolution() {
     punkt.textContent = item.punct || '.';
     builder.appendChild(punkt);
     var fb = document.getElementById('sfb-'+idx);
-    var sentence = item.valid.join(' ');
+    var sentence = solution.join(' ');
     sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
-    if (fb) { fb.textContent='✓ Lösung: '+sentence+item.punct; fb.className='satzbau-feedback correct'; }
+    if (fb) { fb.textContent='✓ Lösung: '+sentence+(item.punct||'.'); fb.className='satzbau-feedback correct'; }
   });
 }
 
