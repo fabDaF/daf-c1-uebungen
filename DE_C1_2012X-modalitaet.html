@@ -305,7 +305,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
         <p>Es gibt einen Satz, der jede Verhandlung kippen kann, bevor sie begonnen hat. <em>„Es ist unbedingt erforderlich, dass Sie heute eine Entscheidung treffen.“</em> Wer ihn hört, atmet meist tief ein, lehnt sich zurück und verschanzt sich. Wer ihn ausspricht, glaubt, ein Argument vorgebracht zu haben — in Wirklichkeit hat er einen <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">Vorbehalt</span> aus dem Repertoire des Gegenübers entfernt: nämlich den, sich Zeit nehmen zu dürfen. Das ist die Sprachebene, die in Konflikten alles regiert, ohne dass jemand sie ausdrücklich verhandelt: die <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">Modalität</span>.</p>
 
         <h3>Was Modalität tut — und warum sie unterschätzt wird</h3>
-        <p>Sprachwissenschaftlich bezeichnet Modalität alle Mittel, die kennzeichnen, wie ein Sprecher zu seiner eigenen Aussage steht. Modalität sagt nicht, <em>was</em> der Fall ist, sondern <em>wie sicher, wie zwingend, wie wahrscheinlich</em>. Sie ist die unsichtbare Verfassung jeder Kommunikation. Im Deutschen wird sie über Modalverben, Modalpartikeln, Adjektive der Notwendigkeit, Konjunktive, Adverbien und ganze Floskeln transportiert — die Inventarliste ist groß und ihre Wirkung subtil. Wer in einer Mail schreibt <em>„Es wäre vielleicht hilfreich, wenn …“</em>, fordert nicht weniger als jemand, der schreibt <em>„Sie müssen …"</em>; aber er räumt seinem Gegenüber den Raum ein, der über Anerkennung oder Eskalation entscheidet.</p>
+        <p>Sprachwissenschaftlich bezeichnet Modalität alle Mittel, die kennzeichnen, wie ein Sprecher zu seiner eigenen Aussage steht. Modalität sagt nicht, <em>was</em> der Fall ist, sondern <em>wie sicher, wie zwingend, wie wahrscheinlich</em>. Sie ist die unsichtbare Verfassung jeder Kommunikation. Im Deutschen wird sie über Modalverben, Modalpartikeln, Adjektive der Notwendigkeit, Konjunktive, Adverbien und ganze Floskeln transportiert — die Inventarliste ist groß und ihre Wirkung subtil. Wer in einer Mail schreibt <em>„Es wäre vielleicht hilfreich, wenn …“</em>, fordert nicht weniger als jemand, der schreibt <em>„Sie müssen …“</em>; aber er räumt seinem Gegenüber den Raum ein, der über Anerkennung oder Eskalation entscheidet.</p>
 
         <h3>Notwendigkeit als rhetorische Waffe</h3>
         <p>Die Skala der <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">Notwendigkeit</span> reicht im Deutschen vom milden <em>ratsam</em> über <em>erforderlich, geboten, notwendig</em> bis zum harten <em>unabdingbar, unerlässlich, unumgänglich</em>. Wer sich der oberen Hälfte dieser Skala bedient, signalisiert, dass die Welt — und nicht der Sprecher — die Forderung stellt. Genau darin liegt der rhetorische Zugriff: <em>„Es ist unumgänglich“</em> klingt wie die Beschreibung einer Sachlage, ist in Wahrheit aber eine Setzung. Konfliktforscher beobachten seit Jahren, dass die Häufung von Notwendigkeitsausdrücken in einer Diskussion ein zuverlässiger Frühindikator für ihr Scheitern ist. 2025 wertete das Hertie School Conflict Lab in Berlin rund 12 000 protokollierte Mediationsgespräche aus europäischen Unternehmen aus und fand den schlichten Befund: Wo in den ersten zehn Minuten dreimal das Wort <em>unbedingt</em> fiel, einigte sich die Sitzung in 78 Prozent der Fälle nicht.</p>
@@ -1209,10 +1209,10 @@ function schreibFehlerErklaerung(err) {
     return 'Der Versand-Endpunkt ist gerade nicht freigeschaltet (das passiert manchmal bei Adress-Wechsel auf Franks Seite).';
   }
   if (code.indexOf('HTTP_') === 0) {
-    return 'Der Server hat eine technische Antwort gegeben (' + code.replace('HTTP_', 'HTTP ') + '), die nicht „erfolgreich" bedeutet.';
+    return 'Der Server hat eine technische Antwort gegeben (' + code.replace('HTTP_', 'HTTP ') + '), die nicht „erfolgreich“ bedeutet.';
   }
   if (code === 'API_ERROR') {
-    return 'Der Versand-Dienst hat „nicht erfolgreich" zurückgemeldet' + (err && err.apiMessage ? ' („' + err.apiMessage + '")' : '') + '.';
+    return 'Der Versand-Dienst hat „nicht erfolgreich“ zurückgemeldet' + (err && err.apiMessage ? ' („' + err.apiMessage + '“)' : '') + '.';
   }
   return 'Es gab ein Netz- oder Browser-Problem beim Senden — keine Server-Antwort.';
 }
@@ -1227,7 +1227,7 @@ function schreibKopierenEinzeln(nr) {
   function fertig(ok) {
     if (!st) return;
     if (ok) { st.classList.remove('error'); st.classList.add('success'); st.innerHTML = '✓ In die Zwischenablage kopiert. Jetzt in deine Mail oder deinen Chat einfügen und an Frank schicken.'; }
-    else { st.classList.add('error'); st.innerHTML = '✗ Kopieren ging nicht — markier den Text in der Box selbst und nutz „kopieren" deines Browsers.'; }
+    else { st.classList.add('error'); st.innerHTML = '✗ Kopieren ging nicht — markier den Text in der Box selbst und nutz „kopieren“ deines Browsers.'; }
   }
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(function () { fertig(true); }, function () { fertig(false); });
