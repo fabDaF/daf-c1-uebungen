@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -334,7 +341,26 @@ var VORENTLASTUNG = [{"term": "der Kriegsplanet (Sg.)", "def": "poetischer Beina
 var GENUS_DATA = [{"word": "🔴 Mars", "cat": "der"}, {"word": "☀️ Sonne", "cat": "die"}, {"word": "🪐 Saturn", "cat": "der"}, {"word": "⚔️ Kriegsgott", "cat": "der"}, {"word": "🌌 All", "cat": "das"}, {"word": "🚀 Rakete", "cat": "die"}, {"word": "🌍 Erde", "cat": "die"}, {"word": "🌟 Sterne", "cat": "pl"}];
 var LUECKE_DATA = [{"pre": "Carus Sternes berühmter Essay über den Mars erschien um das Jahr ", "ans": "1900", "post": "."}, {"pre": "Die erste erfolgreiche Marssonde Mariner 4 erreichte den Planeten im Juli ", "ans": "1965", "post": "."}, {"pre": "Pluto verlor seinen Planetenstatus im Jahr ", "ans": "2006", "post": "."}, {"pre": "Olympus Mons ist mit 22 km Höhe der größte ", "ans": "Vulkan", "post": " des Sonnensystems."}, {"pre": "Konstantin ", "ans": "Ziolkowski", "post": " diskutierte 1903 die Marskolonisierung als Erster."}, {"pre": "Mars ist der ", "ans": "vierte", "post": " Planet von der Sonne aus gezählt."}, {"pre": "Die NASA-Sonde Perseverance landete am 18. Februar ", "ans": "2021", "post": " auf dem Mars."}];
 var MC_DATA = [{"q": "Welcher Planet ist der Mars in der Reihenfolge von der Sonne aus?", "opts": ["dritter", "vierter", "fünfter", "sechster"], "correct": 1}, {"q": "Welche Substanz gibt dem Mars seine rote Farbe?", "opts": ["Schwefel", "Eisenoxid", "Magnesium", "Chlor"], "correct": 1}, {"q": "Welche Mythologie leitet den Namen Mars ab?", "opts": ["griechische", "römische", "ägyptische", "babylonische"], "correct": 1}, {"q": "Welche Eselsbrücke wurde vor 2006 für die Planeten gelernt?", "opts": ["Mein Vater erklärt mir jeden Sonntag unsere neun Planeten", "Mein Vater erklärt mir jeden Samstag", "Marsbein vor jedem Stern unseres Planeten", "Merkur vor erstem Sonnen-Mond"], "correct": 0}, {"q": "Welche erste Marssonde sendete 1965 Bilder zur Erde?", "opts": ["Sputnik", "Mariner 4", "Viking 1", "Voyager"], "correct": 1}, {"q": "Welche NASA-Mission erforscht seit 2021 den Jezero-Krater auf dem Mars?", "opts": ["Curiosity", "Perseverance", "Opportunity", "InSight"], "correct": 1}, {"q": "Wie hoch ist der größte Vulkan des Sonnensystems Olympus Mons?", "opts": ["8 km", "12 km", "22 km", "50 km"], "correct": 2}];
-var satzbauData = [{"parts": ["Mars", "ist", "der", "vierte", "Planet", "von", "der", "Sonne", "aus"], "valid": ["Mars", "ist", "der", "vierte", "Planet", "von", "der", "Sonne", "aus"], "punct": "."}, {"parts": ["der", "römische", "Kriegsgott", "Mars", "entspricht", "dem", "griechischen", "Ares"], "valid": ["der", "römische", "Kriegsgott", "Mars", "entspricht", "dem", "griechischen", "Ares"], "punct": "."}, {"parts": ["Olympus", "Mons", "ist", "der", "größte", "Vulkan", "des", "Sonnensystems"], "valid": ["Olympus", "Mons", "ist", "der", "größte", "Vulkan", "des", "Sonnensystems"], "punct": "."}, {"parts": ["die", "Sonde", "Perseverance", "sucht", "nach", "Spuren", "fossilen", "Lebens"], "valid": ["die", "Sonde", "Perseverance", "sucht", "nach", "Spuren", "fossilen", "Lebens"], "punct": "."}, {"parts": ["der", "Mars", "fasziniert", "die", "Menschheit", "seit", "der", "Antike"], "valid": ["der", "Mars", "fasziniert", "die", "Menschheit", "seit", "der", "Antike"], "punct": "."}, {"parts": ["Eisenoxid", "verleiht", "dem", "Mars", "seine", "rötliche", "Farbe"], "valid": ["Eisenoxid", "verleiht", "dem", "Mars", "seine", "rötliche", "Farbe"], "punct": "."}];
+var satzbauData = [
+  { parts: ['der', 'Mars', 'ist', 'der', 'vierte', 'Planet', 'von', 'der', 'Sonne', ',', 'den', 'die', 'Menschheit', 'seit', 'jeher', 'beobachtet'],
+    valid: [['der', 'Mars', 'ist', 'der', 'vierte', 'Planet', 'von', 'der', 'Sonne', ',', 'den', 'die', 'Menschheit', 'seit', 'jeher', 'beobachtet']],
+    punct: '.' },
+  { parts: ['der', 'römische', 'Kriegsgott', 'Mars', 'entspricht', 'dem', 'griechischen', 'Ares', ',', 'weshalb', 'der', 'Planet', 'seinen', 'kriegerischen', 'Namen', 'trägt'],
+    valid: [['der', 'römische', 'Kriegsgott', 'Mars', 'entspricht', 'dem', 'griechischen', 'Ares', ',', 'weshalb', 'der', 'Planet', 'seinen', 'kriegerischen', 'Namen', 'trägt']],
+    punct: '.' },
+  { parts: ['Olympus', 'Mons', 'ist', 'der', 'größte', 'Vulkan', 'des', 'Sonnensystems', ',', 'der', 'fast', 'dreimal', 'so', 'hoch', 'wie', 'der', 'Everest', 'ragt'],
+    valid: [['Olympus', 'Mons', 'ist', 'der', 'größte', 'Vulkan', 'des', 'Sonnensystems', ',', 'der', 'fast', 'dreimal', 'so', 'hoch', 'wie', 'der', 'Everest', 'ragt']],
+    punct: '.' },
+  { parts: ['die', 'Sonde', 'Perseverance', 'sucht', 'nach', 'Spuren', 'fossilen', 'Lebens', ',', 'das', 'es', 'vor', 'Milliarden', 'Jahren', 'gegeben', 'haben', 'könnte'],
+    valid: [['die', 'Sonde', 'Perseverance', 'sucht', 'nach', 'Spuren', 'fossilen', 'Lebens', ',', 'das', 'es', 'vor', 'Milliarden', 'Jahren', 'gegeben', 'haben', 'könnte']],
+    punct: '.' },
+  { parts: ['der', 'Mars', 'fasziniert', 'die', 'Menschheit', 'seit', 'der', 'Antike', ',', 'obwohl', 'noch', 'nie', 'ein', 'Mensch', 'ihn', 'betreten', 'hat'],
+    valid: [['der', 'Mars', 'fasziniert', 'die', 'Menschheit', 'seit', 'der', 'Antike', ',', 'obwohl', 'noch', 'nie', 'ein', 'Mensch', 'ihn', 'betreten', 'hat']],
+    punct: '.' },
+  { parts: ['Eisenoxid', 'verleiht', 'dem', 'Mars', 'seine', 'rötliche', 'Farbe', ',', 'die', 'ihm', 'den', 'Beinamen', 'roter', 'Planet', 'einbrachte'],
+    valid: [['Eisenoxid', 'verleiht', 'dem', 'Mars', 'seine', 'rötliche', 'Farbe', ',', 'die', 'ihm', 'den', 'Beinamen', 'roter', 'Planet', 'einbrachte']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "🔴 the planet of war", "artikel": "der", "de": "Kriegsplanet", "plural": "Kriegsplaneten"}, {"id": 2, "type": "n", "en": "⭐ the celestial body", "artikel": "das", "de": "Wandelgestirn", "plural": "Wandelgestirne"}, {"id": 3, "type": "n", "en": "🧠 the mnemonic", "artikel": "die", "de": "Eselsbrücke", "plural": "Eselsbrücken"}, {"id": 4, "type": "n", "en": "🏛️ the mythology", "artikel": "die", "de": "Mythologie", "plural": "Mythologien"}, {"id": 5, "type": "n", "en": "🚀 the Mars probe", "artikel": "die", "de": "Marssonde", "plural": "Marssonden"}, {"id": 6, "type": "n", "en": "🏔️ Olympus Mons", "artikel": "–", "de": "Olympus Mons", "plural": "–"}, {"id": 7, "type": "n", "en": "🌍 the colonisation of Mars", "artikel": "die", "de": "Marskolonisierung", "plural": "–"}, {"id": 8, "type": "n", "en": "⚔️ the Roman god", "artikel": "der", "de": "Gott", "plural": "Götter"}, {"id": 9, "type": "n", "en": "🪐 the planet", "artikel": "der", "de": "Planet", "plural": "Planeten"}, {"id": 10, "type": "n", "en": "☄️ the meteorite", "artikel": "der", "de": "Meteorit", "plural": "Meteoriten"}, {"id": 11, "type": "adj", "en": "🌫️ gloomy", "artikel": "", "de": "düster", "plural": "–"}, {"id": 12, "type": "adj", "en": "📜 outdated", "artikel": "", "de": "veraltet", "plural": "–"}, {"id": 13, "type": "v", "en": "⚖️ to revere", "artikel": "", "de": "verherrlichen", "plural": "–"}, {"id": 14, "type": "v", "en": "🪐 to orbit", "artikel": "", "de": "umkreisen", "plural": "–"}];
 
 var BEST_KEY = 'best_3037RC1_3_';
@@ -746,6 +772,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","_","der","_","_","_","der","_","_","den","_","_","_","jeher","_"],"parts":["der","Mars","ist","vierte","Planet","von","Sonne",",","die","Menschheit","seit","beobachtet"]},{"i":1,"row":["_","_","Kriegsgott","_","_","dem","_","_","_","_","der","_","_","_","Namen","_"],"parts":["der","römische","Mars","entspricht","griechischen","Ares",",","weshalb","Planet","seinen","kriegerischen","trägt"]},{"i":2,"row":["_","_","_","der","_","_","_","Sonnensystems","_","_","_","_","_","hoch","_","_","Everest","_"],"parts":["Olympus","Mons","ist","größte","Vulkan","des",",","der","fast","dreimal","so","wie","der","ragt"]},{"i":3,"row":["_","_","Perseverance","_","_","_","_","Lebens","_","_","es","_","_","Jahren","_","_","_"],"parts":["die","Sonde","sucht","nach","Spuren","fossilen",",","das","vor","Milliarden","gegeben","haben","könnte"]},{"i":4,"row":["_","_","_","die","_","_","_","Antike","_","_","noch","_","_","_","ihn","_","_"],"parts":["der","Mars","fasziniert","Menschheit","seit","der",",","obwohl","nie","ein","Mensch","betreten","hat"]},{"i":5,"row":["_","_","_","Mars","_","_","Farbe","_","_","_","den","_","_","Planet","_"],"parts":["Eisenoxid","verleiht","dem","seine","rötliche",",","die","ihm","Beinamen","roter","einbrachte"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>

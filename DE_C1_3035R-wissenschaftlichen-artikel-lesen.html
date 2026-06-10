@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -334,7 +341,26 @@ var VORENTLASTUNG = [{"term": "das Abstract (-s)", "def": "kurze Zusammenfassung
 var GENUS_DATA = [{"word": "📄 Artikel", "cat": "der"}, {"word": "📚 Studie", "cat": "die"}, {"word": "🧪 Experiment", "cat": "das"}, {"word": "📊 Daten", "cat": "pl"}, {"word": "🔬 Methode", "cat": "die"}, {"word": "📖 Werk", "cat": "das"}, {"word": "💡 Ergebnis", "cat": "das"}, {"word": "🎓 Forscher", "cat": "der"}];
 var LUECKE_DATA = [{"pre": "Die <em>Philosophical Transactions</em> wurden ", "ans": "1665", "post": " von der Royal Society gegründet."}, {"pre": "Das IMRaD-Schema bedeutet Introduction, Methods, Results and ", "ans": "Discussion", "post": "."}, {"pre": "Karl Poppers <em>Logik der Forschung</em> erschien im Jahr ", "ans": "1934", "post": "."}, {"pre": "arXiv wurde 1991 von Paul ", "ans": "Ginsparg", "post": " in Los Alamos gegründet."}, {"pre": "John Ioannidis schrieb 2005 den Aufsatz <em>Why Most Published Research Findings Are ", "ans": "False", "post": "</em>."}, {"pre": "Das Center for Open Science wurde ", "ans": "2013", "post": " in Charlottesville gegründet."}, {"pre": "Ein typisches Abstract umfasst zwischen 150 und ", "ans": "300", "post": " Wörter."}];
 var MC_DATA = [{"q": "Was bedeutet die Abkürzung <em>IMRaD</em>?", "opts": ["Introduction, Methods, Results and Discussion", "Index, Method, Reference, Data", "Initial, Material, Research, Discovery", "International Method for Research Documentation"], "correct": 0}, {"q": "Welche Zeitschrift gilt als älteste durchgehend erscheinende Wissenschaftszeitschrift?", "opts": ["Nature", "Philosophical Transactions", "Science", "Journal of the American Medical Association"], "correct": 1}, {"q": "Wer formulierte das Falsifikationsprinzip 1934?", "opts": ["Thomas Kuhn", "Karl Popper", "Paul Feyerabend", "Imre Lakatos"], "correct": 1}, {"q": "Wer publizierte 2005 den berühmten Aufsatz zur Reproduzierbarkeitskrise?", "opts": ["John Ioannidis", "Brian Nosek", "Donald Kennedy", "Carl Sagan"], "correct": 0}, {"q": "In welchem Jahr wurde arXiv gegründet?", "opts": ["1985", "1991", "2001", "2010"], "correct": 1}, {"q": "Wie viele Fachzeitschriften werben weltweit Peer Review?", "opts": ["3 000", "10 000", "30 000", "100 000"], "correct": 2}, {"q": "Welcher Zitierstil ist in der deutschen Geisteswissenschaft am weitesten verbreitet?", "opts": ["APA", "Chicago", "Harvard", "DIN 1505 / Fußnoten"], "correct": 3}];
-var satzbauData = [{"parts": ["wissenschaftliche", "Artikel", "folgen", "meist", "dem", "IMRaD-Schema"], "valid": ["wissenschaftliche", "Artikel", "folgen", "meist", "dem", "IMRaD-Schema"], "punct": "."}, {"parts": ["das", "Abstract", "fasst", "den", "gesamten", "Artikel", "kurz", "zusammen"], "valid": ["das", "Abstract", "fasst", "den", "gesamten", "Artikel", "kurz", "zusammen"], "punct": "."}, {"parts": ["die", "Methode", "muss", "reproduzierbar", "beschrieben", "sein"], "valid": ["die", "Methode", "muss", "reproduzierbar", "beschrieben", "sein"], "punct": "."}, {"parts": ["Karl", "Popper", "forderte", "die", "Falsifizierbarkeit", "wissenschaftlicher", "Aussagen"], "valid": ["Karl", "Popper", "forderte", "die", "Falsifizierbarkeit", "wissenschaftlicher", "Aussagen"], "punct": "."}, {"parts": ["arXiv", "ermöglicht", "den", "Open", "Access", "vor", "der", "Peer", "Review"], "valid": ["arXiv", "ermöglicht", "den", "Open", "Access", "vor", "der", "Peer", "Review"], "punct": "."}, {"parts": ["Quellenangaben", "sind", "das", "Rückgrat", "wissenschaftlicher", "Integrität"], "valid": ["Quellenangaben", "sind", "das", "Rückgrat", "wissenschaftlicher", "Integrität"], "punct": "."}];
+var satzbauData = [
+  { parts: ['wissenschaftliche', 'Artikel', 'folgen', 'meist', 'dem', 'IMRaD-Schema', ',', 'das', 'den', 'Aufbau', 'international', 'einheitlich', 'und', 'vergleichbar', 'macht'],
+    valid: [['wissenschaftliche', 'Artikel', 'folgen', 'meist', 'dem', 'IMRaD-Schema', ',', 'das', 'den', 'Aufbau', 'international', 'einheitlich', 'und', 'vergleichbar', 'macht']],
+    punct: '.' },
+  { parts: ['das', 'Abstract', 'fasst', 'den', 'gesamten', 'Artikel', 'kurz', 'zusammen', ',', 'damit', 'Leser', 'schnell', 'über', 'die', 'Relevanz', 'entscheiden'],
+    valid: [['das', 'Abstract', 'fasst', 'den', 'gesamten', 'Artikel', 'kurz', 'zusammen', ',', 'damit', 'Leser', 'schnell', 'über', 'die', 'Relevanz', 'entscheiden']],
+    punct: '.' },
+  { parts: ['die', 'Methode', 'muss', 'so', 'reproduzierbar', 'beschrieben', 'sein', ',', 'dass', 'andere', 'Forscher', 'das', 'Experiment', 'wiederholen', 'können'],
+    valid: [['die', 'Methode', 'muss', 'so', 'reproduzierbar', 'beschrieben', 'sein', ',', 'dass', 'andere', 'Forscher', 'das', 'Experiment', 'wiederholen', 'können']],
+    punct: '.' },
+  { parts: ['Karl', 'Popper', 'forderte', 'die', 'Falsifizierbarkeit', 'wissenschaftlicher', 'Aussagen', ',', 'weil', 'sich', 'eine', 'Theorie', 'grundsätzlich', 'widerlegen', 'lassen', 'muss'],
+    valid: [['Karl', 'Popper', 'forderte', 'die', 'Falsifizierbarkeit', 'wissenschaftlicher', 'Aussagen', ',', 'weil', 'sich', 'eine', 'Theorie', 'grundsätzlich', 'widerlegen', 'lassen', 'muss']],
+    punct: '.' },
+  { parts: ['arXiv', 'ermöglicht', 'den', 'Open', 'Access', 'vor', 'der', 'Peer', 'Review', ',', 'wodurch', 'Ergebnisse', 'sehr', 'viel', 'schneller', 'zirkulieren'],
+    valid: [['arXiv', 'ermöglicht', 'den', 'Open', 'Access', 'vor', 'der', 'Peer', 'Review', ',', 'wodurch', 'Ergebnisse', 'sehr', 'viel', 'schneller', 'zirkulieren']],
+    punct: '.' },
+  { parts: ['Quellenangaben', 'sind', 'das', 'Rückgrat', 'wissenschaftlicher', 'Integrität', ',', 'ohne', 'das', 'jede', 'seriöse', 'Forschung', 'sofort', 'zusammenbrechen', 'würde'],
+    valid: [['Quellenangaben', 'sind', 'das', 'Rückgrat', 'wissenschaftlicher', 'Integrität', ',', 'ohne', 'das', 'jede', 'seriöse', 'Forschung', 'sofort', 'zusammenbrechen', 'würde']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "📄 the abstract", "artikel": "das", "de": "Abstract", "plural": "Abstracts"}, {"id": 2, "type": "n", "en": "📐 the IMRaD scheme", "artikel": "das", "de": "IMRaD-Schema", "plural": "–"}, {"id": 3, "type": "n", "en": "🔍 the peer review", "artikel": "die", "de": "Peer Review", "plural": "Peer Reviews"}, {"id": 4, "type": "n", "en": "💡 the hypothesis", "artikel": "die", "de": "Hypothese", "plural": "Hypothesen"}, {"id": 5, "type": "n", "en": "🔬 the method", "artikel": "die", "de": "Methode", "plural": "Methoden"}, {"id": 6, "type": "n", "en": "📚 the citation", "artikel": "die", "de": "Quellenangabe", "plural": "Quellenangaben"}, {"id": 7, "type": "n", "en": "🔁 the reproducibility", "artikel": "die", "de": "Reproduzierbarkeit", "plural": "–"}, {"id": 8, "type": "n", "en": "📊 the result", "artikel": "das", "de": "Ergebnis", "plural": "Ergebnisse"}, {"id": 9, "type": "n", "en": "🧠 the insight", "artikel": "die", "de": "Erkenntnis", "plural": "Erkenntnisse"}, {"id": 10, "type": "n", "en": "🎯 the overview", "artikel": "der", "de": "Überblick", "plural": "–"}, {"id": 11, "type": "adj", "en": "🎓 well-founded", "artikel": "", "de": "belegt", "plural": "–"}, {"id": 12, "type": "adj", "en": "📝 inevitable", "artikel": "", "de": "unumgänglich", "plural": "–"}, {"id": 13, "type": "v", "en": "📖 to discuss", "artikel": "", "de": "erörtern", "plural": "–"}, {"id": 14, "type": "v", "en": "🔖 to embed", "artikel": "", "de": "einbetten", "plural": "–"}];
 
 var BEST_KEY = 'best_3035RC1_3_';
@@ -746,6 +772,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","_","_","dem","_","_","_","den","_","international","_","_","vergleichbar","_"],"parts":["wissenschaftliche","Artikel","folgen","meist","IMRaD-Schema",",","das","Aufbau","einheitlich","und","macht"]},{"i":1,"row":["_","_","_","den","_","_","kurz","_","_","_","_","schnell","_","_","Relevanz","_"],"parts":["das","Abstract","fasst","gesamten","Artikel","zusammen",",","damit","Leser","über","die","entscheiden"]},{"i":2,"row":["_","_","_","so","_","_","_","_","dass","_","Forscher","_","Experiment","_","_"],"parts":["die","Methode","muss","reproduzierbar","beschrieben","sein",",","andere","das","wiederholen","können"]},{"i":3,"row":["_","_","_","die","_","_","Aussagen","_","_","sich","_","_","grundsätzlich","_","_","_"],"parts":["Karl","Popper","forderte","Falsifizierbarkeit","wissenschaftlicher",",","weil","eine","Theorie","widerlegen","lassen","muss"]},{"i":4,"row":["_","_","_","Open","_","_","_","Peer","_","_","_","Ergebnisse","_","_","schneller","_"],"parts":["arXiv","ermöglicht","den","Access","vor","der","Review",",","wodurch","sehr","viel","zirkulieren"]},{"i":5,"row":["_","_","_","Rückgrat","_","Integrität","_","_","_","jede","_","Forschung","_","_","_"],"parts":["Quellenangaben","sind","das","wissenschaftlicher",",","ohne","das","seriöse","sofort","zusammenbrechen","würde"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>
