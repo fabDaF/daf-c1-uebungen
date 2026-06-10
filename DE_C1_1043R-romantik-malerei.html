@@ -1402,12 +1402,13 @@ function schreibLeeren() {
 </script>
 
 
+
 <script>
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
   var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
-  var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","bevor","er","_","_","Dresden","_"],"parts":["Friedrich","wurde","1774","Greifswald","geboren",",","später","nach","zog"]},{"i":1,"row":["_","_","_","dem","_","entstand","_","_","_","_","die","_","_","Höhepunkt","_"],"parts":["der","Wanderer","über","Nebelmeer","um","1818",",","als","Romantik","ihren","erreichte"]},{"i":2,"row":["_","_","_","den","_","_","_","_","den","Augen","_","Figur","_","_"],"parts":["die","Rückenfigur","lädt","Betrachter","ein",",","mit","der","zu","sehen"]},{"i":3,"row":["_","_","_","sich","_","_","Aufklärung","_","_","_","das","_","Denken","_","_"],"parts":["die","Romantik","stellte","gegen","die",",","weil","ihr","reine","nicht","genügte"]},{"i":4,"row":["_","_","_","Deutschland","_","250.","_","_","_","mehrere","_","Ausstellungen","_"],"parts":["2024","feierte","ganz","Friedrichs","Geburtstag",",","den","große","begleiteten"]},{"i":5,"row":["_","_","_","Berg","_","Meer","_","_","_","Mensch","_","Kleinheit","_"],"parts":["Erhabenheit","entsteht","vor","und",",","wenn","der","seine","spürt"]}];
+  var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","bevor","er","_","_","Dresden","_"],"parts":["Friedrich","wurde","1774","Greifswald","geboren",",","später","nach","zog"]},{"i":1,"row":["_","_","_","dem","_","_","_","1818","_","_","die","_","_","Höhepunkt","_"],"parts":["der","Wanderer","über","Nebelmeer","entstand","um",",","als","Romantik","ihren","erreichte"]},{"i":2,"row":["_","_","_","den","_","_","_","_","den","Augen","_","Figur","_","_"],"parts":["die","Rückenfigur","lädt","Betrachter","ein",",","mit","der","zu","sehen"]},{"i":3,"row":["_","_","_","sich","_","_","Aufklärung","_","_","_","das","_","Denken","_","_"],"parts":["die","Romantik","stellte","gegen","die",",","weil","ihr","reine","nicht","genügte"]},{"i":4,"row":["_","_","_","Deutschland","_","250.","_","_","_","mehrere","_","Ausstellungen","_"],"parts":["2024","feierte","ganz","Friedrichs","Geburtstag",",","den","große","begleiteten"]},{"i":5,"row":["_","_","_","Berg","_","Meer","_","_","_","Mensch","_","Kleinheit","_"],"parts":["Erhabenheit","entsteht","vor","und",",","wenn","der","seine","spürt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
     if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];

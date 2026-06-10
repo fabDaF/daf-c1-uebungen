@@ -1400,12 +1400,13 @@ function schreibLeeren() {
 </script>
 
 
+
 <script>
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
   var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
-  var SBGAP = [{"i":0,"row":["_","_","_","1905","_","Dresden","_","_","_","vier","_","Maler","_"],"parts":["die","Brücke","wurde","in","gegründet",",","als","Architekturstudenten","wurden"]},{"i":1,"row":["_","_","_","als","_","des","_","_","_","er","_","Norweger","_"],"parts":["Edvard","Munch","gilt","Vorreiter","Expressionismus",",","obwohl","gebürtiger","war"]},{"i":2,"row":["_","_","Reiter","_","_","in","_","_","_","Kandinsky","_","_","verließ"],"parts":["der","Blaue","entstand","1911","München",",","als","die","Sezession"]},{"i":3,"row":["_","_","_","innere","_","_","_","_","die","äußere","_","getreu","_"],"parts":["expressionistische","Werke","drücken","Gefühle","aus",",","statt","Natur","abzubilden"]},{"i":4,"row":["_","_","_","Nazis","_","_","Entartete","Kunst","_","_","_","öffentlich","_"],"parts":["1937","zeigten","die","die","Ausstellung",",","die","Expressionisten","diffamierte"]},{"i":5,"row":["_","_","Heckel","_","Schmidt-Rottluff","_","_","_","_","_","die","_","Brücke","_"],"parts":["Kirchner",",","und","gehörten","zu","den","Gründern",",","die","prägten"]}];
+  var SBGAP = [{"i":0,"row":["_","_","_","1905","_","Dresden","_","_","_","vier","_","Maler","_"],"parts":["die","Brücke","wurde","in","gegründet",",","als","Architekturstudenten","wurden"]},{"i":1,"row":["_","_","_","als","_","des","_","_","_","er","_","Norweger","_"],"parts":["Edvard","Munch","gilt","Vorreiter","Expressionismus",",","obwohl","gebürtiger","war"]},{"i":2,"row":["_","_","Reiter","_","_","in","_","_","_","Kandinsky","_","Sezession","_"],"parts":["der","Blaue","entstand","1911","München",",","als","die","verließ"]},{"i":3,"row":["_","_","_","innere","_","_","_","_","die","äußere","_","getreu","_"],"parts":["expressionistische","Werke","drücken","Gefühle","aus",",","statt","Natur","abzubilden"]},{"i":4,"row":["_","_","_","Nazis","_","_","Entartete","Kunst","_","_","_","öffentlich","_"],"parts":["1937","zeigten","die","die","Ausstellung",",","die","Expressionisten","diffamierte"]},{"i":5,"row":["_","_","Heckel","_","Schmidt-Rottluff","_","_","_","_","_","die","_","Brücke","_"],"parts":["Kirchner",",","und","gehörten","zu","den","Gründern",",","die","prägten"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
     if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];

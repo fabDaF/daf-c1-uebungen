@@ -1381,12 +1381,13 @@ function schreibLeeren() {
 </script>
 
 
+
 <script>
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
   var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
-  var SBGAP = [{"i":0,"row":["_","_","_","_","Oktober","_","die","_","_","was","_","Westen","_"],"parts":["der","Sputnik","umrundete","ab","1957","Erde",",","den","schockierte"]},{"i":1,"row":["_","_","_","1961","_","erster","_","_","All","_","_","Amerika","_","_"],"parts":["Juri","Gagarin","flog","als","Mensch","ins",",","bevor","reagieren","konnte"]},{"i":2,"row":["_","_","_","Armstrong","_","_","_","den","_","_","während","_","_","zusah"],"parts":["Apollo","11","brachte","und","Aldrin","auf","Mond",",","die","Welt"]},{"i":3,"row":["_","_","_","die","_","der","NASA","_","_","_","Amerika","_","_"],"parts":["der","Sputnik-Schock","löste","Gründung","aus",",","weil","aufholen","musste"]},{"i":4,"row":["_","_","_","_","1998","_","_","der","_","_","das","_","Gegner","_"],"parts":["die","ISS","ist","seit","ein","Symbol","Kooperation",",","ehemalige","verbindet"]},{"i":5,"row":["_","_","_","Raumfahrt","_","_","weil","_","Raketen","_","_","drastisch","_"],"parts":["SpaceX","veränderte","die","grundlegend",",","wiederverwendbare","die","Kosten","senkten"]}];
+  var SBGAP = [{"i":0,"row":["_","_","_","_","Oktober","_","die","_","_","was","_","Westen","_"],"parts":["der","Sputnik","umrundete","ab","1957","Erde",",","den","schockierte"]},{"i":1,"row":["_","_","_","1961","_","erster","_","_","All","_","_","Amerika","_","_"],"parts":["Juri","Gagarin","flog","als","Mensch","ins",",","bevor","reagieren","konnte"]},{"i":2,"row":["_","_","_","Armstrong","_","Aldrin","_","_","_","_","während","_","Welt","_"],"parts":["Apollo","11","brachte","und","auf","den","Mond",",","die","zusah"]},{"i":3,"row":["_","_","_","die","_","der","NASA","_","_","_","Amerika","_","_"],"parts":["der","Sputnik-Schock","löste","Gründung","aus",",","weil","aufholen","musste"]},{"i":4,"row":["_","_","_","_","1998","_","_","der","_","_","das","_","Gegner","_"],"parts":["die","ISS","ist","seit","ein","Symbol","Kooperation",",","ehemalige","verbindet"]},{"i":5,"row":["_","_","_","Raumfahrt","_","_","weil","_","Raketen","_","_","drastisch","_"],"parts":["SpaceX","veränderte","die","grundlegend",",","wiederverwendbare","die","Kosten","senkten"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
     if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];

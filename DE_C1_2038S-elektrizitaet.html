@@ -1381,12 +1381,13 @@ function schreibLeeren() {
 </script>
 
 
+
 <script>
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
   var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
-  var SBGAP = [{"i":0,"row":["_","_","_","die","_","Batterie","_","_","erstmals","_","_","Strom","_"],"parts":["Volta","baute","1800","erste",",","die","dauerhaft","elektrischen","lieferte"]},{"i":1,"row":["_","_","_","die","_","Induktion","_","_","_","alle","_","Generatoren","_"],"parts":["Faraday","entdeckte","1831","elektromagnetische",",","auf","der","unsere","beruhen"]},{"i":2,"row":["_","_","_","die","_","zur","_","_","_","andere","_","vorher","_"],"parts":["Edison","brachte","1879","Glühbirne","Marktreife",",","obwohl","sie","erfanden"]},{"i":3,"row":["_","_","_","Stromnetz","_","_","ans","_","_","als","_","Manhattan","_"],"parts":["das","erste","öffentliche","ging","1882","Netz",",","Edison","beleuchtete"]},{"i":4,"row":["_","_","_","sich","_","_","_","als","_","den","_","_","beschloss"],"parts":["die","Energiewende","beschleunigte","nach","2011",",","Deutschland","endgültigen","Atomausstieg"]},{"i":5,"row":["_","_","_","Strom","überwiegend","_","_","_","_","die","stetig","_","_"],"parts":["heute","kommt","der","aus","erneuerbaren","Quellen",",","ausgebaut","werden"]}];
+  var SBGAP = [{"i":0,"row":["_","_","_","die","_","Batterie","_","_","erstmals","_","_","Strom","_"],"parts":["Volta","baute","1800","erste",",","die","dauerhaft","elektrischen","lieferte"]},{"i":1,"row":["_","_","_","die","_","Induktion","_","_","_","alle","_","Generatoren","_"],"parts":["Faraday","entdeckte","1831","elektromagnetische",",","auf","der","unsere","beruhen"]},{"i":2,"row":["_","_","_","die","_","zur","_","_","_","andere","_","vorher","_"],"parts":["Edison","brachte","1879","Glühbirne","Marktreife",",","obwohl","sie","erfanden"]},{"i":3,"row":["_","_","_","Stromnetz","_","_","ans","_","_","als","_","Manhattan","_"],"parts":["das","erste","öffentliche","ging","1882","Netz",",","Edison","beleuchtete"]},{"i":4,"row":["_","_","_","sich","_","_","_","als","Deutschland","_","_","Atomausstieg","_"],"parts":["die","Energiewende","beschleunigte","nach","2011",",","den","endgültigen","beschloss"]},{"i":5,"row":["_","_","_","Strom","überwiegend","_","_","_","_","die","stetig","_","_"],"parts":["heute","kommt","der","aus","erneuerbaren","Quellen",",","ausgebaut","werden"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
     if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];

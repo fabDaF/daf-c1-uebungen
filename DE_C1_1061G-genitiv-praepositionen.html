@@ -911,12 +911,13 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 </script>
 
 
+
 <script>
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
   var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
-  var SBGAP = [{"i":0,"row":["_","_","_","Regens","_","_","Spiel","_","_","obwohl","_","Fans","_","_"],"parts":["wegen","des","starken","blieb","das","aus",",","viele","gekommen","waren"]},{"i":1,"row":["_","_","Bemühungen","_","_","Patient","_","_","_","_","wie","_","Arzt","_"],"parts":["trotz","aller","konnte","der","nicht","gerettet","werden",",","der","mitteilte"]},{"i":2,"row":["_","_","Wochen","_","_","Buch","_","_","_","die","_","überragend","_"],"parts":["innerhalb","weniger","war","das","ausverkauft",",","weil","Kritiken","waren"]},{"i":3,"row":["_","_","_","Kosten","_","Klärungsbedarf","_","bevor","_","Vertrag","_","_","_"],"parts":["hinsichtlich","der","genauen","besteht",",","der","unterschrieben","werden","kann"]},{"i":4,"row":["_","_","Jubiläums","_","_","Festschrift","_","_","_","alle","_","kostenlos","_"],"parts":["anlässlich","des","wurde","eine","herausgegeben",",","die","Mitglieder","erhielten"]},{"i":5,"row":["_","_","Beschlusses","_","_","Regelung","_","_","_","_","jemand","_","widersprach"],"parts":["mittels","eines","wurde","die","geändert",",","ohne","dass","öffentlich"]}];
+  var SBGAP = [{"i":0,"row":["_","_","_","Regens","_","_","Spiel","_","_","obwohl","_","Fans","_","_"],"parts":["wegen","des","starken","blieb","das","aus",",","viele","gekommen","waren"]},{"i":1,"row":["_","_","Bemühungen","_","_","Patient","_","_","_","_","wie","_","Arzt","_"],"parts":["trotz","aller","konnte","der","nicht","gerettet","werden",",","der","mitteilte"]},{"i":2,"row":["_","_","Wochen","_","_","Buch","_","_","_","die","_","überragend","_"],"parts":["innerhalb","weniger","war","das","ausverkauft",",","weil","Kritiken","waren"]},{"i":3,"row":["_","_","_","Kosten","_","Klärungsbedarf","_","bevor","_","Vertrag","_","_","_"],"parts":["hinsichtlich","der","genauen","besteht",",","der","unterschrieben","werden","kann"]},{"i":4,"row":["_","_","Jubiläums","_","_","Festschrift","_","_","_","alle","_","kostenlos","_"],"parts":["anlässlich","des","wurde","eine","herausgegeben",",","die","Mitglieder","erhielten"]},{"i":5,"row":["_","_","Beschlusses","_","_","Regelung","_","_","_","dass","_","öffentlich","_"],"parts":["mittels","eines","wurde","die","geändert",",","ohne","jemand","widersprach"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
     if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
