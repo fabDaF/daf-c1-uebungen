@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -332,7 +339,26 @@ var VORENTLASTUNG = [{"term": "die Präsentation (-en)", "def": "vorbereiteter V
 var GENUS_DATA = [{"word": "🎤 Präsentation", "cat": "die"}, {"word": "📊 Folie", "cat": "die"}, {"word": "👥 Publikum", "cat": "das"}, {"word": "🎯 Vortrag", "cat": "der"}, {"word": "💬 Stimme", "cat": "die"}, {"word": "👀 Augenkontakt", "cat": "der"}, {"word": "🤲 Gesten", "cat": "pl"}, {"word": "📋 Gliederung", "cat": "die"}];
 var LUECKE_DATA = [{"pre": "Die berühmte 10/20/30-Regel stammt vom Silicon-Valley-Investor Guy ", "ans": "Kawasaki", "post": " und stammt aus dem Jahr 2005."}, {"pre": "Steve Jobs hielt am 9. Januar ", "ans": "2007", "post": " in San Francisco die legendäre iPhone-Keynote."}, {"pre": "TED-Talks dauern maximal ", "ans": "18", "post": " Minuten — basierend auf neurokognitiven Aufmerksamkeits­studien."}, {"pre": "Albert Mehrabians berühmte Regel besagt: 7% Wörter, 38% Tonfall, ", "ans": "55", "post": "% Körpersprache."}, {"pre": "Edward Tufte kritisierte 2003 in seiner Schrift <em>The Cognitive Style of ", "ans": "PowerPoint", "post": "</em> das Programm scharf."}, {"pre": "TED wurde 1984 von Richard Saul ", "ans": "Wurman", "post": " in Monterey gegründet."}, {"pre": "Power-Posing nach Amy ", "ans": "Cuddy", "post": " (Harvard, 2010) erhöht messbar das Selbstvertrauen."}];
 var MC_DATA = [{"q": "Wer formulierte 2005 die 10/20/30-Regel für Präsentationen?", "opts": ["Guy Kawasaki", "Steve Jobs", "Edward Tufte", "Albert Mehrabian"], "correct": 0}, {"q": "Wie lange darf ein TED-Talk maximal dauern?", "opts": ["18 Minuten", "60 Minuten", "5 Minuten", "30 Minuten"], "correct": 0}, {"q": "Wann hielt Steve Jobs die legendäre iPhone-Keynote?", "opts": ["9. Januar 2007", "1. Januar 2000", "1. April 2010", "5. Mai 2015"], "correct": 0}, {"q": "Was besagt Mehrabians berühmte 7-38-55-Regel?", "opts": ["7% Wörter, 38% Tonfall, 55% Körpersprache", "Drei Sätze pro Folie", "Drei Folien pro Minute", "55% Augenkontakt"], "correct": 0}, {"q": "Wer kritisierte 2003 die <em>cognitive style</em> von PowerPoint?", "opts": ["Edward Tufte (Yale)", "Microsoft selbst", "Aristoteles", "Steve Jobs"], "correct": 0}, {"q": "Wer entwickelte das <em>Power Posing</em>-Konzept?", "opts": ["Amy Cuddy (Harvard) 2010", "Daniel Kahneman", "Carl Gustav Jung", "Aaron Beck"], "correct": 0}, {"q": "Welcher Antike-Klassiker formulierte die fünf Phasen der Rede (inventio, dispositio, …)?", "opts": ["Cicero (<em>De Oratore</em> 55 v. Chr.)", "Aristoteles", "Quintilian", "Demosthenes"], "correct": 0}];
-var satzbauData = [{"parts": ["eine", "gute", "Präsentation", "folgt", "der", "Struktur", "Einleitung", "Hauptteil", "Schluss"], "valid": ["eine", "gute", "Präsentation", "folgt", "der", "Struktur", "Einleitung", "Hauptteil", "Schluss"], "punct": "."}, {"parts": ["Steve", "Jobs", "übte", "jede", "Keynote", "über", "50", "Stunden", "lang"], "valid": ["Steve", "Jobs", "übte", "jede", "Keynote", "über", "50", "Stunden", "lang"], "punct": "."}, {"parts": ["Augenkontakt", "signalisiert", "Selbstsicherheit", "und", "Respekt", "vor", "dem", "Publikum"], "valid": ["Augenkontakt", "signalisiert", "Selbstsicherheit", "und", "Respekt", "vor", "dem", "Publikum"], "punct": "."}, {"parts": ["TED-Talks", "dauern", "maximal", "18", "Minuten"], "valid": ["TED-Talks", "dauern", "maximal", "18", "Minuten"], "punct": "."}, {"parts": ["Lampenfieber", "kann", "durch", "Atemübungen", "und", "Reframing", "gemildert", "werden"], "valid": ["Lampenfieber", "kann", "durch", "Atemübungen", "und", "Reframing", "gemildert", "werden"], "punct": "."}, {"parts": ["weniger", "Folien", "und", "klarere", "Struktur", "wirken", "professioneller"], "valid": ["weniger", "Folien", "und", "klarere", "Struktur", "wirken", "professioneller"], "punct": "."}];
+var satzbauData = [
+  { parts: ['eine', 'gute', 'Präsentation', 'folgt', 'der', 'klaren', 'Struktur', 'aus', 'Einleitung', ',', 'Hauptteil', 'und', 'überzeugendem', 'Schluss'],
+    valid: [['eine', 'gute', 'Präsentation', 'folgt', 'der', 'klaren', 'Struktur', 'aus', 'Einleitung', ',', 'Hauptteil', 'und', 'überzeugendem', 'Schluss']],
+    punct: '.' },
+  { parts: ['Steve', 'Jobs', 'übte', 'jede', 'einzelne', 'Keynote', 'über', '50', 'Stunden', 'lang', ',', 'bevor', 'er', 'sie', 'öffentlich', 'hielt'],
+    valid: [['Steve', 'Jobs', 'übte', 'jede', 'einzelne', 'Keynote', 'über', '50', 'Stunden', 'lang', ',', 'bevor', 'er', 'sie', 'öffentlich', 'hielt']],
+    punct: '.' },
+  { parts: ['Augenkontakt', 'signalisiert', 'Selbstsicherheit', 'und', 'Respekt', 'vor', 'dem', 'Publikum', ',', 'das', 'sich', 'dadurch', 'ernst', 'genommen', 'fühlt'],
+    valid: [['Augenkontakt', 'signalisiert', 'Selbstsicherheit', 'und', 'Respekt', 'vor', 'dem', 'Publikum', ',', 'das', 'sich', 'dadurch', 'ernst', 'genommen', 'fühlt']],
+    punct: '.' },
+  { parts: ['berühmte', 'TED-Talks', 'dauern', 'maximal', '18', 'Minuten', ',', 'weil', 'danach', 'die', 'Aufmerksamkeit', 'der', 'Zuhörer', 'rapide', 'nachlässt'],
+    valid: [['berühmte', 'TED-Talks', 'dauern', 'maximal', '18', 'Minuten', ',', 'weil', 'danach', 'die', 'Aufmerksamkeit', 'der', 'Zuhörer', 'rapide', 'nachlässt']],
+    punct: '.' },
+  { parts: ['Lampenfieber', 'kann', 'durch', 'Atemübungen', 'und', 'positives', 'Reframing', 'gemildert', 'werden', ',', 'sodass', 'die', 'Nervosität', 'beherrschbar', 'bleibt'],
+    valid: [['Lampenfieber', 'kann', 'durch', 'Atemübungen', 'und', 'positives', 'Reframing', 'gemildert', 'werden', ',', 'sodass', 'die', 'Nervosität', 'beherrschbar', 'bleibt']],
+    punct: '.' },
+  { parts: ['weniger', 'Folien', 'und', 'eine', 'klarere', 'Struktur', 'wirken', 'professioneller', ',', 'als', 'das', 'Publikum', 'mit', 'Text', 'zu', 'überfrachten'],
+    valid: [['weniger', 'Folien', 'und', 'eine', 'klarere', 'Struktur', 'wirken', 'professioneller', ',', 'als', 'das', 'Publikum', 'mit', 'Text', 'zu', 'überfrachten']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "🎤 the presentation", "artikel": "die", "de": "Präsentation", "plural": "Präsentationen"}, {"id": 2, "type": "n", "en": "📊 the slide", "artikel": "die", "de": "Folie", "plural": "Folien"}, {"id": 3, "type": "n", "en": "🎯 the lecture, talk", "artikel": "der", "de": "Vortrag", "plural": "Vorträge"}, {"id": 4, "type": "n", "en": "👥 the audience", "artikel": "das", "de": "Publikum", "plural": "–"}, {"id": 5, "type": "n", "en": "🧍 the body language", "artikel": "die", "de": "Körpersprache", "plural": "–"}, {"id": 6, "type": "n", "en": "👀 the eye contact", "artikel": "der", "de": "Augenkontakt", "plural": "–"}, {"id": 7, "type": "n", "en": "📋 the structure, outline", "artikel": "die", "de": "Gliederung", "plural": "Gliederungen"}, {"id": 8, "type": "n", "en": "📊 the visualization", "artikel": "die", "de": "Visualisierung", "plural": "Visualisierungen"}, {"id": 9, "type": "n", "en": "💬 the introduction", "artikel": "die", "de": "Einleitung", "plural": "Einleitungen"}, {"id": 10, "type": "n", "en": "😰 the stage fright", "artikel": "das", "de": "Lampenfieber", "plural": "–"}, {"id": 11, "type": "adj", "en": "🎯 captivating", "artikel": "", "de": "fesselnd", "plural": "–"}, {"id": 12, "type": "adj", "en": "👑 sovereign, composed", "artikel": "", "de": "souverän", "plural": "–"}, {"id": 13, "type": "v", "en": "🎤 to present", "artikel": "", "de": "präsentieren", "plural": "–"}, {"id": 14, "type": "v", "en": "🎯 to captivate", "artikel": "", "de": "fesseln", "plural": "–"}];
 
 var BEST_KEY = 'best_3068SC1_3_';
@@ -744,6 +770,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","Präsentation","_","_","_","Struktur","_","_","_","_","und","_","Schluss"],"parts":["eine","gute","folgt","der","klaren","aus","Einleitung",",","Hauptteil","überzeugendem"]},{"i":1,"row":["_","_","_","jede","_","_","_","50","_","_","_","bevor","_","_","öffentlich","_"],"parts":["Steve","Jobs","übte","einzelne","Keynote","über","Stunden","lang",",","er","sie","hielt"]},{"i":2,"row":["_","_","Selbstsicherheit","_","Respekt","_","_","_","_","das","_","dadurch","_","_","_"],"parts":["Augenkontakt","signalisiert","und","vor","dem","Publikum",",","sich","ernst","genommen","fühlt"]},{"i":3,"row":["_","_","_","maximal","_","_","_","weil","_","_","Aufmerksamkeit","_","_","rapide","_"],"parts":["berühmte","TED-Talks","dauern","18","Minuten",",","danach","die","der","Zuhörer","nachlässt"]},{"i":4,"row":["_","_","_","Atemübungen","_","positives","_","_","_","_","_","die","_","beherrschbar","_"],"parts":["Lampenfieber","kann","durch","und","Reframing","gemildert","werden",",","sodass","Nervosität","bleibt"]},{"i":5,"row":["_","_","_","eine","_","Struktur","_","_","_","_","das","_","_","Text","_","_"],"parts":["weniger","Folien","und","klarere","wirken","professioneller",",","als","Publikum","mit","zu","überfrachten"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>

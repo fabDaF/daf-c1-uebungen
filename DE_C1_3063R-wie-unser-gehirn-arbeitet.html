@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -332,7 +339,26 @@ var VORENTLASTUNG = [{"term": "das Gehirn (-e)", "def": "zentrales Steuerorgan d
 var GENUS_DATA = [{"word": "🧠 Gehirn", "cat": "das"}, {"word": "⚡ Neuron", "cat": "das"}, {"word": "🔌 Synapse", "cat": "die"}, {"word": "🩸 Blut", "cat": "das"}, {"word": "💭 Gedanke", "cat": "der"}, {"word": "😨 Amygdala", "cat": "die"}, {"word": "🧬 Hippocampus", "cat": "der"}, {"word": "📚 Erinnerungen", "cat": "pl"}];
 var LUECKE_DATA = [{"pre": "Das menschliche Gehirn enthält etwa ", "ans": "86", "post": " Milliarden Neuronen."}, {"pre": "Das Großhirn ist in zwei ", "ans": "Hemisphären", "post": " unterteilt."}, {"pre": "Der ", "ans": "Hippocampus", "post": " ist verantwortlich für die Bildung neuer episodischer Erinnerungen."}, {"pre": "Die ", "ans": "Amygdala", "post": " ist das Furchtzentrum des Gehirns."}, {"pre": "Der berühmte Patient H.M. (Henry Molaison) verlor seine Erinnerungs­fähigkeit nach einer Hirnoperation im Jahr ", "ans": "1953", "post": "."}, {"pre": "Der weit verbreitete Mythos behauptet fälschlich, wir nutzten nur ", "ans": "10", "post": " Prozent unseres Gehirns."}, {"pre": "Die ", "ans": "Synapse", "post": " ist die Verbindungs­stelle zwischen zwei Neuronen."}];
 var MC_DATA = [{"q": "Wie viele Neuronen hat das menschliche Gehirn etwa?", "opts": ["86 Milliarden", "1 Million", "100 Millionen", "10 Milliarden"], "correct": 0}, {"q": "In welche vier Hauptbereiche teilt sich das Gehirn grob?", "opts": ["Großhirn, Kleinhirn, Zwischenhirn, Hirnstamm", "vier Hemisphären", "Cortex, Subcortex, Stamm, Mark", "Frontal-, Parietal-, Temporal-, Okzipitallappen"], "correct": 0}, {"q": "Wer war Henry Molaison (H.M.)?", "opts": ["Patient mit Gedächtnisverlust nach 1953-Operation", "ein bedeutender Hirnforscher", "ein Neuroanatom", "ein Philosoph"], "correct": 0}, {"q": "Was ist die Hauptaufgabe des Hippocampus?", "opts": ["Bildung neuer Erinnerungen", "Steuerung der Atmung", "Verarbeitung von Sehreizen", "Hörverarbeitung"], "correct": 0}, {"q": "Welche Funktion sitzt im präfrontalen Cortex?", "opts": ["Entscheidung, Planung, Selbstkontrolle", "Hörzentrum", "Sehzentrum", "Gleichgewicht"], "correct": 0}, {"q": "Was sagt die Wissenschaft zum 10-Prozent-Mythos?", "opts": ["er ist falsch — wir nutzen alle Hirnregionen", "er stimmt — nur 10% sind aktiv", "er stimmt — etwa 30%", "die Frage ist ungeklärt"], "correct": 0}, {"q": "Was bedeutet <em>Plastizität</em> des Gehirns?", "opts": ["lebenslange Veränderbarkeit durch Lernen", "physische Verformbarkeit", "Sprachlosigkeit", "Schmerzempfindlichkeit"], "correct": 0}];
-var satzbauData = [{"parts": ["das", "menschliche", "Gehirn", "wiegt", "etwa", "1,4", "Kilogramm"], "valid": ["das", "menschliche", "Gehirn", "wiegt", "etwa", "1,4", "Kilogramm"], "punct": "."}, {"parts": ["Henry", "Molaison", "verlor", "1953", "seine", "Erinnerungsfähigkeit", "nach", "einer", "Operation"], "valid": ["Henry", "Molaison", "verlor", "1953", "seine", "Erinnerungsfähigkeit", "nach", "einer", "Operation"], "punct": "."}, {"parts": ["die", "Amygdala", "verarbeitet", "Furcht", "und", "emotionales", "Erleben"], "valid": ["die", "Amygdala", "verarbeitet", "Furcht", "und", "emotionales", "Erleben"], "punct": "."}, {"parts": ["Londoner", "Taxifahrer", "haben", "einen", "vergrößerten", "Hippocampus"], "valid": ["Londoner", "Taxifahrer", "haben", "einen", "vergrößerten", "Hippocampus"], "punct": "."}, {"parts": ["der", "präfrontale", "Cortex", "reift", "erst", "im", "25.", "Lebensjahr", "vollständig", "aus"], "valid": ["der", "präfrontale", "Cortex", "reift", "erst", "im", "25.", "Lebensjahr", "vollständig", "aus"], "punct": "."}, {"parts": ["im", "Schlaf", "konsolidiert", "das", "Gehirn", "die", "Erinnerungen", "des", "Tages"], "valid": ["im", "Schlaf", "konsolidiert", "das", "Gehirn", "die", "Erinnerungen", "des", "Tages"], "punct": "."}];
+var satzbauData = [
+  { parts: ['das', 'menschliche', 'Gehirn', 'wiegt', 'nur', 'etwa', 'anderthalb', 'Kilogramm', ',', 'verbraucht', 'aber', 'ein', 'Fünftel', 'unserer', 'Energie'],
+    valid: [['das', 'menschliche', 'Gehirn', 'wiegt', 'nur', 'etwa', 'anderthalb', 'Kilogramm', ',', 'verbraucht', 'aber', 'ein', 'Fünftel', 'unserer', 'Energie']],
+    punct: '.' },
+  { parts: ['Henry', 'Molaison', 'verlor', '1953', 'seine', 'Erinnerungsfähigkeit', 'nach', 'einer', 'Operation', ',', 'die', 'ihn', 'zum', 'berühmtesten', 'Patienten', 'machte'],
+    valid: [['Henry', 'Molaison', 'verlor', '1953', 'seine', 'Erinnerungsfähigkeit', 'nach', 'einer', 'Operation', ',', 'die', 'ihn', 'zum', 'berühmtesten', 'Patienten', 'machte']],
+    punct: '.' },
+  { parts: ['die', 'Amygdala', 'verarbeitet', 'Furcht', 'und', 'emotionales', 'Erleben', ',', 'weshalb', 'sie', 'bei', 'Gefahr', 'blitzschnell', 'reagiert'],
+    valid: [['die', 'Amygdala', 'verarbeitet', 'Furcht', 'und', 'emotionales', 'Erleben', ',', 'weshalb', 'sie', 'bei', 'Gefahr', 'blitzschnell', 'reagiert']],
+    punct: '.' },
+  { parts: ['Londoner', 'Taxifahrer', 'haben', 'einen', 'vergrößerten', 'Hippocampus', ',', 'weil', 'sie', 'den', 'ganzen', 'Stadtplan', 'auswendig', 'lernen', 'müssen'],
+    valid: [['Londoner', 'Taxifahrer', 'haben', 'einen', 'vergrößerten', 'Hippocampus', ',', 'weil', 'sie', 'den', 'ganzen', 'Stadtplan', 'auswendig', 'lernen', 'müssen']],
+    punct: '.' },
+  { parts: ['der', 'präfrontale', 'Cortex', 'reift', 'erst', 'im', '25.', 'Lebensjahr', 'vollständig', 'aus', ',', 'was', 'riskantes', 'Verhalten', 'Jugendlicher', 'erklärt'],
+    valid: [['der', 'präfrontale', 'Cortex', 'reift', 'erst', 'im', '25.', 'Lebensjahr', 'vollständig', 'aus', ',', 'was', 'riskantes', 'Verhalten', 'Jugendlicher', 'erklärt']],
+    punct: '.' },
+  { parts: ['im', 'Schlaf', 'konsolidiert', 'das', 'Gehirn', 'die', 'Erinnerungen', 'des', 'Tages', ',', 'damit', 'wir', 'das', 'Gelernte', 'dauerhaft', 'behalten'],
+    valid: [['im', 'Schlaf', 'konsolidiert', 'das', 'Gehirn', 'die', 'Erinnerungen', 'des', 'Tages', ',', 'damit', 'wir', 'das', 'Gelernte', 'dauerhaft', 'behalten']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "🧠 the brain", "artikel": "das", "de": "Gehirn", "plural": "Gehirne"}, {"id": 2, "type": "n", "en": "⚡ the neuron", "artikel": "das", "de": "Neuron", "plural": "Neuronen"}, {"id": 3, "type": "n", "en": "🔌 the synapse", "artikel": "die", "de": "Synapse", "plural": "Synapsen"}, {"id": 4, "type": "n", "en": "🧬 the hippocampus", "artikel": "der", "de": "Hippocampus", "plural": "Hippocampi"}, {"id": 5, "type": "n", "en": "😨 the amygdala", "artikel": "die", "de": "Amygdala", "plural": "Amygdalae"}, {"id": 6, "type": "n", "en": "🎯 the prefrontal cortex", "artikel": "der", "de": "präfrontale Cortex", "plural": "–"}, {"id": 7, "type": "n", "en": "📚 the memory", "artikel": "das", "de": "Gedächtnis", "plural": "–"}, {"id": 8, "type": "n", "en": "🧠 the cerebellum", "artikel": "das", "de": "Kleinhirn", "plural": "–"}, {"id": 9, "type": "n", "en": "💭 the thought", "artikel": "der", "de": "Gedanke", "plural": "Gedanken"}, {"id": 10, "type": "n", "en": "🔄 the plasticity", "artikel": "die", "de": "Plastizität", "plural": "–"}, {"id": 11, "type": "adj", "en": "🧠 neuronal", "artikel": "", "de": "neuronal", "plural": "–"}, {"id": 12, "type": "adj", "en": "🔄 plastic, malleable", "artikel": "", "de": "plastisch", "plural": "–"}, {"id": 13, "type": "v", "en": "💭 to think", "artikel": "", "de": "denken", "plural": "–"}, {"id": 14, "type": "v", "en": "📚 to remember", "artikel": "", "de": "sich erinnern", "plural": "–"}];
 
 var BEST_KEY = 'best_3063RC1_3_';
@@ -744,6 +770,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","Gehirn","_","_","_","anderthalb","_","_","_","aber","_","_","_","Energie"],"parts":["das","menschliche","wiegt","nur","etwa","Kilogramm",",","verbraucht","ein","Fünftel","unserer"]},{"i":1,"row":["_","_","_","1953","_","_","_","einer","_","_","die","_","_","_","Patienten","_"],"parts":["Henry","Molaison","verlor","seine","Erinnerungsfähigkeit","nach","Operation",",","ihn","zum","berühmtesten","machte"]},{"i":2,"row":["_","_","_","Furcht","_","emotionales","_","_","_","sie","_","_","blitzschnell","_"],"parts":["die","Amygdala","verarbeitet","und","Erleben",",","weshalb","bei","Gefahr","reagiert"]},{"i":3,"row":["_","_","_","_","_","Hippocampus","_","_","sie","den","_","_","auswendig","_","_"],"parts":["Londoner","Taxifahrer","haben","einen","vergrößerten",",","weil","ganzen","Stadtplan","lernen","müssen"]},{"i":4,"row":["_","_","Cortex","_","_","_","_","Lebensjahr","_","_","_","was","_","_","Jugendlicher","_"],"parts":["der","präfrontale","reift","erst","im","25.","vollständig","aus",",","riskantes","Verhalten","erklärt"]},{"i":5,"row":["_","_","_","das","_","_","Erinnerungen","_","Tages","_","_","_","_","Gelernte","_","_"],"parts":["im","Schlaf","konsolidiert","Gehirn","die","des",",","damit","wir","das","dauerhaft","behalten"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>

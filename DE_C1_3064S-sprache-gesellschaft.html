@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -332,7 +339,26 @@ var VORENTLASTUNG = [{"term": "die Linguistik (Sg.)", "def": "wissenschaftliche 
 var GENUS_DATA = [{"word": "💬 Wort", "cat": "das"}, {"word": "🌍 Sprache", "cat": "die"}, {"word": "🧠 Denken", "cat": "das"}, {"word": "📚 Linguistik", "cat": "die"}, {"word": "🔄 Metapher", "cat": "die"}, {"word": "🎯 Diskurs", "cat": "der"}, {"word": "📜 Sätze", "cat": "pl"}, {"word": "💭 Idee", "cat": "die"}];
 var LUECKE_DATA = [{"pre": "Die These, dass Sprache das Denken prägt, heißt ", "ans": "Sapir", "post": "-Whorf-Hypothese."}, {"pre": "Im Stanford-Experiment 2011 von Thibodeau und Boroditsky wurde Kriminalität entweder als ", "ans": "Virus", "post": " oder als wildes Tier dargestellt."}, {"pre": "George ", "ans": "Lakoff", "post": " veröffentlichte 1980 mit Mark Johnson das einflussreiche Buch <em>Metaphors We Live By</em>."}, {"pre": "Die australische Aborigine-Sprache ", "ans": "Guugu", "post": " Yimithirr nutzt Himmelsrichtungen statt links/rechts."}, {"pre": "Edward Sapirs Schüler hieß Benjamin ", "ans": "Whorf", "post": " und untersuchte die Hopi-Sprache."}, {"pre": "Die wissenschaftliche Erforschung der Sprache wird ", "ans": "Linguistik", "post": " genannt."}, {"pre": "Eine bildliche Übertragung in der Sprache nennt man eine ", "ans": "Metapher", "post": "."}];
 var MC_DATA = [{"q": "Wer formulierte 1980 mit Mark Johnson <em>Metaphors We Live By</em>?", "opts": ["George Lakoff", "Noam Chomsky", "Steven Pinker", "Ferdinand de Saussure"], "correct": 0}, {"q": "Was besagt die Sapir-Whorf-Hypothese?", "opts": ["Sprache beeinflusst das Denken", "Sprache ist universell und gleich für alle", "Sprache ist angeboren", "Sprache verändert sich nicht"], "correct": 0}, {"q": "Welche Sprache nutzt Himmelsrichtungen statt <em>links/rechts</em>?", "opts": ["Guugu Yimithirr (Aborigine)", "Mandarin-Chinesisch", "Russisch", "Französisch"], "correct": 0}, {"q": "Wann wurde das Stanford-Experiment zu Kriminalität-Metaphern publiziert?", "opts": ["2011 (PLoS ONE)", "2000", "2020", "1985"], "correct": 0}, {"q": "Wer schrieb 1947 das Werk <em>LTI – Lingua Tertii Imperii</em> über die Sprache des NS?", "opts": ["Victor Klemperer", "Theodor Adorno", "Hannah Arendt", "Walter Benjamin"], "correct": 0}, {"q": "Was bedeutet <em>linguistische Relativität</em>?", "opts": ["Verschiedene Sprachen → unterschiedliche Weltsichten", "Sprachen sind alle gleich", "Linguistik ist relativ", "Sprache ist absolut universal"], "correct": 0}, {"q": "Welcher Philosoph entwickelte die Diskurs-Analyse?", "opts": ["Michel Foucault", "Immanuel Kant", "John Locke", "Friedrich Nietzsche"], "correct": 0}];
-var satzbauData = [{"parts": ["die", "Sprache", "prägt", "unser", "Denken", "in", "tiefgreifender", "Weise"], "valid": ["die", "Sprache", "prägt", "unser", "Denken", "in", "tiefgreifender", "Weise"], "punct": "."}, {"parts": ["Metaphern", "sind", "nicht", "nur", "Schmuck", "sondern", "Denkwerkzeuge"], "valid": ["Metaphern", "sind", "nicht", "nur", "Schmuck", "sondern", "Denkwerkzeuge"], "punct": "."}, {"parts": ["George", "Lakoff", "publizierte", "1980", "sein", "einflussreiches", "Werk"], "valid": ["George", "Lakoff", "publizierte", "1980", "sein", "einflussreiches", "Werk"], "punct": "."}, {"parts": ["Guugu", "Yimithirr", "nutzt", "Himmelsrichtungen", "für", "räumliche", "Orientierung"], "valid": ["Guugu", "Yimithirr", "nutzt", "Himmelsrichtungen", "für", "räumliche", "Orientierung"], "punct": "."}, {"parts": ["Sapir", "und", "Whorf", "entwickelten", "die", "These", "der", "sprachlichen", "Relativität"], "valid": ["Sapir", "und", "Whorf", "entwickelten", "die", "These", "der", "sprachlichen", "Relativität"], "punct": "."}, {"parts": ["die", "Wortwahl", "beeinflusst", "direkt", "unsere", "Wahrnehmung", "der", "Realität"], "valid": ["die", "Wortwahl", "beeinflusst", "direkt", "unsere", "Wahrnehmung", "der", "Realität"], "punct": "."}];
+var satzbauData = [
+  { parts: ['die', 'Sprache', 'prägt', 'unser', 'Denken', 'in', 'tiefgreifender', 'Weise', ',', 'obwohl', 'uns', 'das', 'im', 'Alltag', 'kaum', 'bewusst', 'wird'],
+    valid: [['die', 'Sprache', 'prägt', 'unser', 'Denken', 'in', 'tiefgreifender', 'Weise', ',', 'obwohl', 'uns', 'das', 'im', 'Alltag', 'kaum', 'bewusst', 'wird']],
+    punct: '.' },
+  { parts: ['Metaphern', 'sind', 'nicht', 'nur', 'sprachlicher', 'Schmuck', ',', 'sondern', 'wirken', 'als', 'mächtige', 'Werkzeuge', 'unseres', 'Denkens'],
+    valid: [['Metaphern', 'sind', 'nicht', 'nur', 'sprachlicher', 'Schmuck', ',', 'sondern', 'wirken', 'als', 'mächtige', 'Werkzeuge', 'unseres', 'Denkens']],
+    punct: '.' },
+  { parts: ['George', 'Lakoff', 'publizierte', '1980', 'sein', 'einflussreiches', 'Werk', ',', 'das', 'die', 'Metaphernforschung', 'von', 'Grund', 'auf', 'veränderte'],
+    valid: [['George', 'Lakoff', 'publizierte', '1980', 'sein', 'einflussreiches', 'Werk', ',', 'das', 'die', 'Metaphernforschung', 'von', 'Grund', 'auf', 'veränderte']],
+    punct: '.' },
+  { parts: ['die', 'Sprache', 'Guugu', 'Yimithirr', 'nutzt', 'Himmelsrichtungen', 'zur', 'räumlichen', 'Orientierung', ',', 'weshalb', 'ihre', 'Sprecher', 'nie', 'die', 'Richtung', 'verlieren'],
+    valid: [['die', 'Sprache', 'Guugu', 'Yimithirr', 'nutzt', 'Himmelsrichtungen', 'zur', 'räumlichen', 'Orientierung', ',', 'weshalb', 'ihre', 'Sprecher', 'nie', 'die', 'Richtung', 'verlieren']],
+    punct: '.' },
+  { parts: ['Sapir', 'und', 'Whorf', 'entwickelten', 'die', 'These', 'der', 'sprachlichen', 'Relativität', ',', 'die', 'bis', 'heute', 'heftig', 'diskutiert', 'wird'],
+    valid: [['Sapir', 'und', 'Whorf', 'entwickelten', 'die', 'These', 'der', 'sprachlichen', 'Relativität', ',', 'die', 'bis', 'heute', 'heftig', 'diskutiert', 'wird']],
+    punct: '.' },
+  { parts: ['die', 'Wortwahl', 'beeinflusst', 'direkt', 'unsere', 'Wahrnehmung', 'der', 'Realität', ',', 'wie', 'zahlreiche', 'psychologische', 'Experimente', 'belegt', 'haben'],
+    valid: [['die', 'Wortwahl', 'beeinflusst', 'direkt', 'unsere', 'Wahrnehmung', 'der', 'Realität', ',', 'wie', 'zahlreiche', 'psychologische', 'Experimente', 'belegt', 'haben']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "📚 the linguistics", "artikel": "die", "de": "Linguistik", "plural": "–"}, {"id": 2, "type": "n", "en": "🔄 the metaphor", "artikel": "die", "de": "Metapher", "plural": "Metaphern"}, {"id": 3, "type": "n", "en": "🎯 the choice of words", "artikel": "die", "de": "Wortwahl", "plural": "–"}, {"id": 4, "type": "n", "en": "🧠 the thought pattern", "artikel": "das", "de": "Denkmuster", "plural": "Denkmuster"}, {"id": 5, "type": "n", "en": "🌍 the language", "artikel": "die", "de": "Sprache", "plural": "Sprachen"}, {"id": 6, "type": "n", "en": "👁️ the perception", "artikel": "die", "de": "Wahrnehmung", "plural": "Wahrnehmungen"}, {"id": 7, "type": "n", "en": "💬 the discourse", "artikel": "der", "de": "Diskurs", "plural": "Diskurse"}, {"id": 8, "type": "n", "en": "🎯 the manipulation", "artikel": "die", "de": "Manipulation", "plural": "Manipulationen"}, {"id": 9, "type": "n", "en": "🌎 the worldview", "artikel": "die", "de": "Weltsicht", "plural": "Weltsichten"}, {"id": 10, "type": "n", "en": "📜 the term, expression", "artikel": "der", "de": "Begriff", "plural": "Begriffe"}, {"id": 11, "type": "adj", "en": "📚 linguistic", "artikel": "", "de": "linguistisch", "plural": "–"}, {"id": 12, "type": "adj", "en": "🔄 metaphorical", "artikel": "", "de": "metaphorisch", "plural": "–"}, {"id": 13, "type": "v", "en": "🎯 to characterize, shape", "artikel": "", "de": "prägen", "plural": "–"}, {"id": 14, "type": "v", "en": "👁️ to perceive", "artikel": "", "de": "wahrnehmen", "plural": "–"}];
 
 var BEST_KEY = 'best_3064SC1_3_';
@@ -744,6 +770,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","_","unser","_","_","tiefgreifender","_","_","_","_","das","_","_","kaum","_","_"],"parts":["die","Sprache","prägt","Denken","in","Weise",",","obwohl","uns","im","Alltag","bewusst","wird"]},{"i":1,"row":["_","_","_","nur","_","Schmuck","_","_","_","_","_","Werkzeuge","_","Denkens"],"parts":["Metaphern","sind","nicht","sprachlicher",",","sondern","wirken","als","mächtige","unseres"]},{"i":2,"row":["_","_","_","1980","_","_","Werk","_","_","_","Metaphernforschung","_","Grund","_","_"],"parts":["George","Lakoff","publizierte","sein","einflussreiches",",","das","die","von","auf","veränderte"]},{"i":3,"row":["_","_","Guugu","_","_","_","zur","_","_","_","_","_","Sprecher","_","_","Richtung","_"],"parts":["die","Sprache","Yimithirr","nutzt","Himmelsrichtungen","räumlichen","Orientierung",",","weshalb","ihre","nie","die","verlieren"]},{"i":4,"row":["_","_","Whorf","_","_","_","der","_","_","_","die","_","_","heftig","_","_"],"parts":["Sapir","und","entwickelten","die","These","sprachlichen","Relativität",",","bis","heute","diskutiert","wird"]},{"i":5,"row":["_","_","_","_","unsere","_","der","_","_","_","zahlreiche","_","Experimente","_","_"],"parts":["die","Wortwahl","beeinflusst","direkt","Wahrnehmung","Realität",",","wie","psychologische","belegt","haben"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>

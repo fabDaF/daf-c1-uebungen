@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -332,7 +339,26 @@ var VORENTLASTUNG = [{"term": "die Erzählung (-en)", "def": "literarische Form 
 var GENUS_DATA = [{"word": "📖 Erzählung", "cat": "die"}, {"word": "👁️ Auge", "cat": "das"}, {"word": "🌍 Tal", "cat": "das"}, {"word": "👤 Außenseiter", "cat": "der"}, {"word": "🎭 Allegorie", "cat": "die"}, {"word": "🔍 Wahrnehmung", "cat": "die"}, {"word": "📜 Sprichwort", "cat": "das"}, {"word": "🗣️ Worte", "cat": "pl"}];
 var LUECKE_DATA = [{"pre": "H.G. Wells lebte von ", "ans": "1866", "post": " bis 1946 und gilt als Vater der Science-Fiction."}, {"pre": "<em>Das Land der Blinden</em> erschien zuerst im Jahr ", "ans": "1904", "post": " im Strand Magazine."}, {"pre": "Das berühmte Sprichwort lautet: <em>Im Land der Blinden ist der ", "ans": "Einäugige", "post": " König.</em>"}, {"pre": "Der Protagonist der Erzählung heißt ", "ans": "Nunez", "post": " und stürzt von einem Eishang in ein abgelegenes Tal."}, {"pre": "Wells' bekanntestes Marsianer-Werk heißt <em>Krieg der ", "ans": "Welten", "post": "</em> (1898)."}, {"pre": "1939 schrieb Wells eine zweite Fassung mit einem dramatischeren ", "ans": "Ende", "post": " — das Tal versinkt durch ein Erdbeben."}, {"pre": "José Saramagos Roman <em>Die ", "ans": "Stadt", "post": " der Blinden</em> (1995) ist eine inverse Variante zu Wells' Vorlage."}];
 var MC_DATA = [{"q": "Wer schrieb die Erzählung <em>Das Land der Blinden</em>?", "opts": ["H.G. Wells", "Jules Verne", "Mark Twain", "Joseph Conrad"], "correct": 0}, {"q": "Wann erschien die Erzählung erstmals?", "opts": ["1904", "1850", "1920", "1880"], "correct": 0}, {"q": "Welches berühmte Sprichwort durchspielt die Erzählung?", "opts": ["Im Land der Blinden ist der Einäugige König", "Aller Anfang ist schwer", "Vorsicht ist besser als Nachsicht", "Lerne fürs Leben"], "correct": 0}, {"q": "Wie heißt der Protagonist der Erzählung?", "opts": ["Nunez", "Pedro", "Correa", "Wells"], "correct": 0}, {"q": "Welches berühmte Werk schrieb H.G. Wells noch?", "opts": ["<em>Krieg der Welten</em>", "<em>Robinson Crusoe</em>", "<em>Don Quijote</em>", "<em>Moby Dick</em>"], "correct": 0}, {"q": "Welcher Nobelpreisträger schrieb 1995 mit <em>Die Stadt der Blinden</em> eine inverse Variante?", "opts": ["José Saramago (Portugal)", "Mario Vargas Llosa", "Gabriel García Márquez", "Octavio Paz"], "correct": 0}, {"q": "Welche literarische Gattung gilt H.G. Wells als Mitbegründer?", "opts": ["Science-Fiction", "Krimi", "Romantik", "Realismus"], "correct": 0}];
-var satzbauData = [{"parts": ["H.G.", "Wells", "schrieb", "<em>Das Land der Blinden</em>", "im", "Jahr", "1904"], "valid": ["H.G.", "Wells", "schrieb", "<em>Das Land der Blinden</em>", "im", "Jahr", "1904"], "punct": "."}, {"parts": ["der", "Protagonist", "Nunez", "stürzt", "in", "ein", "abgelegenes", "Tal", "der", "Anden"], "valid": ["der", "Protagonist", "Nunez", "stürzt", "in", "ein", "abgelegenes", "Tal", "der", "Anden"], "punct": "."}, {"parts": ["die", "Bewohner", "des", "Tals", "sind", "seit", "vierzehn", "Generationen", "blind"], "valid": ["die", "Bewohner", "des", "Tals", "sind", "seit", "vierzehn", "Generationen", "blind"], "punct": "."}, {"parts": ["die", "Erzählung", "ist", "eine", "Allegorie", "über", "Wahrnehmung", "und", "Macht"], "valid": ["die", "Erzählung", "ist", "eine", "Allegorie", "über", "Wahrnehmung", "und", "Macht"], "punct": "."}, {"parts": ["José", "Saramago", "veröffentlichte", "1995", "eine", "inverse", "Variante"], "valid": ["José", "Saramago", "veröffentlichte", "1995", "eine", "inverse", "Variante"], "punct": "."}, {"parts": ["das", "Sprichwort", "stammt", "ursprünglich", "von", "Erasmus", "von", "Rotterdam"], "valid": ["das", "Sprichwort", "stammt", "ursprünglich", "von", "Erasmus", "von", "Rotterdam"], "punct": "."}];
+var satzbauData = [
+  { parts: ['H.G.', 'Wells', 'schrieb', 'seine', 'berühmte', 'Erzählung', 'im', 'Jahr', '1904', ',', 'die', 'heute', 'als', 'moderne', 'Parabel', 'gilt'],
+    valid: [['H.G.', 'Wells', 'schrieb', 'seine', 'berühmte', 'Erzählung', 'im', 'Jahr', '1904', ',', 'die', 'heute', 'als', 'moderne', 'Parabel', 'gilt']],
+    punct: '.' },
+  { parts: ['der', 'Protagonist', 'Nunez', 'stürzt', 'in', 'ein', 'abgelegenes', 'Tal', 'der', 'Anden', ',', 'aus', 'dem', 'es', 'kein', 'Entkommen', 'gibt'],
+    valid: [['der', 'Protagonist', 'Nunez', 'stürzt', 'in', 'ein', 'abgelegenes', 'Tal', 'der', 'Anden', ',', 'aus', 'dem', 'es', 'kein', 'Entkommen', 'gibt']],
+    punct: '.' },
+  { parts: ['die', 'Bewohner', 'des', 'Tals', 'sind', 'seit', 'vierzehn', 'Generationen', 'blind', ',', 'weshalb', 'sie', 'das', 'Sehen', 'für', 'Unsinn', 'halten'],
+    valid: [['die', 'Bewohner', 'des', 'Tals', 'sind', 'seit', 'vierzehn', 'Generationen', 'blind', ',', 'weshalb', 'sie', 'das', 'Sehen', 'für', 'Unsinn', 'halten']],
+    punct: '.' },
+  { parts: ['die', 'Erzählung', 'ist', 'eine', 'Allegorie', 'über', 'Wahrnehmung', 'und', 'Macht', ',', 'die', 'zum', 'Nachdenken', 'über', 'Mehrheiten', 'anregt'],
+    valid: [['die', 'Erzählung', 'ist', 'eine', 'Allegorie', 'über', 'Wahrnehmung', 'und', 'Macht', ',', 'die', 'zum', 'Nachdenken', 'über', 'Mehrheiten', 'anregt']],
+    punct: '.' },
+  { parts: ['José', 'Saramago', 'veröffentlichte', '1995', 'eine', 'inverse', 'Variante', ',', 'in', 'der', 'plötzlich', 'eine', 'ganze', 'Stadt', 'erblindet'],
+    valid: [['José', 'Saramago', 'veröffentlichte', '1995', 'eine', 'inverse', 'Variante', ',', 'in', 'der', 'plötzlich', 'eine', 'ganze', 'Stadt', 'erblindet']],
+    punct: '.' },
+  { parts: ['das', 'bekannte', 'Sprichwort', 'stammt', 'ursprünglich', 'von', 'Erasmus', 'von', 'Rotterdam', ',', 'der', 'es', 'auf', 'Latein', 'formuliert', 'hatte'],
+    valid: [['das', 'bekannte', 'Sprichwort', 'stammt', 'ursprünglich', 'von', 'Erasmus', 'von', 'Rotterdam', ',', 'der', 'es', 'auf', 'Latein', 'formuliert', 'hatte']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "📖 the narrative", "artikel": "die", "de": "Erzählung", "plural": "Erzählungen"}, {"id": 2, "type": "n", "en": "📜 the proverb", "artikel": "das", "de": "Sprichwort", "plural": "Sprichwörter"}, {"id": 3, "type": "n", "en": "🎭 the allegory", "artikel": "die", "de": "Allegorie", "plural": "Allegorien"}, {"id": 4, "type": "n", "en": "🔍 the perception", "artikel": "die", "de": "Wahrnehmung", "plural": "Wahrnehmungen"}, {"id": 5, "type": "n", "en": "👤 the outsider", "artikel": "der", "de": "Außenseiter", "plural": "Außenseiter"}, {"id": 6, "type": "n", "en": "🚫 the taboo", "artikel": "das", "de": "Tabu", "plural": "Tabus"}, {"id": 7, "type": "n", "en": "🌑 the dystopia", "artikel": "die", "de": "Dystopie", "plural": "Dystopien"}, {"id": 8, "type": "n", "en": "👁️ the eye", "artikel": "das", "de": "Auge", "plural": "Augen"}, {"id": 9, "type": "n", "en": "🌳 the valley", "artikel": "das", "de": "Tal", "plural": "Täler"}, {"id": 10, "type": "n", "en": "👨‍🦯 the blind person", "artikel": "der", "de": "Blinde", "plural": "Blinden"}, {"id": 11, "type": "adj", "en": "🎭 allegorical", "artikel": "", "de": "allegorisch", "plural": "–"}, {"id": 12, "type": "adj", "en": "👤 isolated", "artikel": "", "de": "abgelegen", "plural": "–"}, {"id": 13, "type": "v", "en": "🔍 to perceive", "artikel": "", "de": "wahrnehmen", "plural": "–"}, {"id": 14, "type": "v", "en": "🎭 to interpret", "artikel": "", "de": "interpretieren", "plural": "–"}];
 
 var BEST_KEY = 'best_3067RC1_3_';
@@ -744,6 +770,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","_","seine","_","_","_","Jahr","_","_","_","heute","_","_","Parabel","_"],"parts":["H.G.","Wells","schrieb","berühmte","Erzählung","im","1904",",","die","als","moderne","gilt"]},{"i":1,"row":["_","_","Nunez","_","_","_","_","Tal","_","_","_","_","dem","_","_","Entkommen","_"],"parts":["der","Protagonist","stürzt","in","ein","abgelegenes","der","Anden",",","aus","es","kein","gibt"]},{"i":2,"row":["_","_","_","Tals","_","_","_","_","blind","_","_","_","das","_","_","Unsinn","_"],"parts":["die","Bewohner","des","sind","seit","vierzehn","Generationen",",","weshalb","sie","Sehen","für","halten"]},{"i":3,"row":["_","_","_","eine","_","_","_","und","_","_","die","_","_","_","Mehrheiten","_"],"parts":["die","Erzählung","ist","Allegorie","über","Wahrnehmung","Macht",",","zum","Nachdenken","über","anregt"]},{"i":4,"row":["_","_","_","1995","_","_","Variante","_","_","_","plötzlich","_","_","Stadt","_"],"parts":["José","Saramago","veröffentlichte","eine","inverse",",","in","der","eine","ganze","erblindet"]},{"i":5,"row":["_","_","Sprichwort","_","_","_","Erasmus","_","Rotterdam","_","_","_","_","Latein","_","_"],"parts":["das","bekannte","stammt","ursprünglich","von","von",",","der","es","auf","formuliert","hatte"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>
