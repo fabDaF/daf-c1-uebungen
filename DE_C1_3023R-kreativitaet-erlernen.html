@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -334,7 +341,26 @@ var VORENTLASTUNG = [{"term": "die Kreativität (Sg.)", "def": "Fähigkeit, Neue
 var GENUS_DATA = [{"word": "💡 Idee", "cat": "die"}, {"word": "🎨 Kunst", "cat": "die"}, {"word": "🧠 Gehirn", "cat": "das"}, {"word": "🖼️ Werk", "cat": "das"}, {"word": "✏️ Stift", "cat": "der"}, {"word": "🎭 Inspiration", "cat": "die"}, {"word": "🌟 Talent", "cat": "das"}, {"word": "🎵 Künstler", "cat": "pl"}];
 var LUECKE_DATA = [{"pre": "Graham Wallas beschrieb 1926 in <em>The Art of Thought</em> vier Phasen des kreativen ", "ans": "Prozesses", "post": "."}, {"pre": "Mihály Csíkszentmihályi prägte 1975 den Begriff ", "ans": "Flow", "post": "."}, {"pre": "J. P. Guilford hielt 1950 vor der ", "ans": "APA", "post": " einen Vortrag, der die Kreativitätsforschung begründete."}, {"pre": "Alex Osborn publizierte 1953 das Buch über ", "ans": "Brainstorming", "post": "."}, {"pre": "Carol Dwecks <em>Mindset</em> erschien ", "ans": "2006", "post": " und unterscheidet fixed und growth mindset."}, {"pre": "Der TTCT-Test misst kreatives Denken seit den ", "ans": "1960er", "post": " Jahren."}, {"pre": "Mel Rhodes formulierte 1961 das Vier-P-Modell: Person, Process, Product, ", "ans": "Press", "post": "."}];
 var MC_DATA = [{"q": "Wer publizierte 1926 das Vier-Phasen-Modell des kreativen Prozesses?", "opts": ["Sigmund Freud", "Graham Wallas", "Carl Jung", "Henri Bergson"], "correct": 1}, {"q": "Wie heißt der psychische Zustand der völligen Aufgegangen­heit in einer Tätigkeit?", "opts": ["Trance", "Flow", "Eureka", "Aha-Effekt"], "correct": 1}, {"q": "Wer prägte den Begriff <em>Flow</em> 1975?", "opts": ["Daniel Kahneman", "Mihály Csíkszentmihályi", "Jonathan Haidt", "Martin Seligman"], "correct": 1}, {"q": "Welcher Forscher unterscheidet zwischen <em>fixed</em> und <em>growth mindset</em>?", "opts": ["Angela Duckworth", "Carol Dweck", "Daniel Goleman", "Howard Gardner"], "correct": 1}, {"q": "Welche Phase folgt im Wallas-Modell auf die Vorbereitung?", "opts": ["Erleuchtung", "Verifikation", "Inkubation", "Bewertung"], "correct": 2}, {"q": "Welche Studie zeigte 1987, dass Gruppen-Brainstorming oft schlechter als Einzel-Brainstorming ist?", "opts": ["Diehl/Stroebe 1987", "Tetlock 2005", "Janis 1972", "Asch 1951"], "correct": 0}, {"q": "Welcher Psychologe begründete 1950 die moderne Kreativitätsforschung mit seinem APA-Vortrag?", "opts": ["Abraham Maslow", "B.F. Skinner", "J. P. Guilford", "Jean Piaget"], "correct": 2}];
-var satzbauData = [{"parts": ["jedes", "Kind", "ist", "auf", "seine", "Weise", "kreativ"], "valid": ["jedes", "Kind", "ist", "auf", "seine", "Weise", "kreativ"], "punct": "."}, {"parts": ["Kreativität", "kann", "durch", "Übung", "und", "Methode", "wachsen"], "valid": ["Kreativität", "kann", "durch", "Übung", "und", "Methode", "wachsen"], "punct": "."}, {"parts": ["Csíkszentmihályi", "prägte", "1975", "den", "Begriff", "des", "Flows"], "valid": ["Csíkszentmihályi", "prägte", "1975", "den", "Begriff", "des", "Flows"], "punct": "."}, {"parts": ["divergentes", "Denken", "öffnet", "den", "Lösungsraum", "eines", "Problems"], "valid": ["divergentes", "Denken", "öffnet", "den", "Lösungsraum", "eines", "Problems"], "punct": "."}, {"parts": ["Inkubation", "bedeutet", "das", "unbewusste", "Weiterarbeiten", "an", "einem", "Problem"], "valid": ["Inkubation", "bedeutet", "das", "unbewusste", "Weiterarbeiten", "an", "einem", "Problem"], "punct": "."}, {"parts": ["Carol", "Dwecks", "Mindset-Theorie", "erschien", "2006", "bei", "Random", "House"], "valid": ["Carol", "Dwecks", "Mindset-Theorie", "erschien", "2006", "bei", "Random", "House"], "punct": "."}];
+var satzbauData = [
+  { parts: ['jedes', 'Kind', 'ist', 'auf', 'seine', 'ganz', 'eigene', 'Weise', 'kreativ', ',', 'solange', 'man', 'es', 'nur', 'frei', 'lässt'],
+    valid: [['jedes', 'Kind', 'ist', 'auf', 'seine', 'ganz', 'eigene', 'Weise', 'kreativ', ',', 'solange', 'man', 'es', 'nur', 'frei', 'lässt']],
+    punct: '.' },
+  { parts: ['Kreativität', 'kann', 'durch', 'Übung', 'und', 'Methode', 'wachsen', ',', 'obwohl', 'viele', 'sie', 'für', 'ein', 'reines', 'Talent', 'halten'],
+    valid: [['Kreativität', 'kann', 'durch', 'Übung', 'und', 'Methode', 'wachsen', ',', 'obwohl', 'viele', 'sie', 'für', 'ein', 'reines', 'Talent', 'halten']],
+    punct: '.' },
+  { parts: ['Csíkszentmihályi', 'prägte', '1975', 'den', 'Begriff', 'des', 'Flows', ',', 'der', 'den', 'Zustand', 'völliger', 'Vertiefung', 'beschreibt'],
+    valid: [['Csíkszentmihályi', 'prägte', '1975', 'den', 'Begriff', 'des', 'Flows', ',', 'der', 'den', 'Zustand', 'völliger', 'Vertiefung', 'beschreibt']],
+    punct: '.' },
+  { parts: ['divergentes', 'Denken', 'öffnet', 'den', 'Lösungsraum', 'eines', 'Problems', ',', 'bevor', 'man', 'die', 'beste', 'Idee', 'gezielt', 'auswählt'],
+    valid: [['divergentes', 'Denken', 'öffnet', 'den', 'Lösungsraum', 'eines', 'Problems', ',', 'bevor', 'man', 'die', 'beste', 'Idee', 'gezielt', 'auswählt']],
+    punct: '.' },
+  { parts: ['Inkubation', 'bedeutet', 'das', 'unbewusste', 'Weiterarbeiten', 'an', 'einem', 'Problem', ',', 'während', 'man', 'sich', 'scheinbar', 'längst', 'entspannt'],
+    valid: [['Inkubation', 'bedeutet', 'das', 'unbewusste', 'Weiterarbeiten', 'an', 'einem', 'Problem', ',', 'während', 'man', 'sich', 'scheinbar', 'längst', 'entspannt']],
+    punct: '.' },
+  { parts: ['Carol', 'Dwecks', 'Mindset-Theorie', 'erschien', '2006', ',', 'als', 'sie', 'das', 'dynamische', 'Selbstbild', 'einem', 'breiten', 'Publikum', 'erklärte'],
+    valid: [['Carol', 'Dwecks', 'Mindset-Theorie', 'erschien', '2006', ',', 'als', 'sie', 'das', 'dynamische', 'Selbstbild', 'einem', 'breiten', 'Publikum', 'erklärte']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "💡 the creativity", "artikel": "die", "de": "Kreativität", "plural": "–"}, {"id": 2, "type": "n", "en": "✨ the inspiration", "artikel": "die", "de": "Inspiration", "plural": "Inspirationen"}, {"id": 3, "type": "n", "en": "🌊 the flow", "artikel": "der", "de": "Flow", "plural": "–"}, {"id": 4, "type": "n", "en": "🧠 the divergent thinking", "artikel": "das", "de": "divergente Denken", "plural": "–"}, {"id": 5, "type": "n", "en": "🥚 the incubation", "artikel": "die", "de": "Inkubation", "plural": "Inkubationen"}, {"id": 6, "type": "n", "en": "💭 the brainstorming", "artikel": "das", "de": "Brainstorming", "plural": "–"}, {"id": 7, "type": "n", "en": "🌱 the growth mindset", "artikel": "das", "de": "Wachstumsdenken", "plural": "–"}, {"id": 8, "type": "n", "en": "🎨 the originality", "artikel": "die", "de": "Originalität", "plural": "–"}, {"id": 9, "type": "n", "en": "🧩 the ability", "artikel": "die", "de": "Fähigkeit", "plural": "Fähigkeiten"}, {"id": 10, "type": "n", "en": "🌟 the talent", "artikel": "das", "de": "Talent", "plural": "Talente"}, {"id": 11, "type": "adj", "en": "🌟 original", "artikel": "", "de": "originell", "plural": "–"}, {"id": 12, "type": "adj", "en": "🌱 inventive", "artikel": "", "de": "erfinderisch", "plural": "–"}, {"id": 13, "type": "v", "en": "🎭 to create", "artikel": "", "de": "erschaffen", "plural": "–"}, {"id": 14, "type": "v", "en": "🌿 to unfold", "artikel": "", "de": "entfalten", "plural": "–"}];
 
 var BEST_KEY = 'best_3023RC1_3_';
@@ -746,6 +772,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","_","_","seine","_","_","Weise","_","_","_","man","_","_","frei","_"],"parts":["jedes","Kind","ist","auf","ganz","eigene","kreativ",",","solange","es","nur","lässt"]},{"i":1,"row":["_","_","_","Übung","_","_","_","_","obwohl","_","sie","_","_","_","Talent","_"],"parts":["Kreativität","kann","durch","und","Methode","wachsen",",","viele","für","ein","reines","halten"]},{"i":2,"row":["_","_","_","den","_","_","Flows","_","_","den","_","_","Vertiefung","_"],"parts":["Csíkszentmihályi","prägte","1975","Begriff","des",",","der","Zustand","völliger","beschreibt"]},{"i":3,"row":["_","_","_","den","_","eines","_","_","_","man","_","_","Idee","_","_"],"parts":["divergentes","Denken","öffnet","Lösungsraum","Problems",",","bevor","die","beste","gezielt","auswählt"]},{"i":4,"row":["_","_","_","_","Weiterarbeiten","_","_","Problem","_","_","man","_","scheinbar","_","_"],"parts":["Inkubation","bedeutet","das","unbewusste","an","einem",",","während","sich","längst","entspannt"]},{"i":5,"row":["_","_","Mindset-Theorie","_","_","_","_","sie","_","dynamische","_","_","_","Publikum","_"],"parts":["Carol","Dwecks","erschien","2006",",","als","das","Selbstbild","einem","breiten","erklärte"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>
