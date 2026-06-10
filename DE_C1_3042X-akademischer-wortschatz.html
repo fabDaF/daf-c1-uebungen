@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -334,7 +341,26 @@ var VORENTLASTUNG = [{"term": "die Monographie (-n)", "def": "einzelnes wissensc
 var GENUS_DATA = [{"word": "📚 Aufsatz", "cat": "der"}, {"word": "📖 Buch", "cat": "das"}, {"word": "🎓 Universität", "cat": "die"}, {"word": "🔬 Forschung", "cat": "die"}, {"word": "📝 Stil", "cat": "der"}, {"word": "🧠 Begriff", "cat": "der"}, {"word": "📜 Werk", "cat": "das"}, {"word": "📊 Quellen", "cat": "pl"}];
 var LUECKE_DATA = [{"pre": "Eine deutsche BA-Hausarbeit ist meist ", "ans": "10", "post": " bis 20 Seiten lang."}, {"pre": "Konjunktiv I wird vor allem für indirekte ", "ans": "Rede", "post": " verwendet."}, {"pre": "Karl-Theodor zu Guttenberg trat ", "ans": "2011", "post": " nach der Plagiats-Affäre zurück."}, {"pre": "Die DSH-Prüfung verlangt einen wissenschaftlichen Aufsatz im Nominal", "ans": "stil", "post": "."}, {"pre": "Die EU-Bibliothekskataloge folgen meist der Norm DIN ", "ans": "1505", "post": "."}, {"pre": "Funktionsverbgefüge wie <em>zur Verfügung ", "ans": "stellen", "post": "</em> sind typisch für den Nominalstil."}, {"pre": "Die Habilitations-Monographie ist meist 300 bis ", "ans": "600", "post": " Seiten lang."}];
 var MC_DATA = [{"q": "Welche Form ist Konjunktiv I von <em>er hat</em>?", "opts": ["er habe", "er hätte", "er hat", "er habe gehabt"], "correct": 0}, {"q": "Welcher Stil bevorzugt nominale gegenüber verbalen Konstruktionen?", "opts": ["Verbalstil", "Nominalstil", "Imperativstil", "Telegrammstil"], "correct": 1}, {"q": "Welches Funktionsverbgefüge bedeutet <em>helfen</em>?", "opts": ["zur Anwendung kommen", "Hilfe leisten", "in Frage kommen", "in Bewegung setzen"], "correct": 1}, {"q": "Welcher Politiker trat 2011 wegen Plagiat zurück?", "opts": ["Annalena Baerbock", "Karl-Theodor zu Guttenberg", "Norbert Lammert", "Christian Wulff"], "correct": 1}, {"q": "Welche Norm regelt deutsche bibliographische Quellenangaben?", "opts": ["DIN 9001", "DIN 1505", "ISO 690", "APA-Stil"], "correct": 1}, {"q": "Welche Textsorte ist eine Master-Abschlussarbeit?", "opts": ["Forschungsartikel", "Monographie", "Masterarbeit", "Hausarbeit"], "correct": 2}, {"q": "Welcher Modus wird verwendet, wenn Indikativ und Konjunktiv I identisch sind?", "opts": ["Imperativ", "Konjunktiv II", "Indikativ Perfekt", "Optativ"], "correct": 1}];
-var satzbauData = [{"parts": ["der", "akademische", "Stil", "bevorzugt", "Passiv", "und", "Nominalstil"], "valid": ["der", "akademische", "Stil", "bevorzugt", "Passiv", "und", "Nominalstil"], "punct": "."}, {"parts": ["Konjunktiv", "I", "markiert", "die", "Wiedergabe", "fremder", "Aussagen"], "valid": ["Konjunktiv", "I", "markiert", "die", "Wiedergabe", "fremder", "Aussagen"], "punct": "."}, {"parts": ["Plagiate", "verletzen", "die", "Grundregeln", "wissenschaftlicher", "Integrität"], "valid": ["Plagiate", "verletzen", "die", "Grundregeln", "wissenschaftlicher", "Integrität"], "punct": "."}, {"parts": ["Funktionsverbgefüge", "wie", "zur", "Anwendung", "kommen", "klingen", "formell"], "valid": ["Funktionsverbgefüge", "wie", "zur", "Anwendung", "kommen", "klingen", "formell"], "punct": "."}, {"parts": ["Hausarbeiten", "umfassen", "in", "BA-Programmen", "10", "bis", "20", "Seiten"], "valid": ["Hausarbeiten", "umfassen", "in", "BA-Programmen", "10", "bis", "20", "Seiten"], "punct": "."}, {"parts": ["Quellenangaben", "sind", "das", "Rückgrat", "wissenschaftlicher", "Glaubwürdigkeit"], "valid": ["Quellenangaben", "sind", "das", "Rückgrat", "wissenschaftlicher", "Glaubwürdigkeit"], "punct": "."}];
+var satzbauData = [
+  { parts: ['der', 'akademische', 'Stil', 'bevorzugt', 'Passiv', 'und', 'Nominalstil', ',', 'weil', 'er', 'möglichst', 'sachlich', 'und', 'unpersönlich', 'wirken', 'soll'],
+    valid: [['der', 'akademische', 'Stil', 'bevorzugt', 'Passiv', 'und', 'Nominalstil', ',', 'weil', 'er', 'möglichst', 'sachlich', 'und', 'unpersönlich', 'wirken', 'soll']],
+    punct: '.' },
+  { parts: ['der', 'Konjunktiv', 'I', 'markiert', 'die', 'Wiedergabe', 'fremder', 'Aussagen', ',', 'damit', 'Leser', 'klar', 'zwischen', 'Quelle', 'und', 'Autor', 'unterscheiden'],
+    valid: [['der', 'Konjunktiv', 'I', 'markiert', 'die', 'Wiedergabe', 'fremder', 'Aussagen', ',', 'damit', 'Leser', 'klar', 'zwischen', 'Quelle', 'und', 'Autor', 'unterscheiden']],
+    punct: '.' },
+  { parts: ['Plagiate', 'verletzen', 'die', 'Grundregeln', 'wissenschaftlicher', 'Integrität', ',', 'weshalb', 'Hochschulen', 'sie', 'äußerst', 'streng', 'ahnden'],
+    valid: [['Plagiate', 'verletzen', 'die', 'Grundregeln', 'wissenschaftlicher', 'Integrität', ',', 'weshalb', 'Hochschulen', 'sie', 'äußerst', 'streng', 'ahnden']],
+    punct: '.' },
+  { parts: ['Funktionsverbgefüge', 'wie', 'zur', 'Anwendung', 'kommen', 'klingen', 'formell', ',', 'obwohl', 'ein', 'einfaches', 'Verb', 'oft', 'klarer', 'wäre'],
+    valid: [['Funktionsverbgefüge', 'wie', 'zur', 'Anwendung', 'kommen', 'klingen', 'formell', ',', 'obwohl', 'ein', 'einfaches', 'Verb', 'oft', 'klarer', 'wäre']],
+    punct: '.' },
+  { parts: ['Hausarbeiten', 'umfassen', 'in', 'Bachelorprogrammen', 'meist', '10', 'bis', '20', 'Seiten', ',', 'die', 'einer', 'strengen', 'Form', 'folgen', 'müssen'],
+    valid: [['Hausarbeiten', 'umfassen', 'in', 'Bachelorprogrammen', 'meist', '10', 'bis', '20', 'Seiten', ',', 'die', 'einer', 'strengen', 'Form', 'folgen', 'müssen']],
+    punct: '.' },
+  { parts: ['Quellenangaben', 'sind', 'das', 'Rückgrat', 'wissenschaftlicher', 'Glaubwürdigkeit', ',', 'ohne', 'das', 'jede', 'Argumentation', 'beliebig', 'erscheinen', 'würde'],
+    valid: [['Quellenangaben', 'sind', 'das', 'Rückgrat', 'wissenschaftlicher', 'Glaubwürdigkeit', ',', 'ohne', 'das', 'jede', 'Argumentation', 'beliebig', 'erscheinen', 'würde']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "📚 the monograph", "artikel": "die", "de": "Monographie", "plural": "Monographien"}, {"id": 2, "type": "n", "en": "📝 the term paper", "artikel": "die", "de": "Hausarbeit", "plural": "Hausarbeiten"}, {"id": 3, "type": "n", "en": "🎯 the nominal style", "artikel": "der", "de": "Nominalstil", "plural": "–"}, {"id": 4, "type": "n", "en": "💬 the indirect speech", "artikel": "die", "de": "indirekte Rede", "plural": "–"}, {"id": 5, "type": "n", "en": "📜 the subjunctive I", "artikel": "der", "de": "Konjunktiv I", "plural": "–"}, {"id": 6, "type": "n", "en": "📚 the citation", "artikel": "die", "de": "Quellenangabe", "plural": "Quellenangaben"}, {"id": 7, "type": "n", "en": "⚠️ the plagiarism", "artikel": "das", "de": "Plagiat", "plural": "Plagiate"}, {"id": 8, "type": "n", "en": "🎓 the master's thesis", "artikel": "die", "de": "Masterarbeit", "plural": "Masterarbeiten"}, {"id": 9, "type": "n", "en": "🔬 the research article", "artikel": "der", "de": "Forschungsartikel", "plural": "Forschungsartikel"}, {"id": 10, "type": "n", "en": "📖 the technical book", "artikel": "das", "de": "Fachbuch", "plural": "Fachbücher"}, {"id": 11, "type": "adj", "en": "🎓 academic", "artikel": "", "de": "akademisch", "plural": "–"}, {"id": 12, "type": "adj", "en": "📜 formal", "artikel": "", "de": "formell", "plural": "–"}, {"id": 13, "type": "v", "en": "📚 to cite", "artikel": "", "de": "zitieren", "plural": "–"}, {"id": 14, "type": "v", "en": "🎯 to claim", "artikel": "", "de": "behaupten", "plural": "–"}];
 
 var BEST_KEY = 'best_3042XC1_3_';
@@ -746,6 +772,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","Stil","_","_","_","Nominalstil","_","_","er","_","_","_","unpersönlich","_","_"],"parts":["der","akademische","bevorzugt","Passiv","und",",","weil","möglichst","sachlich","und","wirken","soll"]},{"i":1,"row":["_","_","I","_","_","_","fremder","_","_","_","_","klar","_","_","_","Autor","_"],"parts":["der","Konjunktiv","markiert","die","Wiedergabe","Aussagen",",","damit","Leser","zwischen","Quelle","und","unterscheiden"]},{"i":2,"row":["_","_","_","Grundregeln","_","Integrität","_","_","Hochschulen","_","_","streng","_"],"parts":["Plagiate","verletzen","die","wissenschaftlicher",",","weshalb","sie","äußerst","ahnden"]},{"i":3,"row":["_","_","_","Anwendung","_","_","_","_","obwohl","_","_","Verb","_","klarer","_"],"parts":["Funktionsverbgefüge","wie","zur","kommen","klingen","formell",",","ein","einfaches","oft","wäre"]},{"i":4,"row":["_","_","_","Bachelorprogrammen","_","_","bis","_","_","_","die","_","_","Form","_","_"],"parts":["Hausarbeiten","umfassen","in","meist","10","20","Seiten",",","einer","strengen","folgen","müssen"]},{"i":5,"row":["_","_","_","Rückgrat","_","Glaubwürdigkeit","_","_","_","jede","_","beliebig","_","_"],"parts":["Quellenangaben","sind","das","wissenschaftlicher",",","ohne","das","Argumentation","erscheinen","würde"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>

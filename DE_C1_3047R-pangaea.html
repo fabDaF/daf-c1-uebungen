@@ -146,6 +146,13 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
   .schreib-name-box { padding: 12px 14px; }
 }
 /* /Schreibwerkstatt-Innenraum-Fix */
+
+/* ── Gerüst-Modus (B1+): sichtbare Lücken + feste Anker ── */
+.sb-gap { display:inline-flex; align-items:center; justify-content:center; min-width:66px; min-height:38px; padding:2px 6px; border:2px dashed #b9a7f0; border-radius:20px; background:#faf8ff; }
+.sb-gap.drag-over { border-color:#e67e22; background:#fff5ec; }
+.sb-gap .chip { margin:0; }
+.chip.sb-locked { background:#eef0ff; border-style:solid; border-color:#c3c9f5; color:#555; cursor:default; }
+.chip.sb-locked.correct { background:#27ae60; border-color:#27ae60; color:#fff; }
 </style>
 </head>
 <body>
@@ -334,7 +341,26 @@ var VORENTLASTUNG = [{"term": "Pangaea (Sg.)", "def": "Superkontinent, der vor e
 var GENUS_DATA = [{"word": "🌍 Erde", "cat": "die"}, {"word": "🌎 Kontinent", "cat": "der"}, {"word": "🌊 Ozean", "cat": "der"}, {"word": "🌋 Vulkan", "cat": "der"}, {"word": "📜 Theorie", "cat": "die"}, {"word": "🦴 Fossil", "cat": "das"}, {"word": "🏔️ Gebirge", "cat": "das"}, {"word": "📚 Bücher", "cat": "pl"}];
 var LUECKE_DATA = [{"pre": "Alfred Wegener wurde im Jahr ", "ans": "1880", "post": " in Berlin geboren."}, {"pre": "Sein Buch <em>Die Entstehung der Kontinente und Ozeane</em> erschien zuerst ", "ans": "1915", "post": "."}, {"pre": "Pangaea zerbrach vor etwa ", "ans": "175", "post": " Millionen Jahren."}, {"pre": "Wegener starb 1930 auf einer Expedition in ", "ans": "Grönland", "post": "."}, {"pre": "Die Plattentektonik wurde im Jahr ", "ans": "1968", "post": " als Synthese-Theorie etabliert."}, {"pre": "Bruce Heezen und Marie ", "ans": "Tharp", "post": " entdeckten 1953 die Mittelozeanischen Rücken."}, {"pre": "Das Fossil <em>Mesosaurus</em> wurde sowohl in Brasilien als auch in ", "ans": "Afrika", "post": " gefunden."}];
 var MC_DATA = [{"q": "Wer formulierte 1912 die Theorie der Kontinentaldrift?", "opts": ["Charles Darwin", "Alfred Wegener", "James Hutton", "Eduard Suess"], "correct": 1}, {"q": "Wann zerbrach Pangaea?", "opts": ["vor 500 Millionen Jahren", "vor 175 Millionen Jahren", "vor 65 Millionen Jahren", "vor 10 Millionen Jahren"], "correct": 1}, {"q": "Wann wurde die Plattentektonik wissenschaftlich etabliert?", "opts": ["1915", "1928", "1968", "1992"], "correct": 2}, {"q": "Wer entdeckte 1953 die Mittelozeanischen Rücken?", "opts": ["Wegener und Köppen", "Heezen und Tharp", "Wilson und Morgan", "Vine und Matthews"], "correct": 1}, {"q": "Wo starb Alfred Wegener?", "opts": ["Berlin", "Hamburg", "Grönland", "Antarktis"], "correct": 2}, {"q": "Welches Fossil galt als Hauptbeweis für die Verbindung Südamerika-Afrika?", "opts": ["T-Rex", "Mesosaurus", "Mammut", "Megalodon"], "correct": 1}, {"q": "Was geschieht in einer Subduktionszone?", "opts": ["Neue Platten entstehen", "Eine Platte taucht unter eine andere", "Platten verschieben sich seitlich", "Platten heben sich"], "correct": 1}];
-var satzbauData = [{"parts": ["Pangaea", "umfasste", "alle", "heutigen", "Kontinente", "als", "einen", "Superkontinent"], "valid": ["Pangaea", "umfasste", "alle", "heutigen", "Kontinente", "als", "einen", "Superkontinent"], "punct": "."}, {"parts": ["Wegener", "postulierte", "1912", "die", "Wanderung", "der", "Kontinente"], "valid": ["Wegener", "postulierte", "1912", "die", "Wanderung", "der", "Kontinente"], "punct": "."}, {"parts": ["Mesosaurus-Fossilien", "beweisen", "die", "ehemalige", "Verbindung", "Südamerikas", "mit", "Afrika"], "valid": ["Mesosaurus-Fossilien", "beweisen", "die", "ehemalige", "Verbindung", "Südamerikas", "mit", "Afrika"], "punct": "."}, {"parts": ["die", "Mittelozeanischen", "Rücken", "produzieren", "ständig", "neue", "ozeanische", "Kruste"], "valid": ["die", "Mittelozeanischen", "Rücken", "produzieren", "ständig", "neue", "ozeanische", "Kruste"], "punct": "."}, {"parts": ["Subduktionszonen", "verursachen", "Erdbeben", "und", "Vulkanausbrüche"], "valid": ["Subduktionszonen", "verursachen", "Erdbeben", "und", "Vulkanausbrüche"], "punct": "."}, {"parts": ["die", "Plattentektonik", "löste", "1968", "die", "wegenersche", "Theorie", "ein"], "valid": ["die", "Plattentektonik", "löste", "1968", "die", "wegenersche", "Theorie", "ein"], "punct": "."}];
+var satzbauData = [
+  { parts: ['Pangaea', 'umfasste', 'alle', 'heutigen', 'Kontinente', 'als', 'einen', 'Superkontinent', ',', 'der', 'vor', '200', 'Millionen', 'Jahren', 'zerbrach'],
+    valid: [['Pangaea', 'umfasste', 'alle', 'heutigen', 'Kontinente', 'als', 'einen', 'Superkontinent', ',', 'der', 'vor', '200', 'Millionen', 'Jahren', 'zerbrach']],
+    punct: '.' },
+  { parts: ['Alfred', 'Wegener', 'postulierte', '1912', 'die', 'Wanderung', 'der', 'Kontinente', ',', 'obwohl', 'Fachkollegen', 'ihn', 'lange', 'verspottet', 'haben'],
+    valid: [['Alfred', 'Wegener', 'postulierte', '1912', 'die', 'Wanderung', 'der', 'Kontinente', ',', 'obwohl', 'Fachkollegen', 'ihn', 'lange', 'verspottet', 'haben']],
+    punct: '.' },
+  { parts: ['Fossilien', 'des', 'Mesosaurus', 'beweisen', 'die', 'ehemalige', 'Verbindung', 'Südamerikas', 'mit', 'Afrika', ',', 'die', 'heute', 'Ozeane', 'trennen'],
+    valid: [['Fossilien', 'des', 'Mesosaurus', 'beweisen', 'die', 'ehemalige', 'Verbindung', 'Südamerikas', 'mit', 'Afrika', ',', 'die', 'heute', 'Ozeane', 'trennen']],
+    punct: '.' },
+  { parts: ['die', 'mittelozeanischen', 'Rücken', 'produzieren', 'ständig', 'neue', 'ozeanische', 'Kruste', ',', 'während', 'sie', 'an', 'anderen', 'Stellen', 'verschwindet'],
+    valid: [['die', 'mittelozeanischen', 'Rücken', 'produzieren', 'ständig', 'neue', 'ozeanische', 'Kruste', ',', 'während', 'sie', 'an', 'anderen', 'Stellen', 'verschwindet']],
+    punct: '.' },
+  { parts: ['Subduktionszonen', 'verursachen', 'Erdbeben', 'und', 'Vulkanausbrüche', ',', 'weil', 'dort', 'eine', 'Erdplatte', 'unter', 'die', 'andere', 'taucht'],
+    valid: [['Subduktionszonen', 'verursachen', 'Erdbeben', 'und', 'Vulkanausbrüche', ',', 'weil', 'dort', 'eine', 'Erdplatte', 'unter', 'die', 'andere', 'taucht']],
+    punct: '.' },
+  { parts: ['die', 'Plattentektonik', 'löste', '1968', 'Wegeners', 'alte', 'Theorie', 'ein', ',', 'die', 'ein', 'halbes', 'Jahrhundert', 'umstritten', 'geblieben', 'war'],
+    valid: [['die', 'Plattentektonik', 'löste', '1968', 'Wegeners', 'alte', 'Theorie', 'ein', ',', 'die', 'ein', 'halbes', 'Jahrhundert', 'umstritten', 'geblieben', 'war']],
+    punct: '.' }
+];
 var WORTSCHATZ = [{"id": 1, "type": "n", "en": "🌍 Pangaea", "artikel": "–", "de": "Pangaea", "plural": "–"}, {"id": 2, "type": "n", "en": "🌎 the continental drift", "artikel": "die", "de": "Kontinentaldrift", "plural": "–"}, {"id": 3, "type": "n", "en": "🌋 the plate tectonics", "artikel": "die", "de": "Plattentektonik", "plural": "–"}, {"id": 4, "type": "n", "en": "🪨 the lithosphere", "artikel": "die", "de": "Lithosphäre", "plural": "–"}, {"id": 5, "type": "n", "en": "🌊 the mid-ocean ridge", "artikel": "der", "de": "Mittelozeanische Rücken", "plural": "Mittelozeanische Rücken"}, {"id": 6, "type": "n", "en": "⬇️ the subduction zone", "artikel": "die", "de": "Subduktionszone", "plural": "Subduktionszonen"}, {"id": 7, "type": "n", "en": "🦴 the paleontology", "artikel": "die", "de": "Paläontologie", "plural": "–"}, {"id": 8, "type": "n", "en": "🌍 the supercontinent", "artikel": "der", "de": "Superkontinent", "plural": "Superkontinente"}, {"id": 9, "type": "n", "en": "📜 the theory", "artikel": "die", "de": "Theorie", "plural": "Theorien"}, {"id": 10, "type": "n", "en": "🌋 the Earth's crust", "artikel": "die", "de": "Erdkruste", "plural": "–"}, {"id": 11, "type": "adj", "en": "🦴 fossil", "artikel": "", "de": "fossil", "plural": "–"}, {"id": 12, "type": "adj", "en": "⚖️ undisturbed", "artikel": "", "de": "ungestört", "plural": "–"}, {"id": 13, "type": "v", "en": "🔍 to detect", "artikel": "", "de": "nachweisen", "plural": "–"}, {"id": 14, "type": "v", "en": "🌊 to drift", "artikel": "", "de": "driften", "plural": "–"}];
 
 var BEST_KEY = 'best_3047RC1_3_';
@@ -746,6 +772,210 @@ function schreibLeeren() {
   document.querySelectorAll('.schreib-mini-textarea').forEach(function(ta){ var nr=ta.dataset.aufgabe; ta.value=''; localStorage.removeItem(SCHREIB_KEY_PREFIX+nr); localStorage.removeItem(SCHREIB_SENT_PREFIX+nr); schreibUpdateCount(ta); var k=ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.remove('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.remove('gesendet'); b.innerHTML='📨 An Frank senden'; b.disabled=false; } var s=document.getElementById('status-'+nr); if(s){ s.textContent=''; s.classList.remove('error'); } });
   schreibStatusZeigen('info','ℹ Alles zurückgesetzt — du kannst neu beginnen.');
 }
+</script>
+
+<script>
+/* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
+   hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
+(function(){
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var SBGAP = [{"i":0,"row":["_","_","_","_","Kontinente","_","_","Superkontinent","_","_","_","_","Millionen","_","zerbrach"],"parts":["Pangaea","umfasste","alle","heutigen","als","einen",",","der","vor","200","Jahren"]},{"i":1,"row":["_","_","_","1912","_","_","der","_","_","obwohl","_","_","lange","_","_"],"parts":["Alfred","Wegener","postulierte","die","Wanderung","Kontinente",",","Fachkollegen","ihn","verspottet","haben"]},{"i":2,"row":["_","_","Mesosaurus","_","_","_","Verbindung","_","_","Afrika","_","_","_","Ozeane","_"],"parts":["Fossilien","des","beweisen","die","ehemalige","Südamerikas","mit",",","die","heute","trennen"]},{"i":3,"row":["_","_","Rücken","_","_","neue","_","_","_","während","_","_","_","Stellen","_"],"parts":["die","mittelozeanischen","produzieren","ständig","ozeanische","Kruste",",","sie","an","anderen","verschwindet"]},{"i":4,"row":["_","_","Erdbeben","_","Vulkanausbrüche","_","_","_","_","Erdplatte","_","_","andere","_"],"parts":["Subduktionszonen","verursachen","und",",","weil","dort","eine","unter","die","taucht"]},{"i":5,"row":["_","_","_","1968","_","alte","_","_","_","die","_","_","Jahrhundert","_","_","_"],"parts":["die","Plattentektonik","löste","Wegeners","Theorie","ein",",","ein","halbes","umstritten","geblieben","war"]}];
+  SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
+    ex.row = g.row; ex.parts = g.parts;
+    if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
+  });
+  if (typeof window.sbDragged === "undefined") window.sbDragged = null;
+  function bankEl(i){ return document.getElementById(CFG.bank + i); }
+  function rowEl(i){ return document.getElementById(CFG.row + i); }
+  function fbEl(i){ return document.getElementById(CFG.fb + i); }
+  function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1); }
+  function positions(row){ return Array.from(row.children).filter(function(n){ return n.classList.contains("sb-gap") || n.classList.contains("chip"); }); }
+  function chipOf(pos){ return pos.classList.contains("sb-gap") ? pos.querySelector(".chip") : pos; }
+  function updateCaps(row){ if (!CFG.caps) return;
+    positions(row).forEach(function(pos,i){ var c = chipOf(pos); if (!c) return;
+      var o = c.dataset.orig;
+      var proper = o.charAt(0) === o.charAt(0).toUpperCase() && o.charAt(0) !== o.charAt(0).toLowerCase();
+      c.textContent = proper ? o : (i === 0 ? cap(o) : o); });
+  }
+  function sequence(i){ var row = rowEl(i), seq = [], complete = true;
+    positions(row).forEach(function(pos){ var c = chipOf(pos); if (c) seq.push(c.dataset.orig); else complete = false; });
+    return { seq: seq, complete: complete }; }
+  function clearMarks(i){ var row = rowEl(i);
+    row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+    row.classList.remove("correct","incorrect");
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p); }
+  function afterChange(i){
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i), info = sequence(i);
+    if (!info.complete){ clearMarks(i); if (fb){ fb.textContent=""; fb.className="satzbau-feedback"; } return; }
+    setTimeout(function(){
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var fresh = sequence(i);
+      var ok = satzbauData[i].valid.some(function(v){ return JSON.stringify(v) === JSON.stringify(fresh.seq); });
+      var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+      if (ok){
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("incorrect"); c.classList.add("correct"); });
+        var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+        punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+        row.classList.add("correct"); row.classList.remove("incorrect");
+        if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+        if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+      } else {
+        row.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("correct","incorrect"); });
+        row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("incorrect"); });
+        row.classList.add("incorrect"); row.classList.remove("correct");
+        if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Noch nicht richtig – verschiebe die Wörter!"; }
+      }
+    }, 450);
+  }
+  /* Geführter Modus (B1, 2026-06-10): Sofort-Feedback pro Chip-Platzierung.
+     Richtig (konsistent mit mind. einer valid-Reihenfolge) -> grün + fixiert.
+     Falsch -> rot + Rücksprung in die Bank nach 800 ms. */
+  function toBank(i, chip){
+    chip.textContent = chip.dataset.orig;  // Kleinschreibung wiederherstellen — Bank darf den Satzanfang nicht verraten
+    bankEl(i).appendChild(chip);
+  }
+  function consistent(i){
+    var pos = positions(rowEl(i));
+    var v = satzbauData[i].valid;
+    return v.some(function(o){
+      for (var k = 0; k < pos.length; k++){ var c = chipOf(pos[k]); if (c && c.dataset.orig !== o[k]) return false; }
+      return true; });
+  }
+  function finishRow(i){
+    var row = rowEl(i), fb = fbEl(i);
+    var p = row.querySelector(".sb-punkt"); if (p) p.parentNode.removeChild(p);
+    var punkt = document.createElement("span"); punkt.className = "sb-punkt";
+    punkt.textContent = satzbauData[i].punct || "."; row.appendChild(punkt);
+    row.classList.add("correct"); row.classList.remove("incorrect");
+    if (fb){ fb.className = "satzbau-feedback correct"; fb.textContent = "✓ Korrekt!"; }
+    if (typeof sbCheckAllDone === "function") sbCheckAllDone();
+  }
+  function placeJudge(i, chip){
+    if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+    var row = rowEl(i); updateCaps(row);
+    var fb = fbEl(i);
+    if (consistent(i)){
+      chip.classList.remove("incorrect"); chip.classList.add("correct");
+      chip.dataset.fixed = "1"; chip.draggable = false;
+      if (sequence(i).complete){ finishRow(i); }
+      else if (fb){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+    } else {
+      chip.classList.add("incorrect");
+      if (fb){ fb.className = "satzbau-feedback incorrect"; fb.textContent = "✗ Das passt hier nicht!"; }
+      setTimeout(function(){
+        chip.classList.remove("incorrect");
+        if (!chip.dataset.fixed && chip.closest(".sb-gap")) toBank(i, chip);
+        updateCaps(rowEl(i));
+        if (fb && /incorrect/.test(fb.className)){ fb.className = "satzbau-feedback"; fb.textContent = ""; }
+      }, 800);
+    }
+  }
+  function makeChip(word, i){
+    var chip = document.createElement("div");
+    var isPunct = [",",".","!","?",";",":"].indexOf(word) !== -1;
+    chip.className = "chip" + (isPunct ? " punct-chip" : ""); chip.textContent = word; chip.draggable = true;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.sbIdx = String(i);
+    chip.addEventListener("dragstart", function(e){ if (chip.dataset.fixed){ e.preventDefault(); return; } window.sbDragged = chip; if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab); e.dataTransfer.effectAllowed = "move"; });
+    if (CFG.click) chip.addEventListener("click", function(){
+      if (chip.dataset.fixed) return;
+      if (typeof timerAutoStart === "function") timerAutoStart(CFG.tab);
+      var inSlot = chip.closest(".sb-gap");
+      if (inSlot){ toBank(i, chip); updateCaps(rowEl(i)); return; }
+      var free = Array.from(rowEl(i).querySelectorAll(".sb-gap")).find(function(s){ return !s.querySelector(".chip"); });
+      if (free){ free.appendChild(chip); placeJudge(i, chip); }
+    });
+    return chip;
+  }
+  function makeLocked(word){
+    var chip = document.createElement("div");
+    chip.className = "chip sb-locked"; chip.textContent = word;
+    chip.dataset.orig = word; chip.dataset.word = word; chip.dataset.locked = "1";
+    return chip;
+  }
+  function makeSlot(i){
+    var slot = document.createElement("div"); slot.className = "sb-gap";
+    slot.addEventListener("dragover", function(e){ e.preventDefault(); if (window.sbDragged) slot.classList.add("drag-over"); });
+    slot.addEventListener("dragleave", function(){ slot.classList.remove("drag-over"); });
+    slot.addEventListener("drop", function(e){
+      e.preventDefault(); slot.classList.remove("drag-over");
+      var d = window.sbDragged; if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      if (slot.querySelector(".chip")) return;  // Lücke schon belegt
+      slot.appendChild(d); window.sbDragged = null; placeJudge(i, d);
+    });
+    return slot;
+  }
+  function registerBank(bank, i){
+    bank.addEventListener("dragover", function(e){ e.preventDefault(); });
+    bank.addEventListener("drop", function(e){
+      e.preventDefault(); var d = window.sbDragged;
+      if (!d || d.dataset.sbIdx !== String(i) || d.dataset.locked || d.dataset.fixed) return;
+      toBank(i, d); window.sbDragged = null; updateCaps(rowEl(i));
+    });
+  }
+  function freshEl(id){ var el = document.getElementById(id); if (!el) return null;
+    var c = el.cloneNode(false); el.parentNode.replaceChild(c, el); return c; }
+  function rebuild(i){
+    var ex = satzbauData[i]; if (!ex || !ex.row) return;
+    var bank = freshEl(CFG.bank + i), row = freshEl(CFG.row + i);
+    if (!bank || !row) return;
+    var fb = fbEl(i); if (fb){ fb.textContent = ""; fb.className = "satzbau-feedback"; }
+    var mov = ex.parts.slice();
+    for (var k = mov.length - 1; k > 0; k--){ var j = Math.floor(Math.random()*(k+1)); var t = mov[k]; mov[k] = mov[j]; mov[j] = t; }
+    mov.forEach(function(w){ bank.appendChild(makeChip(w, i)); });
+    ex.row.forEach(function(tok){ row.appendChild(tok === "_" ? makeSlot(i) : makeLocked(tok)); });
+    registerBank(bank, i);
+    ensureButtons(i);
+  }
+  function rebuildAll(){ satzbauData.forEach(function(ex,i){ if (ex.row) rebuild(i); }); }
+  function showSol(i){
+    rebuild(i);
+    var row = rowEl(i), bank = bankEl(i), sol = satzbauData[i].valid[0];
+    var pool = Array.from(bank.querySelectorAll(".chip"));
+    positions(row).forEach(function(pos,k){
+      if (!pos.classList.contains("sb-gap")) return;
+      var ix = pool.findIndex(function(c){ return c.dataset.orig === sol[k]; });
+      if (ix >= 0){ while (pos.firstChild) pos.removeChild(pos.firstChild); pos.appendChild(pool[ix]); pool.splice(ix,1); }
+    });
+    row.querySelectorAll(".sb-gap .chip").forEach(function(c){ c.classList.add("correct"); c.dataset.fixed = "1"; c.draggable = false; });
+    updateCaps(row);
+    finishRow(i);
+  }
+  function ensureButtons(i){
+    if (document.getElementById("sb-btns-" + i)) return;
+    var anchor = fbEl(i) || rowEl(i); if (!anchor) return;
+    var item = (anchor.closest ? anchor.closest(".satzbau-item") : null) || anchor.parentNode;
+    if (item && [].some.call(item.querySelectorAll("button"), function(b){
+      return /(Lösen|Lösung|Neustart)/.test(b.textContent); })) return;  // native Buttons vorhanden
+    var box = document.createElement("div");
+    box.id = "sb-btns-" + i;
+    box.style.cssText = "display:flex;gap:8px;margin:6px 0 14px 0;";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "btn"; b1.textContent = "Lösen";
+    b1.addEventListener("click", function(){ showSol(i); });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "btn"; b2.textContent = "↺ Neustart";
+    b2.addEventListener("click", function(){ rebuild(i); });
+    box.appendChild(b1); box.appendChild(b2);
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+  }
+  ["initSatzbau","buildSatzbau"].forEach(function(fn){
+    if (typeof window[fn] === "function"){ var o = window[fn];
+      window[fn] = function(){ o.apply(this, arguments); rebuildAll(); }; }
+  });
+  if (typeof window.sbReset === "function" && window.sbReset.length === 0){
+    var orall = window.sbReset;
+    window.sbReset = function(){ orall.apply(this, arguments); rebuildAll(); };
+  }
+  if (typeof window.sbResetOne === "function"){
+    var orst = window.sbResetOne;
+    window.sbResetOne = function(i){ if (satzbauData[i] && satzbauData[i].row){ rebuild(i); return; } orst.apply(this, arguments); };
+  }
+  if (typeof window.sbShowSolution === "function"){
+    var osol = window.sbShowSolution;
+    window.sbShowSolution = function(i){ if (satzbauData[i] && satzbauData[i].row){ showSol(i); return; } osol.apply(this, arguments); };
+  }
+  var probe = rowEl(0) || bankEl(0);
+  if (probe && probe.children.length) rebuildAll();
+})();
 </script>
 </body>
 </html>
