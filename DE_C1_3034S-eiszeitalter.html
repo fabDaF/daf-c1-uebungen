@@ -779,7 +779,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","des","_","_","die","_","_","Holozän","_"],"parts":["wir","leben","heute","einer","Warmzeit","Quartärs",",","Geologen","als","bezeichnen"]},{"i":1,"row":["_","_","_","der","_","_","_","4000","_","_","als","_","_","schon","_"],"parts":["Mammuts","überlebten","auf","Wrangelinsel","bis","vor","Jahren",",","die","Pyramiden","standen"]},{"i":2,"row":["_","_","_","die","_","_","_","weil","_","die","_","_","_","Sonne","_"],"parts":["die","Milankovitch-Zyklen","erklären","regelmäßige","Eiszeitfolge",",","sie","Erdbahn","um","die","beschreiben"]},{"i":3,"row":["_","_","_","dicke","_","_","die","_","_","_","sie","_","_","Wasser","_"],"parts":["Eisbären","besitzen","eine","Fettschicht","gegen","Kälte",",","die","im","arktischen","schützt"]},{"i":4,"row":["_","_","_","1870","_","_","Eiszeitalter","_","_","er","_","_","Norddeutschland","_","_"],"parts":["Otto","Torell","prägte","den","Begriff",",","nachdem","Gletscherspuren","in","untersucht","hatte"]},{"i":5,"row":["_","_","_","während","_","Kaltzeiten","_","_","_","_","_","sodass","_","Kontinente","_"],"parts":["der","Meeresspiegel","sank","der","um","über","100","Meter",",","Landbrücken","verbanden"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

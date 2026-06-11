@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1884","_","1915","_","_","_","was","_","heute","_"],"parts":["Namibia","war","zwischen","und","deutsche","Kolonie",",","bis","nachwirkt"]},{"i":1,"row":["_","_","_","20000","_","im","_","_","die","_","Sprache","_","_"],"parts":["heute","leben","etwa","Deutschnamibier","Land",",","ihre","bewahrt","haben"]},{"i":2,"row":["_","_","_","einzige","_","_","_","obwohl","_","viele","_","_","Land","_"],"parts":["Englisch","ist","die","Amtssprache","Namibias",",","es","Sprachen","im","gibt"]},{"i":3,"row":["_","_","_","2021","_","Völkermord","_","_","den","_","Truppen","_","_"],"parts":["der","Bundestag","hat","den","anerkannt",",","deutsche","verübt","hatten"]},{"i":4,"row":["_","_","_","Geisterstadt","_","_","heute","_","Touristen","_","_","Welt","_"],"parts":["Kolmannskuppe","ist","eine",",","die","neugierige","aus","aller","anzieht"]},{"i":5,"row":["_","_","_","2025","_","_","_","die","Verhandlungen","_","Jahre","_","_"],"parts":["das","Versöhnungsabkommen","wurde","gebilligt",",","nachdem","viele","gedauert","hatten"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

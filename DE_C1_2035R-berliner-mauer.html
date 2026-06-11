@@ -1397,7 +1397,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Mauer","_","1961","_","_","_","_","anhaltende","Massenflucht","_","_"],"parts":["die","Berliner","wurde","errichtet",",","um","die","zu","stoppen"]},{"i":1,"row":["_","_","November","_","_","die","_","_","_","sie","_","Jahre","_","_"],"parts":["am","9.","1989","fiel","Mauer",",","nachdem","28","gestanden","hatte"]},{"i":2,"row":["_","_","_","den","Massenandrang","_","_","_","seine","_","Antwort","_","_"],"parts":["Schabowskis","Pressekonferenz","löste","aus",",","weil","berühmte","sofort","galt"]},{"i":3,"row":["_","_","Revolution","_","_","Montagsdemonstrationen","_","_","_","Leipzig","_","größer","_"],"parts":["die","Friedliche","begann","mit",",","die","in","immer","wurden"]},{"i":4,"row":["_","_","Menschen","_","_","_","Mauer","_","_","sie","_","Freiheit","_"],"parts":["mindestens","140","starben","an","der",",","weil","die","suchten"]},{"i":5,"row":["_","_","Wiedervereinigung","_","_","Oktober","_","_","nachdem","_","Staaten","_","_"],"parts":["die","deutsche","erfolgte","im","1990",",","beide","verhandelt","hatten"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

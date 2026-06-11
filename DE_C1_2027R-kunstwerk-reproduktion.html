@@ -1404,7 +1404,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","_","Aufsatz","_","_","als","_","im","_","Exil","_"],"parts":["Walter","Benjamin","veröffentlichte","seinen","1935",",","er","Pariser","lebte"]},{"i":1,"row":["_","_","_","_","Benjamin","_","_","technische","_","das","_","verfügbar","_"],"parts":["die","Aura","verschwindet","laut",",","wenn","Reproduktion","Original","macht"]},{"i":2,"row":["_","_","_","im","_","Jahrhundert","_","_","Druckverfahren","_","_","Bilder","_"],"parts":["der","Holzschnitt","war","14.","das","wichtigste",",","das","vervielfältigte"]},{"i":3,"row":["_","_","Fotografie","_","_","Massenreproduktion","_","_","das","_","Original","_","_"],"parts":["mit","der","beginnt","die",",","die","einzigartige","entthronen","sollte"]},{"i":4,"row":["_","_","_","die","_","eine","_","_","die","_","Kopie","_","_"],"parts":["Originale","entwickeln","über","Zeit","Geschichte",",","keine","besitzen","kann"]},{"i":5,"row":["_","_","Reproduktion","_","_","Verhältnis","_","_","_","wie","_","es","_"],"parts":["die","digitale","verändert","unser","zum","Original",",","Benjamin","vorausahnte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

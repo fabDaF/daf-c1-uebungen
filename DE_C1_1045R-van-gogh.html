@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Lebzeiten","_","_","Gemälde","_","_","er","_","_","Bilder","_"],"parts":["Vincent","verkaufte","zu","nur","ein",",","obwohl","über","800","malte"]},{"i":1,"row":["_","_","Theo","_","_","_","zehn","_","_","_","er","_","Geld","_"],"parts":["sein","Bruder","trug","ihn","über","Jahre",",","indem","monatlich","schickte"]},{"i":2,"row":["_","_","_","1888","_","_","Bilder","_","_","_","wie","_","Rausch","_"],"parts":["in","Arles","entstanden","über","200",",","weil","Vincent","im","arbeitete"]},{"i":3,"row":["_","_","_","1889","_","Saint-Rémy","_","_","_","in","_","Anstalt","_"],"parts":["die","Sternennacht","entstand","in",",","während","Vincent","der","lebte"]},{"i":4,"row":["_","_","_","Juli","_","in","Auvers-sur-Oise","_","_","er","_","_","_"],"parts":["Vincent","starb","im","1890",",","wo","zuletzt","gemalt","hatte"]},{"i":5,"row":["_","_","_","1987","_","_","Millionen","_","_","_","damals","_","Rekorde","_"],"parts":["seine","Sonnenblumen","erzielten","fast","40","Dollar",",","was","alle","brach"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

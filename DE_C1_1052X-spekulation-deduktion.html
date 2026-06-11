@@ -1409,7 +1409,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","sich","_","Sommer","_","_","wenn","_","Prognosen","_","_"],"parts":["der","Markt","dürfte","im","erholen",",","die","zutreffen","sollten"]},{"i":1,"row":["_","_","_","im","_","_","_","weil","_","Mantel","_","_","Garderobe","_"],"parts":["sie","muss","noch","Büro","sein",",","ihr","an","der","hängt"]},{"i":2,"row":["_","_","_","_","_","_","obwohl","ihn","_","jemals","offiziell","_","_"],"parts":["er","will","alles","gewusst","haben",",","niemand","informiert","hatte"]},{"i":3,"row":["_","_","_","_","_","_","wie","die","_","im","Flur","_","_"],"parts":["sie","soll","gestern","gekündigt","haben",",","Kollegen","aufgeregt","erzählen"]},{"i":4,"row":["_","_","Zinsen","_","_","_","_","_","_","Investitionen","_","deutlich","_"],"parts":["falls","die","sinken","sollten",",","würden","die","privaten","wieder","steigen"]},{"i":5,"row":["_","_","_","_","_","_","_","weil","_","jede","Vermutung","_","Vermutung","_"],"parts":["wer","richtig","spekuliert",",","lügt","nicht",",","er","als","kennzeichnet"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1391,7 +1391,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Wissenschaft","_","_","Herkunft","_","Wörter","_","_","_","_","zutage","_"],"parts":["Etymologie","ist","die","von","der","der",",","die","oft","Überraschendes","fördert"]},{"i":1,"row":["_","_","Begriffe","_","_","_","_","oder","_","_","weil","_","_","Latein","_"],"parts":["viele","akademische","stammen","aus","dem","Lateinischen","Griechischen",",","Gelehrte","jahrhundertelang","schrieben"]},{"i":2,"row":["_","_","_","_","_","klassisches","_","Element","_","_","_","Deutschen","_","produktiv","_"],"parts":["das","Suffix","tion","ist","ein","lateinisches",",","das","im","sehr","wurde"]},{"i":3,"row":["_","_","_","_","_","dem","Griechischen","_","wo","sie","_","_","_","_"],"parts":["die","Vorsilbe","anti-","kommt","aus",",","schlicht","gegen","bedeutet","hat"]},{"i":4,"row":["_","_","_","Wortwurzeln","_","_","_","_","neue","Fachbegriffe","_","_","_","_","Blick"],"parts":["wer","die","wichtigsten","kennt",",","versteht","viele","sofort","auf","den","ersten"]},{"i":5,"row":["_","_","_","das","_","des","_","_","das","_","_","immer","_","_","_"],"parts":["der","Kluge","ist","Standard-Etymologiewörterbuch","Deutschen",",","seit","1883","wieder","überarbeitet","wird"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

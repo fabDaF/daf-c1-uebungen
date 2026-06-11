@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Lübecks","_","_","1816","_","Schubert","_","_","_","er","_","_"],"parts":["Schmidt","von","Wanderer","wurde","von","vertont",",","bevor","berühmt","wurde"]},{"i":1,"row":["_","_","Heimweh","_","als","_","_","_","den","_","_","Söldnern","_"],"parts":["das","Wort","entstand","medizinischer","Begriff",",","Ärzte","bei","diagnostizierten"]},{"i":2,"row":["_","_","_","_","Nomen","_","Farbadjektive","_","_","ganz","_","Stimmungen","_"],"parts":["Wortneuschöpfungen","wie","hoffnungsgrün","verbinden","und",",","um","neue","auszudrücken"]},{"i":3,"row":["_","_","_","_","_","Ort","_","_","Nostalgie","eine","_","Zeit","_"],"parts":["Heimweh","richtet","sich","auf","einen",",","während","vergangene","vermisst"]},{"i":4,"row":["_","_","_","in","_","Romantik","_","_","_","der","_","Heimat","_"],"parts":["der","Wanderer","verkörpert","der","den","Menschen",",","nirgendwo","findet"]},{"i":5,"row":["_","_","_","du","_","_","_","_","_","das","_","_","_","der","Wanderer"],"parts":["dort",",","wo","nicht","bist",",","dort","ist","Glück",",","klagt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1784","_","Berlin","_","_","_","Zensur","_","allgegenwärtig","_"],"parts":["Kants","Aufsatz","erschien","in",",","als","die","noch","war"]},{"i":1,"row":["_","_","_","Ausgang","_","_","Unmündigkeit","_","die","_","Mensch","_","_","_"],"parts":["Aufklärung","ist","der","aus","der",",","der","selbst","verschuldet","hat"]},{"i":2,"row":["_","_","_","Aufklärung","_","_","aude","_","_","Mut","_","Denken","_"],"parts":["der","Wahlspruch","der","heißt","Sapere",",","was","zum","bedeutet"]},{"i":3,"row":["_","_","Vernunftgebrauch","_","_","frei","_","_","_","Aufklärung","wirklich","_","_"],"parts":["der","öffentliche","muss","jederzeit","sein",",","wenn","gelingen","soll"]},{"i":4,"row":["_","_","_","einem","_","der","_","_","aber","_","_","_","einem","_"],"parts":["wir","leben","in","Zeitalter","Aufklärung",",","noch","nicht","in","aufgeklärten"]},{"i":5,"row":["_","_","_","Prozess","_","_","niemals","_","_","Zustand","_","Ruhe","_"],"parts":["Aufklärung","ist","ein",",","der","in","einem","zur","kommt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

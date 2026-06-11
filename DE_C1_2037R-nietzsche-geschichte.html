@@ -1385,7 +1385,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Schrift","_","_","1874","_","_","er","_","Basel","_"],"parts":["Nietzsche","schrieb","seine","über","Geschichte",",","als","in","lehrte"]},{"i":1,"row":["_","_","_","das","_","_","_","Vergessen","_","_","ihn","_","Vergangenheit","_"],"parts":["der","Mensch","beneidet","Vieh","um","sein",",","weil","die","belastet"]},{"i":2,"row":["_","_","Geschichte","_","_","Leben","_","_","wie","_","damals","_","_"],"parts":["zu","viel","kann","das","lähmen",",","Nietzsche","provokant","behauptete"]},{"i":3,"row":["_","_","_","Arten","_","Wahrnehmung","_","_","_","ganz","_","Gefahren","_"],"parts":["Nietzsche","unterscheidet","drei","historischer",",","die","jeweils","eigene","bergen"]},{"i":4,"row":["_","_","Geschichte","_","_","_","weil","_","Vorbilder","_","_","Handeln","_"],"parts":["die","monumentale","gibt","Kraft",",","große","direkt","zum","ermutigen"]},{"i":5,"row":["_","_","_","das","Vergessen","_","_","_","_","und","_","_","_"],"parts":["der","Mensch","braucht",",","um","überhaupt","handeln","leben","zu","können"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1404,7 +1404,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1792","_","_","Platane","_","_","_","Händler","_","_","Abkommen","_"],"parts":["die","NYSE","wurde","unter","einer","gegründet",",","wo","ein","berühmtes","unterzeichneten"]},{"i":1,"row":["_","_","September","_","_","Lehman","_","_","_","was","_","_","Finanzkrise","_"],"parts":["am","15.","2008","brach","Brothers","zusammen",",","eine","weltweite","auslöste"]},{"i":2,"row":["_","_","_","_","2021","_","_","deutsche","_","_","_","die","_","ihn","_","_"],"parts":["der","DAX","umfasst","seit","insgesamt","40","Leitwerte",",","nachdem","Börse","erweitert","hatte"]},{"i":3,"row":["_","_","_","den","_","des","_","_","_","_","sie","_","Millisekunden","_","_"],"parts":["Algorithmen","ersetzen","heute","Großteil","menschlichen","Handels",",","weil","in","reagieren","können"]},{"i":4,"row":["_","_","_","langfristige","_","_","Investitionen","_","_","_","Stabilität","_","_","Rendite","_"],"parts":["risikoaverse","Anleger","bevorzugen","und","sichere",",","weil","ihnen","wichtiger","als","ist"]},{"i":5,"row":["_","_","_","_","1971","_","_","Tech-Börse","_","_","_","_","der","_","Konzerne","_"],"parts":["der","NASDAQ","ist","seit","die","wichtigste","der","Welt",",","an","viele","notieren"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -776,7 +776,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","_","eigenes","_","Teilthema","_","_","_","_","Argumentation","_","Textes","_"],"parts":["jeder","Absatz","behandelt","ein","kleines",",","das","die","übergeordnete","des","stützt"]},{"i":1,"row":["_","_","_","das","_","des","_","_","_","_","die","_","_","es","_"],"parts":["der","Einleitungssatz","kündigt","Hauptargument","Absatzes","an",",","bevor","folgenden","Sätze","entfalten"]},{"i":2,"row":["_","_","Sätze","_","und","_","_","_","ohne","_","_","Text","_","_"],"parts":["Konnektoren","verknüpfen","logisch","stiften","Kohäsion",",","die","ein","auseinanderfallen","würde"]},{"i":3,"row":["_","_","Montaigne","_","_","_","Gattung","_","_","_","die","_","_","lebendig","_","_"],"parts":["Michel","de","prägte","1580","die","des","Essays",",","bis","heute","geblieben","ist"]},{"i":4,"row":["_","_","_","das","_","des","_","_","_","_","_","Leser","_","Gedanken","_"],"parts":["der","Schlusssatz","fasst","Hauptargument","Absatzes","zusammen",",","damit","der","den","behält"]},{"i":5,"row":["_","_","Fließtext","_","_","_","den","_","_","_","weil","_","_","Orientierung","_"],"parts":["ein","langer","ohne","Absätze","ermüdet","Leser","schnell",",","ihm","jede","fehlt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

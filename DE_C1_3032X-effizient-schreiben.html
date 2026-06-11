@@ -779,7 +779,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","_","überflüssige","_","_","_","die","_","_","klar","_","deutlich","_"],"parts":["effizientes","Schreiben","verzichtet","auf","Füllsätze",",","damit","zentrale","Botschaft","und","wird"]},{"i":1,"row":["_","_","_","als","_","Stilpapst","_","_","_","_","Generationen","_","Journalisten","_","_"],"parts":["Wolf","Schneider","galt","deutscher",",","dessen","Ratschläge","ganze","von","geprägt","haben"]},{"i":2,"row":["_","_","_","Sätze","_","_","Verben","_","_","sie","_","_","_","lebendiger","_"],"parts":["Hemingway","empfahl","kurze","und","aktive",",","weil","jeden","Text","spürbar","machen"]},{"i":3,"row":["_","_","_","deutlich","_","_","_","Pause","_","_","der","_","_","_","frisch","_"],"parts":["das","Korrekturlesen","gelingt","besser","nach","einer",",","weil","Blick","dann","wieder","ist"]},{"i":4,"row":["_","_","_","DeepL","_","_","_","Stiloptimieren","_","_","_","kein","_","_","Urteil"],"parts":["moderne","KI-Tools","wie","Write","helfen","beim",",","ersetzen","aber","eigenes","sprachliches"]},{"i":5,"row":["_","_","_","_","Fehler","_","_","_","_","_","Dauer","_","und","_","sauberer"],"parts":["wer","seine","drei","häufigsten","genau","kennt",",","schreibt","auf","schneller","auch"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

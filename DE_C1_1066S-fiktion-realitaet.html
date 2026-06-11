@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1993","_","_","_","Spielberg","_","_","dahin","_","Projekt","_"],"parts":["Schindlers","Liste","wurde","gedreht",",","als","sein","bis","persönlichstes","wagte"]},{"i":1,"row":["_","_","_","Anderen","_","_","den","_","_","obwohl","_","Details","_"],"parts":["Das","Leben","der","gewann","2007","Oscar",",","Experten","kritisierten"]},{"i":2,"row":["_","_","_","mehrere","_","_","einer","_","_","_","die","_","übersichtlich","_"],"parts":["Filme","verdichten","oft","Personen","zu","Figur",",","damit","Handlung","bleibt"]},{"i":3,"row":["_","_","_","und","_","Elemente","_","_","Zuschauer","_","kritisch","_","_"],"parts":["Faction","verbindet","reale","erfundene",",","weshalb","stets","bleiben","sollten"]},{"i":4,"row":["_","_","_","ethische","_","_","weil","_","reale","_","täuschend","_","_"],"parts":["Deepfakes","verlangen","strenge","Standards",",","sie","Gesichter","echt","fälschen"]},{"i":5,"row":["_","_","Film","_","_","kurze","_","_","_","Fiktion","_","Fakten","_"],"parts":["nach","dem","lohnt","sich","Recherche",",","weil","und","verschwimmen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

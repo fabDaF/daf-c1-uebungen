@@ -1407,7 +1407,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","bevor","_","in","_","Jura","_"],"parts":["Gandhi","wurde","1869","Porbandar","geboren",",","er","London","studierte"]},{"i":1,"row":["_","_","_","1893","_","1914","_","Südafrika","_","_","_","Widerstand","_"],"parts":["er","lebte","von","bis","in",",","wo","sein","begann"]},{"i":2,"row":["_","_","_","im","_","1930","_","_","_","_","Anhängern","_","Meer","_"],"parts":["der","Salzmarsch","begann","März",",","als","Gandhi","mit","zum","aufbrach"]},{"i":3,"row":["_","_","_","August","_","unabhängig","_","_","Gandhi","_","Jahrzehnte","_","_"],"parts":["Indien","wurde","im","1947",",","worauf","viele","hingearbeitet","hatte"]},{"i":4,"row":["_","_","_","Januar","_","_","_","als","_","gerade","_","Abendgebet","_"],"parts":["er","wurde","im","1948","ermordet",",","er","zum","ging"]},{"i":5,"row":["_","_","_","bis","_","Bürgerrechtsbewegungen","_","_","_","für","_","Rechte","_"],"parts":["seine","Methode","prägt","heute",",","die","gewaltfrei","ihre","kämpfen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

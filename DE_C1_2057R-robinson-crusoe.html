@@ -1388,7 +1388,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","_","Roman","_","in","_","_","_","er","_","_","Erfolge","_"],"parts":["Defoe","veröffentlichte","seinen","berühmten","1719","London",",","wo","sofort","große","feierte"]},{"i":1,"row":["_","_","_","einem","_","_","_","einer","_","_","_","wo","_","Jahrzehnte","_"],"parts":["Robinson","strandet","nach","schweren","Sturm","auf","einsamen","Insel",",","er","überlebt"]},{"i":2,"row":["_","_","_","1704","_","_","Pazifikinsel","_","_","_","_","seine","_","literarisch","_"],"parts":["Alexander","Selkirk","wurde","auf","einer","ausgesetzt",",","bevor","Defoe","Geschichte","verarbeitete"]},{"i":3,"row":["_","_","_","Schritt","_","_","_","bürgerliches","_","_","obwohl","_","_","dabei","_"],"parts":["Crusoe","baut","sich","für","Schritt","ein","Heim",",","ihn","niemand","unterstützt"]},{"i":4,"row":["_","_","_","im","_","Jahrhundert","_","_","_","_","den","_","Verlage","_"],"parts":["der","Roman","wurde","18.","ein","europäischer","Bestseller",",","unzählige","nachdruckten"]},{"i":5,"row":["_","_","_","Tournier","_","_","_","den","_","_","_","weil","_","_","Muster","_"],"parts":["moderne","Bearbeitungen","wie","oder","Coetzee","prüfen","Mythos","kritisch",",","er","koloniale","transportiert"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

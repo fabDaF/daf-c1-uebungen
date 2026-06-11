@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","bis","_","Stunden","_","_","_","sich","_","Gehirn","_"],"parts":["Erwachsene","sollten","sieben","neun","schlafen",",","damit","das","erholt"]},{"i":1,"row":["_","_","_","das","_","System","_","_","_","während","_","nichts","_","_"],"parts":["im","Tiefschlaf","reinigt","glymphatische","das","Gehirn",",","wir","davon","merken"]},{"i":2,"row":["_","_","_","den","_","_","_","als","_","schlafende","_","_","Labor","_"],"parts":["Maiken","Nedergaard","entdeckte","Reinigungsmechanismus","2013",",","sie","Mäuse","im","untersuchte"]},{"i":3,"row":["_","_","_","das","_","_","weil","_","_","Proteine","_","Gehirn","_"],"parts":["chronischer","Schlafmangel","erhöht","Demenzrisiko",",","sich","schädliche","im","ablagern"]},{"i":4,"row":["_","_","_","Schlaf","_","Langzeitarchiv","_","_","_","der","_","ruhig","_"],"parts":["Lerninhalte","werden","im","ins","verschoben",",","während","Körper","daliegt"]},{"i":5,"row":["_","_","_","Schwäche","_","_","_","Wartung","_","_","das","_","dringend","_"],"parts":["Schlaf","ist","keine",",","sondern","aktive",",","die","Gehirn","braucht"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

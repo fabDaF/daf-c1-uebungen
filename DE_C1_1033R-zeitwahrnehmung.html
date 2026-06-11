@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Braunschweig","_","_","Sekunde","_","_","_","sich","_","Welt","_"],"parts":["die","Atomuhr","in","definiert","die",",","nach","der","die","richtet"]},{"i":1,"row":["_","_","_","und","_","_","weil","gemessene","_","_","Zeit","_","_"],"parts":["Bergson","unterschied","temps","durée",",","und","erlebte","verschieden","sind"]},{"i":2,"row":["_","_","_","die","_","schneller","_","_","_","_","Neues","_","seltener","_"],"parts":["im","Alter","scheint","Zeit","zu","vergehen",",","weil","immer","wird"]},{"i":3,"row":["_","_","_","Gedächtnis","_","_","_","_","weshalb","_","rückblickend","stark","_"],"parts":["Routinen","werden","vom","nicht","einzeln","gespeichert",",","sie","schrumpfen"]},{"i":4,"row":["_","_","_","innere","_","_","die","_","_","voneinander","_","Körper","_"],"parts":["es","gibt","viele","Uhren",",","völlig","unabhängig","im","ticken"]},{"i":5,"row":["_","_","Erfahrungen","_","_","_","_","Zeit","_","_","er","_","rückblickend","_"],"parts":["wer","neue","sammelt",",","verlangsamt","die",",","die","später","erlebt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

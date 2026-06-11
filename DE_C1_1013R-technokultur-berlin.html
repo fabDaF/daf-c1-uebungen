@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Technokultur","_","_","_","UNESCO-Kulturerbe","_","_","_","Szene","_","stolz","_"],"parts":["die","Berliner","ist","seit","2024",",","worauf","die","durchaus","ist"]},{"i":1,"row":["_","_","_","_","der","_","Straße","_","wo","_","_","Kaufhaus-Tresorraum","_"],"parts":["Tresor","öffnete","1991","unter","Leipziger",",","früher","ein","lag"]},{"i":2,"row":["_","_","Mauerfall","_","_","_","leerstehende","_","_","die","_","_","_","sie","_"],"parts":["nach","dem","fanden","junge","Westberliner","Räume",",","im","Osten","auf","warteten"]},{"i":3,"row":["_","_","_","im","_","_","_","das","_","Friedrichshain","_","leer","_"],"parts":["Berghain","entstand","2004","ehemaligen","Heizkraftwerk",",","in","jahrelang","stand"]},{"i":4,"row":["_","_","_","Ende","_","_","nachdem","_","_","Jahre","_","Clubgeschichte","_","_"],"parts":["das","Watergate","schloss","2024",",","es","22","lang","geschrieben","hatte"]},{"i":5,"row":["_","_","_","Welterbe","_","_","_","_","_","weil","Aufwertung","_","zugleich","_"],"parts":["eine","Subkultur","im","muss","politisch","verteidigt","werden",",","sie","bedroht"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

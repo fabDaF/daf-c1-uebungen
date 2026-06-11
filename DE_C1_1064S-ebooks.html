@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","2007","_","_","Markt","_","_","das","_","digital","_"],"parts":["der","Kindle","kam","auf","den",",","bevor","Lesen","wurde"]},{"i":1,"row":["_","_","_","Licht","_","_","_","_","_","_","weshalb","die","Augen","_","_"],"parts":["E-Ink","reflektiert","das",",","statt","selbst","zu","leuchten",",","entspannt","bleiben"]},{"i":2,"row":["_","_","_","als","_","Antwort","_","_","_","die","_","gemeinsam","_"],"parts":["Tolino","entstand","2013","europäische","auf","Amazon",",","Buchhändler","entwickelten"]},{"i":3,"row":["_","_","_","am","_","_","Bereich","_","_","man","_","nebenbei","_","_"],"parts":["Hörbücher","sind","der","stärksten","wachsende",",","weil","sie","hören","kann"]},{"i":4,"row":["_","_","_","sich","_","_","_","wenn","_","rund","_","Bücher","_","_"],"parts":["ein","E-Reader","lohnt","ökologisch","erst",",","man","140","gelesen","hat"]},{"i":5,"row":["_","_","Formate","_","_","_","weil","_","_","eine","_","Lesesituation","_"],"parts":["alle","drei","ergänzen","sich",",","jedes","Format","eigene","bedient"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -776,7 +776,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Polarkappen","_","den","_","_","_","flache","Küstenregionen","_","_"],"parts":["das","Schmelzen","der","beschleunigt","Meeresspiegelanstieg",",","der","weltweit","bedroht"]},{"i":1,"row":["_","_","_","sich","_","_","als","_","_","der","_","_","_","Messungen","_"],"parts":["die","Arktis","erwärmt","viermal","schneller","der","Rest","Welt",",","wie","zeigen"]},{"i":2,"row":["_","_","_","_","Treibhauseffekt","_","_","sie","_","Wärmestrahlung","_","Erde","_"],"parts":["Treibhausgase","verstärken","den","natürlichen",",","weil","die","der","zurückhalten"]},{"i":3,"row":["_","_","_","_","der","_","_","Meereis","_","_","das","_","früher","_"],"parts":["der","Eisbär","ist","bei","Jagd","auf","angewiesen",",","immer","schmilzt"]},{"i":4,"row":["_","_","_","2022","_","_","_","Staat","_","_","_","weil","_","Inseln","_"],"parts":["Tuvalu","plant","seit","den","ersten","digitalen","der","Welt",",","die","versinken"]},{"i":5,"row":["_","_","Klimaabkommen","_","_","1,5-Grad-Ziel","_","das","_","_","Folgen","_","_"],"parts":["das","Pariser","verfolgt","das",",","die","schlimmsten","verhindern","soll"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

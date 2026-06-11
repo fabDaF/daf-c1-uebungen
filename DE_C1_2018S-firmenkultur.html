@@ -1397,7 +1397,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Firmen","_","_","als","Höflichkeitsstandard","_","_","_","niemand","_","_"],"parts":["in","deutschen","gilt","Pünktlichkeit",",","den","dort","hinterfragen","muss"]},{"i":1,"row":["_","_","_","_","_","_","_","rechtzeitig","und","ganz","_","Bescheid","_"],"parts":["wer","absehbar","zu","spät","kommt",",","sollte","unaufgefordert","geben"]},{"i":2,"row":["_","_","_","die","_","_","die","_","und","_","_","sauber","_"],"parts":["der","Feierabend","markiert","Grenze",",","Arbeit","private","Freizeit","trennt"]},{"i":3,"row":["_","_","_","sich","_","Homeoffice","_","_","_","_","Chefs","_","kritisch","_"],"parts":["seit","2020","hat","das","etabliert",",","obwohl","manche","es","sehen"]},{"i":4,"row":["_","_","_","_","_","selbstverständlich","_","Hause","_","_","_","im","Büro","_","_"],"parts":["wer","krank","ist",",","bleibt","zu",",","damit","niemand","angesteckt","wird"]},{"i":5,"row":["_","_","_","_","flache","_","_","in","_","sich","_","schnell","_"],"parts":["junge","Start-ups","setzen","auf","Hierarchien",",","denen","alle","duzen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

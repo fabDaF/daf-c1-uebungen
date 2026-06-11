@@ -773,7 +773,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Vogelarten","_","_","_","drastisch","_","_","_","europäische","_","eindeutig","_"],"parts":["der","Bestand","vieler","ist","seit","1980","zurückgegangen",",","wie","Zählungen","belegen"]},{"i":1,"row":["_","_","_","tödliches","_","_","Zugvögel","_","_","weil","_","_","Spiegelungen","_","_"],"parts":["Glasfronten","stellen","ein","Risiko","für","dar",",","die","Tiere","nicht","erkennen"]},{"i":2,"row":["_","_","Buch","_","_","_","Umweltbewegung","_","_","_","die","_","_","Pestizide","_"],"parts":["Rachel","Carsons","prägte","die","moderne",",","weil","es","Folgen","der","enthüllte"]},{"i":3,"row":["_","_","_","die","_","_","Singvögel","_","_","sodass","_","_","Europa","_"],"parts":["der","Klimawandel","verschiebt","Brutgebiete","vieler","nordwärts",",","manche","Arten","verlassen"]},{"i":4,"row":["_","_","_","Brut-","_","Rastplätze","_","die","_","_","_","_","Reisen","_"],"parts":["Naturschutzgebiete","sichern","wichtige","und",",","Zugvögel","auf","ihren","langen","brauchen"]},{"i":5,"row":["_","_","_","sich","_","_","DDT-Verbot","_","_","_","was","_","_","Hoffnung","_"],"parts":["der","Wanderfalke","hat","seit","dem","wieder","erholt",",","Naturschützern","weltweit","macht"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

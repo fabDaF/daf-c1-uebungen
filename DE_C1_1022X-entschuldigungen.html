@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Entschuldigung","_","_","Sprechenden","_","_","_","sie","_","Eingeständnis","_"],"parts":["eine","gute","kostet","den","etwas",",","weil","echtes","verlangt"]},{"i":1,"row":["_","_","_","_","_","die","Schuld","_","_","andere","_","Menschen","_"],"parts":["wer","Verantwortung","übernimmt",",","wälzt","nicht","auf","unbeteiligte","ab"]},{"i":2,"row":["_","_","_","_","jede","_","_","weil","sie","_","Schuld","_","_"],"parts":["die","Konjunktion","aber","entwertet","Entschuldigung",",","die","sofort","relativiert"]},{"i":3,"row":["_","_","Register","_","_","_","Satz","_","_","weil","_","respektlos","_"],"parts":["im","formellen","ist","ein","kompletter","unverzichtbar",",","Kürzel","wirken"]},{"i":4,"row":["_","_","_","oft","_","_","_","Anwälte","_","jede","_","Formulierung","_"],"parts":["öffentliche","Statements","klingen","entkernt",",","weil","vorher","klare","entschärfen"]},{"i":5,"row":["_","_","_","großzügig","_","_","_","sie","_","bevor","sie","_","_","_"],"parts":["wer","Entschuldigungen","allzu","ausstreut",",","entwertet",",","überhaupt","wirken","können"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

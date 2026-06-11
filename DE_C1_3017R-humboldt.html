@@ -776,7 +776,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Jahre","_","_","und","_","_","_","er","_","Daten","_"],"parts":["Humboldt","reiste","fünf","durch","Südamerika","Mexiko",",","wo","unermüdlich","sammelte"]},{"i":1,"row":["_","_","_","6000","_","_","seiner","Expedition","_","_","_","viele","_","_"],"parts":["er","sammelte","rund","Pflanzenarten","auf",",","von","denen","unbekannt","waren"]},{"i":2,"row":["_","_","_","das","_","der","_","_","_","_","kaltes","_","Nebelwüsten","_"],"parts":["der","Humboldtstrom","prägt","Klima","Pazifikküste",",","weil","sein","Wasser","erzeugt"]},{"i":3,"row":["_","_","Kosmos","_","_","_","und","_","_","als","_","schon","_","_"],"parts":["sein","Hauptwerk","erschien","zwischen","1845","1862",",","Humboldt","hochbetagt","war"]},{"i":4,"row":["_","_","_","Humboldt","_","_","_","Reiseberichte","_","_","der","_","immer","_","_"],"parts":["Charles","Darwin","verehrte","sehr",",","dessen","er","auf","Beagle","wieder","las"]},{"i":5,"row":["_","_","Wilhelm","_","_","_","Berliner","_","_","die","_","_","Namen","_"],"parts":["sein","Bruder","gründete","1810","die","Universität",",","heute","Humboldts","trägt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

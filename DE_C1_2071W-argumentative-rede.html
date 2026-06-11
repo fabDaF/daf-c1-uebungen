@@ -1391,7 +1391,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Rede","_","_","_","_","These","_","die","_","Publikum","_","_","_"],"parts":["jede","gute","beginnt","mit","einer","klaren",",","das","sofort","verstehen","kann"]},{"i":1,"row":["_","_","Ethos","_","_","_","Logos","_","_","_","die","_","_","Überzeugung","_"],"parts":["Aristoteles","unterscheidet",",","Pathos","und",",","die","zusammen","Kunst","der","bilden"]},{"i":2,"row":["_","_","_","_","Gettysburg-Rede","_","_","1863","_","_","sie","_","_","Minuten","_"],"parts":["Lincoln","hielt","seine","berühmte","im","November",",","obwohl","nur","zwei","dauerte"]},{"i":3,"row":["_","_","_","gleiche","_","am","_","_","_","_","Botschaften","_","Gedächtnis","_"],"parts":["die","Anapher","wiederholt","Worte","Satzanfang",",","damit","zentrale","im","bleiben"]},{"i":4,"row":["_","_","_","These","_","Argumente","_","_","_","_","_","Appell","_","Rede","_"],"parts":["der","Schluss","sollte","und","bündeln",",","bevor","ein","starker","die","beendet"]},{"i":5,"row":["_","_","Publikum","_","_","_","_","_","kurz","_","klar","_","anschaulich","_"],"parts":["wer","sein","wirklich","überzeugen","will",",","muss","und","und","sprechen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

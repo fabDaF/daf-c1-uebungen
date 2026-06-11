@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Voltaire","_","_","in","_","_","während","_","_","Weltkrieg","_"],"parts":["das","Cabaret","öffnete","1916","Zürich",",","draußen","der","tobte"]},{"i":1,"row":["_","_","_","Lautgedichte","_","Pappkostüm","_","_","die","_","_","Bedeutung","_"],"parts":["Hugo","Ball","trug","im","vor",",","jede","gewohnte","verweigerten"]},{"i":2,"row":["_","_","_","_","Pissoir","_","Kunstwerk","_","_","was","_","Kunstwelt","_"],"parts":["Duchamp","stellte","1917","ein","als","aus",",","die","empörte"]},{"i":3,"row":["_","_","_","die","_","der","_","_","_","später","_","Künstlergenerationen","_"],"parts":["Hannah","Höch","entwickelte","Technik","Foto-Montage",",","die","ganze","beeinflusste"]},{"i":4,"row":["_","_","_","Dadaismus","_","für","_","_","_","der","_","ihn","_"],"parts":["Tzara","erklärte","den","1922","tot",",","bevor","Surrealismus","beerbte"]},{"i":5,"row":["_","_","_","was","_","Künstler","_","_","_","_","Dada","damals","_","_"],"parts":["Kunst","ist",",","ein","dazu","erklärt",",","wie","provokant","behauptete"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

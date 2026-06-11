@@ -1391,7 +1391,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Vertrauen","_","_","Gesprächspartner","_","_","sie","_","_","Regeln","_"],"parts":["informelle","Kommunikation","erfordert","in","den",",","weil","viele","ungeschriebene","voraussetzt"]},{"i":1,"row":["_","_","_","Büro","_","_","_","das","_","_","_","die","_","Besprechung","_"],"parts":["wir","reden","im","ganz","ungezwungen","über","Wochenende",",","bevor","eigentliche","beginnt"]},{"i":2,"row":["_","_","_","wichtiges","_","der","_","_","_","_","viele","_","ihn","_"],"parts":["Smalltalk","ist","ein","Mittel","sozialen","Anbindung",",","obwohl","Menschen","unterschätzen"]},{"i":3,"row":["_","_","_","_","dass","_","eigentlich","_","_","_","_","_","wenn","_","locker","_"],"parts":["du","weißt","schon",",","das","gar","nicht","schwer","ist",",","man","bleibt"]},{"i":4,"row":["_","_","_","die","_","zum","_","_","_","negative","_","_","Distanz","_"],"parts":["positive","Höflichkeit","sucht","Nähe","Gegenüber",",","während","Höflichkeit","respektvoll","wahrt"]},{"i":5,"row":["_","_","_","Registern","_","_","Kunst","_","die","_","_","mühelos","_","_","_"],"parts":["der","Wechsel","zwischen","ist","eine",",","kompetente","Sprecher","zu","beherrschen","scheinen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

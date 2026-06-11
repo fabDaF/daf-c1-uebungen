@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","ins","_","Exil","_","_","ihm","_","_","eng","_"],"parts":["Heine","ging","1831","Pariser",",","weil","Deutschland","zu","wurde"]},{"i":1,"row":["_","_","_","1824","_","_","sie","_","_","Volkslied","_","Deutschen","_"],"parts":["die","Lorelei","entstand",",","bevor","zum","heimlichen","der","wurde"]},{"i":2,"row":["_","_","_","1902","_","Sekretär","_","_","der","_","_","Sehen","_"],"parts":["Rilke","arbeitete","ab","als","Rodins",",","sein","künstlerisches","veränderte"]},{"i":3,"row":["_","_","_","Leben","_","_","_","der","_","_","_","des","Gedichts"],"parts":["du","musst","dein","ändern",",","lautet","berühmte","letzte","Vers"]},{"i":4,"row":["_","_","_","in","_","_","wohin","sie","_","_","Nationalsozialisten","_","_"],"parts":["Lasker-Schüler","starb","1945","Jerusalem",",","vor","den","geflohen","war"]},{"i":5,"row":["_","_","Dichter","_","_","Lebensphasen","_","_","_","das","_","Werke","_"],"parts":["alle","drei","verbrachten","zentrale","im","Exil",",","ihre","prägte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

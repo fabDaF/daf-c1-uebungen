@@ -777,7 +777,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","_","Theorien","_","Rhetorik","_","_","_","_","jede","_","Rede","_"],"parts":["Aristoteles","entwickelte","die","ersten","der",",","die","bis","heute","gute","prägen"]},{"i":1,"row":["_","_","Diskussion","_","_","Schuldzuweisungen","_","_","_","_","rasch","_","_","Streit","_"],"parts":["eine","sachliche","vermeidet","persönliche",",","weil","sie","sonst","in","einen","umschlägt"]},{"i":2,"row":["_","_","_","Theorie","_","_","_","_","in","_","allein","_","_","Argument","_","_"],"parts":["Habermas","formulierte","die","des","kommunikativen","Handelns",",","der","das","bessere","zählen","soll"]},{"i":3,"row":["_","_","Welt","_","in","_","und","_","_","_","_","_","wirklich","_"],"parts":["wer","die","nur","Schwarz","Weiß","sieht",",","argumentiert","selten","differenziert"]},{"i":4,"row":["_","_","_","der","_","_","Roms","_","_","_","_","von","_","auswendig","_"],"parts":["Cicero","galt","als","größte","Redner",",","dessen","Reden","Generationen","Studenten","lernten"]},{"i":5,"row":["_","_","_","Anonymität","_","_","Sachlichkeit","_","_","niemand","_","_","Worte","_","_"],"parts":["Online-Debatten","leiden","unter","und","mangelnder",",","weil","für","seine","einstehen","muss"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

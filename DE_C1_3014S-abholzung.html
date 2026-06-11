@@ -773,7 +773,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Amazonas","_","_","_","Klima","_","_","der","_","_","Kohlenstoffmengen","_"],"parts":["die","Abholzung","des","gefährdet","das","globale",",","weil","Regenwald","riesige","speichert"]},{"i":1,"row":["_","_","_","Prozent","_","_","Waldfläche","_","_","Palmölplantagen","_","Regenwald","_","_"],"parts":["Indonesien","verlor","72","seiner","ursprünglichen",",","weil","den","verdrängt","haben"]},{"i":2,"row":["_","_","_","Brasilien","_","_","_","obwohl","_","offiziell","_","lange","_","_"],"parts":["Brandrodung","wird","in","queimada","genannt",",","sie","schon","verboten","ist"]},{"i":3,"row":["_","_","_","30","_","_","Erdoberfläche","_","_","ihre","_","_","_","Jahr","_"],"parts":["Wälder","bedecken","etwa","Prozent","der",",","doch","Fläche","schrumpft","jedes","weiter"]},{"i":4,"row":["_","_","_","_","die","_","_","_","_","weil","_","Lebensraum","_","kleiner","_"],"parts":["der","Sumatra-Tiger","ist","durch","Entwaldung","akut","bedroht",",","sein","immer","wird"]},{"i":5,"row":["_","_","_","Überleben","_","_","_","indem","_","Jagd","_","_","streng","_"],"parts":["Naturschutzgebiete","sichern","das","seltener","Arten",",","sie","und","Rodung","begrenzen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1409,7 +1409,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1892","_","_","Animationsfilm","_","bevor","_","Kino","_","_"],"parts":["Émile","Reynaud","projizierte","den","ersten",",","das","überhaupt","existierte"]},{"i":1,"row":["_","_","_","ihre","_","_","schwarzem","_","_","bevor","_","sie","_","_"],"parts":["Lotte","Reiniger","schnitt","Figuren","aus","Karton",",","sie","einzeln","animierte"]},{"i":2,"row":["_","_","_","1928","_","die","_","_","wo","_","Maus","_","_"],"parts":["Steamboat","Willie","kam","in","Kinos",",","Micky","berühmt","wurde"]},{"i":3,"row":["_","_","_","_","abendfüllende","_","_","den","Disney","_","_","Zweifel","_"],"parts":["Schneewittchen","ist","der","erste","Animationsspielfilm",",","gegen","alle","durchsetzte"]},{"i":4,"row":["_","_","_","Animation","_","_","grundlegend","_","_","sie","_","Szenen","_"],"parts":["KI-Modelle","verändern","die","seit","2024",",","weil","ganze","erzeugen"]},{"i":5,"row":["_","_","_","als","_","Spielfilm","_","_","die","_","_","heute","_"],"parts":["Animation","ist","älter","der",",","was","meisten","Zuschauer","überrascht"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

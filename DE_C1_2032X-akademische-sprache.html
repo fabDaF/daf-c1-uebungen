@@ -1404,7 +1404,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Text","_","_","in","_","_","_","die","_","aufeinander","_"],"parts":["der","vorliegende","gliedert","sich","drei","Abschnitte",",","inhaltlich","aufbauen"]},{"i":1,"row":["_","_","_","den","_","Aspekt","_","_","_","_","dass","Klärungsbedarf","_"],"parts":["in","Bezug","auf","ersten","lässt","sich","feststellen",",","besteht"]},{"i":2,"row":["_","_","_","_","dass","_","die","Lage","_","_","Erhebung","_","_"],"parts":["es","ist","anzunehmen",",","sich","seit","der","verändert","hat"]},{"i":3,"row":["_","_","_","_","_","dass","die","_","_","methodisch","sehr","_","_"],"parts":["daran","anschließend","sei","betont",",","verwendeten","Quellen","verschieden","sind"]},{"i":4,"row":["_","_","_","_","dass","_","Untersuchungen","_","_","Feld","_","nötig","_"],"parts":["abschließend","ist","festzuhalten",",","weitere","in","diesem","dringend","sind"]},{"i":5,"row":["_","_","_","von","_","Bedeutung","_","_","die","_","Analyse","_","_"],"parts":["diese","These","ist","erheblicher",",","weil","folgende","darauf","aufbaut"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

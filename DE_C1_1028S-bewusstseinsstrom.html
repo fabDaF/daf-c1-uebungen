@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Ulysses","_","_","nachdem","_","_","das","_","Manuskript","_","_"],"parts":["Joyce","veröffentlichte","1922",",","mehrere","Verlage","skandalöse","abgelehnt","hatten"]},{"i":1,"row":["_","_","_","das","_","_","Figur","_","_","_","_","säße","_","_","Kopf"],"parts":["der","Bewusstseinsstrom","gibt","Innere","der","ungefiltert","wieder",",","als","man","im"]},{"i":2,"row":["_","_","Joyce","_","_","Jahre","_","_","_","_","jemand","_","weiß"],"parts":["Schnitzler","war","um","zwanzig","voraus",",","was","kaum","heute"]},{"i":3,"row":["_","_","_","_","einem","_","Tag","_","_","_","ganzes","Leben","_"],"parts":["Mrs","Dalloway","spielt","an","einzigen",",","der","ein","spiegelt"]},{"i":4,"row":["_","_","_","_","_","der","_","Benjys","_","_","_","die","_","anders","_"],"parts":["Faulkners","erster","Teil","wird","aus","Sicht","erzählt",",","der","Welt","wahrnimmt"]},{"i":5,"row":["_","_","_","_","_","_","weil","_","Technik","bis","_","Nachahmer","_"],"parts":["der","Strom","reißt","nicht","ab",",","die","heute","findet"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

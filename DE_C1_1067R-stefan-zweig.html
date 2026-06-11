@@ -1395,7 +1395,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1881","_","Wien","_","_","_","er","_","Weltautor","_"],"parts":["Stefan","Zweig","wurde","in","geboren",",","wo","zum","aufstieg"]},{"i":1,"row":["_","_","Österreich","_","_","_","die","_","in","_","_","Macht","_","_"],"parts":["er","verließ","1933",",","als","Nationalsozialisten","Deutschland","die","übernommen","hatten"]},{"i":2,"row":["_","_","_","Lebensweg","_","in","_","_","_","er","_","_","Frau","_","_"],"parts":["er","beendete","seinen","1942","Petropolis",",","wohin","mit","seiner","geflohen","war"]},{"i":3,"row":["_","_","_","2021","_","_","_","der","_","lange","_","unverfilmbar","_"],"parts":["seine","Schachnovelle","wurde","verfilmt",",","obwohl","Stoff","als","galt"]},{"i":4,"row":["_","_","_","_","Eingang","_","Welt","_","wie","_","zeitlebens","_","_"],"parts":["das","Buch","ist","ein","zur",",","Zweig","überzeugt","war"]},{"i":5,"row":["_","_","Film","_","_","Zweig-Renaissance","_","_","_","bis","_","spürbar","_"],"parts":["Wes","Andersons","löste","die","aus",",","die","heute","anhält"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

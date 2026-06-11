@@ -1385,7 +1385,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Revolution","_","_","14.","_","_","_","_","das","_","_","Bastille","_"],"parts":["die","Französische","begann","am","Juli","1789",",","als","Volk","die","stürmte"]},{"i":1,"row":["_","_","_","_","angesehener","_","_","der","_","_","der","_","politisch","_"],"parts":["Joseph-Ignace","Guillotin","war","ein","Arzt",",","als","Mitglied","Nationalversammlung","arbeitete"]},{"i":2,"row":["_","_","_","die","_","_","Maschine","_","_","bevor","_","_","_","tatsächlich","_"],"parts":["Antoine","Louis","entwarf","Konstruktion","der","1791",",","ein","Klavierbauer","sie","baute"]},{"i":3,"row":["_","_","_","_","den","_","_","_","die","_","_","Maschine","_","Leben","_"],"parts":["Marie","Antoinette","gehörte","zu","berühmtesten","Opfern",",","unter","der","ihr","verloren"]},{"i":4,"row":["_","_","_","_","weniger","_","_","17000","_","_","weil","_","_","gnadenlos","_"],"parts":["die","Schreckensherrschaft","forderte","binnen","Monate","etwa","Tote",",","die","Tribunale","urteilten"]},{"i":5,"row":["_","_","_","Todesstrafe","_","_","_","_","als","_","_","Justizminister","_","Landes","_"],"parts":["Frankreich","schaffte","die","erst","1981","ab",",","Robert","Badinter","des","war"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Boden","_","Klima","_","_","_","_","synthetische","_","vollständig","_"],"parts":["der","Ökolandbau","schont","und",",","weil","er","auf","Pestizide","verzichtet"]},{"i":1,"row":["_","_","_","von","_","Steiner","_","_","_","_","Vorträge","_","Landwirte","_"],"parts":["Demeter","wurde","1924","Rudolf","begründet",",","der","damals","für","hielt"]},{"i":2,"row":["_","_","_","25","_","der","_","_","_","_","_","wie","_","es","_"],"parts":["bis","2030","sollen","Prozent","EU-Fläche","ökologisch","bewirtschaftet","werden",",","Brüssel","plant"]},{"i":3,"row":["_","_","_","Verbraucher","_","Bauern","_","_","_","_","das","_","gemeinsam","_"],"parts":["solidarische","Landwirtschaft","verbindet","und","direkt",",","indem","beide","Ernterisiko","tragen"]},{"i":4,"row":["_","_","_","_","der","_","_","während","_","Betriebe","_","_","sie","_"],"parts":["Permakultur","arbeitet","bewusst","mit","Natur",",","konventionelle","oft","gegen","wirtschaften"]},{"i":5,"row":["_","_","Fruchtfolge","_","_","_","des","_","_","weil","_","_","Auslaugung","_"],"parts":["Mischkultur","und","erhalten","die","Fruchtbarkeit","Bodens",",","sie","einseitige","verhindern"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -779,7 +779,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","eine","_","_","eine","_","Ebene","_","_","_","sorgfältig","_","_"],"parts":["jeder","Konflikt","hat","sachliche","und","emotionale",",","die","man","auseinanderhalten","sollte"]},{"i":1,"row":["_","_","_","neun","_","_","Konflikteskalation","_","_","_","vom","_","_","Zerstörung","_"],"parts":["Friedrich","Glasl","unterscheidet","Stufen","der",",","die","schrittweise","Streit","zur","führen"]},{"i":2,"row":["_","_","_","die","_","von","_","Sachfrage","_","_","_","Seiten","_","_","_"],"parts":["das","Harvard-Konzept","trennt","Person","der",",","damit","beide","lösungsorientiert","verhandeln","können"]},{"i":3,"row":["_","_","_","oft","_","Spannungen","_","_","_","der","_","endlich","_","_"],"parts":["aktives","Zuhören","entschärft","emotionale",",","weil","sich","andere","verstanden","fühlt"]},{"i":4,"row":["_","_","_","_","neutral","_","_","Parteien","_","_","keine","_","sich","_","_"],"parts":["der","Mediator","bleibt","strikt","gegenüber","beiden",",","damit","Seite","benachteiligt","fühlt"]},{"i":5,"row":["_","_","Thuns","_","_","1981","_","_","_","Nachricht","_","_","Ebenen","_"],"parts":["Schulz","von","Vier-Ohren-Modell","erschien",",","das","jede","auf","vier","deutet"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

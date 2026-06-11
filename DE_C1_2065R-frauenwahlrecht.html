@@ -1391,7 +1391,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","als","_","Land","_","_","_","_","worauf","_","Staaten","_"],"parts":["Neuseeland","führte","1893","erstes","das","Frauenwahlrecht","ein",",","viele","folgten"]},{"i":1,"row":["_","_","_","Frauen","_","_","19.","_","1919","_","_","_","Kaiser","_","_"],"parts":["in","Deutschland","wählten","erstmals","am","Januar",",","nachdem","der","abgedankt","hatte"]},{"i":2,"row":["_","_","_","im","_","_","als","_","_","im","_","_","_","Geschichte","_"],"parts":["Marie","Juchacz","sprach","Februar","1919","erste","Frau","Reichstag",",","was","schrieb"]},{"i":3,"row":["_","_","_","Frauen","_","1971","_","_","_","_","obwohl","Nachbarländer","_","_","_"],"parts":["die","Schweiz","ließ","erst","an","Bundeswahlen","teilnehmen",",","längst","weiter","waren"]},{"i":4,"row":["_","_","_","Frauenwahlrecht","_","_","_","als","Frauen","_","_","Kommunalwahlen","_","_"],"parts":["Saudi-Arabien","gewährte","das","erst","2015",",","erstmals","bei","abstimmen","durften"]},{"i":5,"row":["_","_","_","noch","_","_","Gleichheit","_","_","alte","_","_","unsichtbar","_"],"parts":["formale","Gleichstellung","bedeutet","keine","tatsächliche",",","weil","Strukturen","oft","weiterwirken"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

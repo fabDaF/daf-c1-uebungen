@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1891","_","1938","_","_","_","bevor","_","_","London","_"],"parts":["Freud","praktizierte","von","bis","in","Wien",",","er","nach","emigrierte"]},{"i":1,"row":["_","_","_","1900","_","_","der","_","_","nur","_","Exemplare","_"],"parts":["die","Traumdeutung","erschien",",","obwohl","Verlag","anfangs","wenige","verkaufte"]},{"i":2,"row":["_","_","_","Psychoanalyse","_","Pseudowissenschaft","_","weil","_","sich","_","_","_"],"parts":["Popper","kritisierte","die","als",",","sie","nicht","widerlegen","lässt"]},{"i":3,"row":["_","_","_","Jung","_","Freud","_","_","ihre","_","_","unüberbrückbar","_"],"parts":["1913","trennte","sich","von",",","weil","theoretischen","Differenzen","wurden"]},{"i":4,"row":["_","_","_","zentrale","_","_","_","dem","Popper","_","_","Wissenschaft","_"],"parts":["Falsifizierbarkeit","ist","das","Kriterium",",","an","jede","echte","misst"]},{"i":5,"row":["_","_","Menschen","_","_","_","auch","_","es","_","_","Naturgesetz","_"],"parts":["Sprechen","kann","nachweislich","heilen",",","wenn","keinem","strengen","folgt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

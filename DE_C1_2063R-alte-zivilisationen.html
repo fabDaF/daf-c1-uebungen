@@ -1392,7 +1392,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","_","_","Flüssen","_","_","fruchtbare","Böden","_","_","Ernten","_"],"parts":["alte","Zivilisationen","entstanden","an","großen",",","weil","dort","reiche","ermöglichten"]},{"i":1,"row":["_","_","_","_","_","5000","_","die","_","_","_","Schreiber","_","Ton","_"],"parts":["die","Sumerer","erfanden","vor","über","Jahren","Keilschrift",",","die","in","drückten"]},{"i":2,"row":["_","_","_","Cheops","_","_","_","_","Christus","_","_","_","das","_","Reich","_"],"parts":["die","Pyramide","von","wurde","um","2580","vor","erbaut",",","als","Alte","blühte"]},{"i":3,"row":["_","_","Hammurabi","_","_","Paragraphen","_","_","_","Leben","_","Babylon","_","_"],"parts":["der","Codex","umfasst","282",",","die","das","in","detailliert","regelten"]},{"i":4,"row":["_","_","Hochkulturen","_","_","Bewässerung","_","_","_","weil","_","Überleben","_","_","_"],"parts":["alle","vier","beherrschten","die","ihrer","Felder",",","ihr","direkt","davon","abhing"]},{"i":5,"row":["_","_","_","Macht","_","_","in","_","_","_","weil","_","_","göttlich","_"],"parts":["die","Theokratie","verband","und","Religion","einer","Hand",",","Herrscher","als","galten"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

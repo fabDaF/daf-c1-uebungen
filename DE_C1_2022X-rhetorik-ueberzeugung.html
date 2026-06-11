@@ -1404,7 +1404,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Begründer","_","Rhetorik","_","_","Lehre","_","heute","_","_"],"parts":["Aristoteles","gilt","als","der",",","dessen","bis","weiter","wirkt"]},{"i":1,"row":["_","_","_","seine","_","Rede","_","die","_","_","_","Worten","_"],"parts":["Kennedy","hielt","1963","Berliner",",","mit","vier","deutschen","endete"]},{"i":2,"row":["_","_","Rede","_","_","_","Argumente","_","_","_","wie","_","Aristoteles","_"],"parts":["eine","gute","verbindet","Glaubwürdigkeit",",","und","Gefühle",",","schon","lehrte"]},{"i":3,"row":["_","_","_","den","_","_","ohne","jemals","_","_","Antwort","_","_"],"parts":["rhetorische","Fragen","aktivieren","Zuhörer",",","eine","echte","zu","verlangen"]},{"i":4,"row":["_","_","_","oft","_","als","_","_","_","wie","_","immer","_","_"],"parts":["der","Auftritt","überzeugt","mehr","der","Wortlaut",",","Redetrainer","wieder","betonen"]},{"i":5,"row":["_","_","_","zum","Auftritt","_","_","_","_","mangelnder","Vorbereitung","_","_"],"parts":["Lampenfieber","gehört","einfach",",","statt","ein","Zeichen","zu","sein"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

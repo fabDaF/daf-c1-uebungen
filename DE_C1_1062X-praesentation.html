@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Präsentation","_","_","Teile","_","_","_","und","_","aufeinander","_"],"parts":["eine","gute","hat","drei",",","die","klar","logisch","aufbauen"]},{"i":1,"row":["_","_","_","_","als","_","_","weil","_","Emotionen","_","Gehirn","_"],"parts":["Storytelling","wird","besser","erinnert","Aufzählung",",","Geschichten","im","auslösen"]},{"i":2,"row":["_","_","Stimme","_","sich","_","_","_","_","Text","_","_","_"],"parts":["Folien","und","müssen","ergänzen",",","statt","denselben","doppelt","zu","liefern"]},{"i":3,"row":["_","_","_","10/20/30","_","_","sie","_","_","_","und","_","Schriftgröße","_"],"parts":["Kawasakis","Regel","heißt",",","weil","Folienzahl",",","Dauer","minimale","festlegt"]},{"i":4,"row":["_","_","_","Folien","_","Minuten","_","_","der","_","wichtiger","_","_"],"parts":["KI-Tools","produzieren","heute","in",",","weshalb","Inhalt","geworden","ist"]},{"i":5,"row":["_","_","_","_","als","_","_","weil","schöne","_","jeder","_","_"],"parts":["Substanz","ist","wichtiger","geworden","Form",",","Folien","erzeugen","kann"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

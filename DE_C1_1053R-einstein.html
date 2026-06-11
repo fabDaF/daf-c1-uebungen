@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","bevor","die","_","_","München","_"],"parts":["Einstein","wurde","1879","Ulm","geboren",",","Familie","nach","zog"]},{"i":1,"row":["_","_","_","vier","_","Aufsätze","_","_","_","noch","_","Patentamt","_"],"parts":["1905","veröffentlichte","er","bahnbrechende",",","während","er","im","arbeitete"]},{"i":2,"row":["_","_","_","den","_","für","_","_","_","_","für","_","Relativitätstheorie"],"parts":["1921","erhielt","er","Nobelpreis","Physik",",","aber","nicht","die"]},{"i":3,"row":["_","_","_","in","_","USA","_","_","die","_","ihn","_","_"],"parts":["1933","emigrierte","er","die",",","weil","Nationalsozialisten","offen","verfolgten"]},{"i":4,"row":["_","_","_","Roosevelt","_","1939","_","als","_","_","_","Atomplänen","_"],"parts":["sein","Brief","an","entstand",",","er","vor","deutschen","warnte"]},{"i":5,"row":["_","_","_","in","_","_","wo","er","_","_","unermüdlich","_","_"],"parts":["er","starb","1955","Princeton",",","bis","zuletzt","geforscht","hatte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

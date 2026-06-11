@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Bescheid","_","_","_","weil","_","extra","Zeit","_","_"],"parts":["ich","hätte","früher","sagen","sollen",",","du","reserviert","hattest"]},{"i":1,"row":["_","_","Stelle","_","_","es","_","_","_","_","die","_","schwierig","_"],"parts":["an","deiner","hätte","ich","anders","gemacht",",","obwohl","Lage","war"]},{"i":2,"row":["_","_","_","_","weil","_","vergeblich","_","eine","_","Stunde","_","_"],"parts":["ich","war","enttäuscht",",","ich","über","ganze","gewartet","habe"]},{"i":3,"row":["_","_","Mal","_","_","mich","_","_","_","Nachricht","_","_","_","du","_"],"parts":["beim","nächsten","würde","ich","über","eine","kurze","freuen",",","bevor","absagst"]},{"i":4,"row":["_","_","_","mehr","_","_","weil","_","und","_","_","völlig","_"],"parts":["digitale","Kommunikation","verlangt","Höflichkeitssignale",",","Mimik","Tonfall","dort","fehlen"]},{"i":5,"row":["_","_","_","_","_","sich","_","_","_","_","andere","Menschen","_","_"],"parts":["wer","Bedauern","ausdrückt",",","klagt","selbst","an",",","statt","zu","beschuldigen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

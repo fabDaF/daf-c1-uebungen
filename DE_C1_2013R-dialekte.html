@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","Linie","_","_","vom","_","_","_","alte","_","deutlich","_"],"parts":["die","Benrather","trennt","Hochdeutsch","Niederdeutschen",",","wie","Sprachkarten","zeigen"]},{"i":1,"row":["_","_","_","die","_","p","_","_","_","_","was","_","oft","_"],"parts":["im","Bairischen","sind","Plosive","und","b","verschmolzen",",","Zugezogene","verwirrt"]},{"i":2,"row":["_","_","_","Verb","_","_","_","die","hochdeutsche","_","stets","_","_"],"parts":["Plattdeutsch","kennt","das","maken",",","wo","Standardsprache","machen","verwendet"]},{"i":3,"row":["_","_","_","traditionell","_","_","während","_","in","_","Situation","_","_","_"],"parts":["die","Berliner","sagen","kieken",",","Hochdeutschsprecher","derselben","gucken","sagen","würden"]},{"i":4,"row":["_","_","_","der","_","ü","_","_","_","_","das","_","Fiaß","_"],"parts":["im","Schwäbischen","wird","Umlaut","zu","i",",","wie","Beispiel","zeigt"]},{"i":5,"row":["_","_","_","soziales","_","_","das","_","_","innere","_","zugleich","_"],"parts":["Mundart","ist","ein","Kostüm",",","Herkunft","und","Haltung","markiert"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1404,7 +1404,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Fakten","_","_","_","die","sich","_","leichter","_","_"],"parts":["postfaktische","Politik","ersetzt","durch","Emotionen",",","viel","verbreiten","lassen"]},{"i":1,"row":["_","_","_","die","_","von","_","_","weil","_","_","Reichweite","_"],"parts":["soziale","Medien","beschleunigen","Verbreitung","Falschmeldungen",",","Empörung","dort","erzeugt"]},{"i":2,"row":["_","_","_","nur","_","was","_","ohnehin","schon","_","_","_","_"],"parts":["Algorithmen","zeigen","oft",",","wir","längst","zu","wissen","glauben"]},{"i":3,"row":["_","_","Quellen","_","_","_","_","Bestätigungsfehler","_","dem","_","Menschen","_","_"],"parts":["wer","mehrere","prüft",",","verringert","den",",","alle","unbewusst","unterliegen"]},{"i":4,"row":["_","_","Pledge","_","_","Überprüfung","_","_","_","bevor","_","sie","_"],"parts":["die","Pro-Truth","fördert","die","von","Fakten",",","man","teilt"]},{"i":5,"row":["_","_","_","Nachrichten","_","_","_","ohne","dabei","_","Zynismus","_","_"],"parts":["wir","sollten","allen","skeptisch","gegenüberstehen",",","in","zu","verfallen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

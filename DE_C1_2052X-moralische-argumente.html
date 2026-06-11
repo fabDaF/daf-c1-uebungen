@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","_","Wort","_","_","das","_","und","_","Charakter","_","_"],"parts":["Ethik","kommt","vom","griechischen","ethos",",","Gewohnheit","auch","bedeuten","kann"]},{"i":1,"row":["_","_","_","den","_","_","_","der","_","_","ethische","_","maßgeblich","_"],"parts":["Kant","formulierte","1785","kategorischen","Imperativ",",","bis","heute","Debatten","prägt"]},{"i":2,"row":["_","_","_","das","_","_","der","_","_","_","_","wie","_","es","_"],"parts":["der","Utilitarismus","strebt","größte","Glück","größten","Zahl","an",",","Bentham","formulierte"]},{"i":3,"row":["_","_","_","sehr","_","_","_","_","_","sie","in","_","Debatte","_","_"],"parts":["moralische","Argumente","müssen","gut","begründet","werden",",","damit","einer","überzeugen","können"]},{"i":4,"row":["_","_","_","eine","_","_","_","Generationen","_","_","unsere","_","_","wirksam","_"],"parts":["Hans","Jonas","verlangte","Verantwortung","gegenüber","kommenden",",","weil","Technik","global","wurde"]},{"i":5,"row":["_","_","_","_","Diskurs","_","_","dem","_","das","_","Argument","_","_"],"parts":["Habermas","betont","den","herrschaftsfreien",",","in","allein","bessere","zählen","soll"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","wo","er","_","_","_","Leben","_"],"parts":["Kafka","wurde","1883","Prag","geboren",",","fast","sein","ganzes","verbrachte"]},{"i":1,"row":["_","_","_","Tuchhandlungsreisender","_","_","seine","_","Familie","_","allein","_","_"],"parts":["Gregor","Samsa","ist",",","der","ganze","ganz","ernähren","muss"]},{"i":2,"row":["_","_","_","im","_","1912","_","_","_","tagsüber","_","Büro","_"],"parts":["die","Verwandlung","entstand","Winter",",","während","Kafka","im","arbeitete"]},{"i":3,"row":["_","_","_","Kafkas","_","posthum","_","_","_","Freund","_","Vernichtung","_","_"],"parts":["Max","Brod","veröffentlichte","Werke",",","obwohl","der","die","verfügt","hatte"]},{"i":4,"row":["_","_","_","_","in","_","Sprachen","_","_","_","die","_","universell","_"],"parts":["der","Begriff","kafkaesk","wanderte","viele","ein",",","weil","Erfahrung","ist"]},{"i":5,"row":["_","_","_","der","_","Käfer","_","_","die","_","Familie","_","_"],"parts":["am","Ende","stirbt","verwandelte",",","während","erleichterte","befreit","aufatmet"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

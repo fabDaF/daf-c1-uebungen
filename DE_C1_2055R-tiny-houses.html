@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","den","_","als","_","_","_","sie","_","_","Verzicht","_"],"parts":["winzige","Häuser","fördern","Minimalismus","Lebensstil",",","weil","zum","bewussten","erziehen"]},{"i":1,"row":["_","_","_","oft","_","_","und","_","_","_","was","_","Raumlösungen","_"],"parts":["die","Wohnfläche","liegt","zwischen","15","50","Quadratmetern",",","kluge","erfordert"]},{"i":2,"row":["_","_","House","_","_","_","auch","THOW","_","_","es","_","_","_"],"parts":["ein","Tiny","auf","Rädern","heißt",",","weil","jederzeit","umziehen","kann"]},{"i":3,"row":["_","_","_","ursprünglich","_","_","USA","_","_","die","_","_","Eigentümer","_"],"parts":["die","Bewegung","entstand","in","den",",","wo","Finanzkrise","viele","traf"]},{"i":4,"row":["_","_","_","auch","_","Energieverbrauch","_","_","_","Houses","_","klimafreundlich","_"],"parts":["weniger","Wohnfläche","bedeutet","weniger",",","weshalb","Tiny","als","gelten"]},{"i":5,"row":["_","_","_","_","2024","_","_","DIN","_","_","die","_","_","Kleinhäuser","_"],"parts":["in","Deutschland","gilt","seit","die","Norm","13056",",","Standards","für","definiert"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

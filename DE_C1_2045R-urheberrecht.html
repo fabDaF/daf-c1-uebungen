@@ -1385,7 +1385,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","den","_","eines","_","_","_","_","von","_","Arbeit","_","_"],"parts":["das","Urheberrecht","schützt","Schöpfer","Werks",",","damit","er","seiner","leben","kann"]},{"i":1,"row":["_","_","_","2001","_","Lawrence","_","_","_","_","_","Teilen","_","Werken","_","_"],"parts":["Creative","Commons","wurde","von","Lessig","gegründet",",","um","das","von","zu","erleichtern"]},{"i":2,"row":["_","_","Jahren","_","_","_","_","Deutschland","_","_","sodass","_","_","frei","_","_"],"parts":["nach","70","wird","ein","Werk","in","gemeinfrei",",","jeder","es","nutzen","darf"]},{"i":3,"row":["_","_","BY","_","_","_","des","_","_","wenn","_","_","Werk","_","_"],"parts":["der","Lizenzbaustein","verlangt","die","Namensnennung","Urhebers",",","jemand","das","weiterverwenden","möchte"]},{"i":4,"row":["_","_","_","2022","_","_","Rechtsthema","_","_","viele","_","_","Werke","_"],"parts":["KI-Trainingsdaten","sind","seit","ein","umstrittenes",",","weil","Modelle","geschützte","verwenden"]},{"i":5,"row":["_","_","Werke","_","Quellenangabe","_","_","_","_","_","und","_","_","_","Konsequenzen"],"parts":["wer","fremde","ohne","übernimmt",",","begeht","ein","Plagiat","riskiert","ernsthafte","rechtliche"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

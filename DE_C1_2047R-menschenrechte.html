@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","frei","_","gleich","_","_","_","_","_","der","_","_","feierlich","_"],"parts":["alle","Menschen","sind","und","an","Würde","geboren",",","wie","erste","Artikel","erklärt"]},{"i":1,"row":["_","_","_","am","_","_","1948","_","_","_","die","_","_","lange","_","_"],"parts":["die","Erklärung","wurde","10.","Dezember","verkündet",",","nachdem","Vereinten","Nationen","verhandelt","hatten"]},{"i":2,"row":["_","_","_","Artikel","_","_","_","Soft","_","_","weil","_","_","_","bindend","_"],"parts":["sie","umfasst","30","und","gilt","als","Law",",","sie","rechtlich","nicht","ist"]},{"i":3,"row":["_","_","_","sich","_","_","_","der","_","_","während","_","_","Land","_","_"],"parts":["acht","Staaten","enthielten","bei","der","Abstimmung","Stimme",",","kein","einziges","dagegen","stimmte"]},{"i":4,"row":["_","_","_","vom","_","_","Rechte","_","_","_","damals","_","schutzlos","_","_"],"parts":["Hannah","Arendt","sprach","Recht","auf",",","weil","Staatenlose","völlig","geworden","waren"]},{"i":5,"row":["_","_","_","Bürger-","_","_","_","in","_","_","_","die","_","_","verbindlich","_"],"parts":["1976","traten","der","und","der","Sozialpakt","Kraft",",","wodurch","Rechte","völkerrechtlich","wurden"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

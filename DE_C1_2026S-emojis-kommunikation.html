@@ -1401,7 +1401,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","1982","den","_","ASCII-Smiley","_","_","_","Ironie","_","_"],"parts":["Scott","Fahlmann","schlug","ersten","vor",",","um","zu","markieren"]},{"i":1,"row":["_","_","_","1999","_","_","Emoji-Palette","_","_","nur","_","Zeichen","_"],"parts":["Shigetaka","Kurita","entwarf","die","erste",",","die","176","umfasste"]},{"i":2,"row":["_","_","Gefühle","_","_","die","_","rein","_","Text","_","_","_"],"parts":["Emojis","können","ausdrücken",",","im","geschriebenen","sonst","verloren","gehen"]},{"i":3,"row":["_","_","_","in","_","Kommunikation","_","_","_","_","weil","_","Stimme","_"],"parts":["der","Tonfall","wird","schriftlicher","durch","Emojis","ersetzt",",","die","fehlt"]},{"i":4,"row":["_","_","_","_","Emojis","_","Verschiedenes","_","was","_","Missverständnisse","_","_"],"parts":["zwischen","Generationen","bedeuten","dieselben","manchmal",",","peinliche","erzeugen","kann"]},{"i":5,"row":["_","_","Juli","_","_","_","als","_","_","Day","_","_","Apple","_"],"parts":["der","17.","gilt","seit","2014","World","Emoji",",","den","etablierte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

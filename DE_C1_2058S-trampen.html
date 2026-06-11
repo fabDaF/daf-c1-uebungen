@@ -1391,7 +1391,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Reisen","_","Anhalter","_","_","_","junge","_","_","Jahrzehnten","_"],"parts":["Trampen","ist","kostenloses","per",",","das","besonders","Leute","seit","fasziniert"]},{"i":1,"row":["_","_","Roman","_","_","_","New","_","_","wo","_","_","Beat-Generation","_"],"parts":["Jack","Kerouacs","erschien","1957","in","York",",","er","die","prägte"]},{"i":2,"row":["_","_","Daumen","_","_","_","Zeichen","_","Anhalters","_","_","_","_","Fahrer","_"],"parts":["der","gestreckte","ist","das","internationale","des",",","das","fast","jeder","versteht"]},{"i":3,"row":["_","_","_","_","digitale","_","_","_","wodurch","_","klassische","_","seltener","_"],"parts":["Mitfahrgelegenheiten","werden","heute","über","Plattformen","vermittelt",",","das","Trampen","wird"]},{"i":4,"row":["_","_","_","Abenteuer","_","_","Budget","_","_","_","diese","_","besonders","_"],"parts":["Trampen","verbindet","das","mit","kleinem",",","weshalb","Studenten","Reiseform","schätzen"]},{"i":5,"row":["_","_","_","_","_","Risikobewusstsein","_","_","_","auch","_","die","_","Fahrer","_","_"],"parts":["wer","trampt",",","sollte","sein","nicht","ausschalten",",","wenn","meisten","hilfsbereit","sind"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

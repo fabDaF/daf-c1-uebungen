@@ -1401,7 +1401,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Gleichberechtigung","der","Geschlechter","_","_","noch","_","_","_","_"],"parts":["Feminismus","verfolgt","die",",","die","längst","nicht","erreicht","ist"]},{"i":1,"row":["_","_","_","Epochen","_","Kulturen","_","_","_","Kunstgeschichte","_","_","eindrucksvoll","_"],"parts":["Schönheitsideale","wechseln","über","und",",","wie","die","immer","wieder","zeigt"]},{"i":2,"row":["_","_","_","ihre","_","1792","_","_","Frauenrechte","_","kaum","_","_"],"parts":["Mary","Wollstonecraft","schrieb","Programmschrift",",","als","noch","jemanden","interessierten"]},{"i":3,"row":["_","_","_","_","Jugendlichen","Essstörungen","_","_","_","zahlreiche","Studien","_","_"],"parts":["unrealistische","Bilder","können","bei","auslösen",",","wie","inzwischen","belegen"]},{"i":4,"row":["_","_","_","Sprichwort","_","Auge","_","Betrachters","_","_","sie","_","_"],"parts":["Schönheit","liegt","laut","im","des",",","der","selbst","definiert"]},{"i":5,"row":["_","_","_","Kernanliegen","_","Bewegung","_","_","alle","_","_","miteinander","_"],"parts":["Selbstbestimmung","ist","ein","der",",","das","feministischen","Strömungen","verbindet"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

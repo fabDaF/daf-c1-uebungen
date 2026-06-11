@@ -1391,7 +1391,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","unsere","_","und","_","_","_","_","Marken","_","Zugehörigkeit","_"],"parts":["der","Konsumismus","prägt","Identität","unseren","Status",",","weil","soziale","signalisieren"]},{"i":1,"row":["_","_","_","absichtlich","_","Lebensdauer","_","_","_","_","Kunden","_","neu","_"],"parts":["geplante","Obsoleszenz","verkürzt","die","von","Produkten",",","damit","schneller","kaufen"]},{"i":2,"row":["_","_","Friday","_","_","_","2013","_","_","_","obwohl","_","_","Kaufrausch","_"],"parts":["der","Black","etablierte","sich","ab","in","Europa",",","Kritiker","vor","warnten"]},{"i":3,"row":["_","_","_","die","_","_","_","Unternehmens","_","_","indem","_","_","Bilder","_"],"parts":["Greenwashing","täuscht","über","echte","Umweltbilanz","eines","hinweg",",","Werbung","grüne","inszeniert"]},{"i":4,"row":["_","_","_","die","_","Frage","_","_","Genug","_","_","ehrlich","_","_"],"parts":["Suffizienz","heißt",",","unbequeme","nach","dem","ernsthaft","und","zu","stellen"]},{"i":5,"row":["_","_","_","Materialien","_","_","im","_","_","_","weniger","_","Rohstoffe","_","_"],"parts":["die","Kreislaufwirtschaft","hält","möglichst","lange","Umlauf",",","damit","wertvolle","verloren","gehen"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

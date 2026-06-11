@@ -1388,7 +1388,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Hütte","_","_","_","am","_","_","_","weil","_","einfach","_","_"],"parts":["Thoreau","baute","seine","mit","eigenen","Händen","Walden","Pond",",","er","leben","wollte"]},{"i":1,"row":["_","_","_","Jahre","_","_","Monate","_","_","_","bevor","_","_","Concord","_"],"parts":["er","lebte","zwei","und","zwei","im","Wald",",","er","nach","zurückkehrte"]},{"i":2,"row":["_","_","_","und","_","_","_","_","den","_","Schüler","_","heute","_"],"parts":["Walden","erschien","1854","wurde","ein","Klassiker",",","amerikanische","bis","lesen"]},{"i":3,"row":["_","_","_","_","Ungehorsam","_","_","_","nachdem","_","_","Nacht","_","Gefängnis","_"],"parts":["sein","Essay","über","zivilen","erschien","1849",",","Thoreau","eine","im","verbrachte"]},{"i":4,"row":["_","_","Martin","_","King","_","_","_","_","_","als","_","_","Widerstand","_"],"parts":["Gandhi","und","Luther","beriefen","sich","auf","Thoreau",",","sie","gewaltlosen","begründeten"]},{"i":5,"row":["_","_","Menschen","_","_","_","in","_","Verzweiflung","_","_","Thoreau","_","_","_"],"parts":["die","meisten","führen","ein","Leben","stiller",",","wie","provokant","behauptet","hat"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

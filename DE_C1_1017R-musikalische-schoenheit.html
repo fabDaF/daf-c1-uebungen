@@ -1403,7 +1403,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","Streitschrift","_","_","als","_","Streit","_","_","gerade","_"],"parts":["Hanslick","veröffentlichte","seine","1854",",","der","um","Wagner","eskalierte"]},{"i":1,"row":["_","_","_","Hanslick","tönend","_","_","_","die","_","_","Inhalt","_"],"parts":["Musik","ist","nach","bewegte","Form",",","keinen","äußeren","braucht"]},{"i":2,"row":["_","_","Gefühl","_","streng","_","_","_","_","man","_","Musik","_","_"],"parts":["Empfindung","und","müssen","unterschieden","werden",",","wenn","über","urteilen","will"]},{"i":3,"row":["_","_","_","Musik","_","_","Ausdruck","_","Gefühle","_","_","Hanslick","_","_"],"parts":["Wagner","verstand","die","als","höchsten","der",",","was","entschieden","bestritt"]},{"i":4,"row":["_","_","_","_","_","Zweck","_","weil","_","allein","_","seiner","_","_","_"],"parts":["das","Schöne","erfüllt","keinen","äußeren",",","es","um","selbst","willen","existiert"]},{"i":5,"row":["_","_","_","im","_","_","KI-Musik","_","_","weil","_","_","Gefühle","_"],"parts":["Hanslicks","Position","wirkt","Zeitalter","der","aktuell",",","Maschinen","keine","ausdrücken"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

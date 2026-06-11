@@ -779,7 +779,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","in","_","Isolation","_","_","_","_","Kontakt","_","_","Außenwelt","_"],"parts":["unkontaktierte","Stämme","leben","freiwilliger",",","weil","sie","jeden","mit","der","meiden"]},{"i":1,"row":["_","_","Behörde","_","_","_","1987","_","Völker","_","_","_","sie","_","_"],"parts":["die","brasilianische","FUNAI","schützt","seit","isolierte",",","deren","Territorien","strikt","überwacht"]},{"i":2,"row":["_","_","_","Yanomami-Territorium","_","_","_","weil","sie","_","_","Quecksilber","_"],"parts":["Goldgräber","bedrohen","das","seit","Jahrzehnten",",","Flüsse","mit","vergiften"]},{"i":3,"row":["_","_","Immunität","_","_","_","tödlich","_","_","_","_","harmloser","_","_","Dörfer","_"],"parts":["die","fehlende","macht","Erstkontakte","oft",",","weil","schon","ein","Schnupfen","ganze","auslöscht"]},{"i":4,"row":["_","_","_","2007","_","_","Recht","_","_","_","_","viele","_","dennoch","_"],"parts":["die","UN-Erklärung","von","schützt","das","auf","Selbstbestimmung",",","das","Staaten","missachten"]},{"i":5,"row":["_","_","_","tausende","_","_","dem","_","_","_","die","_","dramatisch","_","_"],"parts":["Lula","wies","2023","Goldgräber","aus","Reservat",",","nachdem","Lage","eskaliert","war"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

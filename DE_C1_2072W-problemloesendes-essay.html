@@ -1394,7 +1394,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","die","_","_","des","_","_","als","_","_","Versuche","_"],"parts":["Montaigne","begründete","1580","literarische","Gattung","Essays",",","er","seine","veröffentlichte"]},{"i":1,"row":["_","_","Essay","_","_","_","_","Analyse","_","_","_","die","_","aufeinander","_"],"parts":["ein","problemlösendes","besteht","aus","Problem",",","und","Lösung",",","logisch","aufbauen"]},{"i":2,"row":["_","_","Schreiben","_","man","_","_","_","_","_","_","die","Argumentation","_","_"],"parts":["vor","dem","sollte","einen","klaren","Plan","entwickeln",",","damit","stringent","bleibt"]},{"i":3,"row":["_","_","Sätze","_","_","die","_","_","ohne","_","_","Text","_","_"],"parts":["Konnektoren","verbinden","und","sichern","Kohärenz",",","die","ein","zerfallen","würde"]},{"i":4,"row":["_","_","_","Vor-","_","Nachteile","_","_","_","_","Autor","_","Empfehlung","_"],"parts":["jeder","Lösungsvorschlag","sollte","und","abwägen",",","bevor","der","eine","ausspricht"]},{"i":5,"row":["_","_","_","Problem","_","Lösung","_","_","_","ohne","_","Argumente","_","_"],"parts":["der","Schluss","fasst","und","prägnant","zusammen",",","neue","zu","präsentieren"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

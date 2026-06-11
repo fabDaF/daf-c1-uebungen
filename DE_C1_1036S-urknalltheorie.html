@@ -1406,7 +1406,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","etwa","_","Milliarden","_","_","_","wie","_","übereinstimmend","_"],"parts":["das","Universum","ist","13,8","Jahre","alt",",","Messungen","zeigen"]},{"i":1,"row":["_","_","_","Theorie","_","_","bevor","_","später","_","_","Daten","_"],"parts":["Lemaître","formulierte","seine","1927",",","Hubble","die","entscheidenden","lieferte"]},{"i":2,"row":["_","_","_","Rotverschiebung","_","Galaxien","_","_","_","_","schneller","_","uns","_"],"parts":["Hubble","beobachtete","die","ferner",",","die","sich","immer","von","entfernen"]},{"i":3,"row":["_","_","Wilson","_","_","Hintergrundstrahlung","_","_","obwohl","_","_","_","Taubendreck","_"],"parts":["Penzias","und","entdeckten","die","1964",",","sie","zuerst","an","dachten"]},{"i":4,"row":["_","_","_","2022","_","_","der","_","_","die","_","Erwartungen","_"],"parts":["JWST","liefert","seit","Bilder","aus","Frühzeit",",","alle","übertreffen"]},{"i":5,"row":["_","_","Zeit","_","_","_","_","Urknall","_","wie","_","Theorie","_","_"],"parts":["Raum","und","entstanden","erst","mit","dem",",","die","konsequent","behauptet"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

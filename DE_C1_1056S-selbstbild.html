@@ -1409,7 +1409,7 @@ function schreibLeeren() {
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":false,"click":true,"tab":5};
+  var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
   var SBGAP = [{"i":0,"row":["_","_","_","eine","_","_","die","wir","_","_","neu","_","_"],"parts":["das","Selbstbild","ist","Konstruktion",",","jeden","Tag","zusammensetzen","müssen"]},{"i":1,"row":["_","_","_","_","dem","_","1955","_","_","zwei","_","es","_"],"parts":["das","Joharifenster","stammt","aus","Jahr",",","als","Psychologen","entwickelten"]},{"i":2,"row":["_","_","_","das","_","des","_","_","_","dem","_","Rollen","_"],"parts":["Goffman","beschrieb","1956","Theater","Alltags",",","in","jeder","spielt"]},{"i":3,"row":["_","_","_","unsere","_","systematisch","_","_","_","künstlich","_","Gesichter","_"],"parts":["digitale","Filter","verzerren","Selbstwahrnehmung",",","weil","sie","ideale","normalisieren"]},{"i":4,"row":["_","_","_","_","Spiegel","_","_","sie","uns","_","_","Mund","_"],"parts":["KI-Modelle","sind","keine","guten",",","weil","nach","dem","reden"]},{"i":5,"row":["_","_","_","den","_","Fleck","_","den","wir","_","_","_","_"],"parts":["ehrliches","Feedback","verkleinert","blinden",",","selbst","nicht","sehen","können"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
