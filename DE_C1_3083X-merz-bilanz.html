@@ -575,36 +575,106 @@ var LUECKE_DATA = [
 ];
 
 var MC_DATA = [
-  { q: "Wann wurde Friedrich Merz zum Bundeskanzler gewählt?",
-    opts: ["am 23. Februar 2025, unmittelbar nach der Wahl", "am 6. Mai 2025", "am 1. Januar 2026", "am 6. Mai 2026"],
-    correct: 1 },
-  { q: "Welches Wahlversprechen stellt der Text als klar eingelöst dar?",
-    opts: ["die Senkung der Körperschaftsteuer", "die Bürgergeld-Reform", "die Aktivrente", "der große Bürokratieabbau"],
-    correct: 2 },
-  { q: "Wie bewertet der Text die deutsche Migrationspolitik seit Mai 2025?",
-    opts: ["als unumstritten erfolgreich", "als vollständig gescheitert", "als formell umgesetzt, rechtlich aber noch nicht gesichert", "als gar nicht umgesetzt"],
-    correct: 2 },
-  { q: "Was ist von der angekündigten Bürgergeld-Reform bislang übrig geblieben?",
-    opts: ["eine vollständige Abschaffung des Bürgergelds", "eine Umbenennung mit Systemumbau", "lediglich präzisierte Mitwirkungspflichten und leicht abgesenkte Vermögensfreigrenzen", "eine deutliche Erhöhung der Regelsätze"],
-    correct: 2 },
-  { q: "Warum steht die Aktivrente laut Text auf der „Habenseite“?",
-    opts: ["weil sie erst 2028 in Kraft treten wird", "weil sie am 1. Januar 2026 ohne nennenswerte Abstriche eingeführt wurde", "weil sie ausschließlich Geringverdienern hilft", "weil sie auf Druck der SPD verschärft wurde"],
-    correct: 1 },
-  { q: "Was zeigt der Text am Beispiel der Körperschaftsteuer?",
-    opts: ["dass sie bereits 2025 gesenkt wurde", "dass die Senkung auf 2028 verschoben wurde", "dass sie komplett abgeschafft wurde", "dass sie erhöht wurde"],
-    correct: 1 },
-  { q: "Welches Muster erkennt die Autorin/der Autor in der Bilanz nach 12 Monaten?",
-    opts: ["Vor allem kostspielige Projekte wurden umgesetzt.", "Umgesetzt wurde, was haushaltsneutral und koalitionsverträglich war.", "Alle Wahlversprechen wurden brutal durchgesetzt.", "Keine einzige Zusage wurde eingehalten."],
-    correct: 1 },
-  { q: "Welche Rolle spielt das Bundesverfassungsgericht im Text?",
-    opts: ["Es hat die Aktivrente für verfassungswidrig erklärt.", "Es wird voraussichtlich 2026 grundsätzlich über die Zurückweisungen entscheiden.", "Es hat die Koalition aufgelöst.", "Es hat den Kanzler abgesetzt."],
-    correct: 1 },
-  { q: "Woher stammt das 500-Milliarden-Sondervermögen nach Darstellung des Textes?",
-    opts: ["Es wurde erst 2026 beschlossen.", "Es stammt aus Zinseinnahmen der EZB.", "Es wurde noch vor der Kanzlerwahl beschlossen und von Merz übernommen.", "Es wurde von den Ländern finanziert."],
-    correct: 2 },
-  { q: "Wie lautet das zentrale Resümee des Textes?",
-    opts: ["Es ist eine Bilanz des echten Wandels.", "Es ist eine Bilanz der Durchsetzbarkeit, nicht des Wandels.", "Die Regierung hat ihre Versprechen gebrochen.", "Alle Reformen sind am Verfassungsgericht gescheitert."],
-    correct: 1 },
+  {
+    "q": "Wann wurde Friedrich Merz zum Bundeskanzler gewählt?",
+    "opts": [
+      "am 23. Februar 2025, unmittelbar nach der Wahl",
+      "am 1. Januar 2026",
+      "am 6. Mai 2025",
+      "am 6. Mai 2026"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Welches Wahlversprechen stellt der Text als klar eingelöst dar?",
+    "opts": [
+      "der große Bürokratieabbau",
+      "die Senkung der Körperschaftsteuer",
+      "die Bürgergeld-Reform",
+      "die Aktivrente"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Wie bewertet der Text die deutsche Migrationspolitik seit Mai 2025?",
+    "opts": [
+      "als gar nicht umgesetzt",
+      "als unumstritten erfolgreich",
+      "als vollständig gescheitert",
+      "als formell umgesetzt, rechtlich aber noch nicht gesichert"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Was ist von der angekündigten Bürgergeld-Reform bislang übrig geblieben?",
+    "opts": [
+      "eine Umbenennung mit Systemumbau",
+      "eine deutliche Erhöhung der Regelsätze",
+      "lediglich präzisierte Mitwirkungspflichten und leicht abgesenkte Vermögensfreigrenzen",
+      "eine vollständige Abschaffung des Bürgergelds"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Warum steht die Aktivrente laut Text auf der „Habenseite“?",
+    "opts": [
+      "weil sie am 1. Januar 2026 ohne nennenswerte Abstriche eingeführt wurde",
+      "weil sie erst 2028 in Kraft treten wird",
+      "weil sie auf Druck der SPD verschärft wurde",
+      "weil sie ausschließlich Geringverdienern hilft"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Was zeigt der Text am Beispiel der Körperschaftsteuer?",
+    "opts": [
+      "dass die Senkung auf 2028 verschoben wurde",
+      "dass sie erhöht wurde",
+      "dass sie bereits 2025 gesenkt wurde",
+      "dass sie komplett abgeschafft wurde"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Welches Muster erkennt die Autorin/der Autor in der Bilanz nach 12 Monaten?",
+    "opts": [
+      "Vor allem kostspielige Projekte wurden umgesetzt.",
+      "Keine einzige Zusage wurde eingehalten.",
+      "Umgesetzt wurde, was haushaltsneutral und koalitionsverträglich war.",
+      "Alle Wahlversprechen wurden brutal durchgesetzt."
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Welche Rolle spielt das Bundesverfassungsgericht im Text?",
+    "opts": [
+      "Es hat den Kanzler abgesetzt.",
+      "Es wird voraussichtlich 2026 grundsätzlich über die Zurückweisungen entscheiden.",
+      "Es hat die Koalition aufgelöst.",
+      "Es hat die Aktivrente für verfassungswidrig erklärt."
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Woher stammt das 500-Milliarden-Sondervermögen nach Darstellung des Textes?",
+    "opts": [
+      "Es wurde noch vor der Kanzlerwahl beschlossen und von Merz übernommen.",
+      "Es stammt aus Zinseinnahmen der EZB.",
+      "Es wurde erst 2026 beschlossen.",
+      "Es wurde von den Ländern finanziert."
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Wie lautet das zentrale Resümee des Textes?",
+    "opts": [
+      "Es ist eine Bilanz der Durchsetzbarkeit, nicht des Wandels.",
+      "Die Regierung hat ihre Versprechen gebrochen.",
+      "Es ist eine Bilanz des echten Wandels.",
+      "Alle Reformen sind am Verfassungsgericht gescheitert."
+    ],
+    "correct": 0
+  }
 ];
 
 var satzbauData = [

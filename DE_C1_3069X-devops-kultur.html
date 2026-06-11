@@ -567,36 +567,106 @@ var LUECKE_DATA = [
 ];
 
 var MC_DATA = [
-  { q: "Welchen Fehlschluss kritisiert der Text an der Managementliteratur?",
-    opts: ["die Überschätzung technischer Kompetenz", "die Reduktion von Dysfunktionalität auf mangelnde Werte und Haltungen", "die Vernachlässigung wirtschaftlicher Anreize", "die Unterschätzung individueller Motivation"],
-    correct: 1 },
-  { q: "Was bezeichnet der Text als didaktische Stärke des OpenCulture Habit Kits?",
-    opts: ["die theoretische Tiefe der Haltungskonzeption", "die Kritik an bestehenden Organisationsstrukturen", "die Übersetzung abstrakter Werte in behavioristische Mikropraktiken", "die empirische Fundierung durch Längsschnittstudien"],
-    correct: 2 },
-  { q: "Welche Forscherin wird im Text zur psychologischen Sicherheit in Teams zitiert?",
-    opts: ["Carol Dweck", "Amy Edmondson", "Brené Brown", "Melanie Klein"],
-    correct: 1 },
-  { q: "Was versteht der Text unter der ‚Leerstelle' des Konzepts?",
-    opts: ["fehlende Beispiele aus der Praxis", "das Auslassen von Retrospektiven", "die unbehandelte Frage nach strukturellen Voraussetzungen für Haltungsveränderung", "die mangelnde Definition zentraler Begriffe"],
-    correct: 2 },
-  { q: "Was beschreibt das ‚Koinzidenzproblem' im Kontext des Textes?",
-    opts: ["den Konflikt zwischen Teaminteressen und Unternehmenszielen", "die Schwierigkeit, aus gleichzeitigem Auftreten von Haltungen und Hochleistung auf Kausalität zu schließen", "die Unvereinbarkeit von Fehlerkultur und Effizienzzielen", "den Widerspruch zwischen Transparenz und Datenschutz"],
-    correct: 1 },
-  { q: "Welche Bedingung nennt der Text als notwendig für psychologische Sicherheit?",
-    opts: ["regelmäßige Teamevents", "ein festgelegtes Sanktionssystem", "Führungsverhalten, das Fehleroffenheit aktiv modelliert", "anonyme Feedbackkanäle"],
-    correct: 2 },
-  { q: "Wie bewertet der Text das Konzept abschließend?",
-    opts: ["als obsolet und durch neuere Ansätze überholt", "als universell anwendbares Patentrezept", "als brauchbares Werkzeug für Teams mit tragfähigem Fundament, mit theoretischen Grenzen", "als wissenschaftlich korrekt, aber praktisch irrelevant"],
-    correct: 2 },
-  { q: "Was ist laut Text an der Verbindung von Transparenz und Vertrauensbildung bemerkenswert?",
-    opts: ["Sie ist ein rein theoretisches Konstrukt.", "Sie ist durch Studien zur psychologischen Sicherheit empirisch gestützt.", "Sie widerspricht der klassischen Organisationstheorie.", "Sie ist nur in Start-ups realisierbar."],
-    correct: 1 },
-  { q: "Welchen Grundsatz formuliert das Fazit über kulturelle Transformation?",
-    opts: ["Sie ist planbar und durch Haltungskataloge steuerbar.", "Sie ist ein iterativer, kontextabhängiger Prozess.", "Sie erfordert primär technische Investitionen.", "Sie gelingt nur mit externer Beratung."],
-    correct: 1 },
-  { q: "Was impliziert der Text, wenn er das Konzept einen ‚Selbstläufer' nennt (und dies verneint)?",
-    opts: ["Es funktioniert nur in Konzernen.", "Es löst Probleme ohne weiteres Zutun.", "Es ist ohne strukturelle Voraussetzungen wirkungslos.", "Es setzt technisches Fachwissen voraus."],
-    correct: 2 },
+  {
+    "q": "Welchen Fehlschluss kritisiert der Text an der Managementliteratur?",
+    "opts": [
+      "die Überschätzung technischer Kompetenz",
+      "die Unterschätzung individueller Motivation",
+      "die Vernachlässigung wirtschaftlicher Anreize",
+      "die Reduktion von Dysfunktionalität auf mangelnde Werte und Haltungen"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Was bezeichnet der Text als didaktische Stärke des OpenCulture Habit Kits?",
+    "opts": [
+      "die theoretische Tiefe der Haltungskonzeption",
+      "die Übersetzung abstrakter Werte in behavioristische Mikropraktiken",
+      "die Kritik an bestehenden Organisationsstrukturen",
+      "die empirische Fundierung durch Längsschnittstudien"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Welche Forscherin wird im Text zur psychologischen Sicherheit in Teams zitiert?",
+    "opts": [
+      "Melanie Klein",
+      "Amy Edmondson",
+      "Brené Brown",
+      "Carol Dweck"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Was versteht der Text unter der ‚Leerstelle' des Konzepts?",
+    "opts": [
+      "fehlende Beispiele aus der Praxis",
+      "das Auslassen von Retrospektiven",
+      "die mangelnde Definition zentraler Begriffe",
+      "die unbehandelte Frage nach strukturellen Voraussetzungen für Haltungsveränderung"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Was beschreibt das ‚Koinzidenzproblem' im Kontext des Textes?",
+    "opts": [
+      "die Unvereinbarkeit von Fehlerkultur und Effizienzzielen",
+      "den Widerspruch zwischen Transparenz und Datenschutz",
+      "die Schwierigkeit, aus gleichzeitigem Auftreten von Haltungen und Hochleistung auf Kausalität zu schließen",
+      "den Konflikt zwischen Teaminteressen und Unternehmenszielen"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Welche Bedingung nennt der Text als notwendig für psychologische Sicherheit?",
+    "opts": [
+      "ein festgelegtes Sanktionssystem",
+      "Führungsverhalten, das Fehleroffenheit aktiv modelliert",
+      "anonyme Feedbackkanäle",
+      "regelmäßige Teamevents"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Wie bewertet der Text das Konzept abschließend?",
+    "opts": [
+      "als brauchbares Werkzeug für Teams mit tragfähigem Fundament, mit theoretischen Grenzen",
+      "als universell anwendbares Patentrezept",
+      "als wissenschaftlich korrekt, aber praktisch irrelevant",
+      "als obsolet und durch neuere Ansätze überholt"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Was ist laut Text an der Verbindung von Transparenz und Vertrauensbildung bemerkenswert?",
+    "opts": [
+      "Sie ist durch Studien zur psychologischen Sicherheit empirisch gestützt.",
+      "Sie widerspricht der klassischen Organisationstheorie.",
+      "Sie ist nur in Start-ups realisierbar.",
+      "Sie ist ein rein theoretisches Konstrukt."
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Welchen Grundsatz formuliert das Fazit über kulturelle Transformation?",
+    "opts": [
+      "Sie gelingt nur mit externer Beratung.",
+      "Sie erfordert primär technische Investitionen.",
+      "Sie ist planbar und durch Haltungskataloge steuerbar.",
+      "Sie ist ein iterativer, kontextabhängiger Prozess."
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Was impliziert der Text, wenn er das Konzept einen ‚Selbstläufer' nennt (und dies verneint)?",
+    "opts": [
+      "Es löst Probleme ohne weiteres Zutun.",
+      "Es setzt technisches Fachwissen voraus.",
+      "Es funktioniert nur in Konzernen.",
+      "Es ist ohne strukturelle Voraussetzungen wirkungslos."
+    ],
+    "correct": 3
+  }
 ];
 
 var satzbauData = [

@@ -580,20 +580,76 @@ var LUECKE_DATA = [
 ];
 
 var MC_DATA = [
-  { q: "Welche Bedeutung hat das Modalverb ‚müssen‘ in subjektiver Verwendung?",
-    opts: ["Notwendigkeit", "logischer Schluss mit fast vollständiger Sicherheit", "Aufforderung", "Pflicht"], correct: 1 },
-  { q: "Was bedeutet ‚Sie soll geheiratet haben‘ in subjektiver Verwendung des Modalverbs?",
-    opts: ["sie ist verpflichtet, zu heiraten", "nach Aussage Dritter hat sie geheiratet — der Sprecher steht nicht dafür ein", "sie wird heiraten", "sie hat heiraten dürfen"], correct: 1 },
-  { q: "Was bedeutet ‚Er will alles gewusst haben‘?",
-    opts: ["er möchte alles wissen", "er BEHAUPTET selbst, alles gewusst zu haben — der Sprecher distanziert sich", "er hat es gewollt", "er will jetzt wissen"], correct: 1 },
-  { q: "In welcher Reihenfolge nehmen die Wahrscheinlichkeit ab?",
-    opts: ["müssen → dürfen → können → mögen", "können → mögen → müssen → dürfen", "wollen → können → müssen → mögen", "mögen → müssen → können → dürfen"], correct: 0 },
-  { q: "Welcher Geschäftsausdruck signalisiert eine vermutete Marktbewegung?",
-    opts: ["der Markt wird sich erholen (Behauptung)", "der Markt dürfte sich erholen (Vermutung mit hoher Wahrscheinlichkeit)", "der Markt erholt sich (Indikativ Präsens, Faktum)", "der Markt soll sich erholen (man hört, ohne Quelle)"], correct: 1 },
-  { q: "Was ist eine ‚Hypothese‘ im Sinn des Lesetextes?",
-    opts: ["eine bewiesene Tatsache", "eine wissenschaftliche oder argumentative Annahme, die noch zu prüfen ist", "eine spontane Spekulation ohne Methode", "eine Behauptung des Sprechers"], correct: 1 },
-  { q: "Welche Bilanz zieht der Lesetext zur Sprache der Wahrscheinlichkeit?",
-    opts: ["man sollte sie meiden, weil sie unsicher klingt", "wer die Stufen beherrscht, beherrscht die Genauigkeit der eigenen Sicherheit", "alle Stufen sind synonym", "Modalverben sind nur in der Schweiz korrekt"], correct: 1 }
+  {
+    "q": "Welche Bedeutung hat das Modalverb ‚müssen‘ in subjektiver Verwendung?",
+    "opts": [
+      "Pflicht",
+      "Notwendigkeit",
+      "logischer Schluss mit fast vollständiger Sicherheit",
+      "Aufforderung"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Was bedeutet ‚Sie soll geheiratet haben‘ in subjektiver Verwendung des Modalverbs?",
+    "opts": [
+      "nach Aussage Dritter hat sie geheiratet — der Sprecher steht nicht dafür ein",
+      "sie wird heiraten",
+      "sie hat heiraten dürfen",
+      "sie ist verpflichtet, zu heiraten"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Was bedeutet ‚Er will alles gewusst haben‘?",
+    "opts": [
+      "er BEHAUPTET selbst, alles gewusst zu haben — der Sprecher distanziert sich",
+      "er will jetzt wissen",
+      "er hat es gewollt",
+      "er möchte alles wissen"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "In welcher Reihenfolge nehmen die Wahrscheinlichkeit ab?",
+    "opts": [
+      "wollen → können → müssen → mögen",
+      "müssen → dürfen → können → mögen",
+      "mögen → müssen → können → dürfen",
+      "können → mögen → müssen → dürfen"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Welcher Geschäftsausdruck signalisiert eine vermutete Marktbewegung?",
+    "opts": [
+      "der Markt soll sich erholen (man hört, ohne Quelle)",
+      "der Markt dürfte sich erholen (Vermutung mit hoher Wahrscheinlichkeit)",
+      "der Markt erholt sich (Indikativ Präsens, Faktum)",
+      "der Markt wird sich erholen (Behauptung)"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Was ist eine ‚Hypothese‘ im Sinn des Lesetextes?",
+    "opts": [
+      "eine wissenschaftliche oder argumentative Annahme, die noch zu prüfen ist",
+      "eine spontane Spekulation ohne Methode",
+      "eine Behauptung des Sprechers",
+      "eine bewiesene Tatsache"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Welche Bilanz zieht der Lesetext zur Sprache der Wahrscheinlichkeit?",
+    "opts": [
+      "man sollte sie meiden, weil sie unsicher klingt",
+      "wer die Stufen beherrscht, beherrscht die Genauigkeit der eigenen Sicherheit",
+      "Modalverben sind nur in der Schweiz korrekt",
+      "alle Stufen sind synonym"
+    ],
+    "correct": 1
+  }
 ];
 
 var satzbauData = [

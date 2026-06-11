@@ -577,20 +577,76 @@ var LUECKE_DATA = [
 ];
 
 var MC_DATA = [
-  { q: "Wie viele Jahre umfasste Van Goghs gesamte malerische Karriere?",
-    opts: ["etwa 30 Jahre", "etwa 20 Jahre", "etwa 10 Jahre", "lebenslang seit der Kindheit"], correct: 2 },
-  { q: "Wie viele Gemälde hat Vincent zu Lebzeiten verkauft?",
-    opts: ["ungefähr 100", "etwa 50", "etwa zehn", "ein einziges"], correct: 3 },
-  { q: "Wer war Vincents wichtigster finanzieller und seelischer Halt?",
-    opts: ["sein Vater Theodorus", "sein jüngerer Bruder Theo", "der Maler Paul Gauguin", "sein Lehrer Adolphe Monticelli"], correct: 1 },
-  { q: "Was geschah am 23. Dezember 1888 in Arles?",
-    opts: ["Vincent verkaufte sein erstes Bild", "Vincent zerschnitt sich nach einem Streit mit Gauguin einen Teil seines linken Ohrs", "Vincent traf zum ersten Mal Theo persönlich", "Vincent zog nach Saint-Rémy"], correct: 1 },
-  { q: "Wo entstand die berühmte ‚Sternennacht‘?",
-    opts: ["in Nuenen", "in Arles", "in Saint-Rémy (Saint-Paul-de-Mausole)", "in Auvers-sur-Oise"], correct: 2 },
-  { q: "Wer hat nach Vincents und Theos Tod systematisch für die internationale Etablierung des Werks gesorgt?",
-    opts: ["der Pariser Galerist Ambroise Vollard", "Theos Witwe Johanna van Gogh-Bonger", "der niederländische Staat", "Vincents Schwester Wilhelmina"], correct: 1 },
-  { q: "Welcher Strömung wird Van Gogh kunsthistorisch zugeordnet?",
-    opts: ["dem Realismus", "dem Postimpressionismus", "dem Surrealismus", "dem Bauhaus"], correct: 1 }
+  {
+    "q": "Wie viele Jahre umfasste Van Goghs gesamte malerische Karriere?",
+    "opts": [
+      "etwa 30 Jahre",
+      "lebenslang seit der Kindheit",
+      "etwa 10 Jahre",
+      "etwa 20 Jahre"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Wie viele Gemälde hat Vincent zu Lebzeiten verkauft?",
+    "opts": [
+      "ein einziges",
+      "etwa 50",
+      "ungefähr 100",
+      "etwa zehn"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Wer war Vincents wichtigster finanzieller und seelischer Halt?",
+    "opts": [
+      "sein jüngerer Bruder Theo",
+      "sein Lehrer Adolphe Monticelli",
+      "sein Vater Theodorus",
+      "der Maler Paul Gauguin"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Was geschah am 23. Dezember 1888 in Arles?",
+    "opts": [
+      "Vincent verkaufte sein erstes Bild",
+      "Vincent zog nach Saint-Rémy",
+      "Vincent zerschnitt sich nach einem Streit mit Gauguin einen Teil seines linken Ohrs",
+      "Vincent traf zum ersten Mal Theo persönlich"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Wo entstand die berühmte ‚Sternennacht‘?",
+    "opts": [
+      "in Arles",
+      "in Auvers-sur-Oise",
+      "in Saint-Rémy (Saint-Paul-de-Mausole)",
+      "in Nuenen"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Wer hat nach Vincents und Theos Tod systematisch für die internationale Etablierung des Werks gesorgt?",
+    "opts": [
+      "der niederländische Staat",
+      "der Pariser Galerist Ambroise Vollard",
+      "Vincents Schwester Wilhelmina",
+      "Theos Witwe Johanna van Gogh-Bonger"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Welcher Strömung wird Van Gogh kunsthistorisch zugeordnet?",
+    "opts": [
+      "dem Surrealismus",
+      "dem Realismus",
+      "dem Postimpressionismus",
+      "dem Bauhaus"
+    ],
+    "correct": 2
+  }
 ];
 
 var satzbauData = [

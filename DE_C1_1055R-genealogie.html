@@ -577,20 +577,76 @@ var LUECKE_DATA = [
 ];
 
 var MC_DATA = [
-  { q: "Wann begann die flächendeckende Führung von Kirchenbüchern in Deutschland?",
-    opts: ["um 1500", "ab 1563 (Konzil von Trient)", "ab 1700", "erst 1900"], correct: 1 },
-  { q: "Welche religiöse Gruppe betreibt die größte kostenlose Genealogie-Datenbank weltweit?",
-    opts: ["die katholische Kirche", "die anglikanische Kirche", "die Mormonen (Heilige der Letzten Tage)", "die orthodoxe Kirche"], correct: 2 },
-  { q: "Seit wann gibt es DNA-Tests für den Privatmarkt?",
-    opts: ["seit 1995", "seit 2007 (23andMe)", "seit 2018", "seit 2023"], correct: 1 },
-  { q: "Wie viele Menschen hatten 2024 bei AncestryDNA ihren Test gemacht?",
-    opts: ["unter 1 Million", "etwa 5 Millionen", "über 22 Millionen", "über 100 Millionen"], correct: 2 },
-  { q: "Was ist eine ‚non-paternity event‘?",
-    opts: ["der Tod eines Vaters", "der DNA-Befund, dass der vermeintliche Vater nicht der biologische ist", "die rechtliche Anerkennung einer Vaterschaft", "die Adoption eines Kindes"], correct: 1 },
-  { q: "Welcher historische Hintergrund belastet den deutschen Begriff ‚Ahnenforschung‘?",
-    opts: ["seine Verwendung im Mittelalter", "der NS-Ariernachweis ab 1933", "seine Erfindung in der DDR", "seine Verbindung zur Französischen Revolution"], correct: 1 },
-  { q: "Welcher prominente US-Kriminalfall wurde 2018 über eine genealogische DNA-Datenbank gelöst?",
-    opts: ["der Zodiac-Killer", "der Golden-State-Killer", "der Boston-Strangler", "der Unabomber"], correct: 1 }
+  {
+    "q": "Wann begann die flächendeckende Führung von Kirchenbüchern in Deutschland?",
+    "opts": [
+      "erst 1900",
+      "um 1500",
+      "ab 1563 (Konzil von Trient)",
+      "ab 1700"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Welche religiöse Gruppe betreibt die größte kostenlose Genealogie-Datenbank weltweit?",
+    "opts": [
+      "die orthodoxe Kirche",
+      "die anglikanische Kirche",
+      "die katholische Kirche",
+      "die Mormonen (Heilige der Letzten Tage)"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Seit wann gibt es DNA-Tests für den Privatmarkt?",
+    "opts": [
+      "seit 2023",
+      "seit 2018",
+      "seit 1995",
+      "seit 2007 (23andMe)"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Wie viele Menschen hatten 2024 bei AncestryDNA ihren Test gemacht?",
+    "opts": [
+      "über 100 Millionen",
+      "unter 1 Million",
+      "über 22 Millionen",
+      "etwa 5 Millionen"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Was ist eine ‚non-paternity event‘?",
+    "opts": [
+      "der DNA-Befund, dass der vermeintliche Vater nicht der biologische ist",
+      "der Tod eines Vaters",
+      "die rechtliche Anerkennung einer Vaterschaft",
+      "die Adoption eines Kindes"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Welcher historische Hintergrund belastet den deutschen Begriff ‚Ahnenforschung‘?",
+    "opts": [
+      "seine Erfindung in der DDR",
+      "seine Verwendung im Mittelalter",
+      "der NS-Ariernachweis ab 1933",
+      "seine Verbindung zur Französischen Revolution"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Welcher prominente US-Kriminalfall wurde 2018 über eine genealogische DNA-Datenbank gelöst?",
+    "opts": [
+      "der Boston-Strangler",
+      "der Unabomber",
+      "der Zodiac-Killer",
+      "der Golden-State-Killer"
+    ],
+    "correct": 3
+  }
 ];
 
 var satzbauData = [
