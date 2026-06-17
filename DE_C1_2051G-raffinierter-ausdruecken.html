@@ -399,7 +399,7 @@ function timerResetOne(n) {
 }
 function fmtTime(s) { var m=Math.floor(s/60); var sec=s%60; return m+':'+(sec<10?'0':'')+sec; }
 
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
   [1,2,3,4].forEach(function(n) {
     var b = localStorage.getItem(TIMER_PREFIX + n);
     if (b) { var el = document.getElementById('best-'+n); if (el) el.textContent = fmtTime(parseInt(b)); }
