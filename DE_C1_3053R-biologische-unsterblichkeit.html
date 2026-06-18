@@ -339,7 +339,28 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "die Unsterblichkeit (Sg.)", "def": "zeitlich unbegrenztes Leben; biologisch unterschieden in <em>biologische Unsterblichkeit</em> (kein altersbedingter Tod) und <em>klinische Unsterblichkeit</em> (kein Tod überhaupt — bisher unerreicht); im Mythos oft ambivalent dargestellt: Tithonus erhielt Unsterblichkeit, aber keine ewige Jugend."}, {"term": "die Stammzelle (-n)", "def": "unspezialisierte Zelle, aus der alle Zelltypen eines Organismus hervorgehen können; teilt sich entweder zu zwei Stammzellen (Selbsterneuerung) oder zu einer Stammzelle und einer differenzierten Zelle; bei Hydrae machen Stammzellen 30% des Körpers aus, beim erwachsenen Menschen weniger als 0,1%."}, {"term": "der Stoffwechsel (Sg.)", "def": "Gesamtheit der biochemischen Prozesse, die in einem Lebewesen ablaufen; umfasst Energie- und Baustoffwechsel; eng korreliert mit Lebensspanne — Tiere mit langsamem Stoffwechsel (Schildkröten, Riesenkalmare, einige Wale) leben oft Jahrhunderte; bei Säugetieren gilt die Regel: höherer Puls, kürzeres Leben."}, {"term": "die Mutationsrate (-n)", "def": "Häufigkeit, mit der DNA-Veränderungen pro Zellteilung oder pro Generation auftreten; beim Menschen etwa 60-100 Mutationen pro Generation; bei der Langlebigen Kiefer und der Venusmuschel <em>Arctica islandica</em> auffällig niedrig — ein Schlüssel zu ihrer Langlebigkeit."}, {"term": "die Vergreisung (Sg.)", "def": "Prozess der Alterung mit Funktionsverlust; biologisch durch Telomer-Verkürzung, Stammzell-Erschöpfung und Akkumulation seneszenter Zellen verursacht; bei Tithonus wörtlich gemeint: er wurde unsterblich, aber unaufhaltsam vergreist; in der Geriatrie als Synonym für altersbedingte Funktionsstörungen verwendet."}, {"term": "die Hydra (-en)", "def": "etwa 15 mm großer Süßwasserpolyp, mit Quallen verwandt; lebt im Süßwasser weltweit; biologisch quasi unsterblich durch außergewöhnlich potente Stammzellen; namensgebend ist die mythische neunköpfige Hydra, die Hercules tötete und deren Köpfe nach jeder Enthauptung doppelt nachwuchsen."}, {"term": "die Telomere (pl.)", "def": "Schutzkappen am Ende der Chromosomen, bestehen aus repetitiver DNA-Sequenz (TTAGGG bei Wirbeltieren); verkürzen sich bei jeder Zellteilung um etwa 50-100 Basenpaare; sind sie aufgebraucht, kann sich die Zelle nicht mehr teilen — das ist das Hayflick-Limit; Elizabeth Blackburn erhielt 2009 den Medizin-Nobelpreis für die Entdeckung des verlängernden Enzyms Telomerase."}, {"term": "das Gefäßsystem (-e)", "def": "Gesamtheit der Leitungsbahnen im Organismus; bei Pflanzen Xylem (für Wasser) und Phloem (für Zucker); bei Tieren Blut- und Lymphgefäße; bei der Langlebigen Kiefer auch nach 4000 Jahren funktionsfähig — ein zentraler Indikator für ihre biologische Jugend."}];
-var GENUS_DATA = [{"word": "🌲 Kiefer", "cat": "die"}, {"word": "🦠 Hydra", "cat": "die"}, {"word": "🦑 Qualle", "cat": "die"}, {"word": "🧬 Stammzelle", "cat": "die"}, {"word": "⚗️ Stoffwechsel", "cat": "der"}, {"word": "🔬 Genom", "cat": "das"}, {"word": "💀 Tod", "cat": "der"}, {"word": "📏 Telomere", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🌲 Kiefer", cat: "die" },
+  { word: "🦠 Hydra", cat: "die" },
+  { word: "🦑 Qualle", cat: "die" },
+  { word: "🧬 Stammzelle", cat: "die" },
+  { word: "⚗️ Stoffwechsel", cat: "der" },
+  { word: "🔬 Genom", cat: "das" },
+  { word: "💀 Tod", cat: "der" },
+  { word: "📏 Telomere", cat: "pl" },
+  { word: "♾️ Unsterblichkeit", cat: "die" },
+  { word: "🧬 Stammzellen", cat: "pl" },
+  { word: "🔬 Mutationsrate", cat: "die" },
+  { word: "👴 Vergreisung", cat: "die" },
+  { word: "🦠 Hydren", cat: "pl" },
+  { word: "📏 Telomer", cat: "das" },
+  { word: "🧫 Zellteilung", cat: "die" },
+  { word: "🧫 Zellteilungen", cat: "pl" },
+  { word: "🌲 Langlebige Kiefer", cat: "die" },
+  { word: "🌲 Kiefern", cat: "pl" },
+  { word: "🦑 Quallen", cat: "pl" },
+  { word: "📋 Gefäßsystem", cat: "das" }
+];
 var LUECKE_DATA = [{"pre": "Der älteste lebende Baum <em>Methuselah</em> ist etwa ", "ans": "4855", "post": " Jahre alt."}, {"pre": "Tithonus war so schön, dass er die Göttin der Morgenröte, ", "ans": "Eos", "post": ", verzauberte."}, {"pre": "Die berühmte Venusmuschel Ming wurde ", "ans": "507", "post": " Jahre alt, bevor sie versehentlich getötet wurde."}, {"pre": "Die unsterbliche Qualle heißt <em>Turritopsis ", "ans": "dohrnii", "post": "</em> und lebt im Mittelmeer."}, {"pre": "Die Süßwasser-Hydra wird etwa ", "ans": "15", "post": " Millimeter groß."}, {"pre": "Die DNA-Schutzkappen der Chromosomen heißen ", "ans": "Telomere", "post": "."}, {"pre": "Leonard Hayflick formulierte 1961 die Beobachtung, dass menschliche Zellen sich nur etwa ", "ans": "50", "post": "-mal teilen."}];
 var MC_DATA = [{"q": "Wer war Tithonus in der griechischen Mythologie?", "opts": ["ein trojanischer Prinz", "ein römischer Imperator", "ein griechischer Held", "ein ägyptischer Pharao"], "correct": 0}, {"q": "Was tat Eos für Tithonus?", "opts": ["sie bat Zeus um seine Unsterblichkeit", "sie kämpfte gegen die Trojaner", "sie verwandelte ihn in einen Stern", "sie schenkte ihm ein Königreich"], "correct": 0}, {"q": "Welcher Baum ist quasi unsterblich?", "opts": ["die Langlebige Kiefer", "die Eiche", "der Bambus", "die Zeder"], "correct": 0}, {"q": "Wie alt war die berühmte Venusmuschel <em>Ming</em>?", "opts": ["100 Jahre", "250 Jahre", "507 Jahre", "1000 Jahre"], "correct": 2}, {"q": "Welches Tier kann ganze Körperteile nachwachsen lassen?", "opts": ["die Hydra", "der Hai", "die Krake", "die Maus"], "correct": 0}, {"q": "Was sind Telomere?", "opts": ["Schutzkappen am Ende der Chromosomen", "Hormone", "spezielle Stammzellen", "Antikörper"], "correct": 0}, {"q": "Wer entdeckte das Enzym Telomerase?", "opts": ["Elizabeth Blackburn (Nobelpreis 2009)", "Charles Darwin", "Watson und Crick", "James Kirkland"], "correct": 0}];
 var satzbauData = [

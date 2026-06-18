@@ -338,7 +338,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "der Kriegsplanet (Sg.)", "def": "poetischer Beiname des Mars; entstand wegen der rötlichen Färbung (Eisenoxid auf der Oberfläche), die an Blut erinnerte; in Mesopotamien um 2 000 v. Chr. mit dem Kriegsgott Nergal assoziiert; in Rom später mit Mars (von dem auch der Name Mars-Feld, März, marziale stammt)."}, {"term": "das Wandelgestirn (-e)", "def": "alter deutscher Begriff für Planet — wörtlich: <em>wandernder Stern</em>; abgeleitet vom griechischen <em>planḗtēs</em> (umherziehend); im antiken Weltbild waren Planeten Sterne, die sich gegen den Fixsternhimmel bewegten; das Wort fiel im 19. Jh. zugunsten von <em>Planet</em> aus dem Sprachgebrauch."}, {"term": "die Eselsbrücke (-n)", "def": "deutsches Wort für Merksatz oder Mnemotechnik; bezeichnet eine kleine Hilfe, um sich etwas Schwieriges einzuprägen; bekannte Astronomie-Eselsbrücke: <em>Mein Vater erklärt mir jeden Sonntag unsere neun Planeten</em> (Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus, Neptun, Pluto) — bis 2006, als Pluto den Planetenstatus verlor."}, {"term": "die römische Mythologie (Sg.)", "def": "Götterwelt der antiken Römer; viele Götter aus der griechischen Mythologie übernommen, dann namentlich umbenannt: Zeus → Jupiter, Hera → Juno, Aphrodite → Venus, Ares → Mars, Hermes → Merkur; die fünf klassischen Planeten tragen Namen römischer Gottheiten."}, {"term": "die Chaldäer (Pl.)", "def": "semitisches Volk im südlichen Mesopotamien (Babylonien) ab etwa 1 000 v. Chr.; ihre Astrologen entwickelten frühe Sterndeutung und Planetenastronomie; Hesse beobachten Marsphasen, Saturnzyklen, planetarische Konstellationen — die Grundlage späterer griechischer Astronomie."}, {"term": "die Marssonde (-n)", "def": "Raumfahrzeug zur Erforschung des Mars; erste erfolgreiche Mission: Mariner 4 (NASA), die am 14. Juli 1965 erste Bilder vom Mars zur Erde sendete; bis 2026 gab es 18 erfolgreiche Marsmissionen, davon 11 Lander/Rover; berühmteste: Viking 1 (1976), Pathfinder (1997), Spirit/Opportunity (2004), Curiosity (2012), Perseverance (2021)."}, {"term": "Olympus Mons (Sg.)", "def": "höchster Vulkan im Sonnensystem auf dem Mars; 22 km hoch, 2,5-mal so hoch wie der Mount Everest, mit einem Durchmesser von 600 km; Schildvulkan, vermutlich erloschen vor etwa 25 Millionen Jahren; benannt nach dem griechischen Götterberg."}, {"term": "die Marskolonisierung (Sg.)", "def": "hypothetische dauerhafte Besiedlung des Mars; vom Schriftsteller Konstantin Ziolkowski 1903 erstmals seriös diskutiert; SpaceX-Gründer Elon Musk plant seit 2016 eine Mars-Mission, mit Erstlandung 2027 oder später; Kritiker wie Charles Wohlforth und Amanda Hendrix (<em>Beyond Earth</em> 2016) argumentieren, der Mars sei lebensfeindlich und Titan eine bessere Alternative."}];
-var GENUS_DATA = [{"word": "🔴 Mars", "cat": "der"}, {"word": "☀️ Sonne", "cat": "die"}, {"word": "🪐 Saturn", "cat": "der"}, {"word": "⚔️ Kriegsgott", "cat": "der"}, {"word": "🌌 All", "cat": "das"}, {"word": "🚀 Rakete", "cat": "die"}, {"word": "🌍 Erde", "cat": "die"}, {"word": "🌟 Sterne", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🔴 Mars", cat: "der" },
+  { word: "☀️ Sonne", cat: "die" },
+  { word: "🪐 Saturn", cat: "der" },
+  { word: "⚔️ Kriegsgott", cat: "der" },
+  { word: "🌌 All", cat: "das" },
+  { word: "🚀 Rakete", cat: "die" },
+  { word: "🌍 Erde", cat: "die" },
+  { word: "🌟 Sterne", cat: "pl" },
+  { word: "🔴 Kriegsplanet", cat: "der" },
+  { word: "🔴 Kriegsplaneten", cat: "pl" },
+  { word: "⭐ Wandelgestirn", cat: "das" },
+  { word: "⭐ Wandelgestirne", cat: "pl" },
+  { word: "🧠 Eselsbrücke", cat: "die" },
+  { word: "🧠 Eselsbrücken", cat: "pl" },
+  { word: "🏛️ Mythologie", cat: "die" },
+  { word: "🏛️ Mythologien", cat: "pl" },
+  { word: "🚀 Marssonde", cat: "die" },
+  { word: "🚀 Marssonden", cat: "pl" },
+  { word: "🌍 Marskolonisierung", cat: "die" },
+  { word: "⚔️ Gott", cat: "der" },
+  { word: "⚔️ Götter", cat: "pl" },
+  { word: "🪐 Planet", cat: "der" },
+  { word: "🪐 Planeten", cat: "pl" },
+  { word: "☄️ Meteorit", cat: "der" }
+];
 var LUECKE_DATA = [{"pre": "Carus Sternes berühmter Essay über den Mars erschien um das Jahr ", "ans": "1900", "post": "."}, {"pre": "Die erste erfolgreiche Marssonde Mariner 4 erreichte den Planeten im Juli ", "ans": "1965", "post": "."}, {"pre": "Pluto verlor seinen Planetenstatus im Jahr ", "ans": "2006", "post": "."}, {"pre": "Olympus Mons ist mit 22 km Höhe der größte ", "ans": "Vulkan", "post": " des Sonnensystems."}, {"pre": "Konstantin ", "ans": "Ziolkowski", "post": " diskutierte 1903 die Marskolonisierung als Erster."}, {"pre": "Mars ist der ", "ans": "vierte", "post": " Planet von der Sonne aus gezählt."}, {"pre": "Die NASA-Sonde Perseverance landete am 18. Februar ", "ans": "2021", "post": " auf dem Mars."}];
 var MC_DATA = [{"q": "Welcher Planet ist der Mars in der Reihenfolge von der Sonne aus?", "opts": ["dritter", "vierter", "fünfter", "sechster"], "correct": 1}, {"q": "Welche Substanz gibt dem Mars seine rote Farbe?", "opts": ["Schwefel", "Eisenoxid", "Magnesium", "Chlor"], "correct": 1}, {"q": "Welche Mythologie leitet den Namen Mars ab?", "opts": ["griechische", "römische", "ägyptische", "babylonische"], "correct": 1}, {"q": "Welche Eselsbrücke wurde vor 2006 für die Planeten gelernt?", "opts": ["Mein Vater erklärt mir jeden Sonntag unsere neun Planeten", "Mein Vater erklärt mir jeden Samstag", "Marsbein vor jedem Stern unseres Planeten", "Merkur vor erstem Sonnen-Mond"], "correct": 0}, {"q": "Welche erste Marssonde sendete 1965 Bilder zur Erde?", "opts": ["Sputnik", "Mariner 4", "Viking 1", "Voyager"], "correct": 1}, {"q": "Welche NASA-Mission erforscht seit 2021 den Jezero-Krater auf dem Mars?", "opts": ["Curiosity", "Perseverance", "Opportunity", "InSight"], "correct": 1}, {"q": "Wie hoch ist der größte Vulkan des Sonnensystems Olympus Mons?", "opts": ["8 km", "12 km", "22 km", "50 km"], "correct": 2}];
 var satzbauData = [

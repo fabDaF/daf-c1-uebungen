@@ -332,7 +332,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "das Anthropozän (Sg.)", "def": "vorgeschlagene geologische Epoche, in der menschliche Aktivität die Erde messbar und nachhaltig verändert; vom Atmosphären-Chemiker Paul Crutzen 2000 als Begriff popularisiert; offizielle Anerkennung durch die International Commission on Stratigraphy 2024 abgelehnt, im Diskurs aber längst etabliert."}, {"term": "der Zugvogel (-vögel)", "def": "Vogelart, die zwischen Brut- und Überwinterungsgebieten saisonal wandert; etwa die Hälfte der etwa 11 000 Vogelarten weltweit zieht; berühmte Beispiele sind Storch, Kranich, Schwalbe und Grasmücke."}, {"term": "der Lebensraum (-räume)", "def": "natürliche Umgebung, in der eine Tier- oder Pflanzenart vorkommt; wissenschaftlich auch <em>Habitat</em>; vom deutschen Geographen Friedrich Ratzel 1901 in seinem Werk <em>Der Lebensraum</em> geprägt; seine politische Verwendung im Nationalsozialismus hat den Begriff bis heute belastet."}, {"term": "die Vogelschutzrichtlinie (-n)", "def": "EU-Richtlinie 79/409/EWG vom April 1979, das älteste Naturschutzgesetz der EU; verpflichtet Mitgliedsstaaten zur Ausweisung von Vogelschutzgebieten (SPAs); ergänzt 1992 durch die Flora-Fauna-Habitat-Richtlinie."}, {"term": "die Glasfront (-en)", "def": "Fassade aus Glas, vor allem an Hochhäusern; tödliche Falle für Vögel, die das Spiegelbild von Himmel oder Bäumen für realen Lebensraum halten; jährlich sterben weltweit etwa 100-1000 Millionen Vögel an Glasfronten (Loss et al. 2014)."}, {"term": "das Vogelmonitoring (Sg.)", "def": "systematische Erfassung von Vogelpopulationen über die Zeit; in Deutschland organisiert vom Dachverband Deutscher Avifaunisten (DDA); produziert seit 1989 den Brutvogelatlas; in Großbritannien führt der RSPB seit 1979 den Common Birds Census."}, {"term": "der Brutvogel (-vögel)", "def": "Vogelart, die in einem bestimmten Gebiet brütet (im Gegensatz zu Durchziehern oder Wintergästen); in Deutschland gibt es laut Atlas Deutscher Brutvogelarten 2014 rund 280 Brutvogelarten; der Bestand vieler Arten ist seit den 1980ern um 50-70 Prozent zurückgegangen."}, {"term": "die Pestizid-Belastung (Sg.)", "def": "Schadstoffaufnahme von Tieren und Pflanzen durch Pflanzenschutzmittel; Rachel Carsons <em>Silent Spring</em> 1962 dokumentierte erstmals die katastrophalen Folgen für Greifvögel; das DDT-Verbot in den USA 1972 und der EU 1986 ermöglichte die Erholung von Adler, Falke und Pelikan."}];
-var GENUS_DATA = [{"word": "🦅 Adler", "cat": "der"}, {"word": "🦉 Eule", "cat": "die"}, {"word": "🐦 Vogel", "cat": "der"}, {"word": "🪺 Nest", "cat": "das"}, {"word": "🦆 Ente", "cat": "die"}, {"word": "🌳 Baum", "cat": "der"}, {"word": "🪶 Feder", "cat": "die"}, {"word": "🥚 Eier", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🦅 Adler", cat: "der" },
+  { word: "🦉 Eule", cat: "die" },
+  { word: "🐦 Vogel", cat: "der" },
+  { word: "🪺 Nest", cat: "das" },
+  { word: "🦆 Ente", cat: "die" },
+  { word: "🌳 Baum", cat: "der" },
+  { word: "🪶 Feder", cat: "die" },
+  { word: "🥚 Eier", cat: "pl" },
+  { word: "🌍 Anthropozän", cat: "das" },
+  { word: "🐦 Zugvogel", cat: "der" },
+  { word: "🐦 Zugvögel", cat: "pl" },
+  { word: "🪺 Brutvogel", cat: "der" },
+  { word: "🪺 Brutvögel", cat: "pl" },
+  { word: "🏠 Lebensraum", cat: "der" },
+  { word: "🏠 Lebensräume", cat: "pl" },
+  { word: "🛡️ Artenschutz", cat: "der" },
+  { word: "🦅 Greifvogel", cat: "der" },
+  { word: "🦅 Greifvögel", cat: "pl" },
+  { word: "🌳 Moor", cat: "das" },
+  { word: "🌳 Moore", cat: "pl" },
+  { word: "🪞 Glasfront", cat: "die" },
+  { word: "🪞 Glasfronten", cat: "pl" },
+  { word: "💀 Pestizid", cat: "das" },
+  { word: "💀 Pestizide", cat: "pl" }
+];
 var LUECKE_DATA = [{"pre": "Der Begriff ", "ans": "Anthropozän", "post": " wurde von Paul Crutzen im Jahr 2000 popularisiert."}, {"pre": "Die EU-Vogelschutzrichtlinie wurde im April ", "ans": "1979", "post": " erlassen."}, {"pre": "Rachel Carsons Buch ", "ans": "Silent", "post": " Spring erschien 1962."}, {"pre": "DDT wurde in den USA ", "ans": "1972", "post": " verboten."}, {"pre": "In Deutschland gibt es laut Brutvogelatlas rund ", "ans": "280", "post": " Brutvogelarten."}, {"pre": "Glasfronten töten weltweit jährlich bis zu einer ", "ans": "Milliarde", "post": " Vögel."}, {"pre": "Solaranlagen können Vögel bei Temperaturen über ", "ans": "500", "post": " Grad Celsius verbrennen."}];
 var MC_DATA = [{"q": "Wer popularisierte den Begriff <em>Anthropozän</em>?", "opts": ["James Lovelock", "Paul Crutzen", "Rachel Carson", "Friedrich Ratzel"], "correct": 1}, {"q": "Welches Buch löste 1962 die moderne Umweltbewegung aus?", "opts": ["Walden", "Silent Spring", "The Population Bomb", "Limits to Growth"], "correct": 1}, {"q": "In welchem Jahr trat die EU-Vogelschutzrichtlinie in Kraft?", "opts": ["1972", "1979", "1992", "2000"], "correct": 1}, {"q": "Welcher Vogel galt einst als häufigster Vogel Nordamerikas und ist seit 1914 ausgestorben?", "opts": ["Wandertaube", "Karolinasittich", "Riesenalk", "Auerhuhn"], "correct": 0}, {"q": "Welche Pestizid-Verbindung gefährdete die Bestände von Adler und Falke besonders?", "opts": ["Glyphosat", "Atrazin", "DDT", "Neonicotinoide"], "correct": 2}, {"q": "Welcher Anteil aller Vogelarten weltweit ist als Zugvögel klassifiziert?", "opts": ["rund 10 Prozent", "rund 25 Prozent", "rund 50 Prozent", "rund 80 Prozent"], "correct": 2}, {"q": "Welcher deutsche Verband koordiniert seit 1989 das Brutvogel-Monitoring?", "opts": ["NABU", "BUND", "DDA – Dachverband Deutscher Avifaunisten", "WWF Deutschland"], "correct": 2}];
 var satzbauData = [

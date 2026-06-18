@@ -336,7 +336,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "der Bewältigungsmechanismus (Bewältigungsmechanismen)", "def": "kognitive oder Verhaltens­strategie zur Auseinandersetzung mit Stress oder belastenden Situationen; in der Psychologie seit Richard Lazarus (1966) systematisch erforscht; teilt sich in <em>funktionale</em> (langfristig hilfreich) und <em>dysfunktionale</em> (kurzfristig erleichternd, langfristig schädlich); auch englisch <em>coping mechanism</em>."}, {"term": "die Stressbewältigung (Sg.)", "def": "Gesamtheit aller Strategien zur Auseinandersetzung mit psychischer und körperlicher Belastung; nach Lazarus/Folkman (1984) zwei Hauptformen: <em>problemorientiert</em> (Lösung des Problems) und <em>emotionsorientiert</em> (Regulation der Gefühle); kann durch Therapie, Achtsamkeit, soziale Unterstützung und körperliche Bewegung verbessert werden."}, {"term": "die Achtsamkeit (Sg.)", "def": "psychologische Praxis, bei der das Bewusstsein gezielt im gegenwärtigen Moment verweilt — ohne Bewertung, ohne Ablenkung; wurzelt im buddhistischen Begriff <em>sati</em> (5. Jh. v. Chr.); 1979 von Jon Kabat-Zinn als <em>Mindfulness-Based Stress Reduction</em> (MBSR) säkularisiert; seit 1995 in deutschen Kassenkatalogen anerkannt."}, {"term": "die Selbsthilfe (Sg.)", "def": "Hilfe, die Betroffene sich selbst und einander leisten — ohne professionelle Therapeuten; klassische Form: Selbsthilfegruppe, in der Menschen mit gleichem Problem regelmäßig zusammenkommen; älteste Bewegung: Anonyme Alkoholiker (1935, Akron, Ohio); in Deutschland über 100.000 Gruppen, Dachorganisation: NAKOS Berlin."}, {"term": "die Resilienz (Sg.)", "def": "psychische Widerstands­kraft; Fähigkeit, nach Krisen, Verlusten oder Traumen zur seelischen Stabilität zurückzufinden; ursprünglich Materialwissenschaft (Elastizität); in der Psychologie etabliert seit Emmy Werner (Kauai-Studie 1955) und George Bonanno (Columbia, ab 2002); zu etwa 30% genetisch, 70% erlernt."}, {"term": "die Meditation (-en)", "def": "geistige Praxis zur Beruhigung des Denkens und Schärfung der Aufmerksamkeit; viele Formen — Atemmeditation, Mantra-Meditation, Körper­meditation, Achtsamkeits­meditation, transzendentale Meditation; nach Sara Lazars Harvard-Studien (ab 2005) verändert regelmäßige Meditation messbar die Gehirnstruktur."}, {"term": "die Verhaltenstherapie (-n)", "def": "wissenschaftlich fundierte Psychotherapie­form, die auf Verhaltensänderung und kognitiver Umstrukturierung basiert; bekannteste Variante: <em>kognitive Verhaltenstherapie</em> (CBT) nach Aaron Beck (Pennsylvania, ab 1960); Goldstandard für Depression, Angst, Zwang, PTBS; seit 1987 in Deutschland Kassenleistung."}, {"term": "die Selbsthilfegruppe (-n)", "def": "regelmäßiges Treffen von Menschen, die ein gemeinsames Problem teilen und sich gegenseitig stützen, informieren, ermutigen; in Deutschland zu allen denkbaren Themen aktiv (Sucht, chronische Krankheit, Trauer, Eltern besonderer Kinder); nach Studien von Keith Humphreys (Stanford) und John Kelly (Harvard) Erfolg dreimal höher als ohne Gruppe."}];
-var GENUS_DATA = [{"word": "🧘 Meditation", "cat": "die"}, {"word": "💪 Resilienz", "cat": "die"}, {"word": "🌬️ Atmung", "cat": "die"}, {"word": "😌 Achtsamkeit", "cat": "die"}, {"word": "🤝 Selbsthilfe", "cat": "die"}, {"word": "🎯 Strategie", "cat": "die"}, {"word": "😣 Stress", "cat": "der"}, {"word": "💭 Gedanken", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🧘 Meditation", cat: "die" },
+  { word: "💪 Resilienz", cat: "die" },
+  { word: "🌬️ Atmung", cat: "die" },
+  { word: "😌 Achtsamkeit", cat: "die" },
+  { word: "🤝 Selbsthilfe", cat: "die" },
+  { word: "🎯 Strategie", cat: "die" },
+  { word: "😣 Stress", cat: "der" },
+  { word: "💭 Gedanken", cat: "pl" },
+  { word: "🛡️ Bewältigungsmechanismus", cat: "der" },
+  { word: "🛡️ Bewältigungsmechanismen", cat: "pl" },
+  { word: "🧘 Meditationen", cat: "pl" },
+  { word: "📋 Verhaltenstherapie", cat: "die" },
+  { word: "📋 Verhaltenstherapien", cat: "pl" },
+  { word: "🎯 Strategien", cat: "pl" },
+  { word: "😌 Wohlbefinden", cat: "das" },
+  { word: "🌟 Unterstützung", cat: "die" },
+  { word: "🌟 Unterstützungen", cat: "pl" },
+  { word: "📎 Stressbewältigung", cat: "die" },
+  { word: "📎 Selbsthilfegruppe", cat: "die" },
+  { word: "📋 Bewusstsein", cat: "das" },
+  { word: "📎 Betroffene", cat: "die" },
+  { word: "📎 Gehirnstruktur", cat: "die" },
+  { word: "📋 Smartphone", cat: "das" },
+  { word: "📎 Diagnose", cat: "die" }
+];
 var LUECKE_DATA = [{"pre": "Achtsamkeitstraining wurde 1979 von Jon ", "ans": "Kabat-Zinn", "post": " als <em>Mindfulness-Based Stress Reduction</em>-Programm entwickelt."}, {"pre": "Eine Strategie, die langfristig Probleme abwehrt, nennt man ", "ans": "funktional", "post": "."}, {"pre": "Das transaktionale Stressmodell wurde 1984 von ", "ans": "Lazarus", "post": " und Folkman publiziert."}, {"pre": "Die Fähigkeit, sich von Krisen zu erholen, heißt ", "ans": "Resilienz", "post": "."}, {"pre": "Achtsamkeit hat ihre Wurzeln im ", "ans": "Buddhismus", "post": " — der Pali-Begriff lautet <em>sati</em>."}, {"pre": "Eine ", "ans": "Selbsthilfegruppe", "post": " ist eine regelmäßige Zusammenkunft von Menschen mit demselben Problem."}, {"pre": "Sara Lazar zeigte 2005 mit MRT-Aufnahmen, dass Meditation das ", "ans": "Gehirn", "post": " strukturell verändert."}];
 var MC_DATA = [{"q": "Wer entwickelte 1979 das MBSR-Achtsamkeits­programm?", "opts": ["Jon Kabat-Zinn (UMass)", "Aaron Beck", "Richard Lazarus", "Carl Rogers"], "correct": 0}, {"q": "Was ist eine funktionale Bewältigungsstrategie?", "opts": ["sich Hilfe suchen, Sport, Meditation", "Alkohol trinken", "weglaufen", "andere beschuldigen"], "correct": 0}, {"q": "Wer formulierte 1984 das transaktionale Stressmodell?", "opts": ["Lazarus und Folkman", "Sigmund Freud", "Carl Jung", "B. F. Skinner"], "correct": 0}, {"q": "Was bedeutet <em>Resilienz</em>?", "opts": ["psychische Widerstandskraft", "körperliche Steifheit", "emotionale Starre", "soziale Naivität"], "correct": 0}, {"q": "Welcher Forscher widerlegte den Mythos der zwingenden Trauerphasen?", "opts": ["George Bonanno (Columbia)", "Elisabeth Kübler-Ross", "Sigmund Freud", "Aaron Beck"], "correct": 0}, {"q": "Aus welcher Tradition stammt das Konzept der Achtsamkeit?", "opts": ["Buddhismus (Pali <em>sati</em>)", "Christentum", "Islam", "Hinduismus"], "correct": 0}, {"q": "Wer entwickelte ab 1960 die kognitive Verhaltenstherapie?", "opts": ["Aaron Beck (Pennsylvania)", "Sigmund Freud", "Carl Rogers", "Carl Jung"], "correct": 0}];
 var satzbauData = [

@@ -338,7 +338,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "die Monographie (-n)", "def": "einzelnes wissenschaftliches Buch zu einem Thema; im Gegensatz zu Aufsatz oder Sammelband; in Geisteswissenschaften die wichtigste Publikationsform; eine Habilitation in Deutschland verlangt eine Monographie von 300-600 Seiten."}, {"term": "die Hausarbeit (-en)", "def": "schriftliche Studienleistung an Universitäten, in Deutschland meist 10-20 Seiten in BA-Programmen, 15-30 Seiten in MA-Programmen; Bestandteil jedes Hauptseminars; soll eigenständige wissenschaftliche Arbeit demonstrieren."}, {"term": "der Nominalstil (Sg.)", "def": "Stilmerkmal, das nominale Konstruktionen (Substantive, Funktionsverbgefüge, Partizipien) gegenüber verbalen bevorzugt; in Behördensprache, Wissenschaft, Juristerei häufig; im Gegenstil der <em>Verbalstil</em> betont aktive Verben."}, {"term": "das Funktionsverbgefüge (-)", "def": "Konstruktion aus Funktionsverb und Substantiv (<em>zur Verfügung stellen, in Erfüllung gehen, Anwendung finden</em>); im Englischen <em>light verb construction</em>; charakteristisch für formellen Stil; Hauptmerkmal des Nominalstils."}, {"term": "die indirekte Rede (Sg.)", "def": "Wiedergabe einer Aussage in eigenen Worten, meist mit Konjunktiv I; in akademischen Texten zentral, da Forscher ständig fremde Befunde zitieren; <em>Müller (2024) behauptet, die Hypothese sei widerlegt.</em> Konjunktiv signalisiert: nicht eigene, sondern wiedergegebene Position."}, {"term": "der Konjunktiv I (Sg.)", "def": "Modus zur Wiedergabe fremder Aussagen ohne eigene Bewertung; Bildung: Verbstamm + Konjunktiv-Endungen (<em>er sage, sie habe gesagt, es werde gegeben</em>); ersetzt durch Konjunktiv II, wenn Indikativ und Konjunktiv I gleich aussehen (<em>sie sagen</em>)."}, {"term": "die Quellenangabe (-n)", "def": "Hinweis auf benutzte Literatur; in der Wissenschaft strikt geregelt; verschiedene Stile (APA, Harvard, Chicago, MLA, DIN 1505 für Deutschland); Voraussetzung für wissenschaftliche Integrität und Plagiats-Vermeidung."}, {"term": "das Plagiat (-e)", "def": "Übernahme fremder Gedanken oder Texte ohne korrekte Quellenangabe; in der akademischen Welt schwerstes Vergehen; KT-Guttenberg-Affäre 2011 (350 plagiierte Stellen in seiner Doktorarbeit) führte zum Rücktritt als Verteidigungsminister; KI-Detektoren wie Turnitin und GPTZero seit 2023 routine."}];
-var GENUS_DATA = [{"word": "📚 Aufsatz", "cat": "der"}, {"word": "📖 Buch", "cat": "das"}, {"word": "🎓 Universität", "cat": "die"}, {"word": "🔬 Forschung", "cat": "die"}, {"word": "📝 Stil", "cat": "der"}, {"word": "🧠 Begriff", "cat": "der"}, {"word": "📜 Werk", "cat": "das"}, {"word": "📊 Quellen", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "📚 Aufsatz", cat: "der" },
+  { word: "📖 Buch", cat: "das" },
+  { word: "🎓 Universität", cat: "die" },
+  { word: "🔬 Forschung", cat: "die" },
+  { word: "📝 Stil", cat: "der" },
+  { word: "🧠 Begriff", cat: "der" },
+  { word: "📜 Werk", cat: "das" },
+  { word: "📊 Quellen", cat: "pl" },
+  { word: "📚 Monographie", cat: "die" },
+  { word: "📚 Monographien", cat: "pl" },
+  { word: "📝 Hausarbeit", cat: "die" },
+  { word: "📝 Hausarbeiten", cat: "pl" },
+  { word: "🎯 Nominalstil", cat: "der" },
+  { word: "💬 indirekte Rede", cat: "die" },
+  { word: "📜 Konjunktiv I", cat: "der" },
+  { word: "📚 Quellenangabe", cat: "die" },
+  { word: "📚 Quellenangaben", cat: "pl" },
+  { word: "⚠️ Plagiat", cat: "das" },
+  { word: "⚠️ Plagiate", cat: "pl" },
+  { word: "🎓 Masterarbeit", cat: "die" },
+  { word: "🎓 Masterarbeiten", cat: "pl" },
+  { word: "🔬 Forschungsartikel", cat: "der" },
+  { word: "📖 Fachbuch", cat: "das" },
+  { word: "📖 Fachbücher", cat: "pl" }
+];
 var LUECKE_DATA = [{"pre": "Eine deutsche BA-Hausarbeit ist meist ", "ans": "10", "post": " bis 20 Seiten lang."}, {"pre": "Konjunktiv I wird vor allem für indirekte ", "ans": "Rede", "post": " verwendet."}, {"pre": "Karl-Theodor zu Guttenberg trat ", "ans": "2011", "post": " nach der Plagiats-Affäre zurück."}, {"pre": "Die DSH-Prüfung verlangt einen wissenschaftlichen Aufsatz im Nominal", "ans": "stil", "post": "."}, {"pre": "Die EU-Bibliothekskataloge folgen meist der Norm DIN ", "ans": "1505", "post": "."}, {"pre": "Funktionsverbgefüge wie <em>zur Verfügung ", "ans": "stellen", "post": "</em> sind typisch für den Nominalstil."}, {"pre": "Die Habilitations-Monographie ist meist 300 bis ", "ans": "600", "post": " Seiten lang."}];
 var MC_DATA = [{"q": "Welche Form ist Konjunktiv I von <em>er hat</em>?", "opts": ["er habe", "er hätte", "er hat", "er habe gehabt"], "correct": 0}, {"q": "Welcher Stil bevorzugt nominale gegenüber verbalen Konstruktionen?", "opts": ["Verbalstil", "Nominalstil", "Imperativstil", "Telegrammstil"], "correct": 1}, {"q": "Welches Funktionsverbgefüge bedeutet <em>helfen</em>?", "opts": ["zur Anwendung kommen", "Hilfe leisten", "in Frage kommen", "in Bewegung setzen"], "correct": 1}, {"q": "Welcher Politiker trat 2011 wegen Plagiat zurück?", "opts": ["Annalena Baerbock", "Karl-Theodor zu Guttenberg", "Norbert Lammert", "Christian Wulff"], "correct": 1}, {"q": "Welche Norm regelt deutsche bibliographische Quellenangaben?", "opts": ["DIN 9001", "DIN 1505", "ISO 690", "APA-Stil"], "correct": 1}, {"q": "Welche Textsorte ist eine Master-Abschlussarbeit?", "opts": ["Forschungsartikel", "Monographie", "Masterarbeit", "Hausarbeit"], "correct": 2}, {"q": "Welcher Modus wird verwendet, wenn Indikativ und Konjunktiv I identisch sind?", "opts": ["Imperativ", "Konjunktiv II", "Indikativ Perfekt", "Optativ"], "correct": 1}];
 var satzbauData = [

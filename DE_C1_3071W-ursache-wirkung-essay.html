@@ -333,7 +333,29 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "der Essay (-s)", "def": "literarische Form mittlerer Länge, in der ein Thema persönlich-argumentativ erörtert wird; vom französischen <em>essai</em> = Versuch; 1580 von Michel de Montaigne erfunden; in Deutschland durch Adornos <em>Der Essay als Form</em> (1958) theoretisch grundlegend gefasst; auf C1-Niveau zentrale Schreibtextsorte."}, {"term": "die Ursache (-n)", "def": "Vorgang oder Zustand, der eine Wirkung hervorruft; in der Aristotelischen Theorie viergeteilt (causa materialis, formalis, efficiens, finalis); im modernen Sprachgebrauch meist nur causa efficiens gemeint; nicht zu verwechseln mit Korrelation."}, {"term": "die Wirkung (-en)", "def": "Folge, Konsequenz oder Resultat einer Ursache; meist zeitlich nach der Ursache, kausal mit ihr verbunden; in Wissenschaft, Politik und Alltag zentraler Begriff; bei mehreren Wirkungen einer Ursache spricht man von <em>Effekt­kette</em> oder <em>Kaskadeneffekt</em>."}, {"term": "die Gliederung (-en)", "def": "logische Struktur eines Texts; klassische Dreiteilung beim Essay: Einleitung (mit These), Hauptteil (mit Argumenten), Schluss (mit Bilanz); auf C1-Niveau in jeder Schreibaufgabe gefordert; sollte schon vor dem Schreiben in einer Mind-Map oder Notiz festgehalten werden."}, {"term": "die These (-n)", "def": "zentrale Behauptung, die mit Argumenten gestützt werden muss; Grundbestandteil jedes argumentativen Textes; nach Karl Popper soll eine wissenschaftliche These prinzipiell falsifizierbar sein; gehört zwingend in die Einleitung des Essays."}, {"term": "der Konnektor (-en)", "def": "Wort oder Wendung, die Sätze logisch verknüpft; auf C1-Niveau unverzichtbar; klassische Beispiele: <em>folglich, demzufolge, infolgedessen, hingegen, indessen, mithin, nichtsdestotrotz, abschließend</em>; ihre Beherrschung gehört zu den wichtigsten C1-Bewertungskriterien."}, {"term": "die Argumentation (-en)", "def": "strukturierte Darlegung einer Position mit These, Begründung, Beleg, Verstärkung und Schlussfolgerung; auf C1-Niveau in komplexer Form gefordert; Wurzeln bei Aristoteles' Rhetorik (4. Jh. v. Chr.); modernes Klassiker: Stephen Toulmin <em>The Uses of Argument</em> 1958."}, {"term": "die Scheinkausalität (-en)", "def": "Verwechslung von Korrelation und Kausalität; klassische logische Falle <em>post hoc ergo propter hoc</em>; in Wissenschaft und Politik einer der häufigsten Argumentations­fehler; berühmtes Beispiel: Tyler Vigen <em>Spurious Correlations</em> 2015; in C1-Essays explizit zu reflektieren."}];
-var GENUS_DATA = [{"word": "✍️ Essay", "cat": "der"}, {"word": "🎯 These", "cat": "die"}, {"word": "🔗 Konnektor", "cat": "der"}, {"word": "📋 Gliederung", "cat": "die"}, {"word": "💡 Ursache", "cat": "die"}, {"word": "🔄 Wirkung", "cat": "die"}, {"word": "📜 Argumente", "cat": "pl"}, {"word": "🏛️ Aristoteles", "cat": "der"}];
+var GENUS_DATA = [
+  { word: "✍️ Essay", cat: "der" },
+  { word: "🎯 These", cat: "die" },
+  { word: "🔗 Konnektor", cat: "der" },
+  { word: "📋 Gliederung", cat: "die" },
+  { word: "💡 Ursache", cat: "die" },
+  { word: "🔄 Wirkung", cat: "die" },
+  { word: "📜 Argumente", cat: "pl" },
+  { word: "🏛️ Aristoteles", cat: "der" },
+  { word: "✍️ Essays", cat: "pl" },
+  { word: "💡 Ursachen", cat: "pl" },
+  { word: "🔄 Wirkungen", cat: "pl" },
+  { word: "🎯 Thesen", cat: "pl" },
+  { word: "📋 Gliederungen", cat: "pl" },
+  { word: "🔗 Konnektoren", cat: "pl" },
+  { word: "📜 Argumentation", cat: "die" },
+  { word: "📜 Argumentationen", cat: "pl" },
+  { word: "❌ Scheinkausalität", cat: "die" },
+  { word: "📊 Korrelation", cat: "die" },
+  { word: "📊 Korrelationen", cat: "pl" },
+  { word: "🏛️ Einleitung", cat: "die" },
+  { word: "🏛️ Einleitungen", cat: "pl" }
+];
 var LUECKE_DATA = [{"pre": "Aristoteles unterschied in seiner <em>Physik</em> ", "ans": "vier", "post": " Arten von Ursachen."}, {"pre": "Die Form des Essays wurde 1580 von Michel de ", "ans": "Montaigne", "post": " in Frankreich erfunden."}, {"pre": "Theodor W. ", "ans": "Adorno", "post": " publizierte 1958 das berühmte Manifest <em>Der Essay als Form</em>."}, {"pre": "Ein guter C1-Essay hat eine klare Drei-Teilung: Einleitung, Hauptteil und ", "ans": "Schluss", "post": "."}, {"pre": "Die Verwechslung von Korrelation und Kausalität nennt man ", "ans": "Scheinkausalität", "post": "."}, {"pre": "Die lateinische Logikfehler-Bezeichnung lautet <em>post hoc ergo ", "ans": "propter", "post": " hoc</em>."}, {"pre": "Auf C1-Niveau sollten 30 bis 50 ", "ans": "Konnektoren", "post": " sicher beherrscht werden."}];
 var MC_DATA = [{"q": "Wer formulierte die Theorie der vier Ursachen?", "opts": ["Aristoteles (4. Jh. v. Chr.)", "Platon", "Cicero", "Hegel"], "correct": 0}, {"q": "Wer erfand 1580 die Form des Essays?", "opts": ["Michel de Montaigne", "Francis Bacon", "Theodor W. Adorno", "Voltaire"], "correct": 0}, {"q": "Wer kritisierte 1748 die Kausalität als bloße <em>Gewohnheit der Beobachtung</em>?", "opts": ["David Hume", "Immanuel Kant", "Aristoteles", "John Locke"], "correct": 0}, {"q": "Wer rettete 1781 die Kausalität als <em>Kategorie des Verstands</em>?", "opts": ["Immanuel Kant", "G. W. F. Hegel", "Friedrich Nietzsche", "Arthur Schopenhauer"], "correct": 0}, {"q": "Wie lautet die klassische Drei-Teilung eines Essays?", "opts": ["Einleitung – Hauptteil – Schluss", "These – Antithese – Synthese", "Beweis – Beleg – Bilanz", "Anfang – Mitte – Ende"], "correct": 0}, {"q": "Wer schrieb 1958 <em>Der Essay als Form</em>?", "opts": ["Theodor W. Adorno", "Walter Benjamin", "Hannah Arendt", "Max Horkheimer"], "correct": 0}, {"q": "Was bezeichnet die Falle <em>post hoc ergo propter hoc</em>?", "opts": ["Verwechslung von Korrelation und Kausalität", "Kreislogik", "ad-hominem-Angriff", "Strohmann-Argument"], "correct": 0}];
 var satzbauData = [

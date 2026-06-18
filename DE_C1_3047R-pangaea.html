@@ -338,7 +338,28 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "Pangaea (Sg.)", "def": "Superkontinent, der vor etwa 335 Millionen Jahren aus der Kollision aller damaligen Kontinente entstand und vor etwa 175 Millionen Jahren wieder auseinanderbrach; Name aus dem Griechischen <em>pan</em> (alles) und <em>gaia</em> (Erde); 1915 von Alfred Wegener geprägt."}, {"term": "Alfred Wegener (Sg.)", "def": "deutscher Polarforscher, Meteorologe und Geophysiker (1880-1930); 1912 in Frankfurt formulierte er die Theorie der Kontinentaldrift; sein Buch <em>Die Entstehung der Kontinente und Ozeane</em> (1915, vier Auflagen bis 1929) war zur Zeit revolutionär; gestorben am 50. Geburtstag im November 1930 auf einer Grönland-Expedition."}, {"term": "die Kontinentaldrift (Sg.)", "def": "Theorie, dass die Kontinente sich auf der Erdoberfläche bewegen; 1912 von Wegener postuliert; lange umstritten, weil ihm der physikalische Mechanismus fehlte; durch die Plattentektonik der 1960er bewiesen und integriert."}, {"term": "die Plattentektonik (Sg.)", "def": "Theorie der Erdkruste als Mosaik aus rund einem Dutzend lithosphärischer Platten; 1968 durch die Synthese mehrerer Forscher (Wilson, McKenzie, Le Pichon, Morgan) etabliert; erklärt Erdbeben, Vulkane, Gebirgsbildung und die wegener'sche Kontinentaldrift physikalisch."}, {"term": "die Lithosphäre (Sg.)", "def": "die feste, äußerste Hülle der Erde, etwa 100 km dick; aus Erdkruste und obersten Erdmantel zusammengesetzt; in tektonische Platten zerlegt, die auf der weicheren Asthenosphäre schwimmen."}, {"term": "die Mittelozeanische Rücken (Pl.)", "def": "Gebirgssysteme am Meeresgrund, an denen Magma aus dem Erdmantel aufsteigt und neue ozeanische Kruste bildet; entdeckt 1953 durch Bruce Heezen und Marie Tharp am Lamont-Geological Observatory; entscheidender Beweis für Plattentektonik; Gesamtlänge weltweit 65 000 km."}, {"term": "die Subduktionszone (-n)", "def": "Bereich, an dem eine ozeanische Platte unter eine kontinentale taucht und im Erdmantel aufgeschmolzen wird; verursacht Tiefseegräben (Marianengraben), Inselbögen (Japan, Aleuten) und Vulkanketten (Anden, Andes-Vulkane)."}, {"term": "die Paläontologie (Sg.)", "def": "Wissenschaft von den Fossilien; aus dem Griechischen <em>palaios</em> (alt) und <em>logos</em> (Lehre); im 19. Jahrhundert durch Georges Cuvier (Frankreich) und Richard Owen (England) etabliert; lieferte zentrale Belege für Wegeners Theorie — gleiche Fossilien auf heute getrennten Kontinenten (Mesosaurus, Glossopteris)."}];
-var GENUS_DATA = [{"word": "🌍 Erde", "cat": "die"}, {"word": "🌎 Kontinent", "cat": "der"}, {"word": "🌊 Ozean", "cat": "der"}, {"word": "🌋 Vulkan", "cat": "der"}, {"word": "📜 Theorie", "cat": "die"}, {"word": "🦴 Fossil", "cat": "das"}, {"word": "🏔️ Gebirge", "cat": "das"}, {"word": "📚 Bücher", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🌍 Erde", cat: "die" },
+  { word: "🌎 Kontinent", cat: "der" },
+  { word: "🌊 Ozean", cat: "der" },
+  { word: "🌋 Vulkan", cat: "der" },
+  { word: "📜 Theorie", cat: "die" },
+  { word: "🦴 Fossil", cat: "das" },
+  { word: "🏔️ Gebirge", cat: "das" },
+  { word: "📚 Bücher", cat: "pl" },
+  { word: "🌎 Kontinentaldrift", cat: "die" },
+  { word: "🌋 Plattentektonik", cat: "die" },
+  { word: "🪨 Lithosphäre", cat: "die" },
+  { word: "🌊 Mittelozeanische Rücken", cat: "der" },
+  { word: "⬇️ Subduktionszone", cat: "die" },
+  { word: "⬇️ Subduktionszonen", cat: "pl" },
+  { word: "🦴 Paläontologie", cat: "die" },
+  { word: "🌍 Superkontinent", cat: "der" },
+  { word: "🌍 Superkontinente", cat: "pl" },
+  { word: "📜 Theorien", cat: "pl" },
+  { word: "🌋 Erdkruste", cat: "die" },
+  { word: "📎 Mittelozeanische", cat: "die" }
+];
 var LUECKE_DATA = [{"pre": "Alfred Wegener wurde im Jahr ", "ans": "1880", "post": " in Berlin geboren."}, {"pre": "Sein Buch <em>Die Entstehung der Kontinente und Ozeane</em> erschien zuerst ", "ans": "1915", "post": "."}, {"pre": "Pangaea zerbrach vor etwa ", "ans": "175", "post": " Millionen Jahren."}, {"pre": "Wegener starb 1930 auf einer Expedition in ", "ans": "Grönland", "post": "."}, {"pre": "Die Plattentektonik wurde im Jahr ", "ans": "1968", "post": " als Synthese-Theorie etabliert."}, {"pre": "Bruce Heezen und Marie ", "ans": "Tharp", "post": " entdeckten 1953 die Mittelozeanischen Rücken."}, {"pre": "Das Fossil <em>Mesosaurus</em> wurde sowohl in Brasilien als auch in ", "ans": "Afrika", "post": " gefunden."}];
 var MC_DATA = [{"q": "Wer formulierte 1912 die Theorie der Kontinentaldrift?", "opts": ["Charles Darwin", "Alfred Wegener", "James Hutton", "Eduard Suess"], "correct": 1}, {"q": "Wann zerbrach Pangaea?", "opts": ["vor 500 Millionen Jahren", "vor 175 Millionen Jahren", "vor 65 Millionen Jahren", "vor 10 Millionen Jahren"], "correct": 1}, {"q": "Wann wurde die Plattentektonik wissenschaftlich etabliert?", "opts": ["1915", "1928", "1968", "1992"], "correct": 2}, {"q": "Wer entdeckte 1953 die Mittelozeanischen Rücken?", "opts": ["Wegener und Köppen", "Heezen und Tharp", "Wilson und Morgan", "Vine und Matthews"], "correct": 1}, {"q": "Wo starb Alfred Wegener?", "opts": ["Berlin", "Hamburg", "Grönland", "Antarktis"], "correct": 2}, {"q": "Welches Fossil galt als Hauptbeweis für die Verbindung Südamerika-Afrika?", "opts": ["T-Rex", "Mesosaurus", "Mammut", "Megalodon"], "correct": 1}, {"q": "Was geschieht in einer Subduktionszone?", "opts": ["Neue Platten entstehen", "Eine Platte taucht unter eine andere", "Platten verschieben sich seitlich", "Platten heben sich"], "correct": 1}];
 var satzbauData = [

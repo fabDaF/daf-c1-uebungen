@@ -341,7 +341,31 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "das Projektmanagement (Sg.)", "def": "die Initiierung, Planung, Steuerung, Kontrolle und der Abschluss von Projekten; im Englischen <em>project management</em>; als Disziplin etabliert seit dem Manhattan-Projekt (1942-46) und der NASA-Apollo-Mission (1961-72); die Berufsbezeichnung Projektmanager existiert seit 1969 (PMI-Gründung)."}, {"term": "das Lastenheft (-e)", "def": "deutsches Standarddokument zur Beschreibung der Anforderungen aus Auftraggeber-Sicht; nach DIN 69901-5 definiert als <em>Was?</em> und <em>Wofür?</em>; im Gegensatz zum Pflichtenheft, das die technische Umsetzung dokumentiert (<em>Wie?</em>)."}, {"term": "das Pflichtenheft (-e)", "def": "deutsches Standarddokument zur Beschreibung der konkreten Umsetzung aus Auftragnehmer-Sicht; folgt auf das Lastenheft; in der Software-Branche meist durch agile User Stories ersetzt; im Maschinenbau und Bauwesen weiterhin Standard."}, {"term": "die Wasserfall-Methode (Sg.)", "def": "klassisches sequenzielles Projektmanagement-Modell: Anforderung, Design, Implementierung, Test, Wartung — jede Phase abgeschlossen vor der nächsten; benannt 1970 in Winston Royces Aufsatz; kritisiert für mangelnde Flexibilität, in komplexen Projekten häufig überfordert."}, {"term": "die agile Methode (-n)", "def": "iterativer, flexibler Ansatz im Projektmanagement; im <em>Agile Manifesto</em> 2001 in Snowbird, Utah, von 17 Softwareentwicklern formuliert; Prinzipien: Individuen statt Prozesse, funktionierende Software statt Dokumentation, Kundenkooperation statt Vertragsverhandlungen, Reaktion auf Änderung statt Plan-Befolgung."}, {"term": "das Scrum (Sg.)", "def": "agiles Framework von Ken Schwaber und Jeff Sutherland 1995 vorgestellt; Sprints von 2-4 Wochen, tägliche Stand-ups, Product Owner, Scrum Master, Entwicklungsteam; weltweit das verbreitetste agile Framework; offizielles Regelwerk im <em>Scrum Guide</em> (zuletzt aktualisiert 2020)."}, {"term": "das Gantt-Diagramm (-e)", "def": "grafische Darstellung zeitlicher Abläufe in einem Projekt; entwickelt 1910 vom amerikanischen Ingenieur Henry Gantt für die Bethlehem Steel Company; bis heute Standardwerkzeug, in moderner Form als digitales Roadmap-Tool (Asana, Microsoft Project, Jira)."}, {"term": "der Kritische Pfad (Sg.)", "def": "die längste Kette zeit-abhängiger Aktivitäten, die Verzögerungen direkt auf den Endtermin durchschlagen lassen; Methode der DuPont Corporation und Remington Rand 1957 für komplexe Industrieprojekte; mathematische Grundlage moderner Projektplanungssoftware."}];
-var GENUS_DATA = [{"word": "📊 Projekt", "cat": "das"}, {"word": "🎯 Ziel", "cat": "das"}, {"word": "⏰ Zeit", "cat": "die"}, {"word": "💼 Manager", "cat": "der"}, {"word": "📋 Ressource", "cat": "die"}, {"word": "📈 Plan", "cat": "der"}, {"word": "💰 Budget", "cat": "das"}, {"word": "👥 Mitarbeiter", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "📊 Projekt", cat: "das" },
+  { word: "🎯 Ziel", cat: "das" },
+  { word: "⏰ Zeit", cat: "die" },
+  { word: "💼 Manager", cat: "der" },
+  { word: "📋 Ressource", cat: "die" },
+  { word: "📈 Plan", cat: "der" },
+  { word: "💰 Budget", cat: "das" },
+  { word: "👥 Mitarbeiter", cat: "pl" },
+  { word: "📊 Projektmanagement", cat: "das" },
+  { word: "📋 Lastenheft", cat: "das" },
+  { word: "📋 Lastenhefte", cat: "pl" },
+  { word: "📝 Pflichtenheft", cat: "das" },
+  { word: "📝 Pflichtenhefte", cat: "pl" },
+  { word: "💧 Wasserfall-Methode", cat: "die" },
+  { word: "⚡ agile Methode", cat: "die" },
+  { word: "⚡ agile Methoden", cat: "pl" },
+  { word: "🏉 Scrum", cat: "das" },
+  { word: "📈 Gantt-Diagramm", cat: "das" },
+  { word: "📈 Gantt-Diagramme", cat: "pl" },
+  { word: "🎯 Ziele", cat: "pl" },
+  { word: "🪙 Ressourcen", cat: "pl" },
+  { word: "📅 Zeitplan", cat: "der" },
+  { word: "📅 Zeitpläne", cat: "pl" }
+];
 var LUECKE_DATA = [{"pre": "Henry Gantt entwickelte sein berühmtes Diagramm im Jahr ", "ans": "1910", "post": " für die Bethlehem Steel Company."}, {"pre": "Das Project Management Institute (PMI) wurde im Jahr ", "ans": "1969", "post": " in Pennsylvania gegründet."}, {"pre": "Ken Schwaber und Jeff Sutherland stellten Scrum erstmals im Jahr ", "ans": "1995", "post": " auf der OOPSLA-Konferenz vor."}, {"pre": "Das <em>Agile Manifesto</em> wurde im Februar 2001 in Snowbird, ", "ans": "Utah", "post": " verfasst."}, {"pre": "Die Wasserfall-Methode wurde 1970 von Winston ", "ans": "Royce", "post": " in einem Aufsatz beschrieben."}, {"pre": "Ein typischer Scrum-Sprint dauert ", "ans": "zwei", "post": " bis vier Wochen."}, {"pre": "Das Manhattan-Projekt zur Atombombe lief von 1942 bis ", "ans": "1946", "post": "."}];
 var MC_DATA = [{"q": "Wer entwickelte 1910 das Gantt-Diagramm?", "opts": ["Frederick Taylor", "Henry Gantt", "Henri Fayol", "Peter Drucker"], "correct": 1}, {"q": "In welcher Stadt wurde 2001 das Agile Manifesto verfasst?", "opts": ["Palo Alto", "Snowbird (Utah)", "Boston", "Seattle"], "correct": 1}, {"q": "Wer stellte Scrum erstmals 1995 vor?", "opts": ["Ken Schwaber und Jeff Sutherland", "Henrik Kniberg", "Mike Cohn", "Eric Ries"], "correct": 0}, {"q": "Welches Projekt gilt als Geburtsstunde des modernen Projektmanagements?", "opts": ["Marshallplan", "Manhattan-Projekt", "Apollo-Programm", "Hoover-Damm-Bau"], "correct": 1}, {"q": "Welcher Standard definiert in Deutschland Lasten- und Pflichtenheft?", "opts": ["DIN 9001", "DIN 69901", "ISO 21500", "BS 6079"], "correct": 1}, {"q": "Wie viele Personen unterzeichneten 2001 das Agile Manifesto?", "opts": ["7", "12", "17", "23"], "correct": 2}, {"q": "Welche Methode benennt die längste Kette zeitabhängiger Aktivitäten?", "opts": ["Kanban", "Critical Path Method", "Pareto-Analyse", "Lean"], "correct": 1}];
 var satzbauData = [

@@ -336,7 +336,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "die Evolutionstheorie (-n)", "def": "wissenschaftliche Theorie, die die Vielfalt und den gemeinsamen Ursprung aller Lebewesen erklärt; entwickelt von Charles Darwin und Alfred Russel Wallace 1858/59; im 20. Jahrhundert zur <em>Modernen Synthese</em> mit Genetik (Dobzhansky, Mayr) erweitert; heute Grundpfeiler der Biologie."}, {"term": "die natürliche Auslese (Sg.)", "def": "Mechanismus der Evolution: Individuen mit erblichen Vorteilen haben höhere Überlebens- und Fortpflanzungschancen, geben ihre Merkmale häufiger weiter; auch <em>natürliche Selektion</em> genannt; nach Darwin (1859) das wichtigste, aber nicht einzige Triebrad der Evolution; ergänzt durch genetische Drift und Sexualauslese."}, {"term": "die Art (-en)", "def": "in der Biologie eine Gruppe von Lebewesen, die untereinander fruchtbar sind und ihre Fortpflanzungsgemeinschaft genetisch von anderen Gruppen abgrenzt; Ernst Mayrs <em>biologisches Artkonzept</em> von 1942 ist die geläufigste Definition; Synonyme: Spezies, Gattung (höhere Ebene)."}, {"term": "die Anpassung (-en)", "def": "Eigenschaft eines Organismus, die seine Überlebens- oder Fortpflanzungs­chancen in einem bestimmten Lebensraum erhöht; entsteht durch natürliche Auslese; klassisches Darwin-Beispiel: die unterschiedlichen Schnabelformen der Galápagosfinken; auch <em>Adaptation</em> genannt."}, {"term": "die Mutation (-en)", "def": "spontane oder induzierte Veränderung der DNA; Quelle aller erblichen Variation; meist neutral oder schädlich, gelegentlich vorteilhaft; Mutationen wurden erst nach Darwin durch Hugo de Vries (1900) und durch die Mendel-Rezeption als Grundlage der Vererbungslehre erkannt."}, {"term": "die Urform (-en)", "def": "ursprüngliche Form, von der spätere Arten abstammen; Darwin nannte den letzten gemeinsamen Vorfahren <em>last universal common ancestor</em> (LUCA); heute auf etwa 4 Milliarden Jahre vor heute datiert; gemeinsamer Vorfahr aller heutigen Tiere lebte vor etwa 580 Millionen Jahren."}, {"term": "die Variation (-en)", "def": "Unterschiede zwischen Individuen einer Art in Merkmalen wie Größe, Farbe, Verhalten, Stoffwechsel; Voraussetzung für Selektion — ohne Variation keine Auslese; entsteht durch Mutation, Rekombination und Migration; Darwin sammelte über zwanzig Jahre Belege für ihre Allgegenwärtigkeit."}, {"term": "das Vorwort (-e)", "def": "einführender Text eines Buches, oft vom Autor verfasst, der Anlass, Methode und Zielsetzung erläutert; Darwins Vorwort zu <em>On the Origin of Species</em> beginnt mit dem berühmten Satz, er sei während der Beagle-Reise von der Verteilung der Lebewesen Südamerikas <em>sehr beeindruckt</em> gewesen."}];
-var GENUS_DATA = [{"word": "🐢 Schildkröte", "cat": "die"}, {"word": "🦅 Finke", "cat": "der"}, {"word": "🌍 Erde", "cat": "die"}, {"word": "🚢 Schiff", "cat": "das"}, {"word": "📜 Theorie", "cat": "die"}, {"word": "🧬 Mutation", "cat": "die"}, {"word": "🦴 Fossilien", "cat": "pl"}, {"word": "🌿 Vorfahr", "cat": "der"}];
+var GENUS_DATA = [
+  { word: "🐢 Schildkröte", cat: "die" },
+  { word: "🦅 Finke", cat: "der" },
+  { word: "🌍 Erde", cat: "die" },
+  { word: "🚢 Schiff", cat: "das" },
+  { word: "📜 Theorie", cat: "die" },
+  { word: "🧬 Mutation", cat: "die" },
+  { word: "🦴 Fossilien", cat: "pl" },
+  { word: "🌿 Vorfahr", cat: "der" },
+  { word: "🌳 Evolutionstheorie", cat: "die" },
+  { word: "🌳 Evolutionstheorien", cat: "pl" },
+  { word: "🎯 natürliche Auslese", cat: "die" },
+  { word: "🦒 Art", cat: "die" },
+  { word: "🦒 Arten", cat: "pl" },
+  { word: "🌿 Anpassung", cat: "die" },
+  { word: "🌿 Anpassungen", cat: "pl" },
+  { word: "🧬 Mutationen", cat: "pl" },
+  { word: "🌱 Urform", cat: "die" },
+  { word: "🌱 Urformen", cat: "pl" },
+  { word: "🔄 Variation", cat: "die" },
+  { word: "🔄 Variationen", cat: "pl" },
+  { word: "📖 Vorwort", cat: "das" },
+  { word: "📖 Vorworte", cat: "pl" },
+  { word: "🚢 Reise", cat: "die" },
+  { word: "🚢 Reisen", cat: "pl" }
+];
 var LUECKE_DATA = [{"pre": "Charles Darwin lebte von 1809 bis ", "ans": "1882", "post": "."}, {"pre": "Darwin reiste fünf Jahre lang als Naturforscher an Bord der HMS ", "ans": "Beagle", "post": "."}, {"pre": "Sein Hauptwerk <em>On the Origin of Species</em> erschien am 24. November ", "ans": "1859", "post": "."}, {"pre": "Auf den ", "ans": "Galápagos", "post": "-Inseln entdeckte Darwin die berühmten Finkenarten."}, {"pre": "Alfred Russel ", "ans": "Wallace", "post": " formulierte 1858 fast gleichzeitig wie Darwin die Theorie der natürlichen Auslese."}, {"pre": "Die Erhaltung günstiger und Ablehnung schädlicher Variationen nennt Darwin ", "ans": "natürliche", "post": " Auslese."}, {"pre": "Darwins berühmter Verteidiger Thomas ", "ans": "Huxley", "post": " erhielt den Spitznamen <em>Darwins Bulldogge</em>."}];
 var MC_DATA = [{"q": "Wann lebte Charles Darwin?", "opts": ["1809–1882", "1750–1820", "1900–1970", "1700–1770"], "correct": 0}, {"q": "Wie hieß Darwins Forschungsschiff?", "opts": ["HMS Beagle", "HMS Victory", "HMS Endeavour", "HMS Discovery"], "correct": 0}, {"q": "Auf welchen Inseln machte Darwin Schlüsselbeobachtungen?", "opts": ["Galápagos", "Falkland", "Hawaii", "Azoren"], "correct": 0}, {"q": "Wann erschien <em>On the Origin of Species</em>?", "opts": ["1859", "1820", "1880", "1890"], "correct": 0}, {"q": "Wer formulierte gleichzeitig wie Darwin die Theorie der natürlichen Auslese?", "opts": ["Alfred Russel Wallace", "Thomas Huxley", "Charles Lyell", "Gregor Mendel"], "correct": 0}, {"q": "Welcher Bischof debattierte 1860 in Oxford gegen die Evolutionstheorie?", "opts": ["Samuel Wilberforce", "Henry Manning", "John Henry Newman", "Edward Pusey"], "correct": 0}, {"q": "Wer war Darwins berühmtester Verteidiger und erhielt den Spitznamen <em>Darwins Bulldogge</em>?", "opts": ["Thomas Huxley", "Charles Lyell", "Joseph Hooker", "Asa Gray"], "correct": 0}];
 var satzbauData = [

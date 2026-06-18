@@ -338,7 +338,29 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "die Wüste (-n)", "def": "trockenes Gebiet mit weniger als 250 mm Niederschlag pro Jahr; weltweit größte: Sahara (9 Millionen km²) und Antarktis (kalte Wüste); rund 30 Prozent der Erdoberfläche sind Wüsten; trotz lebensfeindlicher Bedingungen leben in den Wüsten ca. 1 Milliarde Menschen."}, {"term": "der Marathon des Sables (Sg.)", "def": "<em>Marathon der Sande</em> — Etappenlauf durch die marokkanische Sahara; 250 km in sechs Tagen; 1986 vom französischen Konzert-Promoter Patrick Bauer gegründet; gilt als härtester Wüstenmarathon der Welt; Teilnehmer tragen ihre Verpflegung selbst, Wasser wird gestellt."}, {"term": "Mauro Prosperi (Sg.)", "def": "italienischer Polizeioffizier und Pentathlon-Olympia-Teilnehmer (Seoul 1984); 1994 Teilnehmer am Marathon des Sables; nach einem Sandsturm verlor er die Strecke und überlebte 9 Tage allein in der Wüste; verlor 18 kg Körpergewicht, trank Eigenurin, aß Fledermäuse; sein Buch <em>Lost in the Wild</em> 2014 erzählt die Geschichte."}, {"term": "die Hilflosigkeit (Sg.)", "def": "psychischer Zustand des Ausgeliefertseins, der bei Survival-Situationen über Leben und Tod entscheidet; Forschung von Martin Seligman 1967 (<em>learned helplessness</em>) zeigt, dass das Gefühl der Hilflosigkeit selbst zur Todesursache werden kann."}, {"term": "die Dehydrierung (Sg.)", "def": "Wassermangel im Körper; tritt ein, wenn weniger Flüssigkeit aufgenommen als ausgeschieden wird; bei 5 Prozent Verlust körperliche Symptome (Schwindel, Kopfschmerzen), bei 10 Prozent Lebensgefahr, bei 15 Prozent meist tödlich; in Wüsten besonders gefährlich wegen Verdunstung."}, {"term": "die Sandstürme (Pl.)", "def": "durch starken Wind aufgewirbelte Sand- und Staubmassen; in der Sahara als <em>Haboob</em>, in Marokko <em>Schirokko</em>, in Ägypten <em>Khamsin</em> bezeichnet; können Sichtweite auf wenige Meter reduzieren; verursachen Lungenkrankheiten und desorientieren Reisende."}, {"term": "die Notfall-Pfeife (-n)", "def": "akustisches Signal zur Hilferufung in Notlagen; international anerkannt: drei Pfiffe = SOS; in der Wüste schwer hörbar wegen Sandabsorption; Mauro Prosperi hatte eine bei sich, doch niemand hörte sie; heute sind GPS-Tracker (Spot, Garmin inReach) Standard-Ausrüstung."}, {"term": "die Survival-Schule (-n)", "def": "Bildungseinrichtung für Wildnis-Überleben; in Deutschland seit den 1990ern verbreitet; Kurse von Tom Brown (USA seit 1978), Lars Konarek (Deutschland seit 2008), Joe O&apos;Leary; lehren Wasserfindung, Feuermachen, Notunterkunft, Navigation, Erste Hilfe."}];
-var GENUS_DATA = [{"word": "🏜️ Wüste", "cat": "die"}, {"word": "☀️ Sonne", "cat": "die"}, {"word": "💧 Wasser", "cat": "das"}, {"word": "🌪️ Sandsturm", "cat": "der"}, {"word": "🦂 Skorpion", "cat": "der"}, {"word": "🏃 Marathon", "cat": "der"}, {"word": "🪨 Felsen", "cat": "der"}, {"word": "🌵 Kaktusse", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🏜️ Wüste", cat: "die" },
+  { word: "☀️ Sonne", cat: "die" },
+  { word: "💧 Wasser", cat: "das" },
+  { word: "🌪️ Sandsturm", cat: "der" },
+  { word: "🦂 Skorpion", cat: "der" },
+  { word: "🏃 Marathon", cat: "der" },
+  { word: "🪨 Felsen", cat: "der" },
+  { word: "🌵 Kaktusse", cat: "pl" },
+  { word: "🏜️ Wüsten", cat: "pl" },
+  { word: "🏃 Marathon des Sables", cat: "der" },
+  { word: "😰 Hilflosigkeit", cat: "die" },
+  { word: "💧 Dehydrierung", cat: "die" },
+  { word: "🌪️ Sandstürme", cat: "pl" },
+  { word: "📯 Notfall-Pfeife", cat: "die" },
+  { word: "📯 Notfall-Pfeifen", cat: "pl" },
+  { word: "🎓 Survival-Schule", cat: "die" },
+  { word: "🎓 Survival-Schulen", cat: "pl" },
+  { word: "😨 Tortur", cat: "die" },
+  { word: "😨 Torturen", cat: "pl" },
+  { word: "🚨 Orientierung", cat: "die" },
+  { word: "💪 Überleben", cat: "das" }
+];
 var LUECKE_DATA = [{"pre": "Mauro Prosperi überlebte 1994 ", "ans": "9", "post": " Tage allein in der Sahara."}, {"pre": "Der Marathon des Sables wird seit ", "ans": "1986", "post": " jährlich ausgetragen."}, {"pre": "Die Sahara ist mit 9 Millionen ", "ans": "km", "post": "² die größte Wüste der Welt."}, {"pre": "Bei 10 Prozent Wasserverlust besteht akute ", "ans": "Lebensgefahr", "post": "."}, {"pre": "Patrick ", "ans": "Bauer", "post": " gründete den Marathon des Sables 1986."}, {"pre": "Mahatma Gandhi überstand 21 Tage ", "ans": "Hungerstreik", "post": " mit Wasser."}, {"pre": "Tom Brown gründete seine Survival-Schule im Jahr ", "ans": "1978", "post": " in den USA."}];
 var MC_DATA = [{"q": "Wer ist Mauro Prosperi?", "opts": ["italienischer Olympia-Schwimmer", "italienischer Polizeioffizier und Marathon-Läufer", "französischer Polarforscher", "spanischer Tennistrainer"], "correct": 1}, {"q": "Wie lange war Prosperi 1994 in der Sahara verschollen?", "opts": ["3 Tage", "9 Tage", "21 Tage", "6 Wochen"], "correct": 1}, {"q": "Wie viele km umfasst der Marathon des Sables insgesamt?", "opts": ["42 km", "100 km", "250 km", "500 km"], "correct": 2}, {"q": "Wie viele Tage kann ein Mensch ohne Wasser überleben?", "opts": ["1-2 Tage", "3-4 Tage", "7-9 Tage", "mehr als 14 Tage"], "correct": 1}, {"q": "Welcher Hungerstreik dauerte 21 Tage?", "opts": ["Bobby Sands", "Mahatma Gandhi", "IRA-Häftlinge", "Mahmoud Sarsak"], "correct": 1}, {"q": "Welcher Tag wäre für eine Wüsten-Wanderung am gefährlichsten?", "opts": ["sehr heißer Tag", "kühler Tag", "windstiller Tag", "Tag mit Wolken"], "correct": 0}, {"q": "Wie viele km² hat die Sahara?", "opts": ["3 Mio.", "9 Mio.", "15 Mio.", "20 Mio."], "correct": 1}];
 var satzbauData = [

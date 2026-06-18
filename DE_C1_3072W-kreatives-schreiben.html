@@ -333,7 +333,29 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "die Erzählung (-en)", "def": "literarische Form, in der eine Handlung dargestellt wird; im Gegensatz zur Beschreibung oder Erörterung; klassische Drei-Akt-Struktur Anfang–Mitte–Ende; in der antiken Poetik <em>mythos</em> genannt; bekannte Vertreter im Deutschen: Kleist, Hoffmann, Mann, Kafka, Kehlmann."}, {"term": "das kreative Schreiben (Sg.)", "def": "literarisches Schreiben mit künstlerischem Anspruch; Übersetzung des englischen <em>creative writing</em>; seit den 1930ern in Iowa systematisch gelehrt; in Deutschland seit 1996 in Hildesheim, seit 2014 zentral in Leipzig akademisch verankert; folgt erlernbaren Regeln, lebt aber von individueller Stimme."}, {"term": "der Plot (-s)", "def": "Handlungsstruktur einer Geschichte; bei Aristoteles <em>mythos</em>; nach Joseph Campbell oft als <em>Hero's Journey</em> (Heldenreise) strukturiert; klassisch in drei Akte gegliedert: Setup, Konfrontation, Auflösung; ohne Plot keine Erzählung — nur eine Beschreibung."}, {"term": "der Charakter (-e)", "def": "Figur einer Erzählung mit eigenen Zielen, Konflikten und Entwicklung; nach modernem 4-Säulen-Modell durch Wunsch, Mangel, Hindernis und Wandlung definiert; psychologisch glaubwürdig, sprachlich differenziert, im Verlauf der Geschichte einer <em>Anagnorisis</em> (Wiedererkennung) ausgesetzt."}, {"term": "die Schreibwerkstatt (-werkstätten)", "def": "regelmäßiges Format, in dem Teilnehmende eigene Texte einbringen, gegenseitig lesen, kritisieren und überarbeiten; Methode aus den USA (Iowa Writers' Workshop seit 1936); im deutschen Raum verbreitet seit den 1990ern; produziert oft mehr Lerneffekt als die einsame Schreibstube."}, {"term": "die Heldenreise (-n)", "def": "narratives Muster nach Joseph Campbell (<em>The Hero with a Thousand Faces</em> 1949); 17 Stationen in drei Phasen Aufbruch, Initiation, Rückkehr; in unzähligen Mythen, Romanen und Filmen wieder­zuerkennen; Christopher Voglers <em>The Writer's Journey</em> (1992) machte sie zum Hollywood-Standardwerkzeug."}, {"term": "die Mimesis (Sg.)", "def": "griechisch <em>Nachahmung</em>; in der Aristotelischen Poetik der Grundbegriff der Kunst — Kunst ahmt die Wirklichkeit nach; bei Erich Auerbach (<em>Mimesis</em> 1946) literaturgeschichtlich ausgearbeitet; Gegenbegriff: <em>Diegesis</em> (Erzählen statt Zeigen)."}, {"term": "die Katharsis (Sg.)", "def": "griechisch <em>Reinigung</em>; in Aristoteles' Poetik der Effekt der Tragödie auf das Publikum: durch Mitleid (<em>eleos</em>) und Furcht (<em>phobos</em>) werden Affekte gereinigt; in der modernen Erzähltheorie der Moment, in dem die Lesenden emotional mit dem Helden mitfühlen und <em>befreit</em> daraus hervorgehen."}];
-var GENUS_DATA = [{"word": "🖋️ Schreiben", "cat": "das"}, {"word": "📚 Erzählung", "cat": "die"}, {"word": "🦸 Held", "cat": "der"}, {"word": "🎭 Charakter", "cat": "der"}, {"word": "🎯 Plot", "cat": "der"}, {"word": "💡 Idee", "cat": "die"}, {"word": "📖 Worte", "cat": "pl"}, {"word": "🔄 Wandlung", "cat": "die"}];
+var GENUS_DATA = [
+  { word: "🖋️ Schreiben", cat: "das" },
+  { word: "📚 Erzählung", cat: "die" },
+  { word: "🦸 Held", cat: "der" },
+  { word: "🎭 Charakter", cat: "der" },
+  { word: "🎯 Plot", cat: "der" },
+  { word: "💡 Idee", cat: "die" },
+  { word: "📖 Worte", cat: "pl" },
+  { word: "🔄 Wandlung", cat: "die" },
+  { word: "🖋️ kreative Schreiben", cat: "das" },
+  { word: "📖 Erzählungen", cat: "pl" },
+  { word: "🎯 Plots", cat: "pl" },
+  { word: "🎭 Charaktere", cat: "pl" },
+  { word: "🦸 Helden", cat: "pl" },
+  { word: "🛠️ Schreibwerkstatt", cat: "die" },
+  { word: "🛠️ Schreibwerkstätten", cat: "pl" },
+  { word: "🌍 Heldenreise", cat: "die" },
+  { word: "🌍 Heldenreisen", cat: "pl" },
+  { word: "📜 Mimesis", cat: "die" },
+  { word: "💔 Konflikt", cat: "der" },
+  { word: "💔 Konflikte", cat: "pl" },
+  { word: "🔄 Wandlungen", cat: "pl" }
+];
 var LUECKE_DATA = [{"pre": "Aristoteles' <em>Poetik</em> stammt aus dem ", "ans": "4", "post": ". Jahrhundert vor Christus."}, {"pre": "Joseph Campbell publizierte 1949 die Theorie der ", "ans": "Heldenreise", "post": "."}, {"pre": "Christopher Vogler übertrug das Modell 1992 auf Hollywood in <em>The Writer's ", "ans": "Journey", "post": "</em>."}, {"pre": "Die wichtigste moderne Schreibregel lautet: <em>Show, don't ", "ans": "tell", "post": ".</em>"}, {"pre": "Ernest Hemingway nannte seine Schreibmethode die <em>", "ans": "iceberg", "post": " theory</em>."}, {"pre": "Stephen King publizierte 2000 das Klassiker-Buch <em>On ", "ans": "Writing", "post": "</em>."}, {"pre": "Das deutsche Literaturinstitut wurde 2014 in ", "ans": "Leipzig", "post": " akademisch verankert."}];
 var MC_DATA = [{"q": "Wer formulierte 1949 die Theorie der Heldenreise?", "opts": ["Joseph Campbell", "Carl Gustav Jung", "Mircea Eliade", "Sigmund Freud"], "correct": 0}, {"q": "Wie heißt die wichtigste moderne Schreibregel?", "opts": ["Show, don't tell", "Tell, don't show", "Write, don't think", "Less is more"], "correct": 0}, {"q": "Wer prägte die <em>iceberg theory</em> des Schreibens?", "opts": ["Ernest Hemingway", "F. Scott Fitzgerald", "William Faulkner", "John Steinbeck"], "correct": 0}, {"q": "Welcher Autor schrieb 2000 das Klassiker-Buch <em>On Writing</em>?", "opts": ["Stephen King", "Margaret Atwood", "Cormac McCarthy", "Neil Gaiman"], "correct": 0}, {"q": "Wo befindet sich das berühmteste deutsche Literatur­institut?", "opts": ["Leipzig", "Berlin", "München", "Wien"], "correct": 0}, {"q": "Wer schrieb <em>Die Vermessung der Welt</em> (2005)?", "opts": ["Daniel Kehlmann", "Juli Zeh", "Jenny Erpenbeck", "Sven Regener"], "correct": 0}, {"q": "Was bedeutet <em>Katharsis</em> in der Aristotelischen Poetik?", "opts": ["Reinigung der Affekte durch Mitleid und Furcht", "Erleuchtung des Helden", "Befreiung von der Tragik", "Erkenntnis durch Diskurs"], "correct": 0}];
 var satzbauData = [

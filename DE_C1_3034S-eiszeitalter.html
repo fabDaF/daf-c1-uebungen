@@ -338,7 +338,30 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "das Eiszeitalter (-)", "def": "erdgeschichtliche Periode mit ausgedehnten Eismassen an den Polen oder Hochgebirgen; geologisch befinden wir uns 2026 noch im Quartär-Eiszeitalter, das vor 2,58 Millionen Jahren begann; Begriff geprägt vom schwedischen Mineralogen Otto Torell 1870 in einem Vortrag in Berlin."}, {"term": "die Kaltzeit (-en)", "def": "Synonym <em>Glazial</em>; Phase eines Eiszeitalters mit ausgedehnten Eisflächen; im Quartär 50 bis 100 Glaziale dokumentiert; die letzte Kaltzeit (Würm/Weichsel) endete vor etwa 11 700 Jahren mit dem Beginn des Holozäns."}, {"term": "die Warmzeit (-en)", "def": "Synonym <em>Interglazial</em>; Phase relativer Wärme zwischen Kaltzeiten; die jetzige Warmzeit (Holozän) dauert seit 11 700 Jahren; ihre Stabilität ermöglichte erst die Entstehung der Landwirtschaft (vor 12 000 Jahren) und damit der Zivilisation."}, {"term": "der Gletscher (-)", "def": "langsam fließender Eisstrom in Hochgebirgen oder Polargebieten; entsteht aus akkumuliertem Schnee, der unter eigenem Gewicht zu Eis wird; weltweit etwa 200 000 Gletscher (außer der grönländischen und antarktischen Inlandeis), die seit 1980 etwa 30 Prozent ihrer Masse verloren haben."}, {"term": "das Quartär (Sg.)", "def": "jüngster Abschnitt der Erdgeschichte, beginnend vor 2,58 Millionen Jahren; geteilt in Pleistozän (bis vor 11 700 Jahren) und Holozän (bis heute); Diskussion seit 2009 über ein neues Anthropozän-Stadium ab 1945 oder 1950."}, {"term": "das Mammut (-s/-e)", "def": "ausgestorbene Elefantenart, die im Eiszeitalter weite Teile der nördlichen Hemisphäre bewohnte; das Wollhaarmammut (<em>Mammuthus primigenius</em>) lebte bis vor etwa 4 000 Jahren auf Wrangel-Insel im Arktischen Ozean; durch Klimawandel und menschliche Bejagung ausgestorben."}, {"term": "die Milankovitch-Zyklen (Pl.)", "def": "periodische Schwankungen der Erdbahn-Parameter (Exzentrizität, Schiefe der Erdachse, Präzession); vom serbischen Astronomen Milutin Milanković in den 1920er-Jahren mathematisch beschrieben; erklären die rund 100 000-jährige Frequenz der Eiszeitenfolge."}, {"term": "die Anpassung (-en)", "def": "Veränderung von Lebewesen oder Gesellschaften an Umweltbedingungen; in der Evolutionsbiologie zentrale Idee Darwins; Tiere des Eiszeitalters entwickelten dichtes Fell, Fettschichten, Hibernation; Menschen lernten Felle zu verarbeiten und Feuer zu nutzen."}];
-var GENUS_DATA = [{"word": "🧊 Eis", "cat": "das"}, {"word": "🏔️ Gletscher", "cat": "der"}, {"word": "🌡️ Temperatur", "cat": "die"}, {"word": "🐘 Mammut", "cat": "das"}, {"word": "❄️ Schnee", "cat": "der"}, {"word": "🌎 Erde", "cat": "die"}, {"word": "🦣 Klima", "cat": "das"}, {"word": "🐻‍❄️ Tiere", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🧊 Eis", cat: "das" },
+  { word: "🏔️ Gletscher", cat: "der" },
+  { word: "🌡️ Temperatur", cat: "die" },
+  { word: "🐘 Mammut", cat: "das" },
+  { word: "❄️ Schnee", cat: "der" },
+  { word: "🌎 Erde", cat: "die" },
+  { word: "🦣 Klima", cat: "das" },
+  { word: "🐻‍❄️ Tiere", cat: "pl" },
+  { word: "🧊 Eiszeitalter", cat: "das" },
+  { word: "❄️ Kaltzeit", cat: "die" },
+  { word: "❄️ Kaltzeiten", cat: "pl" },
+  { word: "☀️ Warmzeit", cat: "die" },
+  { word: "☀️ Warmzeiten", cat: "pl" },
+  { word: "⏳ Quartär", cat: "das" },
+  { word: "🐘 Mammuts", cat: "pl" },
+  { word: "🌡️ Durchschnittstemperatur", cat: "die" },
+  { word: "🌡️ Durchschnittstemperaturen", cat: "pl" },
+  { word: "🌍 Polregion", cat: "die" },
+  { word: "🌍 Polregionen", cat: "pl" },
+  { word: "🦴 Fossil", cat: "das" },
+  { word: "🦴 Fossilien", cat: "pl" },
+  { word: "🌿 Flora", cat: "die" }
+];
 var LUECKE_DATA = [{"pre": "Das Quartär begann vor rund 2,58 Millionen ", "ans": "Jahren", "post": "."}, {"pre": "Die letzte Kaltzeit endete vor etwa ", "ans": "11700", "post": " Jahren."}, {"pre": "Otto ", "ans": "Torell", "post": " prägte 1870 den Begriff <em>Eiszeitalter</em>."}, {"pre": "Milutin Milanković entwickelte seine Theorie in den ", "ans": "1920er", "post": "-Jahren."}, {"pre": "Auf der Wrangel-Insel lebten Mammuts bis vor etwa ", "ans": "4000", "post": " Jahren."}, {"pre": "Heute sind rund ", "ans": "10", "post": " Prozent der Erdoberfläche mit Eis bedeckt."}, {"pre": "Der Übergang vom Pleistozän zum Holozän markiert den Beginn der jetzigen ", "ans": "Warmzeit", "post": "."}];
 var MC_DATA = [{"q": "Wann begann das Quartär-Eiszeitalter?", "opts": ["vor 250 000 Jahren", "vor 800 000 Jahren", "vor 2,58 Millionen Jahren", "vor 65 Millionen Jahren"], "correct": 2}, {"q": "Wer prägte 1870 den Begriff <em>Eiszeitalter</em>?", "opts": ["Louis Agassiz", "Otto Torell", "Albrecht Penck", "James Croll"], "correct": 1}, {"q": "Welcher Wissenschaftler erklärte die Eiszeit-Zyklen über Erdbahn-Parameter?", "opts": ["Milutin Milanković", "Wegener", "Sven Hedin", "Humboldt"], "correct": 0}, {"q": "Welche Frequenz haben die größten Klima-Zyklen heute?", "opts": ["10 000 Jahre", "41 000 Jahre", "100 000 Jahre", "500 000 Jahre"], "correct": 2}, {"q": "Auf welcher Insel lebten Mammuts bis vor 4 000 Jahren?", "opts": ["Wrangel", "Sachalin", "Spitzbergen", "Hokkaido"], "correct": 0}, {"q": "Wie endete die letzte Kaltzeit (Würm/Weichsel)?", "opts": ["vor 50 000 Jahren", "vor 25 000 Jahren", "vor 11 700 Jahren", "vor 5 000 Jahren"], "correct": 2}, {"q": "Welcher Anteil der Erdoberfläche ist 2026 mit Eis bedeckt?", "opts": ["3 %", "10 %", "25 %", "50 %"], "correct": 1}];
 var satzbauData = [

@@ -336,7 +336,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "das Gehirn (-e)", "def": "zentrales Steuerorgan des Nervensystems; beim erwachsenen Menschen 1,3–1,5 kg schwer, etwa 86 Milliarden Neuronen, 100 Billionen Synapsen; gliedert sich in Großhirn, Kleinhirn, Zwischenhirn und Hirnstamm; verbraucht 20% des Körperenergie­bedarfs, obwohl es nur 2% des Körpergewichts ausmacht."}, {"term": "das Neuron (-en) / die Nervenzelle (-n)", "def": "spezialisierte Zelle des Nervensystems, die elektrochemische Signale empfängt und weitergibt; besteht aus Zellkörper, Dendriten (Empfänger) und Axon (Sender); überträgt Signale an benachbarte Neuronen über Synapsen; Camillo Golgi und Santiago Ramón y Cajal erhielten 1906 den Nobelpreis für die Entdeckung."}, {"term": "der präfrontale Cortex (Sg.)", "def": "vorderer Bereich des Frontallappens, hinter der Stirn; Sitz von Entscheidungs­findung, Selbstkontrolle, Planung, moralischem Urteil; reift beim Menschen erst bis zum 25. Lebensjahr aus; berühmt durch den Fall Phineas Gage (1848): Persönlichkeits­änderung nach Zerstörung dieser Region."}, {"term": "der Hippocampus (Hippocampi)", "def": "seepferdchenförmige Struktur im Temporallappen; zentrale Rolle bei der Bildung und Konsolidierung neuer episodischer Erinnerungen; nach beidseitiger Entfernung (Patient H.M. 1953) keine neuen Erinnerungen mehr möglich; bei Londoner Taxifahrern messbar vergrößert (Maguire 2000)."}, {"term": "die Amygdala (-en)", "def": "mandelförmige Struktur im Temporallappen; vom griechischen <em>amygdale</em> = Mandel; verarbeitet Furcht und emotionales Erleben; aktiviert direkt vom Sehnerv, schneller als bewusste Wahrnehmung; bei beidseitiger Schädigung (Urbach-Wiethe-Syndrom) fehlt die Furcht; Forschung seit Joseph LeDoux 1986."}, {"term": "die Plastizität (Sg.)", "def": "Fähigkeit des Gehirns, sich strukturell und funktionell zu verändern; Synapsen werden gestärkt oder geschwächt, neue Verbindungen entstehen, manchmal sogar neue Neuronen; Grundlage von Lernen, Erinnerung und Rehabilitation nach Hirnverletzungen; im Erwachsenenalter geringer als in der Kindheit, aber lebenslang erhalten."}, {"term": "der Neurotransmitter (-)", "def": "chemischer Botenstoff, der an der Synapse Signale von einem Neuron auf das nächste überträgt; bekannte Beispiele: Dopamin (Belohnung, Bewegung), Serotonin (Stimmung), GABA (Hemmung), Glutamat (Erregung), Noradrenalin (Wachheit), Acetylcholin (Lernen); Ungleich­gewichte spielen bei Depression, Parkinson, Schizophrenie eine zentrale Rolle."}, {"term": "die Synapse (-n)", "def": "Kontaktstelle zwischen zwei Neuronen, an der die Informations­übertragung stattfindet; Charles Sherrington prägte den Begriff 1897; das menschliche Gehirn besitzt etwa 100 Billionen Synapsen; werden im Schlaf reorganisiert (Tononi-Cirelli-Hypothese 2003); ihre Stärkung ist die zelluläre Grundlage des Lernens."}];
-var GENUS_DATA = [{"word": "🧠 Gehirn", "cat": "das"}, {"word": "⚡ Neuron", "cat": "das"}, {"word": "🔌 Synapse", "cat": "die"}, {"word": "🩸 Blut", "cat": "das"}, {"word": "💭 Gedanke", "cat": "der"}, {"word": "😨 Amygdala", "cat": "die"}, {"word": "🧬 Hippocampus", "cat": "der"}, {"word": "📚 Erinnerungen", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "🧠 Gehirn", cat: "das" },
+  { word: "⚡ Neuron", cat: "das" },
+  { word: "🔌 Synapse", cat: "die" },
+  { word: "🩸 Blut", cat: "das" },
+  { word: "💭 Gedanke", cat: "der" },
+  { word: "😨 Amygdala", cat: "die" },
+  { word: "🧬 Hippocampus", cat: "der" },
+  { word: "📚 Erinnerungen", cat: "pl" },
+  { word: "🧠 Gehirne", cat: "pl" },
+  { word: "⚡ Neuronen", cat: "pl" },
+  { word: "🔌 Synapsen", cat: "pl" },
+  { word: "🧬 Hippocampi", cat: "pl" },
+  { word: "😨 Amygdalae", cat: "pl" },
+  { word: "🎯 präfrontale Cortex", cat: "der" },
+  { word: "📚 Gedächtnis", cat: "das" },
+  { word: "🧠 Kleinhirn", cat: "das" },
+  { word: "💭 Gedanken", cat: "pl" },
+  { word: "🔄 Plastizität", cat: "die" },
+  { word: "📌 Neurotransmitter", cat: "der" },
+  { word: "📎 Nervenzelle", cat: "die" },
+  { word: "📎 Entdeckung", cat: "die" },
+  { word: "📎 Furcht", cat: "die" },
+  { word: "📎 Informations", cat: "die" },
+  { word: "📎 Milchstraße", cat: "die" }
+];
 var LUECKE_DATA = [{"pre": "Das menschliche Gehirn enthält etwa ", "ans": "86", "post": " Milliarden Neuronen."}, {"pre": "Das Großhirn ist in zwei ", "ans": "Hemisphären", "post": " unterteilt."}, {"pre": "Der ", "ans": "Hippocampus", "post": " ist verantwortlich für die Bildung neuer episodischer Erinnerungen."}, {"pre": "Die ", "ans": "Amygdala", "post": " ist das Furchtzentrum des Gehirns."}, {"pre": "Der berühmte Patient H.M. (Henry Molaison) verlor seine Erinnerungs­fähigkeit nach einer Hirnoperation im Jahr ", "ans": "1953", "post": "."}, {"pre": "Der weit verbreitete Mythos behauptet fälschlich, wir nutzten nur ", "ans": "10", "post": " Prozent unseres Gehirns."}, {"pre": "Die ", "ans": "Synapse", "post": " ist die Verbindungs­stelle zwischen zwei Neuronen."}];
 var MC_DATA = [{"q": "Wie viele Neuronen hat das menschliche Gehirn etwa?", "opts": ["86 Milliarden", "1 Million", "100 Millionen", "10 Milliarden"], "correct": 0}, {"q": "In welche vier Hauptbereiche teilt sich das Gehirn grob?", "opts": ["Großhirn, Kleinhirn, Zwischenhirn, Hirnstamm", "vier Hemisphären", "Cortex, Subcortex, Stamm, Mark", "Frontal-, Parietal-, Temporal-, Okzipitallappen"], "correct": 0}, {"q": "Wer war Henry Molaison (H.M.)?", "opts": ["Patient mit Gedächtnisverlust nach 1953-Operation", "ein bedeutender Hirnforscher", "ein Neuroanatom", "ein Philosoph"], "correct": 0}, {"q": "Was ist die Hauptaufgabe des Hippocampus?", "opts": ["Bildung neuer Erinnerungen", "Steuerung der Atmung", "Verarbeitung von Sehreizen", "Hörverarbeitung"], "correct": 0}, {"q": "Welche Funktion sitzt im präfrontalen Cortex?", "opts": ["Entscheidung, Planung, Selbstkontrolle", "Hörzentrum", "Sehzentrum", "Gleichgewicht"], "correct": 0}, {"q": "Was sagt die Wissenschaft zum 10-Prozent-Mythos?", "opts": ["er ist falsch — wir nutzen alle Hirnregionen", "er stimmt — nur 10% sind aktiv", "er stimmt — etwa 30%", "die Frage ist ungeklärt"], "correct": 0}, {"q": "Was bedeutet <em>Plastizität</em> des Gehirns?", "opts": ["lebenslange Veränderbarkeit durch Lernen", "physische Verformbarkeit", "Sprachlosigkeit", "Schmerzempfindlichkeit"], "correct": 0}];
 var satzbauData = [

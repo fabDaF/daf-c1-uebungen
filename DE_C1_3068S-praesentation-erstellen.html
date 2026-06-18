@@ -336,7 +336,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "die Präsentation (-en)", "def": "vorbereiteter Vortrag mit Visualisierung, oft mithilfe von Folien; in Wirtschaft, Wissenschaft und Bildung allgegenwärtig; klassische Strukturierung: Einleitung, Hauptteil (mit drei Untertitels­abschnitten), Schluss, Fragen; idealerweise nicht länger als 18–20 Minuten; nach Mehrabian wirken Inhalt, Stimme und Körpersprache zusammen."}, {"term": "die Folie (-n)", "def": "einzelnes Bild oder Textfeld einer computergestützten Präsentation, traditionell in PowerPoint, Keynote oder Google Slides erstellt; nach Kawasaki-Regel maximal 10 pro Vortrag; nach Tufte oft Quelle des sogenannten <em>cognitive style</em>-Problems: oberflächliches Bullet-Point-Denken statt klarer Daten."}, {"term": "der Vortrag (-träge)", "def": "mündliche Darlegung eines Themas vor Publikum; Form reicht von akademischer Vorlesung über Konferenzbeitrag bis zum festlichen Tischvortrag; in der antiken Rhetorik durch Aristoteles, Cicero, Quintilian theoretisch fundiert; im 21. Jahrhundert durch TED-Talks neu populär gemacht."}, {"term": "das Publikum (Sg.)", "def": "Personenkreis, der einen Vortrag, eine Aufführung oder ein Werk aufnimmt; in der Antike <em>auditorium</em>; Größe und Zusammen­setzung beeinflussen die Wahl der Sprache, Beispiele und Stilebene; ein gutes Publikum­verständnis (<em>audience awareness</em>) gilt als Kernkompetenz erfahrener Vortragender."}, {"term": "die Körpersprache (Sg.)", "def": "nonverbale Kommunikation durch Gestik, Mimik, Haltung, Bewegung; nach Albert Mehrabian (UCLA, 1971) bei emotionalen Botschaften zu 55% bestimmend für die Wirkung; <em>Power-Posing</em> (Amy Cuddy 2010) und <em>Open-Body-Language</em> erhöhen wahrgenommene Souveränität; entscheidet bei Präsentationen oft über Erfolg oder Misserfolg."}, {"term": "der Augenkontakt (Sg.)", "def": "direkter Blickkontakt zwischen Sprechenden und Zuhörern; signalisiert Präsenz, Selbstsicherheit und Respekt; gute Vortragende wechseln Augenkontakt etwa alle drei Sekunden; bei TED-Talks zeigen Analysen (Gallo 2014) durchschnittlich 70% Augenkontakt-Anteil; in vielen ostasiatischen Kulturen kulturell anders gewichtet."}, {"term": "die Gliederung (-en)", "def": "logische Struktur einer Präsentation oder eines Texts; klassische Dreiteilung: Einleitung (was kommt), Hauptteil (zentrale Inhalte), Schluss (zusammen­fassende Bilanz); in der antiken Rhetorik <em>dispositio</em>; sollte gleich zu Beginn klar gemacht werden — <em>Tell them what you'll tell them, tell them, tell them what you told them</em>."}, {"term": "die Visualisierung (-en)", "def": "Darstellung von Inhalten in Form von Bild, Grafik, Diagramm oder Infografik; in Präsentationen unverzichtbar; nach Edward Tufte (Yale) <em>The Visual Display of Quantitative Information</em> 1983 wissenschaftlich fundiert; Hans Roslings TED-Talks (2006–2017) gelten als moderne Goldstandards der Daten­visualisierung."}];
-var GENUS_DATA = [{"word": "🎤 Präsentation", "cat": "die"}, {"word": "📊 Folie", "cat": "die"}, {"word": "👥 Publikum", "cat": "das"}, {"word": "🎯 Vortrag", "cat": "der"}, {"word": "💬 Stimme", "cat": "die"}, {"word": "👀 Augenkontakt", "cat": "der"}, {"word": "🤲 Gesten", "cat": "pl"}, {"word": "📋 Gliederung", "cat": "die"}];
+var GENUS_DATA = [
+  { word: "🎤 Präsentation", cat: "die" },
+  { word: "📊 Folie", cat: "die" },
+  { word: "👥 Publikum", cat: "das" },
+  { word: "🎯 Vortrag", cat: "der" },
+  { word: "💬 Stimme", cat: "die" },
+  { word: "👀 Augenkontakt", cat: "der" },
+  { word: "🤲 Gesten", cat: "pl" },
+  { word: "📋 Gliederung", cat: "die" },
+  { word: "🎤 Präsentationen", cat: "pl" },
+  { word: "📊 Folien", cat: "pl" },
+  { word: "🎯 Vorträge", cat: "pl" },
+  { word: "🧍 Körpersprache", cat: "die" },
+  { word: "📋 Gliederungen", cat: "pl" },
+  { word: "📊 Visualisierung", cat: "die" },
+  { word: "📊 Visualisierungen", cat: "pl" },
+  { word: "💬 Einleitung", cat: "die" },
+  { word: "💬 Einleitungen", cat: "pl" },
+  { word: "😰 Lampenfieber", cat: "das" },
+  { word: "📎 Wahl", cat: "die" },
+  { word: "📎 Wirkung", cat: "die" },
+  { word: "📎 Kunst", cat: "die" },
+  { word: "📎 Anlässe", cat: "die" },
+  { word: "📎 Rhetorik", cat: "die" },
+  { word: "📋 Standardwerk", cat: "das" }
+];
 var LUECKE_DATA = [{"pre": "Die berühmte 10/20/30-Regel stammt vom Silicon-Valley-Investor Guy ", "ans": "Kawasaki", "post": " und stammt aus dem Jahr 2005."}, {"pre": "Steve Jobs hielt am 9. Januar ", "ans": "2007", "post": " in San Francisco die legendäre iPhone-Keynote."}, {"pre": "TED-Talks dauern maximal ", "ans": "18", "post": " Minuten — basierend auf neurokognitiven Aufmerksamkeits­studien."}, {"pre": "Albert Mehrabians berühmte Regel besagt: 7% Wörter, 38% Tonfall, ", "ans": "55", "post": "% Körpersprache."}, {"pre": "Edward Tufte kritisierte 2003 in seiner Schrift <em>The Cognitive Style of ", "ans": "PowerPoint", "post": "</em> das Programm scharf."}, {"pre": "TED wurde 1984 von Richard Saul ", "ans": "Wurman", "post": " in Monterey gegründet."}, {"pre": "Power-Posing nach Amy ", "ans": "Cuddy", "post": " (Harvard, 2010) erhöht messbar das Selbstvertrauen."}];
 var MC_DATA = [{"q": "Wer formulierte 2005 die 10/20/30-Regel für Präsentationen?", "opts": ["Guy Kawasaki", "Steve Jobs", "Edward Tufte", "Albert Mehrabian"], "correct": 0}, {"q": "Wie lange darf ein TED-Talk maximal dauern?", "opts": ["18 Minuten", "60 Minuten", "5 Minuten", "30 Minuten"], "correct": 0}, {"q": "Wann hielt Steve Jobs die legendäre iPhone-Keynote?", "opts": ["9. Januar 2007", "1. Januar 2000", "1. April 2010", "5. Mai 2015"], "correct": 0}, {"q": "Was besagt Mehrabians berühmte 7-38-55-Regel?", "opts": ["7% Wörter, 38% Tonfall, 55% Körpersprache", "Drei Sätze pro Folie", "Drei Folien pro Minute", "55% Augenkontakt"], "correct": 0}, {"q": "Wer kritisierte 2003 die <em>cognitive style</em> von PowerPoint?", "opts": ["Edward Tufte (Yale)", "Microsoft selbst", "Aristoteles", "Steve Jobs"], "correct": 0}, {"q": "Wer entwickelte das <em>Power Posing</em>-Konzept?", "opts": ["Amy Cuddy (Harvard) 2010", "Daniel Kahneman", "Carl Gustav Jung", "Aaron Beck"], "correct": 0}, {"q": "Welcher Antike-Klassiker formulierte die fünf Phasen der Rede (inventio, dispositio, …)?", "opts": ["Cicero (<em>De Oratore</em> 55 v. Chr.)", "Aristoteles", "Quintilian", "Demosthenes"], "correct": 0}];
 var satzbauData = [

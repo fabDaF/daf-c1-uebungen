@@ -338,7 +338,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "die Nachhaltigkeit (Sg.)", "def": "Begriff aus der deutschen Forstwirtschaft (Hans Carl von Carlowitz, <em>Sylvicultura oeconomica</em> 1713): nicht mehr Holz schlagen, als nachwächst; im 20. Jahrhundert auf Wirtschaft, Umwelt und Generationen erweitert; Definition Brundtland 1987: Bedarfsdeckung der Gegenwart ohne Beeinträchtigung künftiger Generationen."}, {"term": "die Generationengerechtigkeit (Sg.)", "def": "ethisches Prinzip, das verlangt, künftige Generationen nicht mit Lasten und Kosten der Gegenwart zu belasten; in Artikel 20a Grundgesetz (1994) für Deutschland verankert; durch das Bundesverfassungsgerichtsurteil zum Klimaschutzgesetz (März 2021) gestärkt."}, {"term": "das Bruttoinlandsprodukt (-e)", "def": "BIP; Wert aller in einer Volkswirtschaft in einem Jahr produzierten Waren und Dienstleistungen; seit der UN-Definition 1953 globaler Wohlstandsindikator; im Nachhaltigkeitsdiskurs seit den 1970ern kritisiert, da es Umwelt-Schäden, Pflegearbeit und ehrenamtliches Engagement nicht erfasst."}, {"term": "die Suffizienz (Sg.)", "def": "wirtschafts- und umweltphilosophischer Begriff: das bewusste Genug, der freiwillige Verzicht; vom Wuppertal-Institut seit 2008 als dritte Säule der Nachhaltigkeitsstrategie etabliert (neben Effizienz und Konsistenz); 2025 erstmals im novellierten Klimaschutzgesetz verankert."}, {"term": "die Effizienz (Sg.)", "def": "Verhältnis zwischen erzielter Wirkung und eingesetztem Aufwand; in der Nachhaltigkeit: dieselbe Leistung mit weniger Energie und Ressourcen; durch Jevons-Paradox 1865 bekannte Schwäche: Effizienzgewinne führen oft zu Mehrverbrauch (Rebound-Effekt)."}, {"term": "die Konsistenz (Sg.)", "def": "in der Nachhaltigkeit: Übergang von linearen zu zirkulären Stoffflüssen; erneuerbare statt fossile Energie; biologisch abbaubare statt persistente Materialien; vom Wuppertal-Institut neben Effizienz und Suffizienz als dritte Strategie definiert."}, {"term": "das Ökosiegel (-)", "def": "Kennzeichnung von Produkten mit ökologischen oder fairen Standards; bekannte Beispiele: Bio-Siegel (EU 2010), Fair-Trade (1988), MSC für Fisch (1997), FSC für Holz (1993), Blauer Engel (1978, weltweit ältestes Umweltzeichen)."}, {"term": "der ökologische Fußabdruck (-abdrücke)", "def": "Maß für den Flächenbedarf, den ein Mensch oder eine Population benötigt; entwickelt 1994 von Mathis Wackernagel und William Rees; ein Deutscher beansprucht 2024 etwa 4,7 Hektar pro Jahr — bei einer Tragfähigkeit der Erde von 1,7 ha pro Person."}];
-var GENUS_DATA = [{"word": "♻️ Recycling", "cat": "das"}, {"word": "🌱 Suffizienz", "cat": "die"}, {"word": "⚡ Effizienz", "cat": "die"}, {"word": "💰 Wachstum", "cat": "das"}, {"word": "🌍 Umwelt", "cat": "die"}, {"word": "🛒 Konsum", "cat": "der"}, {"word": "🌿 Ressource", "cat": "die"}, {"word": "📊 Generationen", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "♻️ Recycling", cat: "das" },
+  { word: "🌱 Suffizienz", cat: "die" },
+  { word: "⚡ Effizienz", cat: "die" },
+  { word: "💰 Wachstum", cat: "das" },
+  { word: "🌍 Umwelt", cat: "die" },
+  { word: "🛒 Konsum", cat: "der" },
+  { word: "🌿 Ressource", cat: "die" },
+  { word: "📊 Generationen", cat: "pl" },
+  { word: "♻️ Nachhaltigkeit", cat: "die" },
+  { word: "🌳 Ressourcen", cat: "pl" },
+  { word: "⚖️ Generationengerechtigkeit", cat: "die" },
+  { word: "📈 Bruttoinlandsprodukt", cat: "das" },
+  { word: "📈 Bruttoinlandsprodukte", cat: "pl" },
+  { word: "🦶 ökologische Fußabdruck", cat: "der" },
+  { word: "🦶 ökologische Fußabdrücke", cat: "pl" },
+  { word: "🏷️ Ökosiegel", cat: "das" },
+  { word: "💭 Ethos", cat: "das" },
+  { word: "📎 Konsistenz", cat: "die" },
+  { word: "📋 Bundesverfassungsgerichtsurteil", cat: "das" },
+  { word: "📋 Wort", cat: "das" },
+  { word: "📎 Wälder", cat: "die" },
+  { word: "📎 Bedürfnisse", cat: "die" },
+  { word: "📋 Hybrid", cat: "das" },
+  { word: "📋 Wachstumsdogma", cat: "das" }
+];
 var LUECKE_DATA = [{"pre": "Der Brundtland-Bericht definierte 1987 den Begriff der ", "ans": "Nachhaltigkeit", "post": " für eine UN-Kommission."}, {"pre": "Hans Carl von Carlowitz prägte 1713 in seiner ", "ans": "Sylvicultura", "post": " oeconomica das deutsche Forstprinzip."}, {"pre": "Das Wuppertal-Institut etablierte die drei Säulen Effizienz, Konsistenz und ", "ans": "Suffizienz", "post": "."}, {"pre": "Kate Raworth präsentierte 2017 das Modell der Doughnut-", "ans": "Ökonomie", "post": " in Oxford."}, {"pre": "Das deutsche Klimaschutzgesetz wurde 2021 vom Bundes", "ans": "verfassungsgericht", "post": " als unzureichend gerügt."}, {"pre": "Der Earth Overshoot Day fiel 2024 weltweit auf den 1. ", "ans": "August", "post": "."}, {"pre": "Die UN verabschiedeten 2015 die siebzehn ", "ans": "SDGs", "post": " — Sustainable Development Goals."}];
 var MC_DATA = [{"q": "Wer prägte 1713 das deutsche Forst-Prinzip der Nachhaltigkeit?", "opts": ["Hans Carl von Carlowitz", "Friedrich der Große", "Goethe", "Alexander von Humboldt"], "correct": 0}, {"q": "Welche UN-Kommission veröffentlichte 1987 den Bericht <em>Our Common Future</em>?", "opts": ["Stockholm-Kommission", "Brundtland-Kommission", "Rio-Kommission", "Kyoto-Kommission"], "correct": 1}, {"q": "Welcher Begriff bezeichnet die Wirkung, dass Effizienzgewinne durch Mehrverbrauch teilweise ausgeglichen werden?", "opts": ["Rebound-Effekt", "Domino-Effekt", "Scharniereffekt", "Schmetterlingseffekt"], "correct": 0}, {"q": "Wer entwickelte das Modell der <em>Doughnut-Ökonomie</em>?", "opts": ["Joseph Stiglitz", "Esther Duflo", "Kate Raworth", "Mariana Mazzucato"], "correct": 2}, {"q": "Wie viele <em>Sustainable Development Goals</em> haben die UN 2015 verabschiedet?", "opts": ["8", "12", "17", "25"], "correct": 2}, {"q": "Welcher Tag markiert den Punkt, an dem die Menschheit die jährlich verfügbaren Ressourcen aufgebraucht hat?", "opts": ["Earth Day", "Earth Overshoot Day", "Climate Action Day", "Plastic-Free Day"], "correct": 1}, {"q": "Welches deutsche Umweltzeichen besteht seit 1978 und gilt als ältestes der Welt?", "opts": ["Grüner Punkt", "Blauer Engel", "EU-Bio-Siegel", "Fair Trade"], "correct": 1}];
 var satzbauData = [

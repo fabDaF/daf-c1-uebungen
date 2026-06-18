@@ -338,7 +338,32 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "das Placebo (-s)", "def": "Scheinmedikament ohne pharmakologisch wirksamen Bestandteil; aus dem Lateinischen <em>placebo</em> (ich werde gefallen); im Mittelalter Bezeichnung für Vespergebete für die Toten; medizinisch verwendet ab 18. Jahrhundert; heute zentrales Werkzeug klinischer Studien."}, {"term": "die Wirksamkeit (Sg.)", "def": "Maß, in dem ein Medikament oder eine Therapie das gewünschte Ergebnis erreicht; im Englischen <em>efficacy</em> für Studienergebnisse, <em>effectiveness</em> für reale Anwendung; in der Pharmakologie statistisch erfasst durch p-Wert und Konfidenzintervall."}, {"term": "der Wirkstoff (-e)", "def": "chemische Substanz mit pharmakologischer Wirkung in einem Arzneimittel; in der EU durch das EMA-Zulassungsverfahren reglementiert; jeder Wirkstoff hat eine internationale Bezeichnung (INN — International Nonproprietary Name)."}, {"term": "die Doppelblindstudie (-n)", "def": "klinisches Studiendesign, bei dem weder Patient noch Arzt wissen, wer die wirksame Substanz und wer das Placebo erhält; seit den 1950ern Standard; in Deutschland durch das Arzneimittelgesetz (1976) gesetzlich gefordert für Neuzulassungen."}, {"term": "die Erwartungshaltung (-en)", "def": "psychische Einstellung dem Ausgang eines Ereignisses gegenüber; vom Sozialpsychologen Robert Rosenthal (Harvard) seit den 1960ern als <em>experimenter expectancy effect</em> erforscht; zentral für das Verständnis des Placebo-Effekts."}, {"term": "die Nebenwirkung (-en)", "def": "unerwünschte zusätzliche Wirkung eines Medikaments; im Gegenpart zum Placebo: der Nocebo-Effekt — Patienten entwickeln negative Symptome durch Erwartung; durch das Beipackzettel-Lesen oft verstärkt (Häuser et al., Marburg 2012)."}, {"term": "die Homöopathie (Sg.)", "def": "alternativmedizinische Methode des Arztes Samuel Hahnemann (1755-1843), die auf dem <em>Ähnlichkeitsprinzip</em> und Hochpotenzierung beruht; wissenschaftlich gilt ihr spezifischer Effekt als nicht belegt — Cochrane-Metaanalysen seit 2005 zeigen Wirksamkeit auf Placebo-Niveau; als Placebo-Therapie aber durchaus wirksam."}, {"term": "die Open-Label-Studie (-n)", "def": "klinische Studie, in der Patienten wissen, dass sie ein Placebo erhalten; revolutionär: Ted Kaptchuks Studie an Harvard 2010 (Reizdarm-Patienten) zeigte, dass auch <em>offene</em> Placebos wirken; widerspricht der Annahme, Täuschung sei nötig."}];
-var GENUS_DATA = [{"word": "💊 Tablette", "cat": "die"}, {"word": "🏥 Krankenhaus", "cat": "das"}, {"word": "👨‍⚕️ Arzt", "cat": "der"}, {"word": "💉 Spritze", "cat": "die"}, {"word": "🧠 Gehirn", "cat": "das"}, {"word": "🩺 Patient", "cat": "der"}, {"word": "🌿 Heilung", "cat": "die"}, {"word": "💢 Nebenwirkungen", "cat": "pl"}];
+var GENUS_DATA = [
+  { word: "💊 Tablette", cat: "die" },
+  { word: "🏥 Krankenhaus", cat: "das" },
+  { word: "👨‍⚕️ Arzt", cat: "der" },
+  { word: "💉 Spritze", cat: "die" },
+  { word: "🧠 Gehirn", cat: "das" },
+  { word: "🩺 Patient", cat: "der" },
+  { word: "🌿 Heilung", cat: "die" },
+  { word: "💢 Nebenwirkungen", cat: "pl" },
+  { word: "💊 Placebo", cat: "das" },
+  { word: "💊 Placebos", cat: "pl" },
+  { word: "💊 Scheinmedikament", cat: "das" },
+  { word: "💊 Scheinmedikamente", cat: "pl" },
+  { word: "⚗️ Wirkstoff", cat: "der" },
+  { word: "⚗️ Wirkstoffe", cat: "pl" },
+  { word: "📊 Doppelblindstudie", cat: "die" },
+  { word: "📊 Doppelblindstudien", cat: "pl" },
+  { word: "💭 Erwartungshaltung", cat: "die" },
+  { word: "💭 Erwartungshaltungen", cat: "pl" },
+  { word: "⚠️ Nebenwirkung", cat: "die" },
+  { word: "🌿 Homöopathie", cat: "die" },
+  { word: "📋 Open-Label-Studie", cat: "die" },
+  { word: "📋 Open-Label-Studien", cat: "pl" },
+  { word: "💪 Wirksamkeit", cat: "die" },
+  { word: "🤲 Heilungen", cat: "pl" }
+];
 var LUECKE_DATA = [{"pre": "Henry Beecher veröffentlichte 1955 sein Buch <em>The Powerful ", "ans": "Placebo", "post": "</em>."}, {"pre": "Ted Kaptchuk forscht seit den 2000ern an der ", "ans": "Harvard", "post": " Medical School."}, {"pre": "Samuel Hahnemann (1755-1843) gilt als Begründer der ", "ans": "Homöopathie", "post": "."}, {"pre": "Der Gegen-Begriff zum Placebo ist das ", "ans": "Nocebo", "post": "."}, {"pre": "Doppelblindstudien sind seit dem deutschen Arzneimittelgesetz von ", "ans": "1976", "post": " Pflicht."}, {"pre": "Die Cochrane-Metaanalyse zur Homöopathie wurde 2005 in der Zeitschrift ", "ans": "Lancet", "post": " publiziert."}, {"pre": "Robert Rosenthal prägte 1968 den Pygmalion-", "ans": "Effekt", "post": " in der Schulpsychologie."}];
 var MC_DATA = [{"q": "Was bedeutet das Wort <em>placebo</em> ursprünglich?", "opts": ["ich werde heilen", "ich werde gefallen", "ich werde wirken", "ich werde schmerzen"], "correct": 1}, {"q": "Wer publizierte 1955 mit <em>The Powerful Placebo</em> die erste Meta-Analyse zum Placebo-Effekt?", "opts": ["Henry Beecher", "Robert Rosenthal", "Ted Kaptchuk", "Irving Kirsch"], "correct": 0}, {"q": "Was ist der Nocebo-Effekt?", "opts": ["positive Wirkung durch Erwartung", "negative Wirkung durch Erwartung", "Nebenwirkung eines Wirkstoffs", "Wechselwirkung zweier Medikamente"], "correct": 1}, {"q": "Welcher Forscher zeigte 2010, dass auch <em>offene</em> Placebos wirken?", "opts": ["Eric Kandel", "Ted Kaptchuk", "Vinay Prasad", "Ben Goldacre"], "correct": 1}, {"q": "Wer begründete die Homöopathie?", "opts": ["Edward Jenner", "Robert Koch", "Samuel Hahnemann", "Sebastian Kneipp"], "correct": 2}, {"q": "Welcher Studientyp gilt heute als Goldstandard zur Wirksamkeitsprüfung?", "opts": ["Beobachtungsstudie", "Doppelblinde randomisierte Studie", "Fallserie", "Tierstudie"], "correct": 1}, {"q": "Welcher Effekt beschreibt, dass Erwartungen Lehrender die Leistung Lernender beeinflussen?", "opts": ["Hawthorne-Effekt", "Pygmalion-Effekt", "Halo-Effekt", "Doppler-Effekt"], "correct": 1}];
 var satzbauData = [
