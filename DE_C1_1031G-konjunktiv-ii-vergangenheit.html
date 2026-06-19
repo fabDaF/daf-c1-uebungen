@@ -103,6 +103,10 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
 /* Wortkasten */
 .wortkasten { background: #ede7f6; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; font-size: 0.88rem; color: #4a148c; line-height: 1.8; }
 .wortkasten b { color: #6a1b9a; }
+.wortbank-label { font-weight:700; color:#667eea; font-size:0.85em; margin-bottom:8px; }
+.wortbank { display:flex; flex-wrap:wrap; gap:8px; padding:14px; background:#f0f0f8; border-radius:10px; min-height:48px; margin-bottom:18px; border:1px dashed #bbb; }
+.wortbank-chip { background:white; border:2px solid #667eea; color:#667eea; padding:5px 12px; border-radius:14px; font-weight:500; font-size:0.9em; user-select:none; }
+.wortbank-chip.used { opacity:0.35; text-decoration:line-through; }
 /* Wortschatz */
 #vocabContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .vocab-item { background: #f8f9ff; padding: 12px 14px; border-radius: 10px; border-left: 4px solid #667eea; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0; }
@@ -307,7 +311,8 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
     <div class="hilfe-box">
       <strong>Aufgabe:</strong> Setze die korrekte Konjunktiv-II-Form der Vergangenheit ein.
     </div>
-    <div class="wortkasten"><b>Hilfen:</b> hätte &nbsp;·&nbsp; hätten &nbsp;·&nbsp; wäre &nbsp;·&nbsp; wären &nbsp;·&nbsp; hättest &nbsp;·&nbsp; wärst</div>
+    <div class="wortbank-label">🔤 Wortbank – die richtigen Wörter, in zufälliger Reihenfolge. Tipp sie selbst in die Lücken.</div>
+    <div class="wortbank" id="wortbank-luecken"></div>
     <div id="luecken-container"></div>
   </div>
 </div>
@@ -551,6 +556,7 @@ function initLuecken() {
       escH(item.after);
     c.appendChild(div);
   });
+  initWortbank();
 }
 
 function lueckenLive(inp) {
@@ -560,6 +566,7 @@ function lueckenLive(inp) {
   if (val.toLowerCase() === ans.toLowerCase()) inp.classList.add('correct');
   else if (ans.toLowerCase().startsWith(val.toLowerCase())) { /* gültiger Prefix */ }
   else inp.classList.add('wrong');
+  updateWortbankChips();
   checkLueckenDone();
 }
 function checkLueckenDone() {
@@ -572,8 +579,37 @@ function showLueckenLoesung() {
     var inp = document.getElementById('lk-'+item.id); if (!inp) return;
     inp.value = item.answer; inp.classList.remove('wrong'); inp.classList.add('correct');
   });
+  updateWortbankChips();
 }
 function resetLuecken() { initLuecken(); }
+function initWortbank() {
+  var bank = document.getElementById('wortbank-luecken');
+  if (!bank) return;
+  bank.innerHTML = '';
+  var words = LUECKEN.map(function(d){ return d.answer; });
+  for (var i = words.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = words[i]; words[i] = words[j]; words[j] = t;
+  }
+  words.forEach(function(w){
+    var chip = document.createElement('span');
+    chip.className = 'wortbank-chip';
+    chip.textContent = w;
+    bank.appendChild(chip);
+  });
+}
+function updateWortbankChips() {
+  var bank = document.getElementById('wortbank-luecken');
+  if (!bank) return;
+  var solved = Array.prototype.slice.call(document.querySelectorAll('#luecken-container input.blank.correct')).map(function(i){ return i.value.trim().toLowerCase(); });
+  var remaining = solved.slice();
+  Array.prototype.slice.call(bank.querySelectorAll('.wortbank-chip')).forEach(function(chip){
+    var key = chip.textContent.trim().toLowerCase();
+    var idx = remaining.indexOf(key);
+    if (idx >= 0) { chip.classList.add('used'); remaining.splice(idx,1); }
+    else { chip.classList.remove('used'); }
+  });
+}
 
 // ── Satzbau (Tab 3) — Standard satzbau-drag-drop ─────────────
 var satzbauData = [
