@@ -311,7 +311,7 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
     <div class="hilfe-box">
       <strong>Aufgabe:</strong> Setze die korrekte Konjunktiv-II-Form der Vergangenheit ein.
     </div>
-    <div class="wortbank-label">🔤 Wortbank – die richtigen Wörter, in zufälliger Reihenfolge. Tipp sie selbst in die Lücken.</div>
+    <div class="wortbank-label">🔤 Wortkasten – diese Verben (Infinitiv) brauchst du. Bilde selbst die richtige Form.</div>
     <div class="wortbank" id="wortbank-luecken"></div>
     <div id="luecken-container"></div>
   </div>
@@ -586,7 +586,7 @@ function initWortbank() {
   var bank = document.getElementById('wortbank-luecken');
   if (!bank) return;
   bank.innerHTML = '';
-  var words = LUECKEN.map(function(d){ return d.answer; });
+  var words = ['haben', 'sein']; /* Infinitiv-Wortkasten — keine konjugierte Zielform (daf-grammatik) */
   for (var i = words.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
     var t = words[i]; words[i] = words[j]; words[j] = t;
