@@ -368,7 +368,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 </div>
 <script>
 var VORENTLASTUNG = [{"term": "das Elbsandsteingebirge (Sg.)", "def": "deutscher Name für die Mittelgebirgs-Landschaft beidseits der Elbe nördlich von Děčín (Tschechien) bis Pirna; geologisch entstanden vor 100 Millionen Jahren als Meeressediment, durch tektonische Hebung und Erosion zu spektakulären Formationen verwittert."}, {"term": "die Sächsische Schweiz (Sg.)", "def": "deutscher Teil des Elbsandsteingebirges in Sachsen; der Name wurde 1768 von den Schweizer Malern Adrian Zingg und Anton Graff geprägt — sie fanden die Landschaft an die Schweiz erinnernd; seit 1990 Nationalpark mit 93 km² Kerngebiet."}, {"term": "die Tafelberge (Pl.)", "def": "flach abschließende Berge mit oft senkrechten Felswänden; in der Sächsischen Schweiz besonders der Lilienstein (415 m), Pfaffenstein (434 m), Königstein (361 m), Gohrisch (440 m); Erosion durch Wasser und Wind hat das ursprüngliche Sandsteinplateau in Einzelmassen aufgeteilt."}, {"term": "die Festung Königstein (Sg.)", "def": "eine der größten Bergfestungen Europas; 240 m über der Elbe; seit dem 12. Jahrhundert urkundlich erwähnt, im 16.-18. Jh. zu einer Festung ausgebaut; nie eingenommen; bekannt als sächsische Schatzkammer (August der Starke); seit 1955 Museum, 600 000 Besucher pro Jahr."}, {"term": "Caspar David Friedrich (Sg.)", "def": "deutscher romantischer Maler (1774-1840), in Greifswald geboren, in Dresden wirkend; sein berühmtestes Bild <em>Der Wanderer über dem Nebelmeer</em> (1818) zeigt vermutlich die Sächsische Schweiz; Symbol deutscher Romantik; im Jahr 2024 Jubiläumsausstellung zum 250. Geburtstag in Dresden, Berlin, Hamburg."}, {"term": "das Sandsteinklettern (Sg.)", "def": "besondere deutsche Klettertradition seit 1864; im Elbsandstein wurden weltweit als erste die Regeln des freien Kletterns formuliert: kein Bohrhaken, Klettern nur mit Hand und Körper, Sicherung mit eigenen Schlingen — die Grundlage des Free Climbing weltweit; Pionier: Paul Illmer, 1864 Erstbesteigung des Falkensteins."}, {"term": "die Bastei (Sg.)", "def": "Felsformation mit der berühmten Basteibrücke (1851 fertiggestellt) hoch über der Elbe; eines der meistbesuchten touristischen Ziele Sachsens, jährlich 1,5 Millionen Besucher; ihren Namen <em>Bastei</em> trägt sie wegen ihrer Festungsfunktion im Mittelalter."}, {"term": "die Romantik (Sg.)", "def": "europäische Kunst- und Geistesbewegung Ende 18. bis Mitte 19. Jh.; betonte Gefühl, Natur, Mittelalter, Volkskultur gegen die Aufklärungs-Vernunft; Hauptvertreter in Deutschland: Goethe (Frühromantik), Friedrich Schlegel, Novalis, Caspar David Friedrich, Schubert, Wagner."}];
-var GENUS_DATA = [
+var GENUS_DATA = [ { word: "Sandstein", cat: "der" }, { word: "Felsformation", cat: "die" },
   { word: "Wald", cat: "der" },
   { word: "Gipfel", cat: "der" },
   { word: "Festung", cat: "die" },
@@ -377,7 +377,6 @@ var GENUS_DATA = [
   { word: "Bild", cat: "das" },
   { word: "Wanderer", cat: "pl" },
   { word: "Elbsandsteingebirge", cat: "das" },
-  { word: "Sächsische Schweiz", cat: "die" },
   { word: "Tafelberg", cat: "der" },
   { word: "Tafelberge", cat: "pl" },
   { word: "Festungen", cat: "pl" },
@@ -387,9 +386,7 @@ var GENUS_DATA = [
   { word: "Panorama", cat: "das" },
   { word: "Panoramen", cat: "pl" },
   { word: "Schlucht", cat: "die" },
-  { word: "Schluchten", cat: "pl" },
-  { word: "Sächsische", cat: "die" }
-];
+  { word: "Schluchten", cat: "pl" },];
 var LUECKE_DATA = [{"pre": "Adrian Zingg und Anton Graff prägten den Namen <em>Sächsische Schweiz</em> im Jahr ", "ans": "1768", "post": "."}, {"pre": "Caspar David Friedrich wurde im Jahr 1774 in ", "ans": "Greifswald", "post": " geboren."}, {"pre": "<em>Der Wanderer über dem Nebelmeer</em> entstand etwa ", "ans": "1818", "post": "."}, {"pre": "Die Basteibrücke wurde ", "ans": "1851", "post": " eingeweiht."}, {"pre": "Der Nationalpark Sächsische Schweiz wurde ", "ans": "1990", "post": " gegründet."}, {"pre": "Das sächsische Sandsteinklettern begann mit Paul Illmers Erstbesteigung des Falkensteins im Jahr ", "ans": "1864", "post": "."}, {"pre": "Die Festung Königstein liegt 240 ", "ans": "Meter", "post": " über der Elbe."}];
 var MC_DATA = [{"q": "Wer prägte 1768 den Namen <em>Sächsische Schweiz</em>?", "opts": ["Goethe und Schiller", "Adrian Zingg und Anton Graff", "August der Starke", "Caspar David Friedrich"], "correct": 1}, {"q": "Wer malte 1818 <em>Der Wanderer über dem Nebelmeer</em>?", "opts": ["Carl Spitzweg", "Caspar David Friedrich", "Phillipp Otto Runge", "Adolph Menzel"], "correct": 1}, {"q": "Wann wurde der Nationalpark Sächsische Schweiz gegründet?", "opts": ["1971", "1980", "1990", "2003"], "correct": 2}, {"q": "Wo wurde 1864 das freie Sandsteinklettern erfunden?", "opts": ["Yosemite USA", "Falkenstein Sächsische Schweiz", "Mont Blanc", "Dolomiten"], "correct": 1}, {"q": "Wie viele Besucher hat die Bastei jährlich?", "opts": ["100 000", "500 000", "1,5 Millionen", "5 Millionen"], "correct": 2}, {"q": "Welcher sächsische Kurfürst war für die Festung Königstein zentral?", "opts": ["Friedrich der Weise", "August der Starke", "Friedrich August III", "Heinrich der Erlauchte"], "correct": 1}, {"q": "Welcher berühmte Tafelberg ist 415 m hoch?", "opts": ["Lilienstein", "Königstein", "Pfaffenstein", "Gohrisch"], "correct": 0}];
 var satzbauData = [
