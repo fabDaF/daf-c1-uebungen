@@ -372,27 +372,27 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 <script>
 var VORENTLASTUNG = [{"term": "der Gebirgszug (-züge)", "def": "zusammenhängende, langgestreckte Reihe von Bergen; im Gegensatz zu einem isolierten Berg; die Alpen erstrecken sich über 1 200 km von Monaco bis Slowenien; weitere bedeutende Gebirgszüge Europas: Karpaten, Pyrenäen, Skandinavische Gebirge."}, {"term": "das Massiv (-e)", "def": "geologisch zusammenhängende Gebirgsgruppe von erheblicher Höhe und Ausdehnung; in den Alpen unterscheidet man etwa 30 Hauptmassive — Mont-Blanc-Massiv, Berner Alpen, Walliser Alpen, Dolomiten, Hohe Tauern; jedes mit eigener Geologie und Klima."}, {"term": "der Gletscher (-)", "def": "langsam fließender Eisstrom in Hochgebirgen; in den Alpen 2026 etwa 4 000 Gletscher mit einer Gesamtfläche von 1 800 km²; seit 1980 haben die Alpengletscher rund 50 Prozent ihrer Fläche verloren; bis 2100 werden voraussichtlich 80 Prozent verschwinden."}, {"term": "der Föhn (Sg.)", "def": "warmer, trockener Fallwind an der Leeseite eines Gebirges; in den Nordalpen typisch durch warme Luft, die aus Italien kommt; physikalisch erklärt durch Adiabatische Kompression beim Absinken; kann Temperaturen binnen Stunden um 20 °C ansteigen lassen."}, {"term": "die Alpenüberquerung (-en)", "def": "historisch bedeutsame Reise über die Alpen; vor der Eisenbahn ein gefährliches Unterfangen; berühmte Pässe: Brenner, St. Gotthard, Großer St. Bernhard; Hannibal überquerte 218 v. Chr. mit Elefanten den Col de Clapier; Goethe 1786 über den Brenner."}, {"term": "die Alpenkonvention (Sg.)", "def": "völkerrechtliches Abkommen vom 7. November 1991 in Salzburg zwischen den acht Alpenstaaten und der EU zur nachhaltigen Entwicklung der Alpenregion; ratifiziert von Deutschland 1994; reguliert Verkehr, Tourismus, Boden, Naturschutz, Landwirtschaft."}, {"term": "das Brennerbahn-Projekt (Sg.)", "def": "Eisenbahn-Hochleistungsstrecke zwischen München und Verona durch das Brenner-Massiv; der Brenner-Basistunnel (Baubeginn 2007, Fertigstellung erwartet 2032) ist mit 64 km der längste unterirdische Tunnel der Welt; Teil des Skandinavien-Mittelmeer-Korridors der EU."}, {"term": "die Transhumanz (Sg.)", "def": "saisonale Weidewirtschaft mit Auf- und Abtrieb der Tiere; in den Alpen seit Jahrtausenden praktiziert: Sommer auf der Alm (Hochweide), Winter im Tal; Almabtrieb im September ist heute touristisches Spektakel; UNESCO-Kulturerbe seit Dezember 2019."}];
 var GENUS_DATA = [
-  { word: "🏔️ Berg", cat: "der" },
-  { word: "🌊 See", cat: "der" },
-  { word: "🌄 Tal", cat: "das" },
-  { word: "❄️ Schnee", cat: "der" },
-  { word: "🌳 Wald", cat: "der" },
-  { word: "🌍 Region", cat: "die" },
-  { word: "🐐 Ziege", cat: "die" },
-  { word: "🚂 Tunnels", cat: "pl" },
-  { word: "⛰️ Gebirgszug", cat: "der" },
-  { word: "⛰️ Gebirgszüge", cat: "pl" },
-  { word: "🏔️ Massiv", cat: "das" },
-  { word: "🏔️ Massive", cat: "pl" },
-  { word: "🧊 Gletscher", cat: "der" },
-  { word: "💨 Föhn", cat: "der" },
-  { word: "🥾 Alpenüberquerung", cat: "die" },
-  { word: "🥾 Alpenüberquerungen", cat: "pl" },
-  { word: "📜 Alpenkonvention", cat: "die" },
-  { word: "🚂 Brennerbahn", cat: "die" },
-  { word: "🐑 Transhumanz", cat: "die" },
-  { word: "🏔️ Gipfel", cat: "der" },
-  { word: "🌄 Täler", cat: "pl" }
+  { word: "Berg", cat: "der" },
+  { word: "See", cat: "der" },
+  { word: "Tal", cat: "das" },
+  { word: "Schnee", cat: "der" },
+  { word: "Wald", cat: "der" },
+  { word: "Region", cat: "die" },
+  { word: "Ziege", cat: "die" },
+  { word: "Tunnels", cat: "pl" },
+  { word: "Gebirgszug", cat: "der" },
+  { word: "Gebirgszüge", cat: "pl" },
+  { word: "Massiv", cat: "das" },
+  { word: "Massive", cat: "pl" },
+  { word: "Gletscher", cat: "der" },
+  { word: "Föhn", cat: "der" },
+  { word: "Alpenüberquerung", cat: "die" },
+  { word: "Alpenüberquerungen", cat: "pl" },
+  { word: "Alpenkonvention", cat: "die" },
+  { word: "Brennerbahn", cat: "die" },
+  { word: "Transhumanz", cat: "die" },
+  { word: "Gipfel", cat: "der" },
+  { word: "Täler", cat: "pl" }
 ];
 var LUECKE_DATA = [{"pre": "Die Alpen erstrecken sich über ", "ans": "8", "post": " Länder."}, {"pre": "Die Gesamtlänge des Alpenbogens beträgt rund ", "ans": "1200", "post": " km."}, {"pre": "Der Mont Blanc ist mit ", "ans": "4810", "post": " Metern der höchste Gipfel der Alpen."}, {"pre": "Die Alpenkonvention wurde ", "ans": "1991", "post": " in Salzburg unterzeichnet."}, {"pre": "Hannibal überquerte die Alpen im Jahr ", "ans": "218", "post": " v. Chr. mit Elefanten."}, {"pre": "Der Brenner-Basistunnel wird voraussichtlich ", "ans": "2032", "post": " fertiggestellt sein."}, {"pre": "Die Alpentranshumanz ist seit Dezember 2019 UNESCO-", "ans": "Kulturerbe", "post": "."}];
 var MC_DATA = [{"q": "Wie hoch ist der Mont Blanc?", "opts": ["3 810 m", "4 810 m", "5 200 m", "6 400 m"], "correct": 1}, {"q": "Welcher Gebirgszug ist länger als die Alpen?", "opts": ["Karpaten", "Pyrenäen", "Uralgebirge", "Apenninen"], "correct": 2}, {"q": "Wer überquerte 218 v. Chr. mit Elefanten die Alpen?", "opts": ["Cäsar", "Hannibal", "Spartacus", "Augustus"], "correct": 1}, {"q": "Wie viele Gletscher gibt es 2026 in den Alpen?", "opts": ["ca. 400", "ca. 4 000", "ca. 40 000", "ca. 400 000"], "correct": 1}, {"q": "Welcher Pass war seit der Antike die wichtigste Alpenüberquerung?", "opts": ["Brenner", "Furka", "Albula", "Splügen"], "correct": 0}, {"q": "Wann wurde die Alpenkonvention unterzeichnet?", "opts": ["1972", "1985", "1991", "2002"], "correct": 2}, {"q": "Wie heißt der warme Fallwind in den Nordalpen?", "opts": ["Mistral", "Föhn", "Bora", "Schirokko"], "correct": 1}];

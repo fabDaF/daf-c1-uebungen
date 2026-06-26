@@ -363,27 +363,27 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 <script>
 var VORENTLASTUNG = [{"term": "das Diagramm (-e)", "def": "grafische Darstellung von Daten in Form von Balken, Linien, Kreisen oder Flächen; aus dem Griechischen <em>diagramma</em> = Zeichnung; in der Statistik seit dem 19. Jahrhundert systematisch genutzt, prominent durch William Playfair (1759–1823), dem Erfinder von Balken- und Kreisdiagramm."}, {"term": "das Schaubild (-er)", "def": "deutsches Wort für Diagramm; betont stärker den visuellen Charakter; im Journalismus und in Zeitschriften wie <em>Die Zeit</em> und <em>Spiegel</em> häufiges Gestaltungselement."}, {"term": "das Liniendiagramm (-e)", "def": "verbindet Datenpunkte durch eine fortlaufende Linie; ideal zur Darstellung zeitlicher Entwicklungen wie Aktienkursen, Temperaturen oder Bevölkerungswachstum."}, {"term": "das Balkendiagramm (-e)", "def": "stellt Werte als horizontale oder vertikale Rechtecke dar; eignet sich besonders für Vergleiche zwischen Kategorien — etwa Wahlergebnisse oder Umsatzverteilungen."}, {"term": "das Kreisdiagramm (-e)", "def": "auch Tortendiagramm genannt; zeigt prozentuale Anteile am Gesamten; in der Marktforschung und Politik weit verbreitet, in Fachkreisen wegen Vergleichsschwäche der Sektoren oft kritisiert."}, {"term": "die Erhebung (-en)", "def": "systematische Datensammlung — etwa eine Befragung, Messung oder statistische Auswertung; kommt von <em>erheben</em> (Daten gewinnen); in der Sozialforschung zentraler Begriff."}, {"term": "die Quelle (-n)", "def": "Ursprung der Daten; in wissenschaftlichen und journalistischen Texten muss die Quelle (Institut, Studie, Jahr) immer angegeben werden — etwa Statistisches Bundesamt, Sinus-Institut, Eurobarometer."}, {"term": "das Fazit (-s/-e)", "def": "abschließende Zusammenfassung oder Schlussfolgerung; aus dem Lateinischen <em>facit</em> = es macht; eröffnet typischerweise mit Wendungen wie <em>insgesamt</em>, <em>zusammenfassend</em> oder <em>alles in allem</em>."}];
 var GENUS_DATA = [
-  { word: "📊 Diagramm", cat: "das" },
-  { word: "📈 Anstieg", cat: "der" },
-  { word: "📉 Abnahme", cat: "die" },
-  { word: "📋 Statistik", cat: "die" },
-  { word: "🥧 Tortendiagramm", cat: "das" },
-  { word: "📰 Quelle", cat: "die" },
-  { word: "🎯 Trend", cat: "der" },
-  { word: "📐 Werte", cat: "pl" },
-  { word: "📊 Diagramme", cat: "pl" },
-  { word: "📋 Statistiken", cat: "pl" },
-  { word: "📰 Quellen", cat: "pl" },
-  { word: "🥧 Kreisdiagramm", cat: "das" },
-  { word: "🥧 Kreisdiagramme", cat: "pl" },
-  { word: "📊 Balkendiagramm", cat: "das" },
-  { word: "📊 Balkendiagramme", cat: "pl" },
-  { word: "📈 Anstiege", cat: "pl" },
-  { word: "📉 Abnahmen", cat: "pl" },
-  { word: "🎯 Trends", cat: "pl" },
-  { word: "📌 Fazit", cat: "das" },
-  { word: "📑 Umfrage", cat: "die" },
-  { word: "📑 Umfragen", cat: "pl" }
+  { word: "Diagramm", cat: "das" },
+  { word: "Anstieg", cat: "der" },
+  { word: "Abnahme", cat: "die" },
+  { word: "Statistik", cat: "die" },
+  { word: "Tortendiagramm", cat: "das" },
+  { word: "Quelle", cat: "die" },
+  { word: "Trend", cat: "der" },
+  { word: "Werte", cat: "pl" },
+  { word: "Diagramme", cat: "pl" },
+  { word: "Statistiken", cat: "pl" },
+  { word: "Quellen", cat: "pl" },
+  { word: "Kreisdiagramm", cat: "das" },
+  { word: "Kreisdiagramme", cat: "pl" },
+  { word: "Balkendiagramm", cat: "das" },
+  { word: "Balkendiagramme", cat: "pl" },
+  { word: "Anstiege", cat: "pl" },
+  { word: "Abnahmen", cat: "pl" },
+  { word: "Trends", cat: "pl" },
+  { word: "Fazit", cat: "das" },
+  { word: "Umfrage", cat: "die" },
+  { word: "Umfragen", cat: "pl" }
 ];
 var LUECKE_DATA = [{"pre": "Die ", "ans": "Statistik", "post": " liefert Informationen über das Konsumverhalten der Generation Z."}, {"pre": "Das Liniendiagramm wurde 2024 vom Statistischen ", "ans": "Bundesamt", "post": " veröffentlicht."}, {"pre": "Die Daten ", "ans": "stammen", "post": " aus dem dritten Quartal des Jahres 2024."}, {"pre": "Im Vergleich zu den Männern ist der Anteil der Frauen, die regelmäßig Sport treiben, um zwölf Prozentpunkte ", "ans": "höher", "post": "."}, {"pre": "Die Zahl der Online-Käufe hat zwischen 2010 und 2024 stetig ", "ans": "zugenommen", "post": "."}, {"pre": "Im Hauptteil sollte man drei bis vier ", "ans": "auffällige", "post": " Werte hervorheben."}, {"pre": "Insgesamt zeigt das Schaubild eine ", "ans": "rückläufige", "post": " Entwicklung des Zigarettenkonsums."}];
 var MC_DATA = [{"q": "Wer gilt als Erfinder des Balken- und Kreisdiagramms?", "opts": ["Charles Booth", "William Playfair", "Florence Nightingale", "John Snow"], "correct": 1}, {"q": "Welches Diagramm eignet sich am besten zur Darstellung zeitlicher Entwicklungen?", "opts": ["Kreisdiagramm", "Streudiagramm", "Liniendiagramm", "Venn-Diagramm"], "correct": 2}, {"q": "Was bedeutet die Wendung <em>Dem Schaubild ist zu entnehmen, dass …</em>?", "opts": ["Das Schaubild ist unklar.", "Aus dem Schaubild geht hervor, dass …", "Das Schaubild wurde entfernt.", "Man muss das Schaubild neu erstellen."], "correct": 1}, {"q": "Welcher Konnektor markiert einen Kontrast zwischen zwei Werten?", "opts": ["außerdem", "wohingegen", "ebenfalls", "darüber hinaus"], "correct": 1}, {"q": "Was meint die Redewendung <em>einen drastischen Abstieg erfahren</em>?", "opts": ["leicht zunehmen", "stagnieren", "stark abnehmen", "gleichbleiben"], "correct": 2}, {"q": "Welche Information gehört zwingend zur Quellenangabe einer Grafik?", "opts": ["nur das Thema", "Herausgeber, Jahr, Erhebungszeitraum", "ausschließlich der Stichprobenumfang", "nur der Titel"], "correct": 1}, {"q": "Was zeichnet ein <em>Streudiagramm</em> aus?", "opts": ["Punkte in einem Koordinatensystem", "überlappende Kreise", "gestapelte Flächen", "Linien mit Trendpfeil"], "correct": 0}];

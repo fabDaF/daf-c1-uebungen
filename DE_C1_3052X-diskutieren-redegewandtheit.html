@@ -367,26 +367,26 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 <script>
 var VORENTLASTUNG = [{"term": "die Redegewandtheit (Sg.)", "def": "Fähigkeit, sich gewandt, präzise und überzeugend mündlich auszudrücken; mehr als reines Sprachvermögen, schließt rhetorische Strukturierung, Schlagfertigkeit und Anpassung an das Publikum ein; lässt sich systematisch trainieren — Cicero hat das schon vor 2000 Jahren in <em>De Oratore</em> beschrieben."}, {"term": "die These (-n)", "def": "Behauptung oder Hauptaussage einer Argumentation, die begründet und verteidigt werden muss; im wissenschaftlichen Diskurs der Ausgangspunkt jeder Untersuchung; nach Karl Popper muss eine gute These prinzipiell falsifizierbar sein, sonst ist sie nicht wissenschaftlich; <em>Eine These ohne Belege ist eine bloße Behauptung.</em>"}, {"term": "die Begründung (-en)", "def": "Argumentation, die eine These stützt; üblicherweise mit Daten, Fakten, Logik oder Autorität; klassisches Schema: <em>weil … denn … aufgrund von …</em>; in der Aristotelischen Rhetorik dem Logos zugeordnet; ohne Begründung wirkt eine These willkürlich."}, {"term": "die Schlussfolgerung (-en)", "def": "logische Konsequenz aus den vorhergehenden Argumenten; markiert oft das Ende einer Argumentationskette mit Wendungen wie <em>folglich, also, daraus ergibt sich</em>; in der Logik die Konklusion eines Syllogismus; eine valide Schlussfolgerung kann auch aus falschen Prämissen formal korrekt gezogen werden."}, {"term": "die Sachlichkeit (Sg.)", "def": "Orientierung am Thema statt an der Person; emotionale Distanz und faires Abwägen der Argumente; Voraussetzung für jede produktive Diskussion; nach Habermas Kennzeichen des herrschaftsfreien Diskurses; Gegenteil: <em>ad-hominem-Angriff</em>, also Angriff auf die Person statt das Argument."}, {"term": "die Provokation (-en)", "def": "absichtliche Reizung durch eine zugespitzte oder grenzüberschreitende Aussage; in Talkshows oft strategisch eingesetzt, um Aufmerksamkeit zu erzeugen; der Soziologe Niklas Luhmann nannte sie eine <em>Form der Aufmerksamkeitsgenerierung</em>; in Online-Diskussionen verbreitet als <em>Trolling</em>."}, {"term": "die Schuldzuweisung (-en)", "def": "rhetorischer Vorwurf, der dem Gegenüber Verantwortung für ein Problem zuschiebt; verschiebt die Diskussion von der Sache auf die Person; Hauptmerkmal unsachlicher Streitkultur; in der Gewaltfreien Kommunikation nach Marshall Rosenberg explizit zu vermeiden — stattdessen <em>Ich-Botschaften</em> formulieren."}, {"term": "die Replik (-en)", "def": "knappe, oft schlagfertige Erwiderung auf eine Aussage; aus dem Lateinischen <em>replicare</em> (zurückfalten); in der Rechtssprache die Antwort des Klägers auf die Erwiderung des Beklagten; in der Alltagssprache jede schnelle und treffende Antwort; Bismarck und Churchill waren legendäre Repliker."}];
 var GENUS_DATA = [
-  { word: "💬 Argument", cat: "das" },
-  { word: "🎯 These", cat: "die" },
-  { word: "📋 Behauptung", cat: "die" },
-  { word: "🗣️ Diskurs", cat: "der" },
-  { word: "🤝 Konsens", cat: "der" },
-  { word: "⚖️ Streit", cat: "der" },
-  { word: "📜 Redemittel", cat: "pl" },
-  { word: "🔥 Provokation", cat: "die" },
-  { word: "🗣️ Redegewandtheit", cat: "die" },
-  { word: "🎯 Thesen", cat: "pl" },
-  { word: "📋 Begründung", cat: "die" },
-  { word: "📋 Begründungen", cat: "pl" },
-  { word: "📜 Schlussfolgerung", cat: "die" },
-  { word: "📜 Schlussfolgerungen", cat: "pl" },
-  { word: "⚖️ Sachlichkeit", cat: "die" },
-  { word: "🔥 Provokationen", cat: "pl" },
-  { word: "💬 Replik", cat: "die" },
-  { word: "💬 Repliken", cat: "pl" },
-  { word: "🗣️ Diskurse", cat: "pl" },
-  { word: "📋 Rhetorik", cat: "die" }
+  { word: "Argument", cat: "das" },
+  { word: "These", cat: "die" },
+  { word: "Behauptung", cat: "die" },
+  { word: "Diskurs", cat: "der" },
+  { word: "Konsens", cat: "der" },
+  { word: "Streit", cat: "der" },
+  { word: "Redemittel", cat: "pl" },
+  { word: "Provokation", cat: "die" },
+  { word: "Redegewandtheit", cat: "die" },
+  { word: "Thesen", cat: "pl" },
+  { word: "Begründung", cat: "die" },
+  { word: "Begründungen", cat: "pl" },
+  { word: "Schlussfolgerung", cat: "die" },
+  { word: "Schlussfolgerungen", cat: "pl" },
+  { word: "Sachlichkeit", cat: "die" },
+  { word: "Provokationen", cat: "pl" },
+  { word: "Replik", cat: "die" },
+  { word: "Repliken", cat: "pl" },
+  { word: "Diskurse", cat: "pl" },
+  { word: "Rhetorik", cat: "die" }
 ];
 var LUECKE_DATA = [{"pre": "Aristoteles unterschied in seiner Rhetorik drei Mittel: Ethos, Pathos und ", "ans": "Logos", "post": "."}, {"pre": "Bei einer ", "ans": "Diskussion", "post": " kommt es auf den respektvollen Umgang miteinander an."}, {"pre": "Cicero verfasste sein Hauptwerk <em>De Oratore</em> im Jahr ", "ans": "55", "post": " vor Christus."}, {"pre": "Jürgen Habermas entwickelte die <em>Theorie des kommunikativen ", "ans": "Handelns", "post": "</em> im Jahr 1981."}, {"pre": "Wer aus einem unproduktiven Streit aussteigen will, muss zunächst die ", "ans": "Bedürfnisse", "post": " hinter den Positionen erkennen."}, {"pre": "Eine gut strukturierte Argumentation enthält These, Begründung, Verstärkung und ", "ans": "Schlussfolgerung", "post": "."}, {"pre": "Der Soziologe Niklas Luhmann nannte die Provokation eine Form der ", "ans": "Aufmerksamkeitsgenerierung", "post": "."}];
 var MC_DATA = [{"q": "Welche drei Säulen unterschied Aristoteles in seiner <em>Rhetorik</em>?", "opts": ["Ethos, Pathos, Logos", "Pathos, Mythos, Telos", "Telos, Logos, Bios", "Ethos, Logos, Mythos"], "correct": 0}, {"q": "Wer entwickelte die Theorie des herrschaftsfreien Diskurses?", "opts": ["Theodor W. Adorno", "Jürgen Habermas", "Niklas Luhmann", "Arthur Schopenhauer"], "correct": 1}, {"q": "Was bedeutet die Redewendung <em>Farbe bekennen</em>?", "opts": ["eine klare Position einnehmen", "anderen ausweichen", "die Wahrheit sagen", "schnell aufgeben"], "correct": 0}, {"q": "In welchem Jahr verfasste Cicero <em>De Oratore</em>?", "opts": ["55 vor Christus", "100 vor Christus", "44 vor Christus", "10 nach Christus"], "correct": 0}, {"q": "Was ist nach Aristoteles <em>Logos</em>?", "opts": ["das Vernunft-Argument", "die Glaubwürdigkeit des Sprechers", "die emotionale Wirkung", "der Stil der Rede"], "correct": 0}, {"q": "Welche Schule der Kommunikation gründete Marshall Rosenberg?", "opts": ["Gewaltfreie Kommunikation", "Diskursanalyse", "Transaktionsanalyse", "Neurolinguistisches Programmieren"], "correct": 0}, {"q": "Was bedeutet <em>in die Defensive gehen</em>?", "opts": ["sich verteidigen, zurückhaltend werden", "angriffslustig auftreten", "die Wahrheit verschweigen", "lautstark widersprechen"], "correct": 0}];

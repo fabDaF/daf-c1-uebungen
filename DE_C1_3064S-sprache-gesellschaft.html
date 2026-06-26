@@ -367,27 +367,27 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
 <script>
 var VORENTLASTUNG = [{"term": "die Linguistik (Sg.)", "def": "wissenschaftliche Erforschung der Sprache; Hauptdisziplinen: Phonetik (Lautlehre), Morphologie (Wortbildung), Syntax (Satzbau), Semantik (Bedeutung), Pragmatik (Sprachgebrauch); klassische Vertreter: Ferdinand de Saussure (1857–1913), Noam Chomsky (geb. 1928), George Lakoff (geb. 1941); seit den 1980ern Wende zur kognitiven Linguistik."}, {"term": "die Metapher (-n)", "def": "bildliche Übertragung eines Begriffs auf einen anderen Bereich; nach Lakoff/Johnson <em>Metaphors We Live By</em> (1980) nicht nur sprachliches Schmuckstück, sondern grundlegendes Denkwerkzeug; Beispiele: <em>Argumentation = Krieg</em>, <em>Liebe = Reise</em>, <em>Zeit = Geld</em>, <em>Kriminalität = Virus</em>."}, {"term": "die Wortwahl (Sg.)", "def": "bewusste oder unbewusste Auswahl bestimmter Begriffe in einer Aussage; transportiert Wertungen, Konnotationen, Weltsichten; im politischen Diskurs zentral (Flüchtlingswelle vs. Schutzsuchende; Stellenabbau vs. Kündigungswelle); seit George Orwells <em>1984</em> (1949) als manipulatives Werkzeug bekannt (Newspeak)."}, {"term": "das Denkmuster (-)", "def": "wiederkehrende Strukturierung von Wahrnehmung und Argumentation; oft sprachlich vermittelt und unbewusst; lässt sich durch metakognitive Reflexion bewusstmachen und ändern; Daniel Kahneman unterscheidet in <em>Schnelles Denken, langsames Denken</em> (2011) zwischen System 1 (intuitiv) und System 2 (reflektiert)."}, {"term": "die Sapir-Whorf-Hypothese (Sg.)", "def": "These der linguistischen Relativität: verschiedene Sprachen prägen verschiedene Denkmuster; nach Edward Sapir (1884–1939) und Benjamin Whorf (1897–1941) benannt; in der starken Form (Sprache <em>determiniert</em> Denken) widerlegt, in der schwachen (Sprache <em>beeinflusst</em> Denken) gut belegt; Renaissance seit den 1990ern."}, {"term": "der Sprachverfall (Sg.)", "def": "kulturpessimistische Annahme, eine Sprache verschlechtere sich über die Zeit; klassisches Klagemotiv seit der Antike (Cicero beklagte schon 50 v. Chr. den <em>Verfall</em> des Latein); linguistisch gilt: Sprachen verändern sich permanent, aber sie verfallen nicht; auch heute bei Anglizismus-Debatten oder Genderkritik aufgewärmt."}, {"term": "die symbolische Gewalt (Sg.)", "def": "Begriff von Pierre Bourdieu (1930–2002): unauffällige, oft unbewusste Form der Machtausübung durch sprachliche Klassifikationen, Etikettierungen und Bewertungen; macht soziale Hierarchien als <em>natürlich</em> erscheinen; Beispiel: Wer als <em>ungebildet</em> klassifiziert wird, akzeptiert die Klassifikation oft selbst."}, {"term": "die Manipulation (-en)", "def": "absichtliche Beeinflussung des Denkens oder Verhaltens anderer ohne deren bewusste Zustimmung; durch Sprache besonders effektiv; Werkzeuge: euphemistische Wortwahl (Kollateralschaden statt Tötung Unbeteiligter), Wiederholung, Emotionalisierung; Klassiker der Analyse: Victor Klemperer <em>LTI</em> (1947) zur NS-Sprache."}];
 var GENUS_DATA = [
-  { word: "💬 Wort", cat: "das" },
-  { word: "🌍 Sprache", cat: "die" },
-  { word: "🧠 Denken", cat: "das" },
-  { word: "📚 Linguistik", cat: "die" },
-  { word: "🔄 Metapher", cat: "die" },
-  { word: "🎯 Diskurs", cat: "der" },
-  { word: "📜 Sätze", cat: "pl" },
-  { word: "💭 Idee", cat: "die" },
-  { word: "🔄 Metaphern", cat: "pl" },
-  { word: "🎯 Wortwahl", cat: "die" },
-  { word: "🧠 Denkmuster", cat: "das" },
-  { word: "🌍 Sprachen", cat: "pl" },
-  { word: "👁️ Wahrnehmung", cat: "die" },
-  { word: "👁️ Wahrnehmungen", cat: "pl" },
-  { word: "💬 Diskurse", cat: "pl" },
-  { word: "🎯 Manipulation", cat: "die" },
-  { word: "🎯 Manipulationen", cat: "pl" },
-  { word: "🌎 Weltsicht", cat: "die" },
-  { word: "🌎 Weltsichten", cat: "pl" },
-  { word: "📜 Begriff", cat: "der" },
-  { word: "📜 Begriffe", cat: "pl" }
+  { word: "Wort", cat: "das" },
+  { word: "Sprache", cat: "die" },
+  { word: "Denken", cat: "das" },
+  { word: "Linguistik", cat: "die" },
+  { word: "Metapher", cat: "die" },
+  { word: "Diskurs", cat: "der" },
+  { word: "Sätze", cat: "pl" },
+  { word: "Idee", cat: "die" },
+  { word: "Metaphern", cat: "pl" },
+  { word: "Wortwahl", cat: "die" },
+  { word: "Denkmuster", cat: "das" },
+  { word: "Sprachen", cat: "pl" },
+  { word: "Wahrnehmung", cat: "die" },
+  { word: "Wahrnehmungen", cat: "pl" },
+  { word: "Diskurse", cat: "pl" },
+  { word: "Manipulation", cat: "die" },
+  { word: "Manipulationen", cat: "pl" },
+  { word: "Weltsicht", cat: "die" },
+  { word: "Weltsichten", cat: "pl" },
+  { word: "Begriff", cat: "der" },
+  { word: "Begriffe", cat: "pl" }
 ];
 var LUECKE_DATA = [{"pre": "Die These, dass Sprache das Denken prägt, heißt ", "ans": "Sapir", "post": "-Whorf-Hypothese."}, {"pre": "Im Stanford-Experiment 2011 von Thibodeau und Boroditsky wurde Kriminalität entweder als ", "ans": "Virus", "post": " oder als wildes Tier dargestellt."}, {"pre": "George ", "ans": "Lakoff", "post": " veröffentlichte 1980 mit Mark Johnson das einflussreiche Buch <em>Metaphors We Live By</em>."}, {"pre": "Die australische Aborigine-Sprache ", "ans": "Guugu", "post": " Yimithirr nutzt Himmelsrichtungen statt links/rechts."}, {"pre": "Edward Sapirs Schüler hieß Benjamin ", "ans": "Whorf", "post": " und untersuchte die Hopi-Sprache."}, {"pre": "Die wissenschaftliche Erforschung der Sprache wird ", "ans": "Linguistik", "post": " genannt."}, {"pre": "Eine bildliche Übertragung in der Sprache nennt man eine ", "ans": "Metapher", "post": "."}];
 var MC_DATA = [{"q": "Wer formulierte 1980 mit Mark Johnson <em>Metaphors We Live By</em>?", "opts": ["George Lakoff", "Noam Chomsky", "Steven Pinker", "Ferdinand de Saussure"], "correct": 0}, {"q": "Was besagt die Sapir-Whorf-Hypothese?", "opts": ["Sprache beeinflusst das Denken", "Sprache ist universell und gleich für alle", "Sprache ist angeboren", "Sprache verändert sich nicht"], "correct": 0}, {"q": "Welche Sprache nutzt Himmelsrichtungen statt <em>links/rechts</em>?", "opts": ["Guugu Yimithirr (Aborigine)", "Mandarin-Chinesisch", "Russisch", "Französisch"], "correct": 0}, {"q": "Wann wurde das Stanford-Experiment zu Kriminalität-Metaphern publiziert?", "opts": ["2011 (PLoS ONE)", "2000", "2020", "1985"], "correct": 0}, {"q": "Wer schrieb 1947 das Werk <em>LTI – Lingua Tertii Imperii</em> über die Sprache des NS?", "opts": ["Victor Klemperer", "Theodor Adorno", "Hannah Arendt", "Walter Benjamin"], "correct": 0}, {"q": "Was bedeutet <em>linguistische Relativität</em>?", "opts": ["Verschiedene Sprachen → unterschiedliche Weltsichten", "Sprachen sind alle gleich", "Linguistik ist relativ", "Sprache ist absolut universal"], "correct": 0}, {"q": "Welcher Philosoph entwickelte die Diskurs-Analyse?", "opts": ["Michel Foucault", "Immanuel Kant", "John Locke", "Friedrich Nietzsche"], "correct": 0}];
