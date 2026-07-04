@@ -179,6 +179,21 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
 .fb-jumptop.show { opacity: 1; visibility: visible; transform: translateY(0); }
 .fb-jumptop:hover { background: rgba(118, 75, 162, 0.40); color: #241048; box-shadow: 0 10px 32px rgba(102,126,234,0.50), inset 0 1px 0 rgba(255,255,255,0.65); }
 @media (max-width: 600px) { .fb-jumptop { bottom: 18px; right: 16px; padding: 12px 18px; font-size: 0.95em; } }
+
+/* FB-LT-STORY-CSS */
+/* FB-LT-STORY-CSS — kanonische CSS des Story-Lückentexts (EINE Quelle der Wahrheit).
+   Vom Produzenten scripts/inject_lt.py eingespielt. Nicht pro Datei von Hand kopieren. */
+.luecken-story { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05em; line-height: 2.1; color: #2c2c2c; text-align: justify; background: #f8f9ff; border-left: 4px solid #667eea; border-radius: 0 10px 10px 0; padding: 18px 22px; }
+.luecken-story p { margin: 0 0 14px; }
+.luecken-story p:last-child { margin-bottom: 0; }
+.luecken-story input.blank { font-family: Georgia, 'Times New Roman', serif; border: none; border-bottom: 2px solid #c5cae9; background: transparent; outline: none; font-size: 1em; color: #2c2c2c; text-align: center; padding: 1px 4px; min-width: 4ch; transition: all .2s; }
+.luecken-story input.blank:focus { border-bottom-color: #667eea; }
+.luecken-story input.blank.correct { border-bottom-color: #27ae60; background: #e8f8f0; color: #27ae60; font-weight: 700; }
+.luecken-story input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e74c3c; }
+.wortbank { display:flex; flex-wrap:wrap; gap:8px; padding:14px; background:#f0f0f8; border-radius:10px; min-height:48px; margin-bottom:18px; border:1px dashed #bbb; }
+.wortbank-chip { background:white; border:2px solid #667eea; color:#667eea; padding:5px 12px; border-radius:14px; font-weight:500; font-size:0.9em; user-select:none; }
+.wortbank-chip.used { opacity:0.35; text-decoration:line-through; }
+
 </style>
 </head>
 <body>
@@ -347,10 +362,14 @@ input.blank.wrong { border-color: #e74c3c; background: #ffebee; }
         <span>🏆 <span id="best-2">--:--</span></span>
       </div>
     </div>
-    <div class="hilfe-box"><strong>Aufgabe:</strong> Ergänze die korrekte Verbform mit variablem Präfix.</div>
-    <div class="wortbank-label">🔤 Wortkasten – diese Verben im Infinitiv.</div>
     <div class="wortbank" id="wortbank-luecken"></div>
-    <div id="luecken-container"></div>
+    <div id="lueckenContainer" class="luecken-story">
+      <p>Am helllichten Tag beobachtete Frau Berger von ihrem Küchenfenster aus, wie ein Streifenwagen langsam vorbeifuhr. Die Polizei <input class="blank" data-answer="umfährt" data-base="umfahren"> das Hindernis vorsichtig, notierte sie sich, ohne genau zu wissen, was gerade passierte.</p>
+      <p>Kurz darauf hörte sie, wie ihre Nachbarin schrie: Ein scharfer Schmerz <input class="blank" data-answer="durchfuhr" data-base="durchfahren"> ihren ganzen Körper, nachdem sie sich am Gartenzaun verletzt hatte. Frau Berger lief sofort hinüber und <input class="blank" data-answer="umarmte" data-base="umarmen"> die verängstigte Frau zum Trost.</p>
+      <p>Während sie auf den Krankenwagen warteten, erzählte die Nachbarin, sie und ihr Mann <input class="blank" data-answer="unternahmen" data-base="unternehmen"> im Sommer eigentlich eine ausgedehnte Reise nach Italien — jetzt müsse sie wohl verschoben werden. Ein vorbeikommender Übersetzer, der zufällig in der Straße wohnte, <input class="blank" data-answer="übersetzte" data-base="übersetzen"> währenddessen am Telefon einen wichtigen Vertrag aus dem Französischen ins Deutsche.</p>
+      <p>Der Sanitäter fragte die Nachbarin höflich: „Bitte würden Sie diesen Vertrag noch <input class="blank" data-answer="unterschreiben" data-base="unterschreiben">?“ — es ging um die Behandlungseinwilligung. Kurz zuvor hatte ein Lkw an der Kreuzung bei Rotlicht beinahe einen Fußgänger <input class="blank" data-answer="überfuhr" data-base="überfahren">, was die ganze Straße noch zusätzlich aufgeschreckt hatte.</p>
+      <p>Am Nachmittag, als sich alles beruhigt hatte, erinnerte sich Frau Berger, dass ihre Tochter früher als Lehrerin die Schüler über genau solche Notfälle <input class="blank" data-answer="unterrichtete" data-base="unterrichten"> hatte. Die Sonne <input class="blank" data-answer="ging unter" data-base="untergehen"> langsam hinter den Bergen, als endlich Ruhe in die Straße einkehrte — nur ein Streifenwagen, der eine Spezialeinheit sicherte, <input class="blank" data-answer="umstellt" data-base="umstellen"> noch immer vorsorglich das benachbarte Grundstück.</p>
+    </div>
   </div>
 </div>
 
@@ -565,7 +584,7 @@ function resetZuo() { initZuo(); }
 var LUECKEN = [{"id": 1, "before": "Die Polizei ", "answer": "umfährt", "after": " das Hindernis vorsichtig."}, {"id": 2, "before": "Ein scharfer Schmerz ", "answer": "durchfuhr", "after": " ihren ganzen Körper."}, {"id": 3, "before": "Sie ", "answer": "umarmte", "after": " ihre Tochter zum Abschied herzlich."}, {"id": 4, "before": "Wir ", "answer": "unternahmen", "after": " im Sommer eine ausgedehnte Reise nach Italien."}, {"id": 5, "before": "Der Übersetzer ", "answer": "übersetzte", "after": " den Roman aus dem Französischen ins Deutsche."}, {"id": 6, "before": "Bitte würden Sie diesen Vertrag noch ", "answer": "unterschreiben", "after": "?"}, {"id": 7, "before": "Der Lkw ", "answer": "überfuhr", "after": " bei Rotlicht beinahe einen Fußgänger."}, {"id": 8, "before": "Die Lehrerin ", "answer": "unterrichtete", "after": " die Schüler über die neuen Regeln."}, {"id": 9, "before": "Die Sonne ", "answer": "ging unter", "after": " langsam hinter den Bergen."}, {"id": 10, "before": "Die Spezialeinheit ", "answer": "umstellt", "after": " das verdächtige Gebäude lautlos."}];
 
 function initLuecken() {
-  var c = document.getElementById('luecken-container'); c.innerHTML = '';
+  var c = document.getElementById('luecken-container'); if (!c) return; c.innerHTML = '';
   LUECKEN.forEach(function(item) {
     var div = document.createElement('div'); div.className = 'luecken-satz';
     var w = Math.max(90, item.answer.length * 12);
@@ -602,6 +621,7 @@ function showLueckenLoesung() {
 }
 function resetLuecken() { initLuecken(); }
 function initWortbank() {
+  return;
   var bank = document.getElementById('wortbank-luecken');
   if (!bank) return;
   bank.innerHTML = '';
@@ -618,6 +638,7 @@ function initWortbank() {
   });
 }
 function updateWortbankChips() {
+  return;
   var bank = document.getElementById('wortbank-luecken');
   if (!bank) return;
   var solved = Array.prototype.slice.call(document.querySelectorAll('#luecken-container input.blank.correct')).map(function(i){ return i.value.trim().toLowerCase(); });
@@ -1257,5 +1278,158 @@ function resetGenus(){ initGenus(); genusTimerReset(); }
 })();
 </script>
 
+
+<!-- FB-LT-STORY-ENGINE -->
+<script>
+/* ============================================================================
+   FB-LT-STORY — kanonische Lückentext-Engine (EINE Quelle der Wahrheit)
+   ----------------------------------------------------------------------------
+   Mit Frank abgenommen 2026-06-30 (Piloten 1057X Heimweh, 3065G Adjektivdeklination).
+   Diese Datei ist die EINZIGE Quelle der mechanischen Lückentext-Logik. Der
+   Produzent scripts/inject_lt.py spielt sie (plus die CSS unten) in jede Lektion
+   ein — NIE von Hand pro Datei kopieren (sonst driften die Engines, genau der
+   Fehler, den wir abschaffen).
+
+   Kanonische Form:
+     · zusammenhängende STORY (Serif-Fließtext, Inline-Lücken), KEINE Nummern;
+     · GENAU 10 Lücken;  · §7-Wortbank (gemischt, nicht klickbar, .used);
+     · case-sensitiv, kein Prüfen-Button (nur Live-Feedback);
+     · Variante erkennt sich SELBST:
+         - hat eine Lücke data-base  → Grammatik (G): Wortbank zeigt die GRUNDFORM
+           (data-base), die Zielform (data-answer) ist nie sichtbar;
+         - sonst                     → Wortschatz (V/R/X): Wortbank zeigt die
+           Vollform (= data-answer).
+     · .used streicht den Chip der getroffenen Lücke durch (G: per data-base) —
+       Fortschrittsanzeige, verrät die Zielform nicht (Frank bestätigt 2026-06-30).
+
+   Markup-Vertrag (vom Produzenten erzeugt, vom Gate check_lueckentext.py geprüft):
+     <div class="wortbank" id="wortbank-luecken"></div>
+     <div id="lueckenContainer" class="luecken-story">
+       <p>… <input class="blank" data-answer="ZIELFORM" [data-base="GRUNDFORM"]> …</p>
+     </div>
+
+   Timer-Anbindung: die Engine ruft generische Hooks window.fbLtTimerStart()/
+   fbLtTimerStop(); der Produzent verdrahtet sie pro Datei auf den richtigen
+   Tab-Index (timerAutoStart(N)/timerStop(N)). Fehlen die Hooks, läuft die Engine
+   ohne Timer weiter.
+   ============================================================================ */
+
+/* ---- KANONISCHE CSS (vom Produzenten mit eingespielt) -----------------------
+.luecken-story { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05em; line-height: 2.1; color: #2c2c2c; text-align: justify; background: #f8f9ff; border-left: 4px solid #667eea; border-radius: 0 10px 10px 0; padding: 18px 22px; }
+.luecken-story p { margin: 0 0 14px; }
+.luecken-story p:last-child { margin-bottom: 0; }
+.luecken-story input.blank { font-family: Georgia, 'Times New Roman', serif; border: none; border-bottom: 2px solid #c5cae9; background: transparent; outline: none; font-size: 1em; color: #2c2c2c; text-align: center; padding: 1px 4px; min-width: 4ch; transition: all .2s; }
+.luecken-story input.blank:focus { border-bottom-color: #667eea; }
+.luecken-story input.blank.correct { border-bottom-color: #27ae60; background: #e8f8f0; color: #27ae60; font-weight: 700; }
+.luecken-story input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e74c3c; }
+.wortbank { display:flex; flex-wrap:wrap; gap:8px; padding:14px; background:#f0f0f8; border-radius:10px; min-height:48px; margin-bottom:18px; border:1px dashed #bbb; }
+.wortbank-chip { background:white; border:2px solid #667eea; color:#667eea; padding:5px 12px; border-radius:14px; font-weight:500; font-size:0.9em; user-select:none; }
+.wortbank-chip.used { opacity:0.35; text-decoration:line-through; }
+---------------------------------------------------------------------------- */
+
+(function () {
+  "use strict";
+  if (window.__fbLtStory) return;
+  window.__fbLtStory = true;
+
+  function gaps() {
+    return Array.prototype.slice.call(
+      document.querySelectorAll('#lueckenContainer input.blank'));
+  }
+  // Wortbank-Wort einer Lücke: Grundform (G) falls vorhanden, sonst Vollform.
+  function wordOf(i) {
+    return i.getAttribute('data-base') || i.getAttribute('data-answer') || '';
+  }
+  function shuffle(a) {
+    for (var k = a.length - 1; k > 0; k--) {
+      var j = Math.floor(Math.random() * (k + 1));
+      var t = a[k]; a[k] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function update() {
+    var bank = document.getElementById('wortbank-luecken');
+    if (!bank) return;
+    var rem = gaps().filter(function (i) { return i.classList.contains('correct'); })
+                    .map(wordOf);
+    Array.prototype.slice.call(bank.querySelectorAll('.wortbank-chip')).forEach(function (c) {
+      var idx = rem.indexOf(c.textContent);
+      if (idx >= 0) { c.classList.add('used'); rem.splice(idx, 1); }
+      else { c.classList.remove('used'); }
+    });
+  }
+
+  function done() {
+    var gg = gaps();
+    if (gg.length && gg.every(function (i) { return i.classList.contains('correct'); })
+        && typeof window.fbLtTimerStop === 'function') window.fbLtTimerStop();
+  }
+
+  function live(i) {
+    var ans = i.getAttribute('data-answer'), val = i.value;   // case-sensitive, kein trim
+    i.classList.remove('correct', 'wrong');
+    if (val) {
+      if (val === ans) i.classList.add('correct');
+      else if (ans.indexOf(val) !== 0) i.classList.add('wrong');
+      if (typeof window.fbLtTimerStart === 'function') window.fbLtTimerStart();
+    }
+    update();
+    done();
+  }
+
+  function build() {
+    var bank = document.getElementById('wortbank-luecken');
+    if (!bank) return;
+    var gg = gaps();
+    if (!gg.length) return;
+    gg.forEach(function (i) {
+      var a = i.getAttribute('data-answer') || '', b = i.getAttribute('data-base') || '';
+      i.placeholder = '';
+      i.style.width = (Math.max(a.length, b.length) + 3) + 'ch';
+      if (!i.__fbWired) {
+        i.__fbWired = true;
+        i.addEventListener('input', function () { live(i); });
+      }
+    });
+    var seen = {}, words = [];
+    gg.forEach(function (i) { var w = wordOf(i); if (w && !seen[w]) { seen[w] = true; words.push(w); } });
+    bank.innerHTML = '';
+    shuffle(words).forEach(function (w) {
+      var c = document.createElement('span');
+      c.className = 'wortbank-chip';
+      c.textContent = w;
+      bank.appendChild(c);
+    });
+    update();
+  }
+
+  // Öffentliche Hooks für die Steuer-Buttons (Produzent verdrahtet onclick darauf).
+  window.fbLtBuild = build;
+  window.fbLtShowLoesung = function () {
+    gaps().forEach(function (i) {
+      i.value = i.getAttribute('data-answer');
+      i.classList.add('correct'); i.classList.remove('wrong');
+    });
+    update();
+    if (typeof window.fbLtTimerStop === 'function') window.fbLtTimerStop();
+  };
+  window.fbLtReset = function () {
+    gaps().forEach(function (i) { i.value = ''; i.classList.remove('correct', 'wrong'); });
+    build();
+  };
+
+  function run() { build(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+  // Beim Wechsel auf den Lückentext-Tab neu aufbauen (mischt die Wortbank).
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.closest && e.target.closest('.nav-btn')) setTimeout(build, 80);
+  });
+})();
+
+</script>
+
+<!-- FB-LT-STORY-HOOKS --><script>window.fbLtTimerStart=function(){if(typeof timerAutoStart==='function')timerAutoStart(2);};window.fbLtTimerStop=function(){if(typeof timerStop==='function')timerStop(2);};</script>
 </body>
 </html>
