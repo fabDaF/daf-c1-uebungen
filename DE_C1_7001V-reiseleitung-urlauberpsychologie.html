@@ -1232,7 +1232,7 @@ function resetLuecken() {
     initWortbank();
 }
 
-function initWortbank() {
+function initWortbank() { return; /* FB-neutralisiert 2026-07-05: Engine füllt wortbank-luecken */
     return;
     var bank = document.getElementById('wortbank-luecken');
     if (!bank) return;
@@ -1250,7 +1250,7 @@ function initWortbank() {
     });
 }
 
-function updateWortbankChips() {
+function updateWortbankChips() { return; /* FB-neutralisiert 2026-07-05: Engine füllt wortbank-luecken */
     return;
     var bank = document.getElementById('wortbank-luecken');
     if (!bank) return;
