@@ -1053,7 +1053,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","bevor","_","_","sich","_","entschied"],"parts":["der","Vorschlag","wurde","Erwägung","gezogen",",","die","Geschäftsführung","endgültig"]},{"i":1,"row":["_","_","_","_","heftige","_","_","_","weil","ihre","_","Schwächen","_"],"parts":["die","Studie","ist","auf","Kritik","gestoßen",",","Methodik","aufweist"]},{"i":2,"row":["_","_","_","die","_","zur","_","_","_","nachdem","_","Behörden","_","_"],"parts":["das","Unternehmen","hat","Erlaubnis","Erweiterung","erteilt",",","die","zugestimmt","hatten"]},{"i":3,"row":["_","_","_","der","_","zur","_","_","die","_","nun","_","_"],"parts":["die","Akten","stehen","Untersuchungskommission","Verfügung",",","sie","auswerten","wird"]},{"i":4,"row":["_","_","Vorschlag","_","_","Versammlung","_","_","_","die","_","Anwesenden","_"],"parts":["nach","seinem","traf","die","eine","Entscheidung",",","alle","mittrugen"]},{"i":5,"row":["_","_","_","schnell","_","Vergessenheit","_","_","er","_","Aufregung","_","_"],"parts":["der","Vorfall","geriet","in",",","obwohl","große","verursacht","hatte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

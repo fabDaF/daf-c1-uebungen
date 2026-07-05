@@ -1057,7 +1057,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","James","_","_","für","_","_","_","weil","_","Geburtstag","_"],"parts":["heute","Morgen","hat","einen","Kuchen","mich","gekauft",",","ich","hatte"]},{"i":1,"row":["_","_","_","mein","_","besonders","_","_","_","_","Briefträger","_","Zaun","_"],"parts":["im","Garten","bellt","Hund","laut",",","sobald","der","am","erscheint"]},{"i":2,"row":["_","_","_","Vertrag","_","Vorstand","_","_","_","_","Mitglieder","_","Bedenken","_"],"parts":["gestern","wurde","der","vom","unterzeichnet",",","obwohl","zwei","erhebliche","äußerten"]},{"i":3,"row":["_","_","Regens","_","_","Konzert","_","_","_","_","weil","_","Bühne","_","_"],"parts":["trotz","des","findet","das","heute","Abend","statt",",","die","überdacht","ist"]},{"i":4,"row":["_","_","_","ich","_","weitere","_","_","_","_","er","_","zweimal","_","_"],"parts":["diesem","Kunden","würde","keine","Ratenzahlung","gewähren",",","da","schon","verspätet","zahlte"]},{"i":5,"row":["_","_","Pause","_","_","die","_","_","_","_","einige","_","bereits","_","_"],"parts":["nach","der","setzten","wir","Sitzung","fort",",","obwohl","Teilnehmer","gegangen","waren"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

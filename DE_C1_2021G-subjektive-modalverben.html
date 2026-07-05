@@ -1079,7 +1079,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","Millionär","_","_","_","die","_","schon","_","_","genüsslich","_"],"parts":["er","soll","sein",",","wie","Boulevardpresse","seit","Wochen","behauptet"]},{"i":1,"row":["_","_","_","von","_","Geld","nichts","_","_","_","_","Belege","_"],"parts":["die","Angeklagte","will","dem","gewusst","haben",",","obwohl","existieren"]},{"i":2,"row":["_","_","_","bereits","_","_","_","wie","_","ihrem","Umfeld","_","_","_"],"parts":["Maria","soll","sich","entschuldigt","haben",",","aus","zu","hören","ist"]},{"i":3,"row":["_","_","_","diese","_","schon","_","Hause","_","_","_","_","Büro","_","_","_"],"parts":["er","dürfte","um","Zeit","zu","sein",",","weil","sein","längst","geschlossen","hat"]},{"i":4,"row":["_","_","_","Missverständnis","_","_","anders","_","_","es","mir","_","_"],"parts":["das","muss","ein","sein",",","kann","ich","nicht","erklären"]},{"i":5,"row":["_","_","_","_","_","_","_","weil","Zeugen","sie","woanders","_","_"],"parts":["sie","kann","nicht","dort","gewesen","sein",",","gesehen","haben"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

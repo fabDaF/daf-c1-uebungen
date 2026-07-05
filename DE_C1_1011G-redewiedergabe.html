@@ -1054,7 +1054,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","_","_","man","sehe","_","_","_","mehrere","_","Stellen","_"],"parts":["der","Vorstand","ließ","verlauten",",","sich","gezwungen",",","hundert","abzubauen"]},{"i":1,"row":["_","_","_","_","die","_","_","_","keinerlei","_","für","_","Bürger","_"],"parts":["die","Ministerin","betonte",",","geplante","Reform","werde","Mehrkosten","die","verursachen"]},{"i":2,"row":["_","_","_","_","_","die","_","_","deutlich","länger","_","_","ursprünglich","_"],"parts":["der","Bürgermeister","räumte","ein",",","Sanierung","habe","gedauert","als","geplant"]},{"i":3,"row":["_","_","_","_","Deutschland","_","auch","in","_","_","_","_","_","Bündnispartnern"],"parts":["die","Kanzlerin","versicherte",",","stehe","schwierigen","Zeiten","fest","zu","seinen"]},{"i":4,"row":["_","_","_","am","_","_","Sitzung","_","_","_","noch","_","_","gebe"],"parts":["der","Sprecher","fragte","Ende","der",",","ob","es","weitere","Stellungnahmen"]},{"i":5,"row":["_","_","_","_","Gericht","_","_","sei","_","keinem","_","darüber","_","_"],"parts":["die","Klägerin","behauptete","vor",",","sie","zu","Zeitpunkt","informiert","worden"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1052,7 +1052,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","_","_","_","_","bevor","die","_","immer","größer","_"],"parts":["ich","hätte","das","sofort","machen","sollen",",","Probleme","wurden"]},{"i":1,"row":["_","_","_","Feier","_","_","_","_","ich","_","selbstverständlich","persönlich","_"],"parts":["wenn","sie","zur","gekommen","wäre",",","hätte","sie","begrüßt"]},{"i":2,"row":["_","_","_","früher","_","_","_","weil","_","lange","_","Nachricht","_"],"parts":["du","hättest","dich","melden","können",",","wir","auf","warteten"]},{"i":3,"row":["_","_","_","große","_","_","_","wenn","der","_","Vertrag","_","_"],"parts":["die","Firma","hätte","Probleme","gehabt",",","wichtige","geplatzt","wäre"]},{"i":4,"row":["_","_","_","_","_","_","weil","alle","_","_","seinem","Tisch","_"],"parts":["er","hätte","das","wissen","müssen",",","Unterlagen","auf","lagen"]},{"i":5,"row":["_","_","_","früher","_","_","_","_","der","_","Regen","_","Abend","_"],"parts":["wir","hätten","viel","gehen","sollen",",","bevor","starke","am","einsetzte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

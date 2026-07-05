@@ -1012,7 +1012,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","sehr","_","_","folglich","_","_","_","_","leider","_","Schrank"],"parts":["es","regnet","heute","stark",",","bleibt","das","geplante","Picknick","im"]},{"i":1,"row":["_","_","_","ins","_","_","_","_","_","wir","_","Ende","_","Theater"],"parts":["wir","wollten","eigentlich","Kino","gehen",",","stattdessen","besuchten","am","das"]},{"i":2,"row":["_","_","_","_","Jahren","_","_","_","_","_","mehr","Familien","_","_","Stadt"],"parts":["die","Mieten","steigen","seit","rasant",",","infolgedessen","ziehen","immer","aus","der"]},{"i":3,"row":["_","_","_","diesem","_","sehr","_","_","_","_","_","er","_","_","Vorlesung"],"parts":["er","war","an","Abend","müde",",","dessen","ungeachtet","hielt","seine","angekündigte"]},{"i":4,"row":["_","_","_","fünf","_","_","_","_","ihr","_","Bruder","_","_","eine"],"parts":["sie","spricht","fließend","Sprachen",",","demgegenüber","spricht","älterer","leider","nur"]},{"i":5,"row":["_","_","Daten","_","_","_","_","mithin","_","_","ursprüngliche","_","_","klar","_"],"parts":["die","erhobenen","sind","völlig","eindeutig",",","gilt","unsere","Hypothese","als","bestätigt"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

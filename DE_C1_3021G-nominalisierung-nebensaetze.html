@@ -1010,7 +1010,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","Streiks","_","_","alle","_","_","_","sodass","_","Pendler","_","_","_"],"parts":["wegen","des","angekündigten","fielen","heute","Züge","aus",",","viele","zu","spät","kamen"]},{"i":1,"row":["_","_","_","Senkung","_","Steuern","_","_","_","_","wie","_","immer","_","_"],"parts":["bei","einer","deutlichen","der","steigt","der","Konsum",",","Ökonomen","wieder","betonen"]},{"i":2,"row":["_","_","_","Wetters","_","_","Konzert","_","_","_","die","_","alles","_","_"],"parts":["trotz","des","schlechten","fand","das","statt",",","weil","Veranstalter","überdacht","hatten"]},{"i":3,"row":["_","_","_","Hilfe","_","_","_","Projekt","_","_","_","das","_","_","gern","_"],"parts":["ohne","seine","entschlossene","hätten","wir","das","nie","beendet",",","gebe","ich","zu"]},{"i":4,"row":["_","_","_","sie","_","_","_","Tee","_","bevor","_","sich","_","_"],"parts":["zur","Beruhigung","trinkt","jeden","Abend","einen",",","sie","schlafen","legt"]},{"i":5,"row":["_","_","_","Pandemie","_","_","Menschen","_","Homeoffice","_","_","_","_","Austausch","_"],"parts":["während","der","langen","arbeiteten","viele","im",",","obwohl","ihnen","der","fehlte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

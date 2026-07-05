@@ -1054,7 +1054,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","als","_","sparsam","_","_","_","sich","_","_","Haus","_"],"parts":["er","war","schon","Kind",",","und","sollte","später","ein","kaufen"]},{"i":1,"row":["_","_","_","damals","_","_","dass","_","_","Tages","_","Paris","_","_"],"parts":["ihr","war","schon","klar",",","sie","eines","in","leben","würde"]},{"i":2,"row":["_","_","Nachmittag","_","_","_","_","tatsächlich","aber","_","_","_","_","Tag","_"],"parts":["für","den","war","Sonne","angesagt",",","sollte","es","den","ganzen","regnen"]},{"i":3,"row":["_","_","_","Astronaut","_","_","_","er","_","am","_","Buchhalter","_"],"parts":["Tom","wollte","unbedingt","werden",",","doch","sollte","Ende","werden"]},{"i":4,"row":["_","_","_","_","dass","_","Lottogewinn","_","ganzes","_","grundlegend","_","_"],"parts":["niemand","ahnte","damals",",","der","ihr","Leben","verändern","würde"]},{"i":5,"row":["_","_","_","am","_","besser","_","_","_","sie","_","je","_","_"],"parts":["das","Treffen","sollte","Ende","ausgehen",",","als","es","gehofft","hätte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

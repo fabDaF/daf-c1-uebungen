@@ -1049,7 +1049,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","der","_","der","_","_","_","unzählige","_","schwer","_","_"],"parts":["wir","gedenken","heute","Opfer","Pandemie",",","die","Familien","getroffen","hat"]},{"i":1,"row":["_","_","_","des","_","_","im","_","_","ohne","_","_","Gäste","_","_"],"parts":["er","bediente","sich","letzten","Brotes","Korb",",","die","anderen","zu","fragen"]},{"i":2,"row":["_","_","_","sich","_","_","_","der","_","_","weil","_","_","sie","_"],"parts":["die","Bürger","enthalten","bei","der","Wahl","Stimme",",","kein","Kandidat","überzeugt"]},{"i":3,"row":["_","_","_","der","_","_","_","obwohl","_","Regierung","_","_","Besserung","_"],"parts":["das","Land","ermangelt","nötigen","Infrastruktur",",","die","seit","Jahren","verspricht"]},{"i":4,"row":["_","_","_","_","Kollegen","_","Verrats","_","_","_","Dokumente","_","_","Presse","_"],"parts":["er","beschuldigt","seinen","früheren","des",",","weil","interne","an","die","gelangten"]},{"i":5,"row":["_","_","_","der","_","_","_","genau","_","_","wir","_","_","Meer","_"],"parts":["ich","entsinne","mich","schönen","Tage","sehr",",","als","gemeinsam","am","wohnten"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

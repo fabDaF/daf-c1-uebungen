@@ -1008,7 +1008,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","_","das","_","Gebäude","_","_","_","die","_","schließlich","_","_"],"parts":["die","Polizei","umstellte","ganze",",","bevor","sie","Verdächtigen","festnehmen","konnte"]},{"i":1,"row":["_","_","_","den","_","_","_","dem","_","_","_","ihm","_","Begriffe","_"],"parts":["der","Lehrer","übersetzte","schwierigen","Text","aus","Lateinischen",",","obwohl","einige","fehlten"]},{"i":2,"row":["_","_","_","_","Wanderung","_","_","Alpen","_","_","das","_","_","gut","_"],"parts":["wir","unternahmen","eine","ausgedehnte","in","den",",","während","Wetter","überraschend","blieb"]},{"i":3,"row":["_","_","_","am","_","_","das","_","_","_","_","er","_","säen","_"],"parts":["der","Bauer","pflügte","frühen","Morgen","Feld","um",",","damit","rechtzeitig","konnte"]},{"i":4,"row":["_","_","_","den","_","seiner","_","_","_","ihn","_","Zeitgenossen","_","_","_"],"parts":["der","Roman","widerspiegelte","Geist","Zeit",",","weshalb","die","begeistert","gelesen","haben"]},{"i":5,"row":["_","_","_","langsam","_","den","_","_","_","_","der","_","sich","_","_"],"parts":["die","Sonne","ging","hinter","Bergen","unter",",","während","Himmel","tiefrot","färbte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;

@@ -1064,7 +1064,7 @@ function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 /* ── Gerüst-Modus Add-on (B1+) — additiv generiert. Mischt row/parts zur Laufzeit in satzbauData,
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
-  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":false,"tab":3};
+  var CFG = {"bank":"sb-bank-","row":"sb-row-","fb":"sb-fb-","caps":true,"click":true,"tab":3};
   var SBGAP = [{"i":0,"row":["_","_","Ernährung","_","_","_","_","jedoch","_","_","_","_","Investition","_","_","Lebenserwartung"],"parts":["eine","gesunde","kostet","zwar","Zeit",",","ist","sie","die","beste","in","unsere"]},{"i":1,"row":["_","_","Berliner","_","_","Klimawandel","_","_","_","_","_","in","_","Urlaub"],"parts":["obwohl","viele","um","den","wissen",",","fliegen","sie","weiterhin","den"]},{"i":2,"row":["_","_","_","2024","_","_","folglich","_","viele","_","_","Konsum","_"],"parts":["die","Energiepreise","stiegen","deutlich",",","mussten","Haushalte","ihren","drosseln"]},{"i":3,"row":["_","_","_","_","nur","Bürokratie","_","_","_","_","die","Verfahren","_"],"parts":["die","Reform","soll","nicht","abbauen",",","sondern","auch","beschleunigen"]},{"i":4,"row":["_","_","_","messbar","_","_","überdies","_","_","_","auch","_","ausgeglichener"],"parts":["Frühaufsteher","sind","oft","produktiver",",","sind","sie","meist","deutlich"]},{"i":5,"row":["_","_","_","KI","_","Chancen","_","_","_","sie","_","_","Sorgen"],"parts":["einerseits","bietet","die","große",",","andererseits","weckt","auch","berechtigte"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
