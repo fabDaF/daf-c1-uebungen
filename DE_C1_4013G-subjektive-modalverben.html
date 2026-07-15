@@ -1367,7 +1367,7 @@ function schreibKarteAlsGesendetMarkieren(nr, info, beimLaden) {
   if (status) { status.classList.remove('error'); status.textContent = '✓ ' + info; }
 }
 function schreibStatusZeigen(typ, text) { var box = document.getElementById('schreib-status'); if (!box) return; box.className = 'schreib-status ' + typ; box.innerHTML = text; }
-function schreibAktuellerName() { var nameInp = document.getElementById('schreib-name'); return (nameInp && nameInp.value || '').trim() || 'Anonyme Einsenderin / anonymer Einsender'; }
+function schreibAktuellerName() { var nameInp = document.getElementById('schreib-name'); return (nameInp && nameInp.value || '').trim() || 'Anonymer Einsender'; }
 function schreibPostFormsubmit(subject, message, onOk, onErr) {
   return fetch(FORMSUBMIT_ENDPOINT, {
     method: 'POST',

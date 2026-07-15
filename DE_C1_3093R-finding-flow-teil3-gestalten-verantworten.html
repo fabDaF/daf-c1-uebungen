@@ -665,7 +665,7 @@ html[data-theme="dark"] button, html[data-theme="dark"] input, html[data-theme="
       </div>
       <div class="wortbank" id="wortbank-luecken"></div>
       <div id="lueckenContainer" class="luecken-story">
-<p>In der Stadtbibliothek wartete ein riesiger, seit Jahren nicht sortierter Aktenkeller auf Frau Berger. Der Auftrag klang denkbar eintönig: tausende Karteikarten nach Jahrgängen ordnen. Statt zu stöhnen, <input class="blank" data-answer="setzte"> sie sich ein eigenes Ziel: jeden Tag genau einen Meter Regal zu schaffen, nicht mehr und nicht weniger. Schon nach der ersten Stunde <input class="blank" data-answer="bemerkte"> sie, dass aus der lästigen Pflicht ein kleines Spiel gegen die eigene Bestzeit geworden war. Jede Karte, die an ihren Platz <input class="blank" data-answer="rutschte">, fühlte sich wie ein kleiner Sieg an. Die Kolleginnen, die vorbeikamen, <input class="blank" data-answer="wunderten"> sich, wie konzentriert sie arbeitete, obwohl niemand sie dazu <input class="blank" data-answer="zwang">. Auf die Frage, wie sie das durchgehalten habe, <input class="blank" data-answer="antwortete"> Frau Berger, die Arbeit selbst sei nie leichter geworden — nur ihr Blick auf die Aufgabe habe sich <input class="blank" data-answer="verändert">. Was von außen wie reiner Zwang <input class="blank" data-answer="ausgesehen"> habe, sei durch das selbstgesetzte Ziel zu etwas geworden, das sie freiwillig <input class="blank" data-answer="gewählt"> hätte. Am Ende, so erzählte sie später, habe sie den Keller beinahe <input class="blank" data-answer="vermisst">.</p>
+<p>In der Stadtbibliothek wartete ein riesiger, seit Jahren nicht sortierter Aktenkeller auf Frau Berger. Der Auftrag klang denkbar eintönig: tausende Karteikarten nach Jahrgängen ordnen. Statt zu stöhnen, <input class="blank" data-answer="setzte"> sie sich ein eigenes Ziel: jeden Tag genau einen Meter Regal zu schaffen, nicht mehr und nicht weniger. Schon nach der ersten Stunde <input class="blank" data-answer="bemerkte"> sie, dass aus der lästigen Pflicht ein kleines Spiel gegen die eigene Bestzeit geworden war. Jede Karte, die an ihren Platz <input class="blank" data-answer="rutschte">, fühlte sich wie ein kleiner Sieg an. Die Kollegen, die vorbeikamen, <input class="blank" data-answer="wunderten"> sich, wie konzentriert sie arbeitete, obwohl niemand sie dazu <input class="blank" data-answer="zwang">. Auf die Frage, wie sie das durchgehalten habe, <input class="blank" data-answer="antwortete"> Frau Berger, die Arbeit selbst sei nie leichter geworden — nur ihr Blick auf die Aufgabe habe sich <input class="blank" data-answer="verändert">. Was von außen wie reiner Zwang <input class="blank" data-answer="ausgesehen"> habe, sei durch das selbstgesetzte Ziel zu etwas geworden, das sie freiwillig <input class="blank" data-answer="gewählt"> hätte. Am Ende, so erzählte sie später, habe sie den Keller beinahe <input class="blank" data-answer="vermisst">.</p>
       </div>
     </div>
   </div>
@@ -1425,7 +1425,7 @@ function schreibStatusZeigen(typ, text) {
 }
 function schreibAktuellerName() {
   var nameInp = document.getElementById('schreib-name');
-  return (nameInp && nameInp.value || '').trim() || 'Anonyme Einsenderin / anonymer Einsender';
+  return (nameInp && nameInp.value || '').trim() || 'Anonymer Einsender';
 }
 function schreibPostFormsubmit(subject, message, onOk, onErr) {
   return fetch(FORMSUBMIT_ENDPOINT, {

@@ -1016,7 +1016,7 @@ function initSchreibwerkstatt() {
 function schreibUpdateCount(ta){ var nr=ta.dataset.aufgabe; var t=ta.value.trim(); var w=t?t.split(/\s+/).filter(function(w){return w.length>0;}).length:0; var wc=document.querySelector('.wc-'+nr); if(wc) wc.textContent=w; }
 function schreibKarteAlsGesendetMarkieren(nr, info, beim) { var ta=document.querySelector('.schreib-mini-textarea[data-aufgabe="'+nr+'"]'); var k=ta && ta.closest('.schreib-aufgabe-karte'); if(k) k.classList.add('gesendet'); var b=document.getElementById('send-'+nr); if(b){ b.classList.add('gesendet'); b.innerHTML=beim?'✓ schon gesendet · erneut senden':'✓ gesendet · erneut senden'; } var st=document.getElementById('status-'+nr); if(st){ st.classList.remove('error'); st.textContent='✓ '+info; } }
 function schreibStatusZeigen(typ, txt){ var b=document.getElementById('schreib-status'); if(!b) return; b.className='schreib-status '+typ; b.innerHTML=txt; }
-function schreibAktuellerName(){ var i=document.getElementById('schreib-name'); return (i&&i.value||'').trim()||'Anonyme Einsenderin / anonymer Einsender'; }
+function schreibAktuellerName(){ var i=document.getElementById('schreib-name'); return (i&&i.value||'').trim()||'Anonymer Einsender'; }
 function schreibPostFormsubmit(subject, message, onOk, onErr) {
   return fetch(FORMSUBMIT_ENDPOINT, {
     method: 'POST',

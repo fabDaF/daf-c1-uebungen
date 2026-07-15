@@ -790,7 +790,7 @@ html[data-theme="dark"] button, html[data-theme="dark"] input, html[data-theme="
 
       <div class="schreib-aufgabe-karte">
         <span class="schreib-aufgabe-nr">5</span><span class="schreib-aufgabe-titel">Ein Mini-Dialog über den Sinn der Arbeit</span>
-        <div class="schreib-aufgabe-frage">Schreiben Sie einen kurzen Dialog zwischen zwei Kolleginnen oder Kollegen, die sich fragen, ob ihre tägliche Arbeit ihnen Erfüllung gibt. Mindestens zwei Fragen und zwei Antworten. (40–70 Wörter)</div>
+        <div class="schreib-aufgabe-frage">Schreiben Sie einen kurzen Dialog zwischen zwei Kollegen, die sich fragen, ob ihre tägliche Arbeit ihnen Erfüllung gibt. Mindestens zwei Fragen und zwei Antworten. (40–70 Wörter)</div>
         <textarea class="schreib-mini-textarea" data-aufgabe="5" data-titel="Ein Mini-Dialog über den Sinn der Arbeit"></textarea>
         <div class="schreib-mini-footer">
           <span class="schreib-mini-meta">Wörter: <strong class="wc-5">0</strong> <span class="schreib-mini-status" id="status-5"></span></span>
@@ -1430,7 +1430,7 @@ function schreibStatusZeigen(typ, text) {
 }
 function schreibAktuellerName() {
   var nameInp = document.getElementById('schreib-name');
-  return (nameInp && nameInp.value || '').trim() || 'Anonyme Einsenderin / anonymer Einsender';
+  return (nameInp && nameInp.value || '').trim() || 'Anonymer Einsender';
 }
 function schreibPostFormsubmit(subject, message, onOk, onErr) {
   return fetch(FORMSUBMIT_ENDPOINT, {

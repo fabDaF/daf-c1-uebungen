@@ -1005,8 +1005,8 @@ var satzbauData = [
   { parts: ['meine', 'größten', 'Stärken', 'sind', 'Teamfähigkeit', 'und', 'Belastbarkeit', ',', 'wie', 'meine', 'früheren', 'Arbeitgeber', 'gerne', 'bestätigen'],
     valid: [['meine', 'größten', 'Stärken', 'sind', 'Teamfähigkeit', 'und', 'Belastbarkeit', ',', 'wie', 'meine', 'früheren', 'Arbeitgeber', 'gerne', 'bestätigen']],
     punct: '.' },
-  { parts: ['Fragen', 'zur', 'Schwangerschaft', 'sind', 'in', 'Deutschland', 'unzulässig', ',', 'weshalb', 'Bewerberinnen', 'darauf', 'nicht', 'antworten', 'müssen'],
-    valid: [['Fragen', 'zur', 'Schwangerschaft', 'sind', 'in', 'Deutschland', 'unzulässig', ',', 'weshalb', 'Bewerberinnen', 'darauf', 'nicht', 'antworten', 'müssen']],
+  { parts: ['Fragen', 'zur', 'Schwangerschaft', 'sind', 'in', 'Deutschland', 'unzulässig', ',', 'weshalb', 'Bewerber', 'darauf', 'nicht', 'antworten', 'müssen'],
+    valid: [['Fragen', 'zur', 'Schwangerschaft', 'sind', 'in', 'Deutschland', 'unzulässig', ',', 'weshalb', 'Bewerber', 'darauf', 'nicht', 'antworten', 'müssen']],
     punct: '.' },
   { parts: ['der', 'AI', 'Act', 'reguliert', 'seit', '2024', 'automatisierte', 'Auswahlverfahren', ',', 'weil', 'Algorithmen', 'Bewerber', 'diskriminieren', 'können'],
     valid: [['der', 'AI', 'Act', 'reguliert', 'seit', '2024', 'automatisierte', 'Auswahlverfahren', ',', 'weil', 'Algorithmen', 'Bewerber', 'diskriminieren', 'können']],
@@ -1596,7 +1596,7 @@ function schreibStatusZeigen(typ, text) {
 }
 function schreibAktuellerName() {
   var nameInp = document.getElementById('schreib-name');
-  return (nameInp && nameInp.value || '').trim() || 'Anonyme Einsenderin / anonymer Einsender';
+  return (nameInp && nameInp.value || '').trim() || 'Anonymer Einsender';
 }
 function schreibPostFormsubmit(subject, message, onOk, onErr) {
   return fetch(FORMSUBMIT_ENDPOINT, {
@@ -1805,7 +1805,7 @@ function schreibLeeren() {
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
   var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
-  var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","bis","_","Minuten","_","_","_","planmäßig","_"],"parts":["ein","Vorstellungsgespräch","dauert","Deutschland","meist","45","60",",","wenn","alles","verläuft"]},{"i":1,"row":["_","_","_","_","Antworten","_","_","sie","_","_","Ergebnis","_","voneinander","_"],"parts":["die","STAR-Methode","strukturiert","verhaltensbasierte",",","indem","Situation","und","klar","trennt"]},{"i":2,"row":["_","_","_","gründlich","_","_","_","_","_","weil","_","diese","_","_","wichtig","_"],"parts":["ich","habe","mich","auf","das","Gespräch","vorbereitet",",","mir","Stelle","wirklich","ist"]},{"i":3,"row":["_","_","Stärken","_","_","und","_","_","_","meine","_","_","gerne","_"],"parts":["meine","größten","sind","Teamfähigkeit","Belastbarkeit",",","wie","früheren","Arbeitgeber","bestätigen"]},{"i":4,"row":["_","_","Schwangerschaft","_","_","Deutschland","unzulässig","_","_","Bewerberinnen","_","_","_","_"],"parts":["Fragen","zur","sind","in",",","weshalb","darauf","nicht","antworten","müssen"]},{"i":5,"row":["_","_","Act","_","_","_","_","Auswahlverfahren","_","weil","_","Bewerber","_","_"],"parts":["der","AI","reguliert","seit","2024","automatisierte",",","Algorithmen","diskriminieren","können"]}];
+  var SBGAP = [{"i":0,"row":["_","_","_","in","_","_","_","bis","_","Minuten","_","_","_","planmäßig","_"],"parts":["ein","Vorstellungsgespräch","dauert","Deutschland","meist","45","60",",","wenn","alles","verläuft"]},{"i":1,"row":["_","_","_","_","Antworten","_","_","sie","_","_","Ergebnis","_","voneinander","_"],"parts":["die","STAR-Methode","strukturiert","verhaltensbasierte",",","indem","Situation","und","klar","trennt"]},{"i":2,"row":["_","_","_","gründlich","_","_","_","_","_","weil","_","diese","_","_","wichtig","_"],"parts":["ich","habe","mich","auf","das","Gespräch","vorbereitet",",","mir","Stelle","wirklich","ist"]},{"i":3,"row":["_","_","Stärken","_","_","und","_","_","_","meine","_","_","gerne","_"],"parts":["meine","größten","sind","Teamfähigkeit","Belastbarkeit",",","wie","früheren","Arbeitgeber","bestätigen"]},{"i":4,"row":["_","_","Schwangerschaft","_","_","Deutschland","unzulässig","_","_","Bewerber","_","_","_","_"],"parts":["Fragen","zur","sind","in",",","weshalb","darauf","nicht","antworten","müssen"]},{"i":5,"row":["_","_","Act","_","_","_","_","Auswahlverfahren","_","weil","_","Bewerber","_","_"],"parts":["der","AI","reguliert","seit","2024","automatisierte",",","Algorithmen","diskriminieren","können"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
     if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
