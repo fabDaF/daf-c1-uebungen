@@ -670,7 +670,7 @@ html[data-theme="dark"] button, html[data-theme="dark"] input, html[data-theme="
         <p>Seit dem Aufstieg sozialer Medien hat sich der öffentliche Umgang mit Entschuldigungen massiv verändert. Wer als Prominenter, Politikerin oder Unternehmen in einen <span class="vocab-hl" title="📖 Vokabel aus der Vorentlastung">Shitstorm</span> gerät, steht binnen Stunden unter Erklärungsdruck. Statements werden in Eile geschrieben, anwaltlich geprüft, durch Kommunikationsabteilungen geschickt — und sind eben deshalb oft die schlechtesten Entschuldigungen, die man sich vorstellen kann. Sie enthalten meist alle vier Bauteile, aber in entkernter Form: anerkennen, ohne präzise zu werden; bedauern, ohne sich angreifbar zu machen; Verantwortung übernehmen, ohne die Konsequenzen zu nennen. Das Publikum spürt das. Studien zeigen, dass eine späte, persönliche, unaufgeräumte Entschuldigung eine ungleich bessere Wirkung erzielt als eine schnelle, perfekt redigierte.</p>
 
         <h3>Bilanz: Mut, nicht Routine</h3>
-        <p>Die wirklich gelungenen Entschuldigungen — privat wie öffentlich — haben ein gemeinsames Merkmal: Sie kosten den Sprechenden etwas. Stolz, Status, Bequemlichkeit, Wahrheit über sich selbst. Eine Entschuldigung, die nichts kostet, ist meist auch nichts wert. Wer sich angewöhnt, Entschuldigungen als Routinegeste auszustreuen, entwertet sie für sich selbst — und für die Menschen, denen er sie schuldet. Umgekehrt: Wer sie nur dann ausspricht, wenn er sie wirklich meint, gibt ihnen ein Gewicht, das im sprachlichen Alltag selten geworden ist. Manchmal genügen vier Worte. Aber sie müssen wahr sein.</p>
+        <p>Die wirklich gelungenen Entschuldigungen — privat wie öffentlich — haben ein gemeinsames Merkmal: Sie kosten den Sprecher etwas. Stolz, Status, Bequemlichkeit, Wahrheit über sich selbst. Eine Entschuldigung, die nichts kostet, ist meist auch nichts wert. Wer sich angewöhnt, Entschuldigungen als Routinegeste auszustreuen, entwertet sie für sich selbst — und für die Menschen, denen er sie schuldet. Umgekehrt: Wer sie nur dann ausspricht, wenn er sie wirklich meint, gibt ihnen ein Gewicht, das im sprachlichen Alltag selten geworden ist. Manchmal genügen vier Worte. Aber sie müssen wahr sein.</p>
       </div>
     </div>
   </div>
@@ -879,7 +879,7 @@ var VORENTLASTUNG = [
   { term: "die Anerkennung (Sg.)",             def: "präzises, beschönigungsfreies Benennen des eigenen Fehlverhaltens — erste Komponente einer vollständigen Entschuldigung." },
   { term: "die Verantwortung (Sg.)",           def: "die Schuld auf sich nehmen, statt sie auf Umstände, andere oder den Geschädigten abzuwälzen — zweite Komponente einer vollständigen Entschuldigung." },
   { term: "das Bedauern (Sg.)",                def: "der emotionale Anteil einer Entschuldigung — sichtbar machen, dass einem der Vorfall nicht gleichgültig ist." },
-  { term: "die Wiedergutmachung, -en",          def: "konkrete Korrektur oder Verhaltensänderung, die der Sprechende anbietet, um den entstandenen Schaden auszugleichen." },
+  { term: "die Wiedergutmachung, -en",          def: "konkrete Korrektur oder Verhaltensänderung, die der Sprecher anbietet, um den entstandenen Schaden auszugleichen." },
   { term: "die Scheinentschuldigung, -en",     def: "scheinbare Entschuldigung, die in Wahrheit Verantwortung verschiebt — typische Marker: ‚falls‘, ‚aber‘, Passivkonstruktionen." },
   { term: "der Shitstorm, -s",                  def: "von sozialen Medien ausgehende öffentliche Empörungswelle — moderner Auslöser für oft missglückte Entschuldigungs-Statements von Unternehmen und Prominenten." },
   { term: "das Register, -",                    def: "sprachliche Stilebene — von informell (‚Sorry‘) bis streng formell (‚Wir bedauern aufrichtig …‘); bei Entschuldigungen entscheidend für die Wirkung." }
@@ -982,7 +982,7 @@ var MC_DATA = [
   {
     "q": "Welche Bilanz zieht der Lesetext über gelungene Entschuldigungen?",
     "opts": [
-      "sie kosten dem Sprechenden etwas — Stolz, Status, Bequemlichkeit oder Wahrheit über sich selbst",
+      "sie kosten dem Sprecher etwas — Stolz, Status, Bequemlichkeit oder Wahrheit über sich selbst",
       "sie kommen am besten von Profis",
       "sie sind kostenlos und schnell",
       "sie sind formelhaft und höflich"
@@ -992,8 +992,8 @@ var MC_DATA = [
 ];
 
 var satzbauData = [
-  { parts: ['eine', 'gute', 'Entschuldigung', 'kostet', 'den', 'Sprechenden', 'etwas', ',', 'weil', 'sie', 'echtes', 'Eingeständnis', 'verlangt'],
-    valid: [['eine', 'gute', 'Entschuldigung', 'kostet', 'den', 'Sprechenden', 'etwas', ',', 'weil', 'sie', 'echtes', 'Eingeständnis', 'verlangt']],
+  { parts: ['eine', 'gute', 'Entschuldigung', 'kostet', 'den', 'Sprecher', 'etwas', ',', 'weil', 'sie', 'echtes', 'Eingeständnis', 'verlangt'],
+    valid: [['eine', 'gute', 'Entschuldigung', 'kostet', 'den', 'Sprecher', 'etwas', ',', 'weil', 'sie', 'echtes', 'Eingeständnis', 'verlangt']],
     punct: '.' },
   { parts: ['wer', 'Verantwortung', 'übernimmt', ',', 'wälzt', 'die', 'Schuld', 'nicht', 'auf', 'andere', 'unbeteiligte', 'Menschen', 'ab'],
     valid: [['wer', 'Verantwortung', 'übernimmt', ',', 'wälzt', 'die', 'Schuld', 'nicht', 'auf', 'andere', 'unbeteiligte', 'Menschen', 'ab']],
@@ -1804,7 +1804,7 @@ function schreibLeeren() {
    hüllt Init/Lösung/Reset. Original-Logik für Sätze ohne row bleibt unberührt. */
 (function(){
   var CFG = {"bank":"chips-","row":"builder-","fb":"sfb-","caps":true,"click":true,"tab":5};
-  var SBGAP = [{"i":0,"row":["_","_","Entschuldigung","_","_","Sprechenden","_","_","_","sie","_","Eingeständnis","_"],"parts":["eine","gute","kostet","den","etwas",",","weil","echtes","verlangt"]},{"i":1,"row":["_","_","_","_","_","die","Schuld","_","_","andere","_","Menschen","_"],"parts":["wer","Verantwortung","übernimmt",",","wälzt","nicht","auf","unbeteiligte","ab"]},{"i":2,"row":["_","_","_","_","jede","_","_","weil","sie","_","Schuld","_","_"],"parts":["die","Konjunktion","aber","entwertet","Entschuldigung",",","die","sofort","relativiert"]},{"i":3,"row":["_","_","Register","_","_","_","Satz","_","_","weil","_","respektlos","_"],"parts":["im","formellen","ist","ein","kompletter","unverzichtbar",",","Kürzel","wirken"]},{"i":4,"row":["_","_","_","oft","_","_","_","Anwälte","_","jede","_","Formulierung","_"],"parts":["öffentliche","Statements","klingen","entkernt",",","weil","vorher","klare","entschärfen"]},{"i":5,"row":["_","_","_","großzügig","_","_","_","sie","_","bevor","sie","_","_","_"],"parts":["wer","Entschuldigungen","allzu","ausstreut",",","entwertet",",","überhaupt","wirken","können"]}];
+  var SBGAP = [{"i":0,"row":["_","_","Entschuldigung","_","_","Sprecher","_","_","_","sie","_","Eingeständnis","_"],"parts":["eine","gute","kostet","den","etwas",",","weil","echtes","verlangt"]},{"i":1,"row":["_","_","_","_","_","die","Schuld","_","_","andere","_","Menschen","_"],"parts":["wer","Verantwortung","übernimmt",",","wälzt","nicht","auf","unbeteiligte","ab"]},{"i":2,"row":["_","_","_","_","jede","_","_","weil","sie","_","Schuld","_","_"],"parts":["die","Konjunktion","aber","entwertet","Entschuldigung",",","die","sofort","relativiert"]},{"i":3,"row":["_","_","Register","_","_","_","Satz","_","_","weil","_","respektlos","_"],"parts":["im","formellen","ist","ein","kompletter","unverzichtbar",",","Kürzel","wirken"]},{"i":4,"row":["_","_","_","oft","_","_","_","Anwälte","_","jede","_","Formulierung","_"],"parts":["öffentliche","Statements","klingen","entkernt",",","weil","vorher","klare","entschärfen"]},{"i":5,"row":["_","_","_","großzügig","_","_","_","sie","_","bevor","sie","_","_","_"],"parts":["wer","Entschuldigungen","allzu","ausstreut",",","entwertet",",","überhaupt","wirken","können"]}];
   SBGAP.forEach(function(g){ var ex = satzbauData[g.i]; if (!ex) return;
     ex.row = g.row; ex.parts = g.parts;
     if (typeof ex.valid[0] === "string") ex.valid = [ex.valid];
