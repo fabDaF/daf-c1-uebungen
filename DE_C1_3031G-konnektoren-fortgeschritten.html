@@ -111,7 +111,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, var(--grad-page-a) 0%, var(--grad-page-b) 100%); min-height: 100vh; padding: 20px; }
-.container { max-width: 1000px; margin: 0 auto; background: var(--sf-container); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.container { max-width: 1000px; margin: 0 auto; background: var(--sf-container); border-radius: 12px; overflow: hidden; overflow: clip; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
 .header { background: linear-gradient(135deg, var(--grad-head-a), var(--grad-head-b)); color: var(--tx-white); padding: 30px; text-align: center; }
 .header h1 { font-size: 2.2em; font-family: Georgia, 'Times New Roman', serif; color: var(--tx-white); margin-bottom: 8px; border: none; padding: 0; }
 .header p { font-size: 1.1em; font-family: Georgia, 'Times New Roman', serif; opacity: 0.95; color: rgba(255,255,255,0.9); margin: 0; }
@@ -297,6 +297,10 @@ input.blank.wrong { border-color: var(--bd-e74c3c); background: var(--bg-ffebee)
 .wortbank { display:flex; flex-wrap:wrap; gap:8px; padding:14px; background:var(--bg-f0f0f8); border-radius:10px; min-height:48px; margin-bottom:18px; border:1px dashed var(--bd-bbb); }
 .wortbank-chip { background:var(--bg-white); border:2px solid var(--bd-667eea); color:var(--tx-667eea); padding:5px 12px; border-radius:14px; font-weight:500; font-size:0.9em; user-select:none; }
 .wortbank-chip.used { opacity:0.35; text-decoration:line-through; }
+/* FB-WORTBANK-STICKY — Wortbank bleibt beim Scrollen oben sichtbar, Story läuft darunter durch.
+   Voraussetzung: .container nutzt overflow:clip statt hidden (hidden bricht position:sticky). */
+.wortbank { position: sticky; top: 0; z-index: 20; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+@media (max-width: 600px) { .wortbank { padding: 8px; gap: 6px; } .wortbank-chip { padding: 3px 9px; font-size: 0.85em; } }
 
 
 /* FB-WORTSCHATZ-KANON-CSS — skill-konforme Karten-Optik, NUR im Wortschatz-Tab (überschreibt abweichende Datei-CSS, Lückentext bleibt unberührt) */
